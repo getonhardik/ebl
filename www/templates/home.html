@@ -1,0 +1,354 @@
+<ion-view view-title="{{'home' | translate}}">
+    <ion-nav-title>
+        <img class="" src="img/logo.png">
+                
+    </ion-nav-title>
+    <!-- end img swiper -->
+        <div class="list list-inset">
+            <form id="search" ng-submit="onSearch()">
+            <label class="item item-input">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input  type="text" placeholder="{{'enter_the_key' | translate}}" ng-model="searchData.text">
+            </label>
+            <input  type="hidden" class="button button-full button-assertive" value="{{'quick_search' | translate}}" />
+            </form>
+        </div>
+    <ion-content>    
+        <style>
+.slick-container {
+  width: 100%;
+  border: 1px solid gray;
+  margin: auto;
+  padding: 15px;
+}
+
+.slick-item {}
+
+.slick-item img {
+  margin: auto;
+}
+</style>
+
+        <!-- img swiper -->
+        <!--
+        <div class="homebanner-swiper-container">
+            <img class="loading-image" src="img/loading.gif">
+            <ion-slide-box delegate-handle="image-viewer" show-pager="true"
+                    auto-play="true" does-continue="true"
+                    slide-interval="3000" on-slide-changed="goFirst($index)"
+                  >
+                <ion-slide ng-repeat="img in banner1" ng-init="updateSlider()">
+                    <img class="fullwidth" ng-src="{{img}}"><span></span>
+                </ion-slide>
+            </ion-slide-box>
+        </div>-->
+        
+        <div class="hk-image-div">
+        	<div class="row">
+            <div class="col-sm-3 col-xs-6"><a class="image-link" href="#"> <img alt="" src="http://pr.veba.co/~shubantech/ebranch/media/wysiwyg/porto/homepage/slider/05/image_1.png"> </a></div>
+            <div class="col-sm-3 col-xs-6"><a class="image-link" href="#"> <img alt="" src="http://pr.veba.co/~shubantech/ebranch/media/wysiwyg/porto/homepage/slider/05/image_2.png"> </a></div>
+            </div>
+            <div class="row">
+            <div class="col-sm-3 col-xs-6"><a class="image-link" href="#"> <img alt="" src="http://pr.veba.co/~shubantech/ebranch/media/wysiwyg/porto/homepage/slider/05/image_3.png"> </a></div>
+            <div class="col-sm-3 col-xs-6"><a class="image-link" href="#"> <img alt="" src="http://pr.veba.co/~shubantech/ebranch/media/wysiwyg/porto/homepage/slider/05/image_4.png"> </a></div>
+            </div>
+        </div>
+        
+
+        
+        <!--New product list -->
+        <div style="clear:both">&nbsp;</div>
+        <div class="p_title">Special Offers</div>
+        
+        <div class="slick-container" id="lists_daily">
+    
+        <div class="prodlist">	    	           
+            <div class="prod_slider slick-item" ng-repeat="product in lists_daily">			
+                <div class="product-inner">
+        <a href="#app/productDetail/{{product.entity_id}}">
+            <div class="product-image">
+                <img image-lazy-src="{{product.image_url}}"
+                     lazy-scroll-resize="true"
+                     image-lazy-loader="lines">
+            </div>
+        </a>
+        
+        <div class="product-info">
+            <div class="product-name">
+                {{product.name}}
+            </div>
+        
+            <div  class="product-price">
+                <div class="price-box">
+                  <span ng-if="product.discount != null" class="special-price">
+                      <span class="special-price">
+                          <span class="price">
+                              {{product.symbol}}{{product.final_price_with_tax}}
+                          </span>
+                          &nbsp;
+                          <span class="old-price">
+                              {{product.regular_price_with_tax | number:0}}
+                          </span>
+                      </span>
+                  </span>
+                  <span ng-if="product.discount == null" class="special-price">
+                      <span class="special-price">
+                          <span class="price">
+                              {{product.symbol}}{{product.regular_price_with_tax}}
+                          </span>
+                      </span>
+                  </span>
+                  <span ng-show="0" ng-if="product.discount!=null" class="discount {{price_percent_class}}">
+                      <span class="price">
+                          {{product.discount}}
+                      </span>
+                  </span>
+                </div>
+            </div>
+        </div>
+        </div>            
+            </div> 
+        </div>
+  </div>
+        
+        <div style="clear:both">&nbsp;</div>
+        <div class="p_title">New Products</div>
+        
+        <div class="slick-container prodlist" id="lists_new">	    	           
+            <div class="prod_slider slick-item" ng-repeat="product in lists_new">			
+                <div class="product-inner">
+            <a href="#app/productDetail/{{product.entity_id}}">
+                <div class="product-image">
+                    <img image-lazy-src="{{product.image_url}}"
+                         lazy-scroll-resize="true"
+                         image-lazy-loader="lines">
+                </div>
+            </a>
+            
+            <div class="product-info">
+                <div class="product-name">
+                    {{product.name}}
+                </div>
+            
+                <div  class="product-price">
+                    <div class="price-box">
+                      <span ng-if="product.discount != null" class="special-price">
+                          <span class="special-price">
+                              <span class="price">
+                                  {{product.symbol}}{{product.final_price_with_tax}}
+                              </span>
+                              &nbsp;
+                              <span class="old-price">
+                                  {{product.regular_price_with_tax | number:0}}
+                              </span>
+                          </span>
+                      </span>
+                      <span ng-if="product.discount == null" class="special-price">
+                          <span class="special-price">
+                              <span class="price">
+                                  {{product.symbol}}{{product.regular_price_with_tax}}
+                              </span>
+                          </span>
+                      </span>
+                      <span ng-show="0" ng-if="product.discount!=null" class="discount {{price_percent_class}}">
+                          <span class="price">
+                              {{product.discount}}
+                          </span>
+                      </span>
+                    </div>
+                </div>
+            </div>
+            </div>            
+            </div> 
+        </div>
+        <!--
+        <ion-list class="products-grid {{lineClass}}">
+        	<div class="p_title">New Products</div>
+            <div class="product" collection-repeat="product in lists_new">
+                <div class="product-inner">
+                    <a href="#app/productDetail/{{product.entity_id}}">
+                        <div class="product-image">
+                            <img image-lazy-src="{{product.image_url}}"
+                                 lazy-scroll-resize="true"
+                                 image-lazy-loader="lines">
+                        </div>
+                    </a>
+
+                    <div class="product-info">
+                        <div class="product-name">
+                            {{product.name}}
+                        </div>
+
+                        <div  class="product-price">
+                            <div class="price-box">
+                              <span ng-if="product.discount != null" class="special-price">
+                                  <span class="special-price">
+                                      <span class="price">
+                                          {{product.symbol}}{{product.final_price_with_tax}}
+                                      </span>
+                                      &nbsp;
+                                      <span class="old-price">
+                                          {{product.regular_price_with_tax | number:0}}
+                                      </span>
+                                  </span>
+                              </span>
+                              <span ng-if="product.discount == null" class="special-price">
+                                  <span class="special-price">
+                                      <span class="price">
+                                          {{product.symbol}}{{product.regular_price_with_tax}}
+                                      </span>
+                                  </span>
+                              </span>
+                              <span ng-show="0" ng-if="product.discount!=null" class="discount {{price_percent_class}}">
+                                  <span class="price">
+                                      {{product.discount}}
+                                  </span>
+                              </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ion-list>
+        -->
+        
+        <div style="clear:both">&nbsp;</div>
+        <div class="p_title">Best Selling Products</div>
+        <div class="slick-container prodlist" id="lists_best">	    	           
+            <div class="prod_slider slick-item" ng-repeat="product in lists_best">			
+                <div class="product-inner">
+            <a href="#app/productDetail/{{product.entity_id}}">
+                <div class="product-image">
+                    <img image-lazy-src="{{product.image_url}}"
+                         lazy-scroll-resize="true"
+                         image-lazy-loader="lines">
+                </div>
+            </a>
+            
+            <div class="product-info">
+                <div class="product-name">
+                    {{product.name}}
+                </div>
+            
+                <div  class="product-price">
+                    <div class="price-box">
+                      <span ng-if="product.discount != null" class="special-price">
+                          <span class="special-price">
+                              <span class="price">
+                                  {{product.symbol}}{{product.final_price_with_tax}}
+                              </span>
+                              &nbsp;
+                              <span class="old-price">
+                                  {{product.regular_price_with_tax | number:0}}
+                              </span>
+                          </span>
+                      </span>
+                      <span ng-if="product.discount == null" class="special-price">
+                          <span class="special-price">
+                              <span class="price">
+                                  {{product.symbol}}{{product.regular_price_with_tax}}
+                              </span>
+                          </span>
+                      </span>
+                      <span ng-show="0" ng-if="product.discount!=null" class="discount {{price_percent_class}}">
+                          <span class="price">
+                              {{product.discount}}
+                          </span>
+                      </span>
+                    </div>
+                </div>
+            </div>
+            </div>            
+            </div> 
+        </div>
+        
+        
+        <div style="clear:both">&nbsp;</div>
+        <div class="p_title">Last Products</div>
+        <div class="slick-container prodlist" id="lists_catalog">	    	           
+            <div class="prod_slider slick-item" ng-repeat="product in lists_catalog">			
+                <div class="product-inner">
+            <a href="#app/productDetail/{{product.entity_id}}">
+                <div class="product-image">
+                    <img image-lazy-src="{{product.image_url}}"
+                         lazy-scroll-resize="true"
+                         image-lazy-loader="lines">
+                </div>
+            </a>
+            
+            <div class="product-info">
+                <div class="product-name">
+                    {{product.name}}
+                </div>
+            
+                <div  class="product-price">
+                    <div class="price-box">
+                      <span ng-if="product.discount != null" class="special-price">
+                          <span class="special-price">
+                              <span class="price">
+                                  {{product.symbol}}{{product.final_price_with_tax}}
+                              </span>
+                              &nbsp;
+                              <span class="old-price">
+                                  {{product.regular_price_with_tax | number:0}}
+                              </span>
+                          </span>
+                      </span>
+                      <span ng-if="product.discount == null" class="special-price">
+                          <span class="special-price">
+                              <span class="price">
+                                  {{product.symbol}}{{product.regular_price_with_tax}}
+                              </span>
+                          </span>
+                      </span>
+                      <span ng-show="0" ng-if="product.discount!=null" class="discount {{price_percent_class}}">
+                          <span class="price">
+                              {{product.discount}}
+                          </span>
+                      </span>
+                    </div>
+                </div>
+            </div>
+            </div>            
+            </div> 
+        </div>            
+                
+		<div style="clear:both">&nbsp;</div>
+
+        
+
+        
+        <!-- end img swiper -->
+        <!--
+        <div class="list list-inset">
+            <form id="search" ng-submit="onSearch()">
+            <label class="item item-input">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input  type="text" placeholder="{{'enter_the_key' | translate}}" ng-model="searchData.text">
+            </label>
+            <button  type="submit" class="button button-full button-assertive">{{'quick_search' | translate}}</button>
+            </form>
+        </div>
+                        
+
+        <div class="padding-horizontal">
+            <div class="button-bar">
+                <a href="#app/searchAdv" class="button button-light icon icon-top ion-ios-search-strong"><br>
+                    {{'product_searchadv' | translate}}</a>
+                <a href="#app/lists/daily_sale" class="button button-light icon icon-top ion-ios-pricetags-outline"><br>
+                    {{'latest_promotions' | translate}}</a>
+                <a href="#app/lists/new" class="button button-light icon icon-top ion-ios-star-outline"><br>
+                    {{'common_products' | translate}}</a>
+            </div>
+            <div class="button-bar">
+                <a href="#app/certDownload" class="button button-light icon icon-top ion-clipboard"><br>
+                    {{'cert_download' | translate}}</a>
+                <a href="#app/searchAgent" class="button button-light icon icon-top ion-ios-location"><br>
+                    {{'search_agent' | translate}}</a>
+                <a href="#app/frame/survey" class="button button-light icon icon-top ion-android-checkbox-outline"><br>
+                    {{'survey' | translate}}</a>
+            </div>
+        </div>
+        -->
+    </ion-content>
+</ion-view>

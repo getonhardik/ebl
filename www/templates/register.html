@@ -1,0 +1,66 @@
+<ion-view view-title="{{'new_customer' | translate}}">
+    <ion-content overflow-scroll="false" class="register-container" style=" background:#0188cc;">
+    
+   			 <div class="fb-login-set space2">
+        
+        			<p class="set-center"> <a href="#"><img src="img/fb-login.png" alt="logo" width="" height="40"/> </a></p>
+            
+            
+                         <div class="no-span seprator set-center">
+                        <h4>OR USE</h4>
+                        </div>
+            
+            </div>
+            
+            
+        
+        
+        <form ng-submit="doRegister()">
+            <div class="list padding">
+                <!-- çŸ­ä¿¡éªŒè¯�.form__field -->
+<!--                <div class="item item-divider">
+                </div>-->
+             	<div class="inputset">   <label class="item item-input">
+                  <!--  <span class="input-label">{{'first_name' | translate}}*</span>-->
+                    <input type="text" placeholder="{{'first_name' | translate}}"
+                           ng-model="registerData.firstname">
+                </label></div>
+              <div class="inputset">  <label class="item item-input">
+                      <!-- <span class="input-label">{{'middle_name' | translate}}*</span>-->
+                    <input type="text" placeholder="{{'middle_name' | translate}}"
+                           ng-model="registerData.middlename">
+                </label></div>
+
+
+              <div class="inputset">  <label class="item item-input">
+                     <!--  <span class="input-label">{{'last_name' | translate}}*</span>-->
+                    <input type="text" placeholder="{{'last_name' | translate}}"
+                           ng-model="registerData.lastname" ng-focus="mobileChange()">
+                </label></div>
+
+             <div class="inputset">   <label class="item item-input">
+                     <!--  <span class="input-label">{{'email' | translate}}</span>-->
+                    <input type="text" placeholder="{{'email_reg' | translate}}"
+                           ng-model="registerData.email">
+                </label></div>
+
+
+             <div class="inputset">   <label class="item item-input">
+                    <!--   <span class="input-label">{{'password' | translate}}*</span>-->
+                    <input type="password" placeholder="{{'password' | translate}}"
+                           ng-model="registerData.password">
+                </label></div>
+
+                <li class="privacy item item-checkbox">
+                    <label class="checkbox">
+                        <input type="checkbox" ng-model="registerData.agreePrivacy">
+                    </label>
+                    {{'read_agree' | translate}}
+                </li>
+                <button class="button button-full button-assertive"
+                        type="submit" ng-disabled='!(registerData.agreePrivacy)'> {{'register_submit' | translate}}
+                </button>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>

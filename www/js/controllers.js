@@ -388,23 +388,23 @@ angular.module('app.controllers', [])
                 alert($scope.translations.need_confirm_pwd );
                 return;
             }
-*/            
+            
             if ($scope.validationCode !== $scope.registerData.validation_Code) {
                 alert( $scope.translations.need_confirm_vali );
                 return;
             }
-
+*/
             $scope.showLoading();
             $rootScope.service.get('register', $scope.registerData, function (res) {
                 $scope.hideLoading();
 
-                if (res[0]) {
+                if (res.status==true) {
                     alert('Register Successfully Done');
                     $scope.getUser();
                     $state.go('app.home');
                     return;
                 }
-                alert( res[2]);
+                alert( res.errors);
             });
         };
     })

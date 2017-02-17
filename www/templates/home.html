@@ -16,9 +16,9 @@
     <ion-content>    
         <style>
 .slick-container {
-  width: 500px;
+  width: 100%;
   margin: auto;
-  padding: 15px;
+  padding: 5px;
 }
 
 .slick-item {}
@@ -106,10 +106,10 @@ border-radius: 3px !important;
         <!--New product list -->
         <div style="clear:both">&nbsp;</div>
         <div class="p_title">Special Offers</div>
-       <div class="prodlist slick-container">
+       <div class="prodlist ">
             <slick ng-if="lists_daily.length" infinite=true 
            slides-to-show=3 
-           slides-to-scroll=3 >
+           slides-to-scroll=3  >
 
             <div class="prod_slider slick-item" ng-repeat="product in lists_daily">			
                 <div class="product-inner">
@@ -176,10 +176,10 @@ border-radius: 3px !important;
        
         <div style="clear:both">&nbsp;</div>
         <div class="p_title">New Products</div>
-        <div class="prodlist slick-container">	
+        <div class="prodlist ">	
         <slick ng-if="lists_new.length" infinite=true 
-           slides-to-show=3 
-           slides-to-scroll=3 >
+           slides-to-show=2 
+           slides-to-scroll=2 >
     	           
             <div class="prod_slider slick-item" ng-repeat="product in lists_new">			
                 <div class="product-inner">
@@ -246,7 +246,7 @@ border-radius: 3px !important;
         
         <div style="clear:both">&nbsp;</div>
         <div class="p_title">Best Selling Products</div>
-        <div class="prodlist slick-container">	    
+        <div class="prodlist ">	    
         <slick ng-if="lists_best.length" infinite=true 
            slides-to-show=3 
            slides-to-scroll=3 >
@@ -316,7 +316,7 @@ border-radius: 3px !important;
         
         <div style="clear:both">&nbsp;</div>
         <div class="p_title">Last Products</div>
-        <div class="prodlist slick-container">	
+        <div class="prodlist ">	
         <slick ng-if="lists_catalog.length" infinite=true 
            slides-to-show=3 
            slides-to-scroll=3 >

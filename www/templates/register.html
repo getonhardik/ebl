@@ -1,4 +1,13 @@
-<ion-view view-title="{{'new_customer' | translate}}">
+<ion-view hide-nav-bar="true">
+
+<ion-header-bar style=" background:#0188cc;" class="set-header">
+       <div class="buttons">
+         <a class="button button-icon ion-arrow-left-c back-btn" href="#/"></a>
+       </div>
+       <div class="reg-title"><p>{{'new_customer' | translate}}</p></div>
+     </ion-header-bar>
+
+
     <ion-content overflow-scroll="false" class="register-container" style=" background:#0188cc;">
     
    			 <div class="fb-login-set space2">
@@ -57,7 +66,7 @@
                     </label>
                     {{'read_agree' | translate}}
                 </li>
-                <button class="button button-full button-assertive"
+                <button class="button button-full-1  button-assertive"
                         type="submit" ng-disabled='!(registerData.agreePrivacy)'> {{'register_submit' | translate}}
                 </button>
             </div>

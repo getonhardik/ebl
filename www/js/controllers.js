@@ -43,7 +43,8 @@ angular.module('app.controllers', [])
         };
 
         //首次欢迎页
-       
+      
+        
 
         // 登录
        $scope.showLogin = function () {
@@ -718,7 +719,7 @@ angular.module('app.controllers', [])
     .controller('HomeCtrl', function ($scope, $rootScope, $state, $ionicSlideBoxDelegate,$timeout) {
         $scope.searchData = {};
 
-      
+        
         
         /*khunt*/
 		$stateParams = '';		

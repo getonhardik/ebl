@@ -1,7 +1,14 @@
 <!--<ion-view view-title="{{'new_customer' | translate}}">-->
+<ion-view hide-nav-bar="true">
 
-
-<ion-content overflow-scroll="false" style=" background:#0188cc">
+<ion-header-bar style=" background:#0188cc;" class="set-header">
+       <div class="buttons">
+         <a class="button button-icon ion-arrow-left-c back-btn" href="#/"></a>
+       </div>
+     </ion-header-bar>
+ 
+ 
+<ion-content overflow-scroll="false" style=" background:#0188cc;">
     <div class="list padding">
      <!-- <h3>&nbsp;  </h3>-->
         
@@ -35,13 +42,13 @@
              <!--   <span class="input-label">{{'password' | translate}}</span>-->
                 <input type="password" placeholder="{{'password' | translate}}" ng-model="loginData.password"><span class="icon"><i class="fa fa-lock"></i></span></div>
             </label>
-            <li class="item item-checkbox">
+            <div class="inputset item item-checkbox">
               <label class="checkbox">
-                    <input type="checkbox" ng-model="loginData.rememberme">
+                    <input type="checkbox" ng-model="loginData.rememberme" class="checkbox-square">
                 </label>
                 {{'remember_me' | translate}}
-            </li>
-                <button class="button button-full button-assertive"
+            </div>
+                <button class="button button-full-1 button-assertive"
                         type="submit" > {{'login_submit' | translate}}
                 </button>
 

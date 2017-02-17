@@ -910,9 +910,21 @@ li.agent p {
     width: 100%;
     height: 100%;
 }
+.image-loader-container img{
+    width:20% !important;
+}
+
+/*khunt*/
+.col-xs-6 {width: 50%;padding:5px}
+.col-xs-6 img{width: 100%;}
+.p_title{padding: 0 10px;font-size: 15px;color:#333}
+
+.prodlist {width: 900px;}
+.prod_slider {width: 150px !important;    float: left;}
+.prod_slider img {width: 100%;}
 
 /*added by archana 15-feb-2017*/
-.button-full{ background-color:#333333!important; color:#ffffff; text-transform:uppercase; border:none!important; font-size:25px; }
+.button-full-1{ background-color:#333333!important; color:#ffffff; text-transform:uppercase; border:none!important; font-size:25px; width:100%;}
 
 input, button, select, textarea{ font-family: myFirstFont!important;}
 
@@ -934,16 +946,22 @@ input, button, select, textarea{ font-family: myFirstFont!important;}
     top:8px;
     font-size: 20px;
 }
+.login .item{ border-radius:5px;}
 
+.checkbox{ padding:0px; left:0px!important;}
+.item-checkbox {
+    padding-left: 40px;
+    padding-top: 6px; color:#ffffff;
+}
 
-.register-container .button.disabled, .register-container .button[disabled]{ opacity:1!important}
+.register-container .button.disabled, .register-container .button[disabled]{ opacity:1!important;}
 .text1{ font-size:22px; color:#fff;}
 .set-center{text-align: center;
 display: block;}
 
 .forgot-pass a {
     color: #fff;
-    font-size: 18px;
+    font-size: 18px;    text-decoration: none;
 }
 .space1{ padding-top:10px; padding-bottom:10px;}
 
@@ -953,6 +971,9 @@ display: block;}
     padding: 10px 0px;
     text-decoration: underline;
 }
+
+.reg-title{ text-align:center; font-size:24px; color:#ffffff;width: 100%;
+line-height:30px; padding-bottom:10px; padding-right:35px;}
 
 .seprator h4{ text-align: center;
     position: relative;
@@ -977,24 +998,89 @@ display: block;}
 
 a:hover{color:#333!important;}
 
-.logo-set{ margin-top:40px;}
+.logo-set{ margin-top:-10px;}
 
-.login input[type="text"],.login input[type="password"]{ padding-left:15px;}
+.login input[type="text"],.login input[type="password"]{ padding-left:15px; }
+
+.register-container .item{border-radius:5px;}
 
 .item-checkbox{ background:none; border:none;}
 
 .space2{ margin-top:20px;}
 input::-moz-placeholder, textarea::-moz-placeholder{ color:#65646A!important;}
-/* end by archana 15-feb-2017*/
-.image-loader-container img{
-    width:20% !important;
+
+.set-header{ border:none;}
+
+
+
+.back-btn{color:white;}
+
+.menus-content .icon_4{ background:url(../img/icon-3.png) no-repeat scroll 3% 50%;padding-left: 35px;}
+
+.menus-content .icon_5{ background:url(../img/icon-2.png) no-repeat scroll 3% 50%;padding-left: 35px;}
+
+.menus-content .icon_6{ background:url(../img/icon-1.png) no-repeat scroll 3% 50%;padding-left: 35px;}
+
+.menus-content .icon_7{ background:url(../img/icon-4.png) no-repeat scroll 3% 50%;padding-left: 35px;}
+
+.menus-content .icon_8{ background:url(../img/icon-5.png) no-repeat scroll 3% 50%;padding-left: 35px;}
+
+.menus-content .icon_9{ background:url(../img/icon-6.png) no-repeat scroll 3% 50%;padding-left: 35px;}
+
+.menus-content .icon-contct{background:url(../img/icon-7.png) no-repeat scroll 3% 50%;padding-left: 35px;}
+
+.menus-content .icon-setting{background:url(../img/icon-8.png) no-repeat scroll 3% 50%;padding-left: 35px;}
+
+.menus-content .icon-exit{background:url(../img/icon-9.png) no-repeat scroll 3% 50%;padding-left: 35px;}
+
+.menus-content .icon-home{background:url(../img/icon-10.png) no-repeat scroll 3% 50%;padding-left: 35px;}
+
+.menus-content .icon-my-acc{background:url(../img/icon-11.png) no-repeat scroll 3% 50%;padding-left: 35px;}
+
+.menus-content .icon-logout{background:url(../img/icon-12.png) no-repeat scroll 3% 50%;padding-left: 35px;}
+
+.menus-content a{ color:#777777!important;font-size: 16px; line-height:50px; border:none;}
+
+h3.menu-title{ color:#333; font-family: myFirstFont!important; font-size:20px;padding-left:12px;}
+
+.menus-content .icon-deal{background:url(../img/icon-deal.png) no-repeat scroll 3% 50%;padding-left: 35px;}
+
+.ion-person1{background:url(../img/default-profile.png) no-repeat scroll 0% 0%;float:left; width:70px; height:70px; margin-top:5px;}
+
+.header-set1 { background:#0188cc!important; height:150px!important;}
+
+.menu-h-set{ top:150px!important;}
+
+.seprt{ clear:both; float:left; width:100%;}
+
+.user-avtar-set{ width:100%;float:left; clear:both;}
+
+.logn-user a{ color:#fff!important; font-size:16px; line-height:32px; padding-left:8px; padding-top:8px;}
+
+.logn-link a{ color:#fff!important; font-size:20px;padding-left:8px; text-transform:uppercase;  font-family: myFirstFont!important; }
+
+.logn-link{ float:left; width:100%;padding-top:15px;font-weight:normal;}
+
+.logn-link span{color:#fff;}
+
+.logn-before{ width:100%; float:left;}
+
+
+.checkbox input:before, .checkbox-icon:before {
+    display: table;
+    width: 100%;
+    height: 100%;
+    border-width: 1px;
+    border-style: solid;
+    border-radius:5px!important;
+    background: #fff;
+    content: ' ';
+    -webkit-transition: background-color 20ms ease-in-out;
+    transition: background-color 20ms ease-in-out;
 }
 
-/*khunt*/
-.col-xs-6 {width: 50%;padding:5px}
-.col-xs-6 img{width: 100%;}
-.p_title{padding: 0 10px;font-size: 15px;color:#333}
-
-.prodlist {width: 900px;}
-.prod_slider {width: 150px !important;    float: left;}
-.prod_slider img {width: 100%;}
+.checkbox input:checked:before, .checkbox input:checked + .checkbox-icon:before {
+    background: #333333;
+    border-color: #333333;
+}
+/* end by archana 15-feb-2017*/

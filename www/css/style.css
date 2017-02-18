@@ -981,7 +981,7 @@ border-radius:3px;}
     color: #3D3D3D !important; 
 } .ion-minus::before {content: "\f209";float: right;border: solid 1px #ccc;padding: 3px 5px;}
 .ion-plus::before {    content: "\f218";    float: right !important;border: solid 1px #ccc;padding: 3px 5px;}
-.list .item{padding: 16px 16px 16px 0px;white-space:unset}
+.col-size .list .item{padding: 16px 16px 16px 0px;white-space:unset}
 .list .item.item-accordion{line-height:22px;padding:10px 0}.item-stable {    margin-top: 15px;}
 /*end khunt*/
 /*added by archana 15-feb-2017*/

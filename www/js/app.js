@@ -114,6 +114,24 @@ angular.module('app', [
                             }
                         }
                     })
+                    .state('app.address_book', {
+                        url: '/address_book',
+                        views: {
+                            'menuContent': {
+                                templateUrl: 'templates/address_book.html',
+                                controller: 'address_bookCtrl'
+                            }
+                        }
+                    })
+                    .state('app.wishlist', {
+                        url: '/wishlist',
+                        views: {
+                            'menuContent': {
+                                templateUrl: 'templates/wishlist.html',
+                                controller: 'wishlistCtrl'
+                            }
+                        }
+                    })
                     .state('app.my_account', {
                         url: '/my_account',
                         views: {

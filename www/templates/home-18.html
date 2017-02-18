@@ -1,9 +1,9 @@
-<style>
-.bar-top{height:100px !important;}
-</style>
 <ion-view view-title="{{'home' | translate}}">
     <ion-nav-title>
-        <img class="" src="img/logo.png">		                       
+        <img class="" src="img/logo.png">
+                
+    </ion-nav-title>
+    <!-- end img swiper -->
         <div class="list list-inset">
             <form id="search" ng-submit="onSearch()">
             <label class="item item-input">
@@ -12,11 +12,70 @@
             </label>
             <input  type="hidden" class="button button-full button-assertive" value="{{'quick_search' | translate}}" />
             </form>
-	    </div> 
-    </ion-nav-title>
-	
-        
-    <ion-content>            
+        </div>
+    <ion-content>    
+        <style>
+.slick-container {
+  width: 100%;
+  margin: auto;
+  padding: 5px;
+}
+
+.slick-item {}
+
+.slick-item img {
+  margin: auto;
+}
+.product-inner {
+    border: solid 1px #666;
+    margin: 0 5px;
+    border-radius: 5px;
+    text-align: center !important;padding:2px 0;overflow: hidden;
+}
+
+.prod_slider img {
+    /*height: 150px;*/
+	margin-top: 2px !important;
+}
+.product-name.ng-binding {
+    font-size: 11px;
+    color: #777;
+}
+.price-box .price, .category-products .product .price-box .price {
+    color: #06C;font-size:90%}
+	.new-lbl {
+   background: #009900;
+color: #FFF;
+padding: 0 4px;
+margin:3px;
+border-radius: 3px !important;
+}.p_lbl {
+    text-align: right;
+}
+.p_footer img {
+    width: auto !important;
+}
+.img_left{}
+.img_center{text-align:center}
+.img_right{text-align:right}
+.p_footer,.p_footer img{text-align:center !important}
+.p_footer span {
+    width: 33% !important;
+    float: left;
+    text-align: center !important;
+}
+.p_rating img {
+    width: 66%;
+    height: 50%;
+}
+.bar.bar-assertive.bar-footer{background:none !important}
+.bar.bar-assertive{background-color:#FFF !important;border:none !important}
+.bar-assertive .button {
+    border-color: #CCC;    margin-right: 3px;
+    background-color:#CCC;
+    color: #0088CC;
+}
+</style>
         <!-- img swiper -->
         <!--
         <div class="homebanner-swiper-container">
@@ -364,10 +423,10 @@
         </div>    -->  
     </ion-content>
     <div class="bar bar-footer bar-assertive">
-		<a href="#app/home" class="button icon ion-home"><i class="my-line">Home</i></a>
-        <a href="#app/lists/daily_sale" class="button icon ion-ios-pricetag"><i class="my-line">Deals</i></a>
-        <a href="#app/searchAdv" class="button icon ion-search"><i class="my-line">Search</i></a>
-        <a href="#app/home" class="button icon ion-ios-cart"><i class="my-line">My cart</i></a>
-        <a href="#app/home" class="button icon ion-person"><i>My<br /> account</i></a>
+		<a href="#app/home" class="button icon ion-home"></a>
+        <a href="#app/lists/daily_sale" class="button icon ion-ios-pricetag"></a>
+        <a href="#app/searchAdv" class="button icon ion-search"></a>
+        <a href="#app/home" class="button icon ion-ios-cart"></a>
+        <a href="#app/home" class="button icon ion-person"></a>
     </div>
 </ion-view>

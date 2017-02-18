@@ -225,6 +225,31 @@ angular.module('app.controllers', [])
             });
         };
     })
+    .controller('wishlistCtrl', function ($scope, $rootScope,$state,$stateParams) {
+        
+        var u_id = getStorage('user_id');
+        var params = {
+            user_id: u_id,
+        };
+
+        $rootScope.service.get('getwishlist', params , function (results) {
+            console.log(results.items);
+            $scope.wishlist_detail = results.items;
+        });
+                
+    })
+    .controller('address_bookCtrl', function ($scope, $rootScope,$state,$stateParams) {
+        var u_id = getStorage('user_id');
+        var params = {
+            user_id: u_id,
+        };
+
+        $rootScope.service.get('getAddress', params , function (results) {
+            console.log(results.data[0]);
+            $scope.address_detail = results.data[0];
+        });
+              
+    })
     .controller('womenCtrl', function ($scope, $rootScope,$state,$stateParams) {
         console.log($stateParams);
 //alert(123);
@@ -713,6 +738,85 @@ angular.module('app.controllers', [])
                 }
             });
         };
+        $scope.doWhishlistAdd = function () {
+            var p_id = $('#product_entity_id').val();
+            var u_id = getStorage('user_id');
+            var params = {
+                product: p_id,
+                user: u_id,
+            };
+//            alert(product_entity_id);
+            $rootScope.service.get('addwishlist', params, function (res) {
+                if (res.result == 'error') {
+                    alert( res.message);
+                    return;
+                }
+                if (res.result == 'success') {
+                    alert($scope.translations.success+'\n\r'+ res.items_qty + ' '+ $scope.translations['items_in_cart']);
+                    $scope.items_qty = res.items_qty;
+                    return;
+                }
+            });           
+        };
+        
+        /*add khunt*/
+		
+  $scope.groups = [];
+  for (var i=0; i<1; i++) {
+    $scope.groups[i] = {
+      name: i,
+      items: []
+    };
+    for (var j=0; j<1; j++) {
+      $scope.groups[i].items.push(i + '-' + j);
+    }
+  }
+  
+  /*
+   * if given group is the selected group, deselect it
+   * else, select the given group
+   */
+  $scope.toggleGroup = function(group) {
+    if ($scope.isGroupShown(group)) {
+      $scope.shownGroup = null;
+    } else {
+      $scope.shownGroup = group;
+    }
+  };
+  $scope.isGroupShown = function(group) {
+    return $scope.shownGroup === group;
+  };
+  
+  
+  $stateParams = '';		
+        $scope.listTitle = {}[$stateParams.cmd];
+        $scope.listPge = 1;
+        $scope.hasInit = false;
+        $scope.loadOver = false;
+
+        var getList = function (func, callback) {
+            if (func === 'load') {
+                $scope.listPge++;
+            } else {
+                $scope.listPge = 1;
+            }
+            var params = {
+                limit: 5,
+                page: $scope.listPge,
+                cmd: $stateParams.cmd || 'new'
+            };
+            $scope.showLoading();
+            $rootScope.service.get('products', params, function (lists_new) {
+				$scope.hasInit = true;
+                $scope.lists_new = lists_new;
+            });
+            $scope.hideLoading();
+        };
+        getList('refresh');
+        //$timeout(callAtTimeout1, 3000);
+        function callAtTimeout1(){
+            $("#lists_new").slick({infinite:true,slidesToShow:2,slidesToScroll:1});
+        }
     })
 
     // homeä¸­ï¼Œå?–bannerï¼Œå¿«é€Ÿæ?œç´¢

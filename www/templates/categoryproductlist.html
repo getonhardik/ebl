@@ -17,38 +17,53 @@
                         </a>
 
                         <div class="product-info">
-                            <div class="product-name">
-                                {{product.name}}
-                            </div>
-
-                            <div  class="product-price">
-                                <div class="price-box">	
-                                  <span ng-if="product.discount != null" class="special-price">
-                                      <span class="special-price">
-                                          <span class="price">
-                                              {{product.symbol}}{{product.final_price_with_tax}}
-                                          </span>
-                                          &nbsp;
-                                          <span class="old-price">
-                                              {{product.regular_price_with_tax | number:0}}
-                                          </span>
-                                      </span>
-                                  </span>
-                                  <span ng-if="product.discount == null" class="special-price">
-                                      <span class="special-price">
-                                          <span class="price">
-                                              {{product.symbol}}{{product.regular_price_with_tax}}
-                                          </span>
-                                      </span>
-                                  </span>
-                                  <span ng-show="0" ng-if="product.discount!=null" class="discount {{price_percent_class}}">
-                                      <span class="price">
-                                          {{product.discount}}
-                                      </span>
-                                  </span>
-                                </div>
-                            </div>
-                        </div>
+            <div class="product-name">
+                {{product.name}}
+            </div>
+        	<div class="p_rating">
+            	<img src="img/star-img.png" height="23" width="143" />
+            </div>	
+            <div  class="product-price">
+                <div class="price-box">
+                  <span ng-if="product.discount != null" class="special-price">
+                      <span class="special-price">
+                          <span class="price">
+                              {{product.symbol}}{{product.final_price_with_tax}}
+                          </span>
+                          &nbsp;
+                          <span class="old-price">
+                              {{product.regular_price_with_tax | number:0}}
+                          </span>
+                      </span>
+                  </span>
+                  <span ng-if="product.discount == null" class="special-price">
+                      <span class="special-price">
+                          <span class="price">
+                              {{product.symbol}}{{product.regular_price_with_tax}}
+                          </span>
+                      </span>
+                  </span>
+                  <span ng-show="0" ng-if="product.discount!=null" class="discount {{price_percent_class}}">
+                      <span class="price">
+                          {{product.discount}}
+                      </span>
+                  </span>
+                </div>
+            </div>
+            
+            <div class="p_footer">
+            	<span class="img_left">
+            	<img src="img/share-25.png" height="25" width="25" />                
+                </span>
+                <span class="img_center">
+                <img class="" src="img/cart-25.png" height="25" width="25" />
+                </span>
+                <span class="img_right">
+                <img class="" src="img/save-25.png" height="25" width="25" />
+                </span>
+            </div>
+            
+        </div>
                     </div>
                 </div>
             </ion-list>

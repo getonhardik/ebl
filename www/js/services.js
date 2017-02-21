@@ -14,10 +14,13 @@ function Service($rootScope, $http, $ionicPopup) {
         register: '/restconnect/customer/register',
         search: '/restconnect/search',
         certGet: '/clnews/api/article',
+        getwishlist: '/restconnect/wishlist/getwishlist',
+        getAddress: '/restconnect/customer/getAddress',
         searchAdvField: '/restconnect/searchadv/getfield',
         searchAdv: '/restconnect/searchadv/index',
         searchAgent: '/storelocator/index/city',
         productDetail: '/restconnect/products/getproductdetail',
+        addwishlist: '/restconnect/wishlist/addToWishlist',
         productImg: '/restconnect/products/getPicLists',
         productOption: '/restconnect/products/getcustomoption',
         cart: '/restconnect/cart/getCartInfo',	//获�?�购物车内容

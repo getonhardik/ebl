@@ -225,6 +225,31 @@ angular.module('app.controllers', [])
             });
         };
     })
+    .controller('wishlistCtrl', function ($scope, $rootScope,$state,$stateParams) {
+        
+        var u_id = getStorage('user_id');
+        var params = {
+            user_id: u_id,
+        };
+
+        $rootScope.service.get('getwishlist', params , function (results) {
+            console.log(results.items);
+            $scope.wishlist_detail = results.items;
+        });
+                
+    })
+    .controller('address_bookCtrl', function ($scope, $rootScope,$state,$stateParams) {
+        var u_id = getStorage('user_id');
+        var params = {
+            user_id: u_id,
+        };
+
+        $rootScope.service.get('getAddress', params , function (results) {
+            console.log(results.data[0]);
+            $scope.address_detail = results.data[0];
+        });
+              
+    })
     .controller('womenCtrl', function ($scope, $rootScope,$state,$stateParams) {
         console.log($stateParams);
 //alert(123);
@@ -713,8 +738,33 @@ angular.module('app.controllers', [])
                 }
             });
         };
+<<<<<<< HEAD
 		
 		/*add khunt*/
+=======
+        $scope.doWhishlistAdd = function () {
+            var p_id = $('#product_entity_id').val();
+            var u_id = getStorage('user_id');
+            var params = {
+                product: p_id,
+                user: u_id,
+            };
+//            alert(product_entity_id);
+            $rootScope.service.get('addwishlist', params, function (res) {
+                if (res.result == 'error') {
+                    alert( res.message);
+                    return;
+                }
+                if (res.result == 'success') {
+                    alert($scope.translations.success+'\n\r'+ res.items_qty + ' '+ $scope.translations['items_in_cart']);
+                    $scope.items_qty = res.items_qty;
+                    return;
+                }
+            });           
+        };
+        
+        /*add khunt*/
+>>>>>>> origin/master
 		
   $scope.groups = [];
   for (var i=0; i<1; i++) {
@@ -772,12 +822,15 @@ angular.module('app.controllers', [])
         function callAtTimeout1(){
             $("#lists_new").slick({infinite:true,slidesToShow:2,slidesToScroll:1});
         }
+<<<<<<< HEAD
 		
 		$scope.change_size = function(val) {
 			$scope.myselect = 77; 
 			alert(val);
   		}
     		
+=======
+>>>>>>> origin/master
     })
 
     // homeä¸­ï¼Œå?–bannerï¼Œå¿«é€Ÿæ?œç´¢

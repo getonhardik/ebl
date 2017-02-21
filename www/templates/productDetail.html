@@ -25,8 +25,10 @@
                 </ion-slide-box>
             </div>
             <!-- end img swiper -->
-            <h4>{{product.name}}</h4>
+            <!--
+            <h4>{{product.name}}</h4>-->
 
+			<!--
           <div class="price-box">
               <span ng-if="product.discount != null" class="special-price">
                   <span class="price">{{product.symbol}}&nbsp;{{totalPrice}}</span>
@@ -35,7 +37,7 @@
               <span ng-if="product.discount == null" class="special-price">
                   <span class="price">{{product.symbol}}&nbsp;{{oldPrice}}</span>
               </span>
-              <!--当前项目不用
+              
               <div ng-if="product.is_in_stock" class="availability in-stock">
                   <span>{{'in_stock' | translate}}</span>
                   <em class="shipping">{{'free_shipping' | translate}}</em>
@@ -43,12 +45,57 @@
               <div ng-if="!product.is_in_stock" class="availability out-of-stock">
                   <span>{{'out_of_stock' | translate}}</span>
               </div>
-              end 当前项目-->
+              
+            </div>
+            -->
+        </div>        
+        <!-- end product base card -->        
+        <!-- product option-->
+         <div class="col-size">
+         	<div class="row">
+            	<div class="p_price">                	
+                      <span class="p_name">{{product.name}}</span>                  	
+                </div>                
+                <div class="p_review">
+                	<div class="rate-box"><img src="img/star-img.png" height="23" width="143" /></div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+            	<div class="p_price">
+                	<span ng-if="product.discount != null" class="special-price">
+                      <span class="price">{{'SAR' | translate}}{{product.symbol}}{{totalPrice}}</span>
+                      <span class="old-price padding-horizontal">{{oldPrice}}</span>
+                  	</span>
+                  	<span ng-if="product.discount == null" class="special-price">
+                      <span class="price">{{'SAR' | translate}}{{product.symbol}}{{oldPrice}}</span>
+                  	</span>
+                </div>                
+                <div class="p_review">
+                	<div class="r-box">{{product.total_reviews_count}} {{'Review' | translate}}</div>
+                </div>
+            </div>
+         </div>
+        <div class="col-size">
+            <div class="color">
+                <span class="input-label input-label-pd">{{'Color' | translate}}</span>					
+                <ul class="color-ul">
+                    <li style="background:{{size.label}}" ng-repeat="size in product.attributeOptions.Color" ng-if="item.value!='N/A' && item.value!='No'">
+                        <div>&nbsp;</div>
+                    </li>                	
+                </ul>
+            </div>
+            <div style="clear:both"></div>
+            <div class="size">
+                <span class="input-label input-label-pd">{{'Size' | translate}}</span>
+				<ul class="color-ul">
+                    <li  style="background:#E5E5E5" ng-repeat="size in product.attributeOptions.Size" ng-if="item.value!='N/A' && item.value!='No'">
+                        <div ng-click="change_size('{{size.label}}')">{{size.label}}</div>
+                    </li>                	
+                </ul>
             </div>
         </div>
-        <!-- end product base card -->
-        <!-- product option-->
-        <div class="">
+        <div class="col-size">
             <form method="post" id="product_addtocart_form">
                 <div class="no-none">
                     <input type="hidden" name="product" value="{{product.entity_id}}">
@@ -68,7 +115,17 @@
                                   <span class="input-number-increment" ng-click="qtyAdd()">+</span>
                               </div>
                           </div>
-
+			
+                        				
+            
+            <select name="super_attribute[{{product.productOption[0].attribute_id}}]" id="attribute[{{product.productOption[0].attribute_id}}]" 
+            ng-model="myselect1" ng-options="o.label for o in product.attributeOptions.Color track by o.value_index">
+		    </select>
+            <select name="super_attribute[{{product.productOption[1].attribute_id}}]" id="lblsize" 
+            ng-model="myselect" ng-options="o.label for o in product.attributeOptions.Size track by o.value_index">
+		    </select>
+                        
+                        
                         <div ng-repeat="option in productOption" ng-switch on="option.custom_option_type">
                               <!-- field option-->
                         <div class="form__field" ng-switch-when="field">
@@ -214,8 +271,123 @@
                 </dl>
             </form>
         </div>
+        <div style="clear:both"></div>
+        
+        <div class="col-size">
+        	<div ng-controller="productDetailCtrl">       
+                <div class="">
+                	<div class="scroll">            
+                    		
+	                  <ion-list class="disable-user-behavior">
+                      	<div class="list">
+                    		<div ng-repeat="group in groups" class="" style="">
+                                <ion-item class="item-stable item ng-binding" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}" style="">
+                                <i class="icon ion-plus" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'" style=""></i>
+                                &nbsp;
+                                {{'product_description' | translate}}
+                                </ion-item>
+                                <ion-item class="item-accordion item ng-binding ng-hide" ng-repeat="item in group.items" ng-show="isGroupShown(group)" style="">
+                                <div class="list padding-horizontal"  ng-bind-html="product.description | unsafe"></div>
+                                </ion-item>                      
+                    		</div>
+                        	
+                            <div ng-repeat="group in groups" class="" style="">
+                                <ion-item class="item-stable item ng-binding" ng-click="toggleGroup(1)" ng-class="{active: isGroupShown(1)}" style="">
+                                    <i class="icon ion-plus" ng-class="isGroupShown(1) ? 'ion-minus' : 'ion-plus'" style=""></i>
+                                    &nbsp;
+                                    {{'product_additional' | translate}}
+                                </ion-item>
+                                <ion-item class="item-accordion item ng-binding ng-hide" ng-repeat="item in group.items" ng-show="isGroupShown(1)" style="">
+                                    <div class="row" ng-repeat="item in product.additional" ng-if="item.value!='N/A' && item.value!='No'">
+                                    	<div class="col">{{item.label}}:</div>
+                                    	<div class="col col-50">{{item.value}}</div>
+                                	</div>
+                                </ion-item>                      
+                    		</div>
+                            
+						</div>                            
+                  	</ion-list>            
+                </div>
+              </div>
+			</div>                
+        </div>     
+        
+        <br />
+        <div class="col-size">
+        	<br />
+            <p class="b_title">{{'customer_who' | translate}}</p>
+            <br />
+            	<div class="prodlist ">	
+        <slick ng-if="lists_new.length" infinite=true 
+           slides-to-show=2 
+           slides-to-scroll=2>    	           
+            <div class="prod_slider slick-item" ng-repeat="product in lists_new">			
+                <div class="product-inner">
+                <div class="p_lbl"><span class="new-lbl">New</span></div>
+            <a href="#app/productDetail/{{product.entity_id}}">
+                <div class="product-image">
+                    <img image-lazy-src="{{product.image_url}}"
+                         lazy-scroll-resize="true"
+                         image-lazy-loader="lines">
+                </div>
+            </a>
+            
+            <div class="product-info">
+                <div class="product-name">
+                    {{product.name}}
+                </div>
+            	<div class="p_rating">
+            	<img src="img/star-img.png" height="23" width="143" />
+            </div>
+                <div  class="product-price">                		
+                    <div class="price-box">                    	
+                      <span ng-if="product.discount != null" class="special-price">
+                          <span class="special-price">
+                              <span class="price">
+                                  {{product.symbol}}{{product.final_price_with_tax}}
+                              </span>
+                              &nbsp;
+                              <span class="old-price">
+                                  {{product.regular_price_with_tax | number:0}}
+                              </span>
+                          </span>
+                      </span>
+                      <span ng-if="product.discount == null" class="special-price">
+                          <span class="special-price">
+                              <span class="price">
+                                  {{product.symbol}}{{product.regular_price_with_tax}}
+                              </span>
+                          </span>
+                      </span>
+                      <span ng-show="0" ng-if="product.discount!=null" class="discount {{price_percent_class}}">
+                          <span class="price">
+                              {{product.discount}}
+                          </span>
+                      </span>
+                    </div>
+                </div>
+                
+                <div class="p_footer">
+            	<span class="img_left">
+            	<img src="img/share-25.png" height="25" width="25" />                
+                </span>
+                <span class="img_center">
+                <img class="" src="img/cart-25.png" height="25" width="25" />
+                </span>
+                <span class="img_right">
+                <img class="" src="img/save-25.png" height="25" width="25" />
+                </span>
+            </div>
+            </div>
+            </div>            
+            </div>
+            </slick> 
+        </div>
+        <br><br><br>               
+	</div>
         <!-- end product option-->
     <!-- product descript-->
+    	<!--
         <div class="product-description padding-horizontal">
             <h3>{{'product_description' | translate}}</h3>
             <div class="list padding-horizontal"  ng-bind-html="product.description | unsafe">
@@ -227,10 +399,12 @@
                     <div class="col col-50">{{item.value}}</div>
                 </div>
             </div>
-        </div>
-        <br><br><br>
+        </div> -->
+        
         <!-- end product descript-->
-
+	
+    
+    
     </ion-content>
 
 

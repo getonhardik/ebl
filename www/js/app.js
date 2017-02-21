@@ -2,7 +2,7 @@
 // 'app' is the name of this angular module (also set in a <body> attribute in index.html)
 angular.module('app', [
     'ionic', 'ngCordova', 'pascalprecht.translate',
-    'app.controllers', 'app.filters', 'ionicLazyLoad','slickCarousel'
+    'app.controllers', 'app.filters', 'ionicLazyLoad','slickCarousel','gilbox.kineticSlider'
 ])
 
         .run(function ($ionicPlatform, $rootScope, $http, $ionicPopup) {

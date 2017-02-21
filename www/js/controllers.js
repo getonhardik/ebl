@@ -713,6 +713,71 @@ angular.module('app.controllers', [])
                 }
             });
         };
+		
+		/*add khunt*/
+		
+  $scope.groups = [];
+  for (var i=0; i<1; i++) {
+    $scope.groups[i] = {
+      name: i,
+      items: []
+    };
+    for (var j=0; j<1; j++) {
+      $scope.groups[i].items.push(i + '-' + j);
+    }
+  }
+  
+  /*
+   * if given group is the selected group, deselect it
+   * else, select the given group
+   */
+  $scope.toggleGroup = function(group) {
+    if ($scope.isGroupShown(group)) {
+      $scope.shownGroup = null;
+    } else {
+      $scope.shownGroup = group;
+    }
+  };
+  $scope.isGroupShown = function(group) {
+    return $scope.shownGroup === group;
+  };
+  
+  
+  $stateParams = '';		
+        $scope.listTitle = {}[$stateParams.cmd];
+        $scope.listPge = 1;
+        $scope.hasInit = false;
+        $scope.loadOver = false;
+
+        var getList = function (func, callback) {
+            if (func === 'load') {
+                $scope.listPge++;
+            } else {
+                $scope.listPge = 1;
+            }
+            var params = {
+                limit: 5,
+                page: $scope.listPge,
+                cmd: $stateParams.cmd || 'new'
+            };
+            $scope.showLoading();
+            $rootScope.service.get('products', params, function (lists_new) {
+				$scope.hasInit = true;
+                $scope.lists_new = lists_new;
+            });
+            $scope.hideLoading();
+        };
+        getList('refresh');
+        //$timeout(callAtTimeout1, 3000);
+        function callAtTimeout1(){
+            $("#lists_new").slick({infinite:true,slidesToShow:2,slidesToScroll:1});
+        }
+		
+		$scope.change_size = function(val) {
+			$scope.myselect = 77; 
+			alert(val);
+  		}
+    		
     })
 
     // homeä¸­ï¼Œå?–bannerï¼Œå¿«é€Ÿæ?œç´¢

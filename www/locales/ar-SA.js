@@ -12,6 +12,7 @@ var ar_SA = {
     product_searchadv: '高级查询',
     latest_promotions: '最新促销',
     common_products: '常用产�?',
+	customer_who: 'Customer who viewd this also Viewed',
     cert_download: '�?书下载',
     search_agent: '附近商家',
     reg_get_price: '登录查看最优价',

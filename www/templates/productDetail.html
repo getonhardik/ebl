@@ -89,8 +89,8 @@
             <div class="size">
                 <span class="input-label input-label-pd">{{'Size' | translate}}</span>
 				<ul class="color-ul">
-                    <li style="background:#E5E5E5" ng-class="{size.selected: selected}" ng-repeat="size in product.attributeOptions.Size" ng-if="item.value!='N/A' && item.value!='No'">
-                        <div>{{size.label}}</div>
+                    <li  style="background:#E5E5E5" ng-repeat="size in product.attributeOptions.Size" ng-if="item.value!='N/A' && item.value!='No'">
+                        <div ng-click="change_size('{{size.label}}')">{{size.label}}</div>
                     </li>                	
                 </ul>
             </div>
@@ -115,7 +115,17 @@
                                   <span class="input-number-increment" ng-click="qtyAdd()">+</span>
                               </div>
                           </div>
-
+			
+                        				
+            
+            <select name="super_attribute[{{product.productOption[0].attribute_id}}]" id="attribute[{{product.productOption[0].attribute_id}}]" 
+            ng-model="myselect1" ng-options="o.label for o in product.attributeOptions.Color track by o.value_index">
+		    </select>
+            <select name="super_attribute[{{product.productOption[1].attribute_id}}]" id="lblsize" 
+            ng-model="myselect" ng-options="o.label for o in product.attributeOptions.Size track by o.value_index">
+		    </select>
+                        
+                        
                         <div ng-repeat="option in productOption" ng-switch on="option.custom_option_type">
                               <!-- field option-->
                         <div class="form__field" ng-switch-when="field">

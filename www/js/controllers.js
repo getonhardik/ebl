@@ -817,6 +817,13 @@ angular.module('app.controllers', [])
         function callAtTimeout1(){
             $("#lists_new").slick({infinite:true,slidesToShow:2,slidesToScroll:1});
         }
+        
+		
+		$scope.change_size = function(val) {
+			$scope.myselect = 77; 
+			alert(val);
+  		}
+        
     })
 
     // homeä¸­ï¼Œå?–bannerï¼Œå¿«é€Ÿæ?œç´¢

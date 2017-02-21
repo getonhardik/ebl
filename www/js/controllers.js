@@ -738,10 +738,10 @@ angular.module('app.controllers', [])
                 }
             });
         };
-<<<<<<< HEAD
+
 		
 		/*add khunt*/
-=======
+
         $scope.doWhishlistAdd = function () {
             var p_id = $('#product_entity_id').val();
             var u_id = getStorage('user_id');
@@ -764,7 +764,7 @@ angular.module('app.controllers', [])
         };
         
         /*add khunt*/
->>>>>>> origin/master
+
 		
   $scope.groups = [];
   for (var i=0; i<1; i++) {

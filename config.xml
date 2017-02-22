@@ -22,6 +22,8 @@
 	<preference name="SplashScreen" value="screen"/>
     <preference name="ShowSplashScreenSpinner" value="false" />
     <preference name="AutoHideSplashScreen" value="false" />
+        <preference name="SplashScreenDelay" value="10000" />
+
      <splash src="splash.png" />
       <icon src="icon.png" /> 
     <platform name="android">

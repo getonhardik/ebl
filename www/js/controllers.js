@@ -187,7 +187,7 @@ angular.module('app.controllers', [])
 
     // 注册
     
-    .controller('loginCtrl', function ($scope, $rootScope,$ionicPopup, $timeout, $state) {
+    .controller('loginCtrl', function ($scope, $rootScope,$ionicPopup, $timeout, $state,ngFB) {
         $scope.loginData = {};
             if (Config.getRememberme()) {
                 $scope.loginData.rememberme = true;
@@ -203,6 +203,42 @@ angular.module('app.controllers', [])
                 $("#password").attr("type", "password");                
             }
         };
+        $scope.fbLogin = function () {
+    ngFB.login({scope: 'email,read_stream,publish_actions'}).then(
+        function (response) {
+            console.log(response);
+            if (response.status === 'connected') {
+                console.log('Facebook login succeeded');
+                 ngFB.api({
+                    path: '/me',
+                    params: {fields: 'id,first_name,last_name,email'}
+                }).then(
+                    function (user) {
+                        console.log(user);
+                        $scope.socialData = user;
+                        
+                $rootScope.service.get('socialLogin', $scope.socialData, function (res) {
+                $scope.hideLoading();
+
+                if (res.status==true) {
+                    $scope.user = res;
+                    setStorage('user_id',res.id);
+                    $scope.getUser();
+                    $state.go('app.home');
+                    return;
+                }
+                alert( res.errors);
+            });
+                    },
+                    function (error) {
+                        alert('Facebook error: ' + error.error_description);
+                    });
+                //$scope.closeLogin();
+            } else {
+                alert('Facebook login failed');
+            }
+        });
+};
          $scope.LoginwithFacebook = function(){
         console.log("clicked");
         $cordovaOauth.facebook("419763941691558", ["email"]).then(function(result) {
@@ -447,6 +483,42 @@ angular.module('app.controllers', [])
                 return;
             }
 */
+ $scope.fbRLogin = function () {
+    ngFB.login({scope: 'email,read_stream,publish_actions'}).then(
+        function (response) {
+            console.log(response);
+            if (response.status === 'connected') {
+                console.log('Facebook login succeeded');
+                 ngFB.api({
+                    path: '/me',
+                    params: {fields: 'id,first_name,last_name,email'}
+                }).then(
+                    function (user) {
+                        console.log(user);
+                        $scope.socialData = user;
+                        
+                $rootScope.service.get('socialLogin', $scope.socialData, function (res) {
+                $scope.hideLoading();
+
+                if (res.status==true) {
+                    $scope.user = res;
+                    setStorage('user_id',res.id);
+                    $scope.getUser();
+                    $state.go('app.home');
+                    return;
+                }
+                alert( res.errors);
+            });
+                    },
+                    function (error) {
+                        alert('Facebook error: ' + error.error_description);
+                    });
+                //$scope.closeLogin();
+            } else {
+                alert('Facebook login failed');
+            }
+        });
+};
             $scope.showLoading();
             $rootScope.service.get('register', $scope.registerData, function (res) {
                 $scope.hideLoading();

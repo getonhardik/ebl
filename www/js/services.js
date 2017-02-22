@@ -12,6 +12,7 @@ function Service($rootScope, $http, $ionicPopup) {
         login: '/restconnect/customer/login',
         logout: '/restconnect/customer/logout',
         register: '/restconnect/customer/register',
+        socialLogin: '/restconnect/customer/socialLogin',
         search: '/restconnect/search',
         certGet: '/clnews/api/article',
         getwishlist: '/restconnect/wishlist/getwishlist',

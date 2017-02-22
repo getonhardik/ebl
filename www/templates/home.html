@@ -77,6 +77,9 @@
         <!--New product list -->
         <div style="clear:both">&nbsp;</div>
         <div class="p_title">Special Offers</div>
+        <div style="width:50px;margin:0 auto">
+                        <img id="mySpinner" src="img/loading1.gif" width="100%" height="50px" ng-show="loading1" />
+                        </div>
 		<div kinetic-slider class="kinetic-slider-container">
             <div class="kinetic-slider-content">	
             	<div class="p_lbl"><span class="">&nbsp;</span></div>       
@@ -95,7 +98,12 @@
                 {{product.name}}
             </div>
         	<div class="p_rating">
-            	<img src="img/star-img.png" height="23" width="143" />
+                <div ng-if="{{product.ratings}} == 0">
+                    <div class=""><img src="img/0.png" height="23" width="143" /></div>
+                </div>
+                <div ng-else-if="{{Math.ceil(product.ratings / 20)}} != 0">
+                    <div class=""><img src="img/{{Math.ceil(product.ratings / 20)}}.png" height="23" width="143" alt="ratings" /></div>	
+                </div>
             </div>	
             <div  class="product-price">
                 <div class="price-box">
@@ -163,8 +171,13 @@
                             {{product.name}}
                         </div>
                         <div class="p_rating">
-                            <img src="img/star-img.png" height="23" width="143" />
-                        </div>	
+                <div ng-if="{{product.ratings}} == 0">
+                    <div class=""><img src="img/0.png" height="23" width="143" /></div>
+                </div>
+                <div ng-else-if="{{Math.ceil(product.ratings / 20)}} != 0">
+                    <div class=""><img src="img/{{Math.ceil(product.ratings / 20)}}.png" height="23" width="143" alt="ratings" /></div>	
+                </div>
+            </div>	
                         <div  class="product-price">
                             <div class="price-box">
                               <span ng-if="product.discount != null" class="special-price">
@@ -232,8 +245,13 @@
                             {{product.name}}
                         </div>
                         <div class="p_rating">
-                            <img src="img/star-img.png" height="23" width="143" />
-                        </div>	
+                <div ng-if="{{product.ratings}} == 0">
+                    <div class=""><img src="img/0.png" height="23" width="143" /></div>
+                </div>
+                <div ng-else-if="{{Math.ceil(product.ratings / 20)}} != 0">
+                    <div class=""><img src="img/{{Math.ceil(product.ratings / 20)}}.png" height="23" width="143" alt="ratings" /></div>	
+                </div>
+            </div>	
                         <div  class="product-price">
                             <div class="price-box">
                               <span ng-if="product.discount != null" class="special-price">
@@ -300,8 +318,13 @@
                             {{product.name}}
                         </div>
                         <div class="p_rating">
-                            <img src="img/star-img.png" height="23" width="143" />
-                        </div>	
+                <div ng-if="{{product.ratings}} == 0">
+                    <div class=""><img src="img/0.png" height="23" width="143" /></div>
+                </div>
+                <div ng-else-if="{{Math.ceil(product.ratings / 20)}} != 0">
+                    <div class=""><img src="img/{{Math.ceil(product.ratings / 20)}}.png" height="23" width="143" alt="ratings" /></div>	
+                </div>
+            </div>
                         <div  class="product-price">
                             <div class="price-box">
                               <span ng-if="product.discount != null" class="special-price">

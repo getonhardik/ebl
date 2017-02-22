@@ -278,6 +278,7 @@ angular.module('app.controllers', [])
         $scope.listPge = 1;
         $scope.hasInit = false;
         $scope.loadOver = false;
+        $scope.Math = window.Math;
         if ($stateParams.cmd === 'daily_sale') {
             $scope.lineClass = 'one-line';
         }
@@ -339,6 +340,7 @@ angular.module('app.controllers', [])
         $scope.listPge = 1;
         $scope.hasInit = false;
         $scope.loadOver = false;
+        $scope.Math = window.Math;
         if ($stateParams.cmd === 'daily_sale') {
             $scope.lineClass = 'one-line';
         }
@@ -776,7 +778,7 @@ angular.module('app.controllers', [])
         };
         
         /*add khunt*/
-		
+	$scope.Math = window.Math;	
   $scope.groups = [];
   for (var i=0; i<1; i++) {
     $scope.groups[i] = {
@@ -849,6 +851,8 @@ angular.module('app.controllers', [])
         
         
         /*khunt*/
+        $scope.Math = window.Math;
+        $scope.loading1 = true; 
 		$stateParams = '';		
         $scope.listTitle = {}[$stateParams.cmd];
         $scope.listPge = 1;
@@ -868,7 +872,7 @@ angular.module('app.controllers', [])
             };
             $scope.showLoading();
             $rootScope.service.get('products', params, function (lists_new) {
-				$scope.hasInit = true;
+		$scope.hasInit = true;
                 $scope.lists_new = lists_new;
             });
             $scope.hideLoading();
@@ -916,8 +920,9 @@ angular.module('app.controllers', [])
             };
             $scope.showLoading();
             $rootScope.service.get('products', params, function (lists_daily) {
-				$scope.hasInit = true;
+                $scope.hasInit = true;
                 $scope.lists_daily = lists_daily;
+                $scope.loading1 = false;
             });
             $scope.hideLoading();
         };

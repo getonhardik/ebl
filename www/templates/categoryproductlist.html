@@ -21,7 +21,12 @@
                 {{product.name}}
             </div>
         	<div class="p_rating">
-            	<img src="img/star-img.png" height="23" width="143" />
+                <div ng-if="{{product.ratings}} == 0">
+                    <div class=""><img src="img/0.png" height="23" width="143" /></div>
+                </div>
+                <div ng-else-if="{{Math.ceil(product.ratings / 20)}} != 0">
+                    <div class=""><img src="img/{{Math.ceil(product.ratings / 20)}}.png" height="23" width="143" alt="ratings" /></div>	
+                </div>
             </div>	
             <div  class="product-price">
                 <div class="price-box">

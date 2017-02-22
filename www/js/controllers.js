@@ -203,6 +203,16 @@ angular.module('app.controllers', [])
                 $("#password").attr("type", "password");                
             }
         };
+         $scope.LoginwithFacebook = function(){
+        console.log("clicked");
+        $cordovaOauth.facebook("419763941691558", ["email"]).then(function(result) {
+    console.log(result);
+       
+                alert("Auth Success..!!"+result);
+            }, function(error) {
+                alert("Auth Failed..!!"+error);
+            });
+      };
         $scope.doLogin = function () {
              if (!$scope.loginData.username || !$scope.loginData.password) {
                                 return;

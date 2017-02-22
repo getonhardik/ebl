@@ -35,19 +35,21 @@
         <form ng-submit="doLogin()" class="login">
              <div class="inputset">   <label class="item item-input">
                <!-- <span class="input-label">{{'email_or_mobile' | translate}}</span>-->
-            <input type="text" autofocus placeholder="{{'email_or_mobile' | translate}}" ng-model="loginData.username">
+            <input type="text" required autofocus placeholder="{{'email_or_mobile' | translate}}" ng-model="loginData.username">
                 <span class="icon"><i class="fa fa-envelope"></i></span></div>
             </label>
-         <div class="inputset">   <label class="item item-input">
+         <div class="inputset">   <div class="item item-input">
              <!--   <span class="input-label">{{'password' | translate}}</span>-->
-                <input type="password" placeholder="{{'password' | translate}}" ng-model="loginData.password"><span class="icon"><i class="fa fa-lock"></i></span></div>
-            </label>
+                <input id="password" required type="password" ionic-password-show-hide placeholder="{{'password' | translate}}" ng-model="loginData.password"><span class="icon"><i class="fa fa-lock"></i></span></div>
+            </div>
             <div class="inputset item item-checkbox">
               <label class="checkbox">
-                    <input type="checkbox" ng-model="loginData.rememberme" class="checkbox-square">
+                    <!--<input type="checkbox" ng-model="loginData.rememberme" class="checkbox-square">-->
+                    <input type="checkbox" id="show_hide_pw" ng-click="show_hide_pw()" class="checkbox-square">
                 </label>
-                {{'remember_me' | translate}}
+                {{'show password' | translate}}
             </div>
+             <!--<input type="password" name="uPassword" minlength="3" placeholder="Password" ng-model="loginData.password" ui-show-password required>-->
                 <button class="button button-full-1 button-assertive"
                         type="submit" > {{'login_submit' | translate}}
                 </button>
@@ -73,3 +75,8 @@
     </div>
 </ion-content>
 </ion-view>
+<script>
+    function show_hide_pw(){
+        alert($("#show_hide_pw").val());
+    }
+</script>

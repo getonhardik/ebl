@@ -31,38 +31,39 @@
                 </div>-->
              	<div class="inputset">   <label class="item item-input">
                   <!--  <span class="input-label">{{'first_name' | translate}}*</span>-->
-                    <input type="text" placeholder="{{'first_name' | translate}}"
+                    <input type="text" required placeholder="{{'first_name' | translate}}"
                            ng-model="registerData.firstname">
                 </label></div>
               <div class="inputset">  <label class="item item-input">
                       <!-- <span class="input-label">{{'middle_name' | translate}}*</span>-->
-                    <input type="text" placeholder="{{'middle_name' | translate}}"
+                    <input type="text" required placeholder="{{'middle_name' | translate}}"
                            ng-model="registerData.middlename">
                 </label></div>
 
 
               <div class="inputset">  <label class="item item-input">
                      <!--  <span class="input-label">{{'last_name' | translate}}*</span>-->
-                    <input type="text" placeholder="{{'last_name' | translate}}"
+                    <input type="text" required placeholder="{{'last_name' | translate}}"
                            ng-model="registerData.lastname" ng-focus="mobileChange()">
                 </label></div>
 
              <div class="inputset">   <label class="item item-input">
                      <!--  <span class="input-label">{{'email' | translate}}</span>-->
-                    <input type="text" placeholder="{{'email_reg' | translate}}"
+                    <input type="text" required placeholder="{{'email_reg' | translate}}"
                            ng-model="registerData.email">
                 </label></div>
 
 
-             <div class="inputset">   <label class="item item-input">
+             <div class="inputset">   <div class="item item-input">
                     <!--   <span class="input-label">{{'password' | translate}}*</span>-->
-                    <input type="password" placeholder="{{'password' | translate}}"
+                    <input type="password" required ionic-password-show-hide id="passwordr" placeholder="{{'password' | translate}}"
                            ng-model="registerData.password">
-                </label></div>
+                </div></div>
 
                 <li class="privacy item item-checkbox">
                     <label class="checkbox">
                         <input type="checkbox" >
+                        <!--<input type="checkbox" id="show_hide_pwr" ng-click="show_hide_pw()" class="checkbox-square">-->
                     </label>
                     {{'read_agree' | translate}}
                 </li>

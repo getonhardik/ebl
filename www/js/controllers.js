@@ -195,6 +195,14 @@ angular.module('app.controllers', [])
                 $scope.loginData.password = Config.getPassword();
             }
         //end éš?ç§?
+        $scope.show_hide_pw = function(){
+            if ($('#show_hide_pw').is(":checked"))
+            {
+                $("#password").attr("type", "text");                
+            }else{
+                $("#password").attr("type", "password");                
+            }
+        };
         $scope.doLogin = function () {
              if (!$scope.loginData.username || !$scope.loginData.password) {
                                 return;
@@ -393,7 +401,15 @@ angular.module('app.controllers', [])
     .controller('registerCtrl', function ($scope, $rootScope,$ionicPopup, $timeout, $state) {
         $scope.registerData = {};
 
-        
+        $scope.show_hide_pw = function(){
+            //alert(123);
+            if ($('#show_hide_pwr').is(":checked"))
+            {
+                $("#passwordr").attr("type", "text");                
+            }else{
+                $("#passwordr").attr("type", "password");                
+            }
+        };        
         
         $scope.showPrivacy = function () {
             var popupPrivacy = $ionicPopup.show({

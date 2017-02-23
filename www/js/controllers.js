@@ -312,8 +312,8 @@ angular.module('app.controllers', [])
         $scope.mailtoback = function () {
                 var email = {
                     to: 'hardik4hardik@gmail.com',
-                    subject: 'Cordova Icons',
-                    body: 'How are you? Nice greetings from Leipzig',
+                    subject: 'Ebranch',
+                    body: 'How are you? Nice greetings from Ebranch',
                     isHtml: true
                 };
 

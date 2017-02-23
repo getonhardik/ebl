@@ -43,7 +43,7 @@ var en_US = {
     term_privacy: 'the XinLi Terms of Use and Privacy Policy',
     ok: 'OK',
     cancel: 'Cancel',
-    new_customer: 'Register',
+    new_customer: 'Registration',
     mobile: 'Mobile',
     mobile_tip: 'Input your mobile number',
     validation_code: 'Validation code',

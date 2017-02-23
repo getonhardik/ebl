@@ -1059,7 +1059,9 @@ line-height:30px; padding-bottom:10px; padding-right:35px;}
 
 a:hover{color:#333!important;}
 
-.logo-set{ margin-top:-10px;}
+.logo-set { margin-top:10px; margin-left:-25px;}
+
+.fa{ line-height:30px!important;}
 
 .login input[type="text"],.login input[type="password"]{ padding-left:15px; }
 
@@ -1072,9 +1074,11 @@ input::-moz-placeholder, textarea::-moz-placeholder{ color:#65646A!important;}
 
 .set-header{ border:none;}
 
-
+.item-divider{padding-bottom:0px!important;min-height:0px!important;}
 
 .back-btn{color:white;}
+
+.menus-content .button{ min-height:40px!important;}
 
 .menus-content .icon_4{ background:url(../img/icon-3.png) no-repeat scroll 3% 50%;padding-left: 35px;}
 
@@ -1100,9 +1104,9 @@ input::-moz-placeholder, textarea::-moz-placeholder{ color:#65646A!important;}
 
 .menus-content .icon-logout{background:url(../img/icon-12.png) no-repeat scroll 3% 50%;padding-left: 35px;}
 
-.menus-content a{ color:#777777!important;font-size: 16px; line-height:50px; border:none;}
+.menus-content a{ color:#777777!important;font-size: 16px; line-height:40px; border:none;}
 
-h3.menu-title{ color:#333; font-family: myFirstFont!important; font-size:20px;padding-left:12px;}
+h3.menu-title{ color:#333; font-family: myFirstFont!important; font-size:18px;padding-left:12px; margin-top:10px!important; font-weight:bold;}
 
 .menus-content .icon-deal{background:url(../img/icon-deal.png) no-repeat scroll 3% 50%;padding-left: 35px;}
 

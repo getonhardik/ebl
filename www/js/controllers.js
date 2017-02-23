@@ -310,19 +310,24 @@ angular.module('app.controllers', [])
     })
     .controller('contactCtrl', function ($scope, $rootScope,$state,$stateParams,$cordovaEmailComposer) {
         $scope.mailtoback = function () {
+            alert('enter to mail send');
                 var email = {
                     to: 'hardik4hardik@gmail.com',
                     subject: 'Ebranch',
                     body: 'How are you? Nice greetings from Ebranch',
                     isHtml: true
                 };
+                cordova.plugins.email.open({
+                    to:      'hardik4hardik@gmail.com',
+                    subject: 'Greetings',
+                    body:    '<h1>Nice greetings from Leipzig</h1>',
+                    isHtml:  true
+                });
 
-                $cordovaEmailComposer.open(email).then(function () {
-                    // user cancelled email
-                    alert("Email is sent");
-                }),function () {
-                    alert('error');
-                }; 
+//                $cordovaEmailComposer.open(email).then(null, function () {
+//                    // user cancelled email
+//                    alert("Email is sent");
+//                }); 
         }
     })
     .controller('leave_feedbackCtrl', function ($scope, $rootScope,$state,$stateParams) {

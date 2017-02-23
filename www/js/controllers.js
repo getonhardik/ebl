@@ -317,10 +317,12 @@ angular.module('app.controllers', [])
                     isHtml: true
                 };
 
-                $cordovaEmailComposer.open(email).then(null, function () {
+                $cordovaEmailComposer.open(email).then(function () {
                     // user cancelled email
                     alert("Email is sent");
-                }); 
+                }),function () {
+                    alert('error');
+                }; 
         }
     })
     .controller('leave_feedbackCtrl', function ($scope, $rootScope,$state,$stateParams) {

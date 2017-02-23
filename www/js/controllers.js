@@ -308,16 +308,20 @@ angular.module('app.controllers', [])
         console.log($stateParams);
 //alert(123);
     })
-    .controller('contactCtrl', function ($scope, $rootScope,$state,$stateParams) {
+    .controller('contactCtrl', function ($scope, $rootScope,$state,$stateParams,$cordovaEmailComposer) {
         $scope.mailtoback = function () {
-            window.plugin.email.open({
-            to:      ['hardik4hardik@gmail.com'],
-            subject: 'Congratulations',
-            body:    '<h1>Happy Birthday!!!</h1>',
-            isHtml:  true
-        });
-        //alert($stateParams.name);
-    }
+                var email = {
+                    to: 'hardik4hardik@gmail.com',
+                    subject: 'Cordova Icons',
+                    body: 'How are you? Nice greetings from Leipzig',
+                    isHtml: true
+                };
+
+                $cordovaEmailComposer.open(email).then(null, function () {
+                    // user cancelled email
+                    alert("Email is sent");
+                }); 
+        }
     })
     .controller('leave_feedbackCtrl', function ($scope, $rootScope,$state,$stateParams) {
         //alert($stateParams.name);

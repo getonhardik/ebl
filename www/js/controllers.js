@@ -319,15 +319,16 @@ angular.module('app.controllers', [])
     .controller('my_accountCtrl', function ($scope, $rootScope,$state,$cordovaSocialSharing) {
         $scope.sharewithfriend = function () {
             var message = "Ebranch App";
+            $cordovaSocialSharing.share(message,null,null);
                 //alert('swf');
-                $cordovaSocialSharing
-                        .shareViaWhatsApp(message,null,null)
-                        .then(function (result) {
-                            alert("success");
-                        }, function (err) {
-                            alert("error");
-                            // An error occurred. Show a message to the user
-                        });            
+//                $cordovaSocialSharing
+//                        .share(message,null,null)
+//                        .then(function (result) {
+//                            alert("success");
+//                        }, function (err) {
+//                            alert("error");
+//                            // An error occurred. Show a message to the user
+//                        });            
         }
     })
 .controller('CategoryListCtrl', function ($scope, $rootScope, $stateParams, $translate) {

@@ -313,7 +313,17 @@ angular.module('app.controllers', [])
         
     })
     .controller('my_accountCtrl', function ($scope, $rootScope,$state) {
-        
+        $scope.sharewithfriend = function () {
+            var message = "test";
+                $cordovaSocialSharing
+                        .shareViaWhatsApp(message)
+                        .then(function (result) {
+                            alert("success");
+                        }, function (err) {
+                            alert("error");
+                            // An error occurred. Show a message to the user
+                        });            
+        }
     })
 .controller('CategoryListCtrl', function ($scope, $rootScope, $stateParams, $translate) {
         $scope.listTitle = {

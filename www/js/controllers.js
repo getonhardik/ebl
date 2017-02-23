@@ -312,7 +312,7 @@ angular.module('app.controllers', [])
         //alert($stateParams.name);
         
     })
-    .controller('my_accountCtrl', function ($scope, $rootScope,$state) {
+    .controller('my_accountCtrl', function ($scope, $rootScope,$state,$cordovaSocialSharing) {
         $scope.sharewithfriend = function () {
             var message = "test";
                 alert('swf');

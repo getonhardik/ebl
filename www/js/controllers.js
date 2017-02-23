@@ -309,6 +309,12 @@ angular.module('app.controllers', [])
 //alert(123);
     })
     .controller('contactCtrl', function ($scope, $rootScope,$state,$stateParams) {
+        window.plugin.email.open({
+        to:      ['hardik4hardik@gmail.com'],
+        subject: 'Congratulations',
+        body:    '<h1>Happy Birthday!!!</h1>',
+        isHtml:  true
+});
         //alert($stateParams.name);
         
     })

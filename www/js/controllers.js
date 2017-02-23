@@ -312,6 +312,10 @@ angular.module('app.controllers', [])
         //alert($stateParams.name);
         
     })
+    .controller('leave_feedbackCtrl', function ($scope, $rootScope,$state,$stateParams) {
+        //alert($stateParams.name);
+        
+    })
     .controller('my_accountCtrl', function ($scope, $rootScope,$state,$cordovaSocialSharing) {
         $scope.sharewithfriend = function () {
             var message = "Ebranch App";

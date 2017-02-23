@@ -142,6 +142,15 @@ angular.module('app', [
                             }
                         }
                     })
+                    .state('app.leave_feedback', {
+                        url: '/leave_feedback',
+                        views: {
+                            'menuContent': {
+                                templateUrl: 'templates/leave_feedback.html',
+                                controller: 'leave_feedbackCtrl'
+                            }
+                        }
+                    })
                     .state('app.CategoryList', {
                         url: '/categoryList/:categoryid/:name',
                         views: {

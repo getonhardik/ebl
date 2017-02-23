@@ -78,7 +78,7 @@
     <plugin name="cordova-plugin-device"   />
     <plugin name="cordova-plugin-geolocation"   />
     <plugin name="cordova-plugin-inappbrowser"  />
-    <gap:plugin name="cordova-plugin-socialsharing" source="npm" version="4.3.81" />
+     <gap:plugin name="cordova-plugin-x-socialsharing" source="npm" />
     <plugin name="cordova-plugin-network-information"  />
     <plugin name="cordova-plugin-whitelist"  />
     <!--	<plugin name="InAppBrowser" value="org.apache.cordova.InAppBrowser" />-->

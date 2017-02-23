@@ -61,6 +61,15 @@ angular.module('app', [
                             }
                         }
                     })
+                    .state('app.orderDetails', {
+                        url: '/orderDetails', //附近�?销商列表
+                        views: {
+                            'menuContent': {
+                                templateUrl: 'templates/orderDetails.html',
+                                controller: 'orderDetailsCtrl'
+                            }
+                        }
+                    })
                     .state('app.searchAgent', {
                         url: '/searchAgent', //附近�?销商
                         views: {

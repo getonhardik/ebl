@@ -86,7 +86,7 @@
             	<div class="prod_slider-hk" ng-repeat="product in lists_daily">			
                 <div class="product-inner">
                 <div class="p_lbl"><span class="new-lbl">New</span></div>
-                <a target="_self" href="#app/productDetail/{{product.entity_id}}">
+                <a href="#app/productDetail/{{product.entity_id}}">
             <div class="product-image">
                 <img image-lazy-src="{{product.image_url}}"
                      lazy-scroll-resize="true"
@@ -141,7 +141,7 @@
                 <img class="" src="img/cart-25.png" height="25" width="25" />
                 </span>
                 <span class="img_right">
-                <img class="" src="img/save-25.png" height="25" width="25" />
+                    <img class="product_entity_id"  id='{{product.entity_id}}' src="img/save-25.png" height="25" width="25"  ng-click="doWhishlistAdd(product.entity_id)" />                
                 </span>
             </div>
             
@@ -159,7 +159,7 @@
                 <div class="prod_slider-hk" ng-repeat="product in lists_new">			
                 <div class="product-inner">
                 	<div class="p_lbl"><span class="new-lbl">New</span></div>       
-                    <a target="_self" href="#app/productDetail/{{product.entity_id}}">
+                    <a href="#app/productDetail/{{product.entity_id}}">
                         <div class="product-image">
                             <img image-lazy-src="{{product.image_url}}"
                                  lazy-scroll-resize="true"
@@ -214,7 +214,7 @@
                             <img class="" src="img/cart-25.png" height="25" width="25" />
                             </span>
                             <span class="img_right">
-                            <img class="" src="img/save-25.png" height="25" width="25" />
+                                <img class="product_entity_id"  id='{{product.entity_id}}' src="img/save-25.png" height="25" width="25"  ng-click="doWhishlistAdd(product.entity_id)" />                
                             </span>
                         </div>                        
                     </div>
@@ -233,7 +233,7 @@
                 <div class="prod_slider-hk" ng-repeat="product in lists_best">			
                 <div class="product-inner">
                 	<div class="p_lbl"><span class="new-lbl">New</span></div>       
-                    <a target="_self" href="#app/productDetail/{{product.entity_id}}">
+                    <a href="#app/productDetail/{{product.entity_id}}">
                         <div class="product-image">
                             <img image-lazy-src="{{product.image_url}}"
                                  lazy-scroll-resize="true"
@@ -288,7 +288,7 @@
                             <img class="" src="img/cart-25.png" height="25" width="25" />
                             </span>
                             <span class="img_right">
-                            <img class="" src="img/save-25.png" height="25" width="25" />
+                                <img class="product_entity_id"  id='{{product.entity_id}}' src="img/save-25.png" height="25" width="25"  ng-click="doWhishlistAdd(product.entity_id)" />                
                             </span>
                         </div>                        
                     </div>
@@ -306,7 +306,7 @@
                 <div class="prod_slider-hk" ng-repeat="product in lists_catalog">			
                 <div class="product-inner">
                 	<div class="p_lbl"><span class="new-lbl">New</span></div>       
-                    <a target="_self" href="#app/productDetail/{{product.entity_id}}">
+                    <a href="#app/productDetail/{{product.entity_id}}">
                         <div class="product-image">
                             <img image-lazy-src="{{product.image_url}}"
                                  lazy-scroll-resize="true"
@@ -361,7 +361,7 @@
                             <img class="" src="img/cart-25.png" height="25" width="25" />
                             </span>
                             <span class="img_right">
-                            <img class="" src="img/save-25.png" height="25" width="25" />
+                                <img class="product_entity_id"  id='{{product.entity_id}}' src="img/save-25.png" height="25" width="25"  ng-click="doWhishlistAdd(product.entity_id)" />
                             </span>
                         </div>                        
                     </div>

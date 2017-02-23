@@ -1,0 +1,27 @@
+<style>
+.row {   border-bottom: solid 2px #999;}
+</style>
+<ion-view view-title="{{order_details | translate}}">
+    <ion-content scroll="false" overflow-scroll="true">
+        <ion-content lazy-scroll style="height:100%" overflow-scroll="true" direction="y" locking="true">
+            
+            <ion-list class="}">
+                <div class="order" collection-repeat="lists in orders">
+                    <div class="main_div">
+            	<div class="row">
+                	<div class="eid">
+                    Create Date: {{lists.created_at}}
+                    <br />
+                    Product id: {{lists.entity_id}}
+                    <br />
+                    Order Status: {{lists.status}}
+                    <br />
+                    Order Total: {{lists.grand_total}}</div>	                    
+                </div>            	
+            </div>
+                </div>
+            </ion-list>
+            
+        </ion-content>
+    </ion-content>
+</ion-view>

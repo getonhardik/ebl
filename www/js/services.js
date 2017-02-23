@@ -20,6 +20,7 @@ function Service($rootScope, $http, $ionicPopup) {
         searchAdvField: '/restconnect/searchadv/getfield',
         searchAdv: '/restconnect/searchadv/index',
         searchAgent: '/storelocator/index/city',
+        order: '/restconnect/products/test2',
         productDetail: '/restconnect/products/getproductdetail',
         addwishlist: '/restconnect/wishlist/addToWishlist',
         productImg: '/restconnect/products/getPicLists',

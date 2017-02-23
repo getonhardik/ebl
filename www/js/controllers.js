@@ -380,7 +380,28 @@ angular.module('app.controllers', [])
 
             $scope.hideLoading();
         };
-
+         
+        $scope.doWhishlistAdd = function () {
+            var p_id = $('#product_entity_id').val();
+            var u_id = getStorage('user_id');			
+            var params = {
+                product: p_id,
+                user: u_id,
+            };
+			
+            $rootScope.service.get('addwishlist', params, function (res) {
+                if (res.result == 'error') {
+                    alert( res.message);
+                    return;
+                }
+                if (res.result == 'success') {
+                    alert($scope.translations.success+'\n\r'+ res.items_qty + ' '+ $scope.translations['items_in_cart']);
+                    $scope.items_qty = res.items_qty;
+                    return;
+                }
+            });           
+        }; 
+         
         $scope.doRefresh = function () {
             getList('refresh', function () {
                 $scope.$broadcast('scroll.refreshComplete');
@@ -442,7 +463,7 @@ angular.module('app.controllers', [])
 
             $scope.hideLoading();
         };
-
+        
         $scope.doRefresh = function () {
             getList('refresh', function () {
                 $scope.$broadcast('scroll.refreshComplete');
@@ -1305,4 +1326,10 @@ angular.module('app.controllers', [])
         var frame = Config.frames[$stateParams.page];
         $scope.title = $scope.translations[$stateParams.page];
         $scope.src = Config.baseUrl + Config.getLocale() + frame.src;
-    });
+    })
+.controller('orderDetailsCtrl', function ($scope, $rootScope, $sce, $stateParams) {
+        $rootScope.service.get('order', function (res) {
+            console.log(res);
+			$scope.orders = res;
+        });
+    })

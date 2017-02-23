@@ -314,8 +314,8 @@ angular.module('app.controllers', [])
     })
     .controller('my_accountCtrl', function ($scope, $rootScope,$state,$cordovaSocialSharing) {
         $scope.sharewithfriend = function () {
-            var message = "test";
-                alert('swf');
+            var message = "Ebranch App";
+                //alert('swf');
                 $cordovaSocialSharing
                         .shareViaWhatsApp(message,null,null)
                         .then(function (result) {

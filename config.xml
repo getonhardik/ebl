@@ -2,8 +2,8 @@
 <widget xmlns = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "ebranch.mobile.app"
-        version   = "1.0.0" 
-        android-versionCode="1"
+        version   = "1.0.1" 
+        android-versionCode="2"
         ios-CFBundleVersion="1.0.0"
 >
     <name>Ebranch</name>
@@ -78,7 +78,7 @@
     <plugin name="cordova-plugin-device"   />
     <plugin name="cordova-plugin-geolocation"   />
     <plugin name="cordova-plugin-inappbrowser"  />
-    <gap:plugin name="cordova-plugin-socialsharing" source="npm" />
+    <plugin name="cordova-plugin-socialsharing" source="npm" />
     <plugin name="cordova-plugin-network-information"  />
     <plugin name="cordova-plugin-whitelist"  />
     <!--	<plugin name="InAppBrowser" value="org.apache.cordova.InAppBrowser" />-->

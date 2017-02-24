@@ -315,7 +315,16 @@ angular.module('app.controllers', [])
         //alert($stateParams.name);
         
     })
-    .controller('my_accountCtrl', function ($scope, $rootScope,$state,$cordovaSocialSharing) {
+    .controller('my_accountCtrl', function ($scope, $rootScope,$state,$cordovaSocialSharing,$ionicPlatform) {
+        
+            $scope.rateUs = function () {
+                if ($ionicPlatform.is('ios')) {
+                    window.open('itms-apps://itunes.apple.com/us/app/domainsicle-domain-name-search/id511364723?ls=1&mt=8'); // or itms://
+                } else if ($ionicPlatform.is('android')) {
+                    window.open('market://details?id=aicog2017.mobile.app', '_system');
+                }
+            }
+        
         $scope.sharewithfriend = function () {
             var message = "Ebranch App";
             $cordovaSocialSharing.share(message,null,null);
@@ -382,7 +391,8 @@ angular.module('app.controllers', [])
         };
          
         $scope.doWhishlistAdd = function () {
-            var p_id = $('#product_entity_id').val();
+            //var p_id = $('#product_w_id').val();
+            //alert(p_id);
             var u_id = getStorage('user_id');			
             var params = {
                 product: p_id,
@@ -413,13 +423,15 @@ angular.module('app.controllers', [])
 
     })
 
-	.controller('CategoryProductListCtrl', function ($scope, $rootScope, $stateParams, $translate) {
+	.controller('CategoryProductListCtrl', function ($scope, $rootScope, $stateParams, $translate,$cordovaSocialSharing) {
+           
         $scope.listTitle = {
             daily_sale: 'latest_promotions',
             'new': 'common_products',
             cert_download: 'cert_download'
         }[$stateParams.cmd];
         $scope.listPge = 1;
+         $scope.product_index = 1;
         $scope.hasInit = false;
         $scope.loadOver = false;
         $scope.Math = window.Math;
@@ -463,8 +475,15 @@ angular.module('app.controllers', [])
 
             $scope.hideLoading();
         };
+            $scope.sharewithfriend = function () {
+                var message = "Ebranch App";
+                $cordovaSocialSharing.share(message, null, null);
+            }
         $scope.doWhishlistAdd = function (p_id) {
-            alert(p_id);
+//            var p_id = $("#product_w_id_"+$scope.product_index).val();
+//            $scope.product_index = $scope.product_index + 1;
+//            alert($scope.product_index);
+//            alert(p_id);
             var u_id = getStorage('user_id');			
             var params = {
                 product: p_id,

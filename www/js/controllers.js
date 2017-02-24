@@ -316,7 +316,7 @@ angular.module('app.controllers', [])
         
     })
     .controller('my_accountCtrl', function ($scope, $rootScope,$state,$cordovaSocialSharing,$ionicPlatform) {
-        
+        //hardik
             $scope.rateUs = function () {
                 if ($ionicPlatform.is('ios')) {
                     window.open('itms-apps://itunes.apple.com/us/app/domainsicle-domain-name-search/id511364723?ls=1&mt=8'); // or itms://

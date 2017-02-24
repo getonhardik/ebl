@@ -12,7 +12,7 @@
 <ion-content overflow-scroll="false">
     <div style="padding:10px;background-color: #1a94d3;color:#FFF;text-align: center">
         <div class="ion-person" style="font-size: 30px"></div>
-        Welcome<br> Login/Register
+        Welcome<br> {{name}}<br> {{email}}
     </div>
     <div style='padding: 10px;font-size: 14px;'>
         <div style="margin-top:10px">
@@ -44,7 +44,8 @@
             </a>
         </div>
         <div style="margin-top:10px">
-            <a class="ion-ios-paw" href="#app/leave_feedback" style="text-decoration: none !important">
+            <a class="ion-ios-paw" href="#" ng-click="rateUs()" style="text-decoration: none !important">
+            <!--<a class="ion-ios-paw" href="#app/leave_feedback" style="text-decoration: none !important">-->
                 &nbsp;&nbsp; Leave Feedback
             </a>
         </div>

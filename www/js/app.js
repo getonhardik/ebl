@@ -4,7 +4,9 @@ angular.module('app', [
     'ionic', 'ngCordova','ngCordovaOauth','ngOpenFB', 'pascalprecht.translate',
     'app.controllers', 'app.filters', 'ionicLazyLoad','slickCarousel','gilbox.kineticSlider','sw2.ionic.password-show-hide'
 ])
-
+        .service('User_data', function () {
+            return {};
+        })
         .run(function ($ionicPlatform, $rootScope, $http, $ionicPopup,ngFB) {
             $ionicPlatform.ready(function () {
                 // Hide the accessory bar by default

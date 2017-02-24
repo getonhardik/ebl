@@ -217,10 +217,11 @@ angular.module('app.controllers', [])
                         console.log(user);
                         $scope.socialData = user;
                         
-                $rootScope.service.get('socialLogin', $scope.socialData, function (res) {
+                $rootScope.service.get('socialLogin',$rootScope, $scope.socialData, function (res) {
                 $scope.hideLoading();
 
                 if (res.status==true) {
+                    $rootScope.user_data = res;
                     $scope.user = res;
                     setStorage('user_id',res.id);
                     $scope.getUser();
@@ -261,6 +262,8 @@ angular.module('app.controllers', [])
                     alert(res.message || res.code);
                     return;
                 }
+                setStorage('user_name',res.name);
+                setStorage('user_email',res.email);
                 $scope.user = res;
                 setStorage('user_id',res.id);
                 Config.setRememberme($scope.loginData.rememberme);
@@ -285,6 +288,17 @@ angular.module('app.controllers', [])
         var params = {
             user_id: u_id,
         };
+
+        $scope.doDeletewishlist = function (p_id) {
+            //alert(p_id);
+            var params = {
+                user_id: u_id,
+                product_id:p_id
+            };
+            
+            $rootScope.service.get('removeWishList', params, function (res) {
+            });           
+        };	
 
         $rootScope.service.get('getwishlist', params , function (results) {
             console.log(results.items);
@@ -316,7 +330,9 @@ angular.module('app.controllers', [])
         
     })
     .controller('my_accountCtrl', function ($scope, $rootScope,$state,$cordovaSocialSharing,$ionicPlatform) {
-        //hardik
+            console.log($rootScope.user_data);
+            $scope.name = getStorage('user_name');
+            $scope.email = getStorage('user_email');
             $scope.rateUs = function () {
                 if ($ionicPlatform.is('ios')) {
                     window.open('itms-apps://itunes.apple.com/us/app/domainsicle-domain-name-search/id511364723?ls=1&mt=8'); // or itms://
@@ -487,16 +503,18 @@ angular.module('app.controllers', [])
             var u_id = getStorage('user_id');			
             var params = {
                 product: p_id,
-                user: u_id,
+                user_id: u_id,
             };
 			
             $rootScope.service.get('addwishlist', params, function (res) {
-                if (res.result == 'error') {
+                console.log(res);
+                if (res.status == 'error') {
                     alert( res.message); 
                     return;
                 }
-                if (res.result == 'success') {
-                    alert($scope.translations.success+'\n\r'+ res.items_qty + ' '+ $scope.translations['items_in_cart']);
+                if (res.status == 'SUCCESS') {
+                    //alert($scope.translations.success+'\n\r'+ res.items_qty + ' '+ $scope.translations['items_in_cart']);
+                    alert("Successfully Add to wishlist");
                     $scope.items_qty = res.items_qty;
                     return;
                 }

@@ -23,6 +23,7 @@ function Service($rootScope, $http, $ionicPopup) {
         order: '/restconnect/products/test2',
         productDetail: '/restconnect/products/getproductdetail',
         addwishlist: '/restconnect/wishlist/addToWishlist',
+        removeWishList: '/restconnect/wishlist/removewishlist',
         productImg: '/restconnect/products/getPicLists',
         productOption: '/restconnect/products/getcustomoption',
         cart: '/restconnect/cart/getCartInfo',	//获�?�购物车内容

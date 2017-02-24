@@ -32,6 +32,7 @@
             })();
           },
           getTouchPoint: function(event) {
+
             var e;
             if (event.touches != null) {
               e = event.touches[0];
@@ -109,7 +110,7 @@
             contElm.bind(startTypes, function(event) {
               var elementStartX;
               event.preventDefault();
-              allowClick = false;
+              allowClick = true;
               v = 0;
               elementStartX = xOff;
               interactionStart = interactionCurrent = browserHelper.getTouchPoint(event);

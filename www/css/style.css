@@ -919,7 +919,7 @@ li.agent p {
 .kinetic-slider-container {
   position: relative;
   z-index: 1;
-  width:770px !important;
+  width:400px !important;
   height: 310px;
   overflow: hidden;
 }

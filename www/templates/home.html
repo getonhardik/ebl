@@ -1,37 +1,5 @@
 <style>
 .bar-top{height:100px !important;}
-.kinetic-slider-container {
-  position: relative;
-  z-index: 1;
-  width:770px !important;
-  height: 310px;
-  overflow: hidden;
-}
-
-.kinetic-slider-content {
-  position: absolute;
-  z-index: 1;
-  width: 100% !important;
-  height: 305px;
-}
-
-.kinetic-slider-content .prod_slider-hk {
-    position: relative !important;
-    display: block !important;
-    float: left  !important;
-    width: 150px  !important;
-    height: 305px !important;
-    padding: 5px !important;
-    overflow: hidden !important;
-}
-.kinetic-slider-content .product-image img {
-    height: 100%;
-	width:140px;
-}
-.kinetic-slider-content .product-name.ng-binding {
-    min-height: 40px;
-    line-height: 15px;
-}
 </style>
 <ion-view view-title="{{'home' | translate}}">
     <ion-nav-title>
@@ -86,23 +54,24 @@
             	<div class="prod_slider-hk" ng-repeat="product in lists_daily">			
                 <div class="product-inner">
                 <div class="p_lbl"><span class="new-lbl">New</span></div>
-                <a href="#app/productDetail/{{product.entity_id}}">
-            <div class="product-image">
-                <img image-lazy-src="{{product.image_url}}"
-                     lazy-scroll-resize="true"
-                     image-lazy-loader="lines">
-            </div>
-        </a>        
+                <div ng-init="myVar = '#app/productDetail/'">
+                    <a ng-href="{{myVar}}{{product.entity_id}}">
+                    <div class="product-image">
+                        <img image-lazy-src="{{product.image_url}}"
+                             lazy-scroll-resize="true"
+                             image-lazy-loader="lines">
+                    </div>
+                    </a>   
+		</div>        
         <div class="product-info">
             <div class="product-name">
                 {{product.name}}
             </div>
-        	<div class="p_rating">
-                <div ng-if="{{product.ratings}} == 0">
-                    <div class=""><img src="img/0.png" height="23" width="143" /></div>
-                </div>
-                <div ng-else-if="{{Math.ceil(product.ratings / 20)}} != 0">
-                    <div class=""><img src="img/{{Math.ceil(product.ratings / 20)}}.png" height="23" width="143" alt="ratings" /></div>	
+        	<div class="p_rating">                
+                <div class="ratings">
+                    <div class="rating-box">
+                      <div class="rating" style="width:{{product.ratings}}%;"></div>
+                    </div>                    
                 </div>
             </div>	
             <div  class="product-price">
@@ -138,10 +107,14 @@
             	<img src="img/share-25.png" height="25" width="25" />                
                 </span>
                 <span class="img_center">
-                <img class="" src="img/cart-25.png" height="25" width="25" />
+                	<div ng-init="myVar = '#app/productDetail/'">
+                        <a ng-href="{{myVar}}{{product.entity_id}}">
+                            <img class="" src="img/cart-25.png" height="25" width="25" />
+                         </a>
+                    </div>        
                 </span>
                 <span class="img_right">
-                    <img class="product_entity_id"  id='{{product.entity_id}}' src="img/save-25.png" height="25" width="25"  ng-click="doWhishlistAdd(product.entity_id)" />                
+                	<img class="product_entity_id"  id='{{product.entity_id}}' src="img/save-25.png" height="25" width="25"  ng-click="doWhishlistAdd(product.entity_id)" />
                 </span>
             </div>
             
@@ -159,23 +132,24 @@
                 <div class="prod_slider-hk" ng-repeat="product in lists_new">			
                 <div class="product-inner">
                 	<div class="p_lbl"><span class="new-lbl">New</span></div>       
-                    <a href="#app/productDetail/{{product.entity_id}}">
+                    <div ng-init="myVar = '#app/productDetail/'">
+                        <a ng-href="{{myVar}}{{product.entity_id}}">
                         <div class="product-image">
                             <img image-lazy-src="{{product.image_url}}"
                                  lazy-scroll-resize="true"
                                  image-lazy-loader="lines">
                         </div>
-                    </a>        
+                        </a>   
+                    </div>       
                     <div class="product-info">
                         <div class="product-name">
                             {{product.name}}
                         </div>
-                        <div class="p_rating">
-                <div ng-if="{{product.ratings}} == 0">
-                    <div class=""><img src="img/0.png" height="23" width="143" /></div>
-                </div>
-                <div ng-else-if="{{Math.ceil(product.ratings / 20)}} != 0">
-                    <div class=""><img src="img/{{Math.ceil(product.ratings / 20)}}.png" height="23" width="143" alt="ratings" /></div>	
+                        <div class="p_rating">                
+                <div class="ratings">
+                    <div class="rating-box">
+                      <div class="rating" style="width:{{product.ratings}}%;"></div>
+                    </div>                    
                 </div>
             </div>	
                         <div  class="product-price">
@@ -211,11 +185,15 @@
                             <img src="img/share-25.png" height="25" width="25" />                
                             </span>
                             <span class="img_center">
-                            <img class="" src="img/cart-25.png" height="25" width="25" />
-                            </span>
-                            <span class="img_right">
-                                <img class="product_entity_id"  id='{{product.entity_id}}' src="img/save-25.png" height="25" width="25"  ng-click="doWhishlistAdd(product.entity_id)" />                
-                            </span>
+                                <div ng-init="myVar = '#app/productDetail/'">
+                                <a ng-href="{{myVar}}{{product.entity_id}}">
+                                    <img class="" src="img/cart-25.png" height="25" width="25" />
+                                 </a>
+                            </div>        
+                        </span>
+                        <span class="img_right">
+                                <img class="product_entity_id"  id='{{product.entity_id}}' src="img/save-25.png" height="25" width="25"  ng-click="doWhishlistAdd(product.entity_id)" />
+                        </span>
                         </div>                        
                     </div>
         			</div>            
@@ -233,23 +211,24 @@
                 <div class="prod_slider-hk" ng-repeat="product in lists_best">			
                 <div class="product-inner">
                 	<div class="p_lbl"><span class="new-lbl">New</span></div>       
-                    <a href="#app/productDetail/{{product.entity_id}}">
+                    <div ng-init="myVar = '#app/productDetail/'">
+                        <a ng-href="{{myVar}}{{product.entity_id}}">
                         <div class="product-image">
                             <img image-lazy-src="{{product.image_url}}"
                                  lazy-scroll-resize="true"
                                  image-lazy-loader="lines">
                         </div>
-                    </a>        
+                        </a>   
+                    </div>       
                     <div class="product-info">
                         <div class="product-name">
                             {{product.name}}
                         </div>
-                        <div class="p_rating">
-                <div ng-if="{{product.ratings}} == 0">
-                    <div class=""><img src="img/0.png" height="23" width="143" /></div>
-                </div>
-                <div ng-else-if="{{Math.ceil(product.ratings / 20)}} != 0">
-                    <div class=""><img src="img/{{Math.ceil(product.ratings / 20)}}.png" height="23" width="143" alt="ratings" /></div>	
+                        <div class="p_rating">                
+                <div class="ratings">
+                    <div class="rating-box">
+                      <div class="rating" style="width:{{product.ratings}}%;"></div>
+                    </div>                    
                 </div>
             </div>	
                         <div  class="product-price">
@@ -285,11 +264,15 @@
                             <img src="img/share-25.png" height="25" width="25" />                
                             </span>
                             <span class="img_center">
+                	<div ng-init="myVar = '#app/productDetail/'">
+                        <a ng-href="{{myVar}}{{product.entity_id}}">
                             <img class="" src="img/cart-25.png" height="25" width="25" />
-                            </span>
-                            <span class="img_right">
-                                <img class="product_entity_id"  id='{{product.entity_id}}' src="img/save-25.png" height="25" width="25"  ng-click="doWhishlistAdd(product.entity_id)" />                
-                            </span>
+                         </a>
+                    </div>        
+                </span>
+                <span class="img_right">
+                	<img class="product_entity_id"  id='{{product.entity_id}}' src="img/save-25.png" height="25" width="25"  ng-click="doWhishlistAdd(product.entity_id)" />
+                </span>
                         </div>                        
                     </div>
         			</div>            
@@ -306,23 +289,24 @@
                 <div class="prod_slider-hk" ng-repeat="product in lists_catalog">			
                 <div class="product-inner">
                 	<div class="p_lbl"><span class="new-lbl">New</span></div>       
-                    <a href="#app/productDetail/{{product.entity_id}}">
+                    <div ng-init="myVar = '#app/productDetail/'">
+                        <a ng-href="{{myVar}}{{product.entity_id}}">
                         <div class="product-image">
                             <img image-lazy-src="{{product.image_url}}"
                                  lazy-scroll-resize="true"
                                  image-lazy-loader="lines">
                         </div>
-                    </a>        
+                        </a>   
+                    </div>        
                     <div class="product-info">
                         <div class="product-name">
                             {{product.name}}
                         </div>
-                        <div class="p_rating">
-                <div ng-if="{{product.ratings}} == 0">
-                    <div class=""><img src="img/0.png" height="23" width="143" /></div>
-                </div>
-                <div ng-else-if="{{Math.ceil(product.ratings / 20)}} != 0">
-                    <div class=""><img src="img/{{Math.ceil(product.ratings / 20)}}.png" height="23" width="143" alt="ratings" /></div>	
+                        <div class="p_rating">                
+                <div class="ratings">
+                    <div class="rating-box">
+                      <div class="rating" style="width:{{product.ratings}}%;"></div>
+                    </div>                    
                 </div>
             </div>
                         <div  class="product-price">
@@ -358,11 +342,15 @@
                             <img src="img/share-25.png" height="25" width="25" />                
                             </span>
                             <span class="img_center">
+                	<div ng-init="myVar = '#app/productDetail/'">
+                        <a ng-href="{{myVar}}{{product.entity_id}}">
                             <img class="" src="img/cart-25.png" height="25" width="25" />
-                            </span>
-                            <span class="img_right">
-                                <img class="product_entity_id"  id='{{product.entity_id}}' src="img/save-25.png" height="25" width="25"  ng-click="doWhishlistAdd(product.entity_id)" />
-                            </span>
+                         </a>
+                    </div>        
+                </span>
+                <span class="img_right">
+                	<img class="product_entity_id"  id='{{product.entity_id}}' src="img/save-25.png" height="25" width="25"  ng-click="doWhishlistAdd(product.entity_id)" />
+                </span>
                         </div>                        
                     </div>
         			</div>            

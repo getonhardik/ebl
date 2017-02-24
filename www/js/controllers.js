@@ -288,7 +288,10 @@ angular.module('app.controllers', [])
         var params = {
             user_id: u_id,
         };
-
+        $scope.sharewithfriend = function () {
+            var message = "Ebranch App";
+            $cordovaSocialSharing.share(message,null,null);
+        }
         $scope.doDeletewishlist = function (p_id) {
             //alert(p_id);
             var params = {
@@ -1384,7 +1387,11 @@ angular.module('app.controllers', [])
         $scope.src = Config.baseUrl + Config.getLocale() + frame.src;
     })
 .controller('orderDetailsCtrl', function ($scope, $rootScope, $sce, $stateParams) {
-        $rootScope.service.get('order', function (res) {
+		var u_id = getStorage('user_id');			
+		var params = {
+			customerid: u_id,
+		};
+        $rootScope.service.get('order', params, function (res) {
             console.log(res);
 			$scope.orders = res;
         });

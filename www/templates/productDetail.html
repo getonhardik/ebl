@@ -53,11 +53,17 @@
         <!-- product option-->
          <div class="col-size">
          	<div class="row">
-            	<div class="p_price">                	
+            	<div class="p_price2">                	
                       <span class="p_name">{{product.name}}</span>                  	
                 </div>                
-                <div class="p_review">
-                	<div class="rate-box"><img src="img/star-img.png" height="23" width="143" /></div>
+                <div class="p_review2">
+                	<div class="p_rating">                
+                <div class="ratings">
+                    <div class="rating-box">
+                      <div class="rating" style="width:{{product.ratings}}%;"></div>
+                    </div>                    
+                </div>
+            </div>
                 </div>
             </div>
             <br />
@@ -108,7 +114,7 @@
                                       <em class="assertive">*</em>
                                   </label>
 
-                                  <span class="input-number-decrement" ng-click="qtyMinus()">–</span>
+                                  <span class="input-number-decrement" ng-click="qtyMinus()">â€“</span>
                                   <input class="input-number" type="text" name="qty" id="qty"
                                          ng-model="qty" min="1" max="99"
                                          title="Qty">
@@ -244,7 +250,7 @@
                         </div>
                         <!--end Date option-->
 
-                            <!-- multiple option--,因为不美观，暂时不用
+                            <!-- multiple option--,å› ä¸ºä¸�ç¾Žè§‚ï¼Œæš‚æ—¶ä¸�ç”¨
                             <div class="form__field"  ng-switch-when="multiple">
                               <label class="item">{{option.custom_option_title}}</label>
                                   <div class="input-box">
@@ -336,8 +342,12 @@
                 <div class="product-name">
                     {{product.name}}
                 </div>
-            	<div class="p_rating">
-            	<img src="img/star-img.png" height="23" width="143" />
+            	<div class="p_rating">                
+                <div class="ratings">
+                    <div class="rating-box">
+                      <div class="rating" style="width:{{product.ratings}}%;"></div>
+                    </div>                    
+                </div>
             </div>
                 <div  class="product-price">                		
                     <div class="price-box">                    	
@@ -368,16 +378,20 @@
                 </div>
                 
                 <div class="p_footer">
-            	<span class="img_left">
-            	<img src="img/share-25.png" height="25" width="25" />                
-                </span>
-                <span class="img_center">
-                <img class="" src="img/cart-25.png" height="25" width="25" />
+                            <span class="img_left">
+                            <img src="img/share-25.png" height="25" width="25" />                
+                            </span>
+                            <span class="img_center">
+                	<div ng-init="myVar = '#app/productDetail/'">
+                        <a ng-href="{{myVar}}{{product.entity_id}}">
+                            <img class="" src="img/cart-25.png" height="25" width="25" />
+                         </a>
+                    </div>        
                 </span>
                 <span class="img_right">
-                <img class="" src="img/save-25.png" height="25" width="25" />
+                	<img class="product_entity_id"  id='{{product.entity_id}}' src="img/save-25.png" height="25" width="25"  ng-click="doWhishlistAdd(product.entity_id)" />
                 </span>
-            </div>
+                        </div>  
             </div>
             </div>            
             </div>
@@ -408,10 +422,10 @@
     </ion-content>
 
 
-    <div class="bar bar-footer bar-stable add-to-cart">
+    <div class="bar bar-footer bar-stable add-to-cart cart-my">
     <a class="add-to-cart-left button button-outline button-assertive ion-android-cart" href="#app/cart">
       &nbsp;{{items_qty}}</a>
-    <button class="button add-to-cart-right button-assertive" type="submit" ng-click="doCartAdd()">
+    <button class="button add-to-cart-right button-assertive cart-my-btn" type="submit" ng-click="doCartAdd()">
       {{'add_to_cart' | translate}}
     </button>
     </div>

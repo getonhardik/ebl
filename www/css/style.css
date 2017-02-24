@@ -915,6 +915,39 @@ li.agent p {
 }
 
 /*khunt*/
+
+.kinetic-slider-container {
+  position: relative;
+  z-index: 1;
+  width:770px !important;
+  height: 310px;
+  overflow: hidden;
+}
+
+.kinetic-slider-content {
+  position: absolute;
+  z-index: 1;
+  width: 100% !important;
+  height: 305px;
+}
+
+.kinetic-slider-content .prod_slider-hk {
+    position: relative !important;
+    display: block !important;
+    float: left  !important;
+    width: 150px  !important;
+    height: 305px !important;
+    padding: 5px !important;
+    overflow: hidden !important;
+}
+.kinetic-slider-content .product-image img {
+    height: 100%;
+	width:140px;
+}
+.kinetic-slider-content .product-name.ng-binding {
+    min-height: 40px;
+    line-height: 15px;
+}
 .col-xs-6 {width: 50%;padding:5px}
 .col-xs-6 img{width: 100%;}
 .p_title{padding: 0 10px;font-size: 15px;color:#333}
@@ -930,10 +963,59 @@ box-shadow: 1px 1px 3px #E6E6E6;}
 .price-box .price, .category-products .product .price-box .price {
 color: #06C;font-size:90%}.new-lbl {background: #009900;color: #FFF;padding: 0 4px;margin:3px;border-radius: 3px !important;
 }.p_lbl {text-align: right;}.p_footer img {width: auto !important;}.img_left{}
-.img_center{text-align:center}.img_right{text-align:right}.p_footer,.p_footer img{text-align:center !important}
+.img_center{text-align:center}.img_right{text-align:right}
+.p_footer, .p_footer img {text-align: center !important;    width: 80%;    margin: 0 auto;}
+.p_footer img {    width: auto !important;    height: 17px;}
 .p_footer span {width: 33% !important;float: left;text-align: center !important;}
 .p_rating img {width: 66%;height: 50%;}
+.p_price2 {    font-size: 10px;    width: 80%;}
+.ratings {
+    font-size: 15px;
+    line-height: 1.25;
+    margin: 3px 0;
+    height: 15px;
+}
+.ratings .rating-box {
+    display: inline-block;
+    vertical-align: middle;
+}
+.rating-box {
+    width: 90px;
+    height: 15px;
+    font-size: 0;
+    line-height: 0;
+    text-indent: -999em;
+    overflow: hidden;
+    position: relative;
+}.rating-box:before {
+    font-family: "porto";
+    content: "\e852\20\e852\20\e852\20\e852\20\e852";
+    width: 90px;
+    height: 15px;
+    color: #c3c5c9;
+    display: block;
+    font-size: 15px;
+    line-height: 15px;
+}
+.rating-box .rating:before {
+    font-family: "porto";
+    content: "\e852\20\e852\20\e852\20\e852\20\e852";
+    width: 90px;
+    height: 11px;
+    color: #ffc600;
+    display: block;
+    font-size: 15px;
+    line-height: 15px;
+}
 
+.rating-box .rating {
+    float: left;
+    height: 15px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+}
 
 .bar.bar-assertive.bar-footer{background:none !important}
 .bar.bar-assertive{background-color:#FFF !important;border:none !important}
@@ -983,6 +1065,10 @@ border-radius:3px;}
 .ion-plus::before {    content: "\f218";    float: right !important;border: solid 1px #ccc;padding: 3px 5px;}
 .col-size .list .item{padding: 16px 16px 16px 0px;white-space:unset}
 .list .item.item-accordion{line-height:22px;padding:10px 0}.item-stable {    margin-top: 15px;}
+.cart-my .add-to-cart-left {    width: 22% !important;    line-height: 40px !important;    margin: 5px;}
+.button.add-to-cart-right.button-assertive.cart-my-btn.ng-binding {
+    width: 40% !important;
+}
 /*end khunt*/
 /*added by archana 15-feb-2017*/
 .button-full-1{ background-color:#333333!important; color:#ffffff; text-transform:uppercase; border:none!important; font-size:25px; width:100%;}
@@ -1149,3 +1235,32 @@ h3.menu-title{ color:#333; font-family: myFirstFont!important; font-size:18px;pa
     border-color: #333333;
 }
 /* end by archana 15-feb-2017*/
+/* start by archana 24-feb-2017*/
+.profile-bg{ background:url(../img/profile-bg.jpg) no-repeat scroll 0% 0%;height: 180px; text-align:center; padding-top:10px;
+ color:#ffffff; font-size:20px; line-height:32px;}
+
+.ion-person2{background:url(../img/default-profile.png) no-repeat scroll 0% 0%;width:70px; height:70px; margin: 0px auto;}
+.icon-13{background:url(../img/icon-13.png) no-repeat scroll 3% 50%;padding-left: 35px;}
+.icon-14{background:url(../img/icon-14.png) no-repeat scroll 3% 50%;padding-left: 35px;}
+.icon-15{background:url(../img/icon-15.png) no-repeat scroll 3% 50%;padding-left: 35px;}
+.icon-16{background:url(../img/icon-16.png) no-repeat scroll 3% 50%;padding-left: 35px;}
+.icon-17{background:url(../img/icon-17.png) no-repeat scroll 3% 50%;padding-left: 35px;}
+.icon-18{background:url(../img/icon-18.png) no-repeat scroll 3% 50%;padding-left: 35px;}
+.icon-19{background:url(../img/icon-19.png) no-repeat scroll 3% 50%;padding-left: 35px;}
+.icon-20{background:url(../img/icon-20.png) no-repeat scroll 3% 50%;padding-left: 35px;}
+.icon-21{background:url(../img/icon-21.png) no-repeat scroll 3% 50%;padding-left: 35px;}
+.profile-menu a{ text-align:left; border:none; padding-left:50px;}
+.profile-footer{background:#E5E5E5; min-height:120px; text-align:center; padding-top:10px;}
+.profile-footer ul li{ list-style:none; display:inline;}
+.profile-footer ul li a{ color:#0088CC; font-size:18px; text-decoration:none;}
+.wishlist-d{background: #fff;
+border: 1px solid #ccc;
+min-height: 80px;
+overflow: hidden;
+box-shadow: 1px 1px 1px #333;
+margin-bottom: 20px;
+padding: 10px;}
+
+.wishlist-d a{ color:#777777; font-size:16px;}
+/* end by archana 24-feb-2017*/
+

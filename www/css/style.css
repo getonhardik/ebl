@@ -471,7 +471,7 @@ em {
 
 .price-box .old-price,
 .product .old-price {
-    position: absolute;
+    /*position: absolute;*/
     font-size: 100%;
     color: #8a8a8a;
     text-decoration: line-through;
@@ -915,36 +915,16 @@ li.agent p {
 }
 
 /*khunt*/
-
-.kinetic-slider-container {
-  position: relative;
-  z-index: 1;
-  width:400px !important;
-  height: 310px;
-  overflow: hidden;
-}
-
-.kinetic-slider-content {
-  position: absolute;
-  z-index: 1;
-  width: 100% !important;
-  height: 305px;
-}
-
-.kinetic-slider-content .prod_slider-hk {
-    position: relative !important;
-    display: block !important;
-    float: left  !important;
+.pp_title{white-space:pre-line;word-wrap:break-word;    min-height: 29px;    line-height: 1.1;}
+.product-inner{width:140px}
+.slider-gallery .prod_slider-hk{
     width: 150px  !important;
-    height: 305px !important;
-    padding: 5px !important;
-    overflow: hidden !important;
 }
-.kinetic-slider-content .product-image img {
+.slider-gallery .product-image img{
     height: 100%;
 	width:140px;
 }
-.kinetic-slider-content .product-name.ng-binding {
+.slider-gallery .product-name.ng-binding{
     min-height: 40px;
     line-height: 15px;
 }

@@ -26,6 +26,7 @@ var en_US = {
     logout: 'Logout',
     exit: 'Exit',
     welcome: 'Welcome',
+    reset_password: 'Reset password',
     enter_the_key: 'Please enter the key',
     quick_search: 'Quick Search',
     register_success:'Welcome! User register success.',

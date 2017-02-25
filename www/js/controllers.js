@@ -252,6 +252,7 @@ angular.module('app.controllers', [])
       };
         $scope.doLogin = function () {
              if (!$scope.loginData.username || !$scope.loginData.password) {
+                            alert('Please enter username and password');
                                 return;
                             }
             $scope.showLoading();

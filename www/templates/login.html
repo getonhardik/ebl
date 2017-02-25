@@ -36,12 +36,12 @@
         <form ng-submit="doLogin()" class="login">
              <div class="inputset">   <label class="item item-input">
                <!-- <span class="input-label">{{'email_or_mobile' | translate}}</span>-->
-            <input type="text" required autofocus placeholder="{{'email_or_mobile' | translate}}" ng-model="loginData.username">
+            <input type="text"  autofocus placeholder="{{'email_or_mobile' | translate}}" ng-model="loginData.username">
                 <span class="icon"><i class="fa fa-envelope"></i></span></div>
             </label>
          <div class="inputset">   <div class="item item-input">
              <!--   <span class="input-label">{{'password' | translate}}</span>-->
-                <input id="password" required type="password" ionic-password-show-hide placeholder="{{'password' | translate}}" ng-model="loginData.password"><span class="icon"><i class="fa fa-lock"></i></span></div>
+                <input id="password"  type="password" ionic-password-show-hide placeholder="{{'password' | translate}}" ng-model="loginData.password"><span class="icon"><i class="fa fa-lock"></i></span></div>
             </div>
             
              <!--<input type="password" name="uPassword" minlength="3" placeholder="Password" ng-model="loginData.password" ui-show-password required>-->
@@ -52,7 +52,7 @@
             <div class="list">
                 <div class="row set-center">
                     <div class="forgot-pass space1">
-                        <a ng-click="hideLogin()"  menu-toggle="left" href="#app/forgotPwd">{{'forgot_password' | translate}}</a>
+                        <a ng-click="hideLogin()"  href="#app/forgotPwd">{{'forgot_password' | translate}}</a>
                     </div>
                     
                 </div>

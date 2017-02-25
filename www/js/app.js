@@ -2,7 +2,7 @@
 // 'app' is the name of this angular module (also set in a <body> attribute in index.html)
 angular.module('app', [
     'ionic', 'ngCordova','ngCordovaOauth','ngOpenFB', 'pascalprecht.translate',
-    'app.controllers', 'app.filters', 'ionicLazyLoad','slickCarousel','gilbox.kineticSlider','sw2.ionic.password-show-hide'
+    'app.controllers', 'app.filters', 'ionicLazyLoad','sw2.ionic.password-show-hide'
 ])
         .service('User_data', function () {
             return {};

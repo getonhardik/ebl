@@ -1,6 +1,14 @@
 <style>
 .bar-top{height:100px !important;}
 </style>
+<script>
+$(function() {
+	$( "#gal1" ).bootslider({snapToItem:  false,looponce: true});
+	$( "#gal2" ).bootslider({snapToItem:  false});
+	$( "#gal3" ).bootslider({snapToItem:  false});
+	$( "#gal4" ).bootslider({snapToItem:  false});	
+});
+</script>
 <ion-view view-title="{{'home' | translate}}">
     <ion-nav-title>
         <img class="" src="img/logo.png">		                       
@@ -46,34 +54,35 @@
         <div style="clear:both">&nbsp;</div>
         <div class="p_title">Special Offers</div>
         <div style="width:50px;margin:0 auto">
-                        <img id="mySpinner" src="img/loading1.gif" width="100%" height="50px" ng-show="loading1" />
-                        </div>
-		<div kinetic-slider class="kinetic-slider-container">
-            <div class="kinetic-slider-content">	
-            	<div class="p_lbl"><span class="">&nbsp;</span></div>       
-            	<div class="prod_slider-hk" ng-repeat="product in lists_daily">			
+            <img id="mySpinner" src="img/loading1.gif" width="100%" height="50px" ng-show="loading1" />
+        </div>
+        
+        <div class="row slider-gallery" id="gal1">     
+            <div class="prod_slider-hk" ng-repeat="product in lists_daily">			
                 <div class="product-inner">
                 <div class="p_lbl"><span class="new-lbl">New</span></div>
-                <div ng-init="myVar = '#app/productDetail/'">
+                <div ng-init="myVar = 'www.google.co.in'">
                     <a ng-href="{{myVar}}{{product.entity_id}}">
                     <div class="product-image">
                         <img image-lazy-src="{{product.image_url}}"
                              lazy-scroll-resize="true"
                              image-lazy-loader="lines">
                     </div>
-                    </a>   
-		</div>        
+        			</a>   
+				</div>                         
         <div class="product-info">
             <div class="product-name">
                 {{product.name}}
             </div>
-        	<div class="p_rating">                
+        	
+            <div class="p_rating">                
                 <div class="ratings">
                     <div class="rating-box">
                       <div class="rating" style="width:{{product.ratings}}%;"></div>
                     </div>                    
                 </div>
-            </div>	
+			</div>
+            	
             <div  class="product-price">
                 <div class="price-box">
                   <span ng-if="product.discount != null" class="special-price">
@@ -121,37 +130,37 @@
         </div>
         </div>            
             </div>  
-            </div>           
         </div>
+        
+        
+		
        
         <div style="clear:both">&nbsp;</div>
         <div class="p_title">New Products</div>
-        <div kinetic-slider class="kinetic-slider-container">
-            <div class="kinetic-slider-content">
-				<div class="p_lbl"><span class="">&nbsp;</span></div>
-                <div class="prod_slider-hk" ng-repeat="product in lists_new">			
+        <div class="row slider-gallery" id="gal2">
+	        <div class="prod_slider-hk" ng-repeat="product in lists_new">			
                 <div class="product-inner">
                 	<div class="p_lbl"><span class="new-lbl">New</span></div>       
                     <div ng-init="myVar = '#app/productDetail/'">
                         <a ng-href="{{myVar}}{{product.entity_id}}">
-                        <div class="product-image">
-                            <img image-lazy-src="{{product.image_url}}"
-                                 lazy-scroll-resize="true"
-                                 image-lazy-loader="lines">
-                        </div>
-                        </a>   
-                    </div>       
+                            <div class="product-image">
+                                <img image-lazy-src="{{product.image_url}}"
+                                     lazy-scroll-resize="true"
+                                     image-lazy-loader="lines">
+                            </div>
+                        </a>        
+					</div>                        
                     <div class="product-info">
                         <div class="product-name">
                             {{product.name}}
                         </div>
                         <div class="p_rating">                
-                <div class="ratings">
-                    <div class="rating-box">
-                      <div class="rating" style="width:{{product.ratings}}%;"></div>
-                    </div>                    
-                </div>
-            </div>	
+                            <div class="ratings">
+                                <div class="rating-box">
+                                  <div class="rating" style="width:{{product.ratings}}%;"></div>
+                                </div>                    
+                            </div>
+                        </div>	
                         <div  class="product-price">
                             <div class="price-box">
                               <span ng-if="product.discount != null" class="special-price">
@@ -186,40 +195,37 @@
                             </span>
                             <span class="img_center">
                                 <div ng-init="myVar = '#app/productDetail/'">
-                                <a ng-href="{{myVar}}{{product.entity_id}}">
-                                    <img class="" src="img/cart-25.png" height="25" width="25" />
-                                 </a>
-                            </div>        
-                        </span>
-                        <span class="img_right">
-                                <img class="product_entity_id"  id='{{product.entity_id}}' src="img/save-25.png" height="25" width="25"  ng-click="doWhishlistAdd(product.entity_id)" />
-                        </span>
+                                    <a ng-href="{{myVar}}{{product.entity_id}}">
+                                        <img class="" src="img/cart-25.png" height="25" width="25" />
+                                     </a>
+                                </div>        
+                            </span>
+                            <span class="img_right">
+                            	<img class="product_entity_id"  id='{{product.entity_id}}' src="img/save-25.png" height="25" width="25"  ng-click="doWhishlistAdd(product.entity_id)" />
+                            </span>
                         </div>                        
                     </div>
         			</div>            
             </div> 	       
-            </div>
 		</div>
         
            
         
         <div style="clear:both">&nbsp;</div>
         <div class="p_title">Best Selling Products</div>
-        <div kinetic-slider class="kinetic-slider-container">
-            <div class="kinetic-slider-content">
-				<div class="p_lbl"><span class="">&nbsp;</span></div>
-                <div class="prod_slider-hk" ng-repeat="product in lists_best">			
+         <div class="row slider-gallery" id="gal3">
+	        <div class="prod_slider-hk" ng-repeat="product in lists_best">			
                 <div class="product-inner">
                 	<div class="p_lbl"><span class="new-lbl">New</span></div>       
                     <div ng-init="myVar = '#app/productDetail/'">
                         <a ng-href="{{myVar}}{{product.entity_id}}">
-                        <div class="product-image">
-                            <img image-lazy-src="{{product.image_url}}"
-                                 lazy-scroll-resize="true"
-                                 image-lazy-loader="lines">
-                        </div>
-                        </a>   
-                    </div>       
+                            <div class="product-image">
+                                <img image-lazy-src="{{product.image_url}}"
+                                     lazy-scroll-resize="true"
+                                     image-lazy-loader="lines">
+                            </div>
+                        </a>        
+					</div>                        
                     <div class="product-info">
                         <div class="product-name">
                             {{product.name}}
@@ -230,7 +236,7 @@
                       <div class="rating" style="width:{{product.ratings}}%;"></div>
                     </div>                    
                 </div>
-            </div>	
+			</div>	
                         <div  class="product-price">
                             <div class="price-box">
                               <span ng-if="product.discount != null" class="special-price">
@@ -264,40 +270,37 @@
                             <img src="img/share-25.png" height="25" width="25" />                
                             </span>
                             <span class="img_center">
-                	<div ng-init="myVar = '#app/productDetail/'">
-                        <a ng-href="{{myVar}}{{product.entity_id}}">
-                            <img class="" src="img/cart-25.png" height="25" width="25" />
-                         </a>
-                    </div>        
-                </span>
-                <span class="img_right">
-                	<img class="product_entity_id"  id='{{product.entity_id}}' src="img/save-25.png" height="25" width="25"  ng-click="doWhishlistAdd(product.entity_id)" />
-                </span>
+								<div ng-init="myVar = '#app/productDetail/'">
+                                    <a ng-href="{{myVar}}{{product.entity_id}}">
+                                        <img class="" src="img/cart-25.png" height="25" width="25" />
+                                     </a>
+                                </div>        
+                            </span>
+                            <span class="img_right">
+                            	<img class="product_entity_id"  id='{{product.entity_id}}' src="img/save-25.png" height="25" width="25"  ng-click="doWhishlistAdd(product.entity_id)" />
+                            </span>
                         </div>                        
                     </div>
         			</div>            
             </div> 	       
-            </div>
 		</div>
         
         
         <div style="clear:both">&nbsp;</div>
         <div class="p_title">Last Products</div>
-        <div kinetic-slider class="kinetic-slider-container">
-            <div class="kinetic-slider-content">
-				<div class="p_lbl"><span class="">&nbsp;</span></div>
-                <div class="prod_slider-hk" ng-repeat="product in lists_catalog">			
+        <div class="row slider-gallery" id="gal4">
+            <div class="prod_slider-hk" ng-repeat="product in lists_catalog">			
                 <div class="product-inner">
                 	<div class="p_lbl"><span class="new-lbl">New</span></div>       
                     <div ng-init="myVar = '#app/productDetail/'">
                         <a ng-href="{{myVar}}{{product.entity_id}}">
-                        <div class="product-image">
-                            <img image-lazy-src="{{product.image_url}}"
-                                 lazy-scroll-resize="true"
-                                 image-lazy-loader="lines">
-                        </div>
-                        </a>   
-                    </div>        
+                            <div class="product-image">
+                                <img image-lazy-src="{{product.image_url}}"
+                                     lazy-scroll-resize="true"
+                                     image-lazy-loader="lines">
+                            </div>
+                        </a>        
+					</div>                        
                     <div class="product-info">
                         <div class="product-name">
                             {{product.name}}
@@ -308,7 +311,7 @@
                       <div class="rating" style="width:{{product.ratings}}%;"></div>
                     </div>                    
                 </div>
-            </div>
+			</div>
                         <div  class="product-price">
                             <div class="price-box">
                               <span ng-if="product.discount != null" class="special-price">
@@ -342,20 +345,19 @@
                             <img src="img/share-25.png" height="25" width="25" />                
                             </span>
                             <span class="img_center">
-                	<div ng-init="myVar = '#app/productDetail/'">
-                        <a ng-href="{{myVar}}{{product.entity_id}}">
-                            <img class="" src="img/cart-25.png" height="25" width="25" />
-                         </a>
-                    </div>        
-                </span>
-                <span class="img_right">
-                	<img class="product_entity_id"  id='{{product.entity_id}}' src="img/save-25.png" height="25" width="25"  ng-click="doWhishlistAdd(product.entity_id)" />
-                </span>
+                            	<div ng-init="myVar = '#app/productDetail/'">
+                                    <a ng-href="{{myVar}}{{product.entity_id}}">
+                                        <img class="" src="img/cart-25.png" height="25" width="25" />
+                                     </a>
+                                </div>        
+                            </span>
+                            <span class="img_right">
+                            	<img src="img/save-25.png" height="25" width="25"  ng-click="doWhishlistAdd(product.entity_id)" />
+                            </span>
                         </div>                        
                     </div>
         			</div>            
             </div> 	       
-            </div>
 		</div>            
                 
 		<div style="clear:both">&nbsp;</div>

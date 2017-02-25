@@ -916,7 +916,7 @@ li.agent p {
 
 /*khunt*/
 .pp_title{white-space:pre-line;word-wrap:break-word;    min-height: 29px;    line-height: 1.1;}
-.product-inner{width:140px}
+.product-inner{width:140px !important}
 .slider-gallery .prod_slider-hk{
     width: 150px  !important;
 }

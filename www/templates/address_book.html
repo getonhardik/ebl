@@ -1,28 +1,35 @@
+<style>
+.c_box{border: 1px solid #E2E2E2;margin: 10px 0;font-size: 16px;font-weight: bold;color: #1E93C8;padding: 5px;
+box-shadow: 0.5px 1px 1px #999;overflow:hidden}
+.c_box b {    width: 80px !important;    float: left;	color:#787878}
+</style>
 <ion-view view-title="{{'Address Book' | translate}}">
 <ion-content overflow-scroll="false">
     <div class="list padding">
         
-        <div>
+        <div class="c_box">
             <b>Name</b>:&nbsp;{{address_detail.firstname}}&nbsp;{{address_detail.lastname}} 
         </div>
-        <div>
+        <div class="c_box">
             <b>Company</b>:&nbsp;{{address_detail.company}}
         </div>
-        <div>
+        <div class="c_box">
             <b>Street</b>:&nbsp;{{address_detail.street}}
         </div>
-        <div>
+        <div class="c_box">
             <b>City</b>:&nbsp;{{address_detail.city}}
         </div>
-        <div>
+        <div class="c_box">
             <b>Region</b>:&nbsp;{{address_detail.region}}
         </div>
-        <div>
+        <div class="c_box">
             <b>Postcode</b>:&nbsp;{{address_detail.postcode}}
         </div>
-        <div>
+        <div class="c_box">
             <b>Telephone</b>:&nbsp;{{address_detail.telephone}}
         </div>
+        
+        <a href="#app/editaddressbook">{{'Edit' | translate}}</a>
         
     </div>
 </ion-content>

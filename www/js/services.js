@@ -10,6 +10,7 @@ function Service($rootScope, $http, $ionicPopup) {
         menus: '/restconnect/?cmd=menu',
         products: '/restconnect/',
         login: '/restconnect/customer/login',
+        editAddress: '/restconnect/customer/editAddress',
         logout: '/restconnect/customer/logout',
         register: '/restconnect/customer/register',
         socialLogin: '/restconnect/customer/socialLogin',
@@ -23,7 +24,7 @@ function Service($rootScope, $http, $ionicPopup) {
         order: '/restconnect/products/test2',
         productDetail: '/restconnect/products/getproductdetail',
         addwishlist: '/restconnect/wishlist/addToWishlist',
-        removeWishList: '/restconnect/wishlist/removewishlist',
+        removeWishlist: '/restconnect/wishlist/removeWishlist',
         productImg: '/restconnect/products/getPicLists',
         productOption: '/restconnect/products/getcustomoption',
         cart: '/restconnect/cart/getCartInfo',	//获�?�购物车内容

@@ -1,74 +1,95 @@
 <style>
-    .table_top tr,.table_top td {
-    border: 1px solid black;
+.table_top tr, .table_top td {
+    border: 1px solid #E2E2E2;
     text-align: center;
+    font-size: 16px;
+    box-shadow: 0.5px 1px 2px #999;
+    color: #999999;
+    padding: 10px 0;
 }
+.icon-t{color:#2E2E2E}
     .table_top{
         margin-top: 10px !important;
     }
-
+.c_box{border: 1px solid #E2E2E2;
+padding: 8px 8px 3px;
+margin: 10px 0;
+font-size: 16px;
+font-weight: bold;
+color: #303030;
+box-shadow: 0.5px 1px 1px #999;overflow:hidden
+}
+.c_span1{float:left}
+.c_span2{float: left;
+margin-top: 7%;}
+.c_box.c_box2 {
+    padding: 8px;
+    margin-top: 30px;
+}
+.c_title{color:#797979;font-size:19px;}
 </style>
 <ion-view view-title="{{'Contact Us' | translate}}">
 <ion-content overflow-scroll="false">
     <div class="list padding">
-        <div style="padding:10px;font-size: 14px">
-            <span>Manage your orders</span>
+         <div style="padding:10px;font-size: 14px">
+            <span class="c_title">Manage your orders</span>
             <table class="table_top">
                 <tr>
                     <td style="width:100px">
+                        
                         <span class="ion-ios-paw"></span>
                         <br>
-                        Track
+                        <span class="icon-t">Track</span>
                     </td>
                     <td style="width:150px">
                         <span class="ion-ios-cart"></span>
                         <br>
-                        Cancel
+                        <span class="icon-t">Cancel</span>                        
                     </td>
                     <td style="width:100px">
                         <span class="ion-ios-cart"></span>
                         <br>
-                        Return
+                        <span class="icon-t">Return</span>                        
                     </td>
                 </tr>
             </table>
             <a href="sms:2011233922" style="text-decoration: none !important;color:#000000 !important">
-                <div style="border: 1px solid black;padding: 10px;margin-top: 30px !important;">
+                <div class='c_box c_box2'>
                     Leave a Message
                     <span class="ion-chevron-right" style="float:right"></span>
                 </div>
             </a>    
-            <div style="margin-top: 30px">Contact Details</div>
+            <div class="c_title" style="margin-top: 30px;margin-bottom:20px;">Contact Details</div>
             <a href="tel:2012032032" style="text-decoration: none !important;color:#000000 !important">
-                <div style="border: 1px solid black;padding: 10px;margin-top: 20px !important;">
-                    <span class="ion-android-call" style="float:left"></span>
-                    &nbsp;&nbsp; 0201 203 2032
+                <div class='c_box'>
+                    <span class="c_span1"><img src="img/call-c.png" width="54" height="55" /></span>
+                    <span class="c_span2">&nbsp;&nbsp; 0201 203 2032</span>
                 </div>
             </a>
             <a href="tel:2011233922" style="text-decoration: none !important;color:#000000 !important">
-                <div style="border: 1px solid black;padding: 10px;margin-top: 10px !important;">
-                    <span class="ion-iphone" style="float:left"></span>
-                    &nbsp;&nbsp;&nbsp;&nbsp;201-123-3922
+                <div class="c_box">
+					<span class="c_span1"><img src="img/call-c2.png" width="54" height="55" /></span>
+                    <span class="c_span2">&nbsp;&nbsp;201-123-3922</span>
                 </div>
             </a>
             <a href="mailto:hardik4hardik@gmail.com" style="text-decoration: none !important;color:#000000 !important">
-                <div style="border: 1px solid black;padding: 10px;margin-top: 10px !important;">
-                    <span class="ion-email" style="float:left"></span>
-                    &nbsp;&nbsp;mail@example.com
+                <div class="c_box">
+                	<span class="c_span1"><img src="img/msg-c.png" width="54" height="55" /></span>
+                    <span class="c_span2">&nbsp;&nbsp;mail@example.com</span>
                 </div>
             </a>
-            <div style="margin-top: 10px">Follow Us</div>
+            <div class="c_title" style="margin-top:25px;margin-bottom:20px">Follow Us</div>
             <table style="margin-top: 10px;text-align: center">
                 <tr>
                     <td style="width:100px">
-                        <span class="ion-social-twitter"></span>
+                        <img src="img/twt-c.png" width="74" height="74" />
                     </td>
                     <td style="width:100px">
-                        <span class="ion-social-facebook"></span>
+						<img src="img/fb-c.png" width="74" height="74" />
                     </td>
                     <td style="width:100px">
-                        <span class="ion-social-googleplus-outline"></span>
-                    </td>
+						<img src="img/pin-c.png" width="74" height="74"  />
+                     </td>
                 </tr>
             </table>
         </div>

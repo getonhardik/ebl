@@ -144,6 +144,15 @@ angular.module('app', [
                             }
                         }
                     })
+                    .state('app.editaddressbook', {
+                        url: '/editaddressbook',
+                        views: {
+                            'menuContent': {
+                                templateUrl: 'templates/editaddressbook.html',
+                                controller: 'editaddressbookCtrl'
+                            }
+                        }
+                    })
                     .state('app.my_account', {
                         url: '/my_account',
                         views: {

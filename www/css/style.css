@@ -1049,6 +1049,13 @@ border-radius:3px;}
 .button.add-to-cart-right.button-assertive.cart-my-btn.ng-binding {
     width: 40% !important;
 }
+.bar-stable.bar.bar-header.disable-user-behavior {
+    border-bottom: 2px solid #2C9FCE;
+}
+.bar.bar-stable .title {
+    color: #2C9FCE;
+    font-weight: bold;
+}
 /*end khunt*/
 /*added by archana 15-feb-2017*/
 .button-full-1{ background-color:#333333!important; color:#ffffff; text-transform:uppercase; border:none!important; font-size:25px; width:100%;}

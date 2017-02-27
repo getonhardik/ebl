@@ -1,24 +1,52 @@
 <style>
 .row {   border-bottom: solid 2px #999;}
+.c_title{color:#797979;font-size:14px;line-height:1.5;font-weight: initial;}
+.c_title2{color:#0191B6;font-size:14px;line-height:1.5;font-weight: initial;margin: 10px 0 10px 0;s}
+.c_box{border: 1px solid #E2E2E2;
+margin: 10px 0 25px;
+font-size: 16px;
+font-weight: bold;
+color: #303030;padding: 5px;
+box-shadow: 0.5px 1px 1px #999;overflow:hidden}
+.wl-box1{float:left;width:35%}
+.wl-box2{float:left;width:65%;}
+.p_footer, .p_footer img {
+    text-align: center !important;
+    width: 100%;
+    margin: 0 auto;
+    float: left;
+}
+.p_footer span {     float: left;    text-align: center !important;    background: #E5E5E5;
+    padding: 10px; width:auto !important;margin: 5px 9.5%}
+.p_footer span:first-child{margin-left:0}	
+.p_footer span:last-child{margin-right:0}	
+.order.c_box1 {    margin: 10px 10px !important;    overflow: hidden;}
 </style>
-<ion-view view-title="{{order_details | translate}}">
+<ion-view view-title="{{'order_details' | translate}}">
     <ion-content scroll="false" overflow-scroll="true">
         <ion-content lazy-scroll style="height:100%" overflow-scroll="true" direction="y" locking="true">
             
             <ion-list class="}">
-                <div class="order" collection-repeat="lists in orders">
-                    <div class="main_div">
-            	<div class="row">
-                	<div class="eid">
-                    Create Date: {{lists.created_at}}
-                    <br />
-                    Product id: {{lists.entity_id}}
-                    <br />
-                    Order Status: {{lists.status}}
-                    <br />
-                    Order Total: {{lists.grand_total}}</div>	                    
-                </div>            	
-            </div>
+                <div class="order c_box1" collection-repeat="lists in orders">                    
+                	<div class="row c_box">
+                        <div class="wl-box1">
+                            <img style="width:100px;padding:10px;" src="img/spash3.jpg">
+                        </div>
+                        <div class="wl-box2">
+                        	<!--
+                            <div class="c_title">                    
+                                {{lists.entity_id}}
+                            </div>-->
+                            <div class="c_title2">
+                            	<span style="color:#797979">Product id:</span> {{lists.entity_id}}<br />
+                                <span style="color:#797979">Create Date:</span><br /> {{lists.created_at}}
+                                <br />
+                                <span style="color:#797979">Order Status:</span> {{lists.status}}
+                                <br />
+                                <span style="color:#797979">Order Total:</span> {{lists.grand_total}}
+                            </div>                                          
+                        </div> 
+					</div>                        
                 </div>
             </ion-list>
             

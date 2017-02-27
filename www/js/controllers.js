@@ -300,7 +300,11 @@ angular.module('app.controllers', [])
                 product_id:p_id
             };
             
-            $rootScope.service.get('removeWishList', params, function (res) {
+            $rootScope.service.get('removeWishlist', params, function (res) {
+                alert(res.message);
+                $scope.wishlist_detail = res.data.items;
+                angular.extend($scope.wishlist_detail, res.data.items);
+                return;                
             });           
         };	
 
@@ -328,6 +332,17 @@ angular.module('app.controllers', [])
     })
     .controller('contactCtrl', function ($scope, $rootScope,$state,$stateParams,$cordovaEmailComposer) {
         
+    })
+    .controller('editaddressbookCtrl', function ($scope, $rootScope,$state,$stateParams,$cordovaEmailComposer) {
+        $scope.doEditaddrbook = function () {
+            console.log($scope.doEditaddrbook);
+        $scope.editaddrbookData.user_id = getStorage('user_id');    
+            $rootScope.service.get('editAddress', $scope.editaddrbookData, function (res) {
+                $state.go('app.address_book');
+                return;
+            });
+            
+        }
     })
     .controller('leave_feedbackCtrl', function ($scope, $rootScope,$state,$stateParams) {
         //alert($stateParams.name);

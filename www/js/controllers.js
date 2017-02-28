@@ -283,7 +283,7 @@ angular.module('app.controllers', [])
             });
         };
     })
-    .controller('wishlistCtrl', function ($scope, $rootScope,$state,$stateParams) {
+    .controller('wishlistCtrl', function ($scope, $rootScope,$state,$stateParams,$cordovaSocialSharing) {
         
         var u_id = getStorage('user_id');
         var params = {
@@ -316,13 +316,26 @@ angular.module('app.controllers', [])
     })
     .controller('address_bookCtrl', function ($scope, $rootScope,$state,$stateParams) {
         var u_id = getStorage('user_id');
+        $scope.address_detail = {};
         var params = {
             user_id: u_id,
         };
-
+        $scope.doDeleteaddrbook = function () {
+            $scope.showLoading();
+            var params = {
+                user_id: u_id,
+            };
+            
+            $rootScope.service.get('deleteAddress', params , function (results) {
+                $scope.hideLoading();
+                alert("Successfuly deleted");
+            });            
+        }
+        
         $rootScope.service.get('getAddress', params , function (results) {
             console.log(results.data[0]);
-            $scope.address_detail = results.data[0];
+//            $scope.address_detail = results.data[0];
+            angular.extend($scope.address_detail, results.data[0]);
         });
               
     })
@@ -334,9 +347,31 @@ angular.module('app.controllers', [])
         
     })
     .controller('editaddressbookCtrl', function ($scope, $rootScope,$state,$stateParams,$cordovaEmailComposer) {
+        $scope.editaddrbookData = {};
+        var u_id = getStorage('user_id');
+        var params = {
+            user_id: u_id,
+        };
+
+        $rootScope.service.get('getAddress', params , function (results) {
+            console.log(results.data[0]);
+            $scope.address_detail = results.data[0];
+            $scope.editaddrbookData = {
+                firstname: $scope.address_detail.firstname,
+                lastname: $scope.address_detail.lastname,
+                street: $scope.address_detail.street,
+                city: $scope.address_detail.city,
+                region: $scope.address_detail.region,
+                postcode: $scope.address_detail.postcode,
+                telephone: $scope.address_detail.telephone
+                
+            }
+            
+        });
         $scope.doEditaddrbook = function () {
-            console.log($scope.doEditaddrbook);
-        $scope.editaddrbookData.user_id = getStorage('user_id');    
+            
+        $scope.editaddrbookData.user_id = getStorage('user_id');
+        console.log($scope.editaddrbookData);
             $rootScope.service.get('editAddress', $scope.editaddrbookData, function (res) {
                 $state.go('app.address_book');
                 return;
@@ -1409,6 +1444,6 @@ angular.module('app.controllers', [])
 		};
         $rootScope.service.get('order', params, function (res) {
             console.log(res);
-			$scope.orders = res;
+            $scope.orders = res;
         });
     })

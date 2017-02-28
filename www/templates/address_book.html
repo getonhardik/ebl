@@ -11,9 +11,6 @@ box-shadow: 0.5px 1px 1px #999;overflow:hidden}
             <b>Name</b>:&nbsp;{{address_detail.firstname}}&nbsp;{{address_detail.lastname}} 
         </div>
         <div class="c_box">
-            <b>Company</b>:&nbsp;{{address_detail.company}}
-        </div>
-        <div class="c_box">
             <b>Street</b>:&nbsp;{{address_detail.street}}
         </div>
         <div class="c_box">
@@ -29,7 +26,8 @@ box-shadow: 0.5px 1px 1px #999;overflow:hidden}
             <b>Telephone</b>:&nbsp;{{address_detail.telephone}}
         </div>
         
-        <a href="#app/editaddressbook">{{'Edit' | translate}}</a>
+        <a href="#app/editaddressbook">{{'Add/Edit' | translate}}</a>
+        <a id="delete_addrbook" href="#" ng-click="doDeleteaddrbook()">{{'Delete' | translate}}</a>
         
     </div>
 </ion-content>

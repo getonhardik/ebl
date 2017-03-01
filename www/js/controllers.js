@@ -378,7 +378,7 @@ angular.module('app.controllers', [])
        // console.log($scope.editaddrbookData);
             $rootScope.service.get('editAddress', $scope.editaddrbookData, function (res) {
                 angular.extend($scope.address_detail, $scope.editaddrbookData);
-                $state.go('app.address_book', null, {reload: true});
+                $state.go('app.address_book');
                
                 return;
             });
@@ -475,13 +475,14 @@ angular.module('app.controllers', [])
                 product: p_id,
                 user: u_id,
             };
-			
+            $scope.showLoading();
             $rootScope.service.get('addwishlist', params, function (res) {
                 if (res.result == 'error') {
                     alert( res.message);
                     return;
                 }
                 if (res.result == 'success') {
+                    $scope.hideLoading();
                     alert($scope.translations.success+'\n\r'+ res.items_qty + ' '+ $scope.translations['items_in_cart']);
                     $scope.items_qty = res.items_qty;
                     return;
@@ -566,7 +567,7 @@ angular.module('app.controllers', [])
                 product: p_id,
                 user_id: u_id,
             };
-			
+            $scope.showLoading();
             $rootScope.service.get('addwishlist', params, function (res) {
                 console.log(res);
                 if (res.status == 'error') {
@@ -574,6 +575,7 @@ angular.module('app.controllers', [])
                     return;
                 }
                 if (res.status == 'SUCCESS') {
+                    $scope.hideLoading();
                     //alert($scope.translations.success+'\n\r'+ res.items_qty + ' '+ $scope.translations['items_in_cart']);
                     alert("Successfully Add to wishlist");
                     $scope.items_qty = res.items_qty;
@@ -999,12 +1001,14 @@ angular.module('app.controllers', [])
                 user: u_id,
             };
 //            alert(product_entity_id);
+            $scope.showLoading();
             $rootScope.service.get('addwishlist', params, function (res) {
                 if (res.result == 'error') {
                     alert( res.message);
                     return;
                 }
                 if (res.result == 'success') {
+                    $scope.hideLoading();
                     alert($scope.translations.success+'\n\r'+ res.items_qty + ' '+ $scope.translations['items_in_cart']);
                     $scope.items_qty = res.items_qty;
                     return;

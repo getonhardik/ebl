@@ -108,5 +108,6 @@ var en_US = {
     wishlist: 'My Wish List',
     cart: 'My Shopping Cart',
     network_error: 'Network Error',
-    check_network: 'Please check your network connection!'
+    check_network: 'Please check your network connection!',
+    addressbook_name:'Name'
 };

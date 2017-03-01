@@ -329,13 +329,17 @@ angular.module('app.controllers', [])
             $rootScope.service.get('deleteAddress', params , function (results) {
                 $scope.hideLoading();
                 alert("Successfuly deleted");
+                 $scope.address_detail = {};
+                angular.extend($scope.address_detail, $scope.address_detail);
             });            
         }
-        
+         console.log("KP1");
         $rootScope.service.get('getAddress', params , function (results) {
-            console.log(results.data[0]);
-//            $scope.address_detail = results.data[0];
-            angular.extend($scope.address_detail, results.data[0]);
+           // console.log(results.data[0]);
+           console.log("KP");
+            $scope.address_detail = results.data[0];
+            //console.log($scope.address_detail);
+           // angular.extend($scope.address_detail, results.data[0]);
         });
               
     })
@@ -371,9 +375,11 @@ angular.module('app.controllers', [])
         $scope.doEditaddrbook = function () {
             
         $scope.editaddrbookData.user_id = getStorage('user_id');
-        console.log($scope.editaddrbookData);
+       // console.log($scope.editaddrbookData);
             $rootScope.service.get('editAddress', $scope.editaddrbookData, function (res) {
-                $state.go('app.address_book');
+                angular.extend($scope.address_detail, $scope.editaddrbookData);
+                $state.go('app.address_book', null, {reload: true});
+               
                 return;
             });
             
@@ -439,6 +445,7 @@ angular.module('app.controllers', [])
 
             $scope.showLoading();
             $rootScope.service.get('products', params, function (lists) {
+                console.log(lists);
                 if (func === 'load') {
                     if (Array.isArray(lists) && lists.length) {
                         $scope.lists = $scope.lists.concat(lists);

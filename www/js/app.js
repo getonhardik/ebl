@@ -131,7 +131,8 @@ angular.module('app', [
                         views: {
                             'menuContent': {
                                 templateUrl: 'templates/address_book.html',
-                                controller: 'address_bookCtrl'
+                                controller: 'address_bookCtrl',
+                                cache: false
                             }
                         }
                     })

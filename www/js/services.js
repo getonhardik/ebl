@@ -49,7 +49,7 @@ function Service($rootScope, $http, $ionicPopup) {
    }else{
     params.___store = Config.getLocale();
    }
-			console.log(params);
+			//console.log(params);
 		//params+='&__store='+ Config.getLocale();
             var url = Config.baseUrl  + api[key] ;
 

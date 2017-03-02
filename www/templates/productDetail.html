@@ -1,8 +1,65 @@
-<script>
-$(function() {
-	$( "#gal4" ).bootslider({snapToItem:  false});
-});
-</script>
+<style>
+.slick-container {
+  width: 95%;
+  margin: auto;
+  padding: 5px;
+}
+
+.slick-item {}
+
+.slick-item img {
+  margin: auto;
+}
+.product-inner {
+    border: solid 1px #666;
+    margin: 0 5px;
+    border-radius: 5px;
+    text-align: center !important;padding:2px 0;overflow: hidden;
+}
+
+.prod_slider img {
+    /*height: 150px;*/
+	margin-top: 2px !important;
+}
+.product-name.ng-binding {
+    font-size: 11px;
+    color: #777;
+}
+.price-box .price, .category-products .product .price-box .price {
+    color: #06C;font-size:90%}
+	.new-lbl {
+   background: #009900;
+color: #FFF;
+padding: 0 4px;
+margin:3px;
+border-radius: 3px !important;
+}.p_lbl {
+    text-align: right;
+}
+.p_footer img {
+    width: auto !important;
+}
+.img_left{}
+.img_center{text-align:center}
+.img_right{text-align:right}
+.p_footer,.p_footer img{text-align:center !important}
+.p_footer span {
+    width: 33% !important;
+    float: left;
+    text-align: center !important;
+}
+.p_rating img {
+    width: 66%;
+    height: 50%;
+}
+.bar.bar-assertive.bar-footer{background:#FFF !important}
+.bar.bar-assertive{background-color:#FFF !important;border:none !important}
+.bar-assertive .button {
+    border-color: #CCC;    margin-right: 3px;
+    background-color:#CCC;
+    color: #0088CC;
+}
+</style>
 <ion-view view-title="{{'product_detail' | translate}}">
     <ion-nav-bar class="bar-stable">
         <ion-nav-back-button class="button-icon ion-arrow-left-c">
@@ -328,76 +385,74 @@ $(function() {
         	<br />
             <p class="b_title">{{'customer_who' | translate}}</p>
             <br />
-            <div class="row slider-gallery" id="gal4">
-            <div class="prod_slider-hk" ng-repeat="product in lists_new">			
+            <div class="prodlist ">
+            <slick ng-if="dataLoaded1" init-onload="false" data="dataLoaded1" variable-width="true"  slides-to-scroll="2"  infinite="true"  slides-to-show="2" dots="true">
+
+            <div class="prod_slider slick-item"  ng-repeat="product in lists_new">			
                 <div class="product-inner">
-                <div class="p_lbl"><span class="new-lbl">New</span></div>       
-                <div ng-init="myVar = '#app/productDetail/'">
-                    <a ng-href="{{myVar}}{{product.entity_id}}">
-                        <div class="product-image">
-                            <img image-lazy-src="{{product.image_url}}"
-                                 lazy-scroll-resize="true"
-                                 image-lazy-loader="lines">
-                        </div>
-                    </a>        
-                </div>                        
-                <div class="product-info">
-                    <div class="product-name">
-                       <p class="pp_title"> {{product.name}}</p>
-                    </div>
-                    <div class="p_rating">                
-                        <div class="ratings">
-                            <div class="rating-box">
-                              <div class="rating" style="width:{{product.ratings}}%;"></div>
-                            </div>                    
-                        </div>
-                    </div>
-                    <div  class="product-price">
-                        <div class="price-box">
-                          <span ng-if="product.discount != null" class="special-price">
-                              <span class="special-price">
-                                  <span class="price">
-                                      {{product.symbol}}{{product.final_price_with_tax}}
-                                  </span>
-                                  &nbsp;
-                                  <span class="old-price">
-                                      {{product.regular_price_with_tax | number:0}}
-                                  </span>
-                              </span>
+                <div class="p_lbl"><span class="new-lbl">New</span></div>
+        <a href="#app/productDetail/{{product.entity_id}}">
+            <div class="product-image">
+                <img image-lazy-src="{{product.image_url}}"  lazy-scroll-resize="true"
+                             image-lazy-loader="lines"
+                   >
+            </div>
+        </a>        
+        <div class="product-info">
+            <div class="product-name">
+                {{product.name}}
+            </div>
+        	<div class="p_rating">                
+                            <div class="ratings">
+                                <div class="rating-box">
+                                  <div class="rating" style="width:{{product.ratings}}%;"></div>
+                                </div>                    
+                            </div>
+                        </div>	
+            <div  class="product-price">
+                <div class="price-box">
+                  <span ng-if="product.discount != null" class="special-price">
+                      <span class="special-price">
+                          <span class="price">
+                              {{product.symbol}}{{product.final_price_with_tax}}
                           </span>
-                          <span ng-if="product.discount == null" class="special-price">
-                              <span class="special-price">
-                                  <span class="price">
-                                      {{product.symbol}}{{product.regular_price_with_tax}}
-                                  </span>
-                              </span>
+                          &nbsp;
+                          <span class="old-price">
+                              {{product.regular_price_with_tax | number:0}}
                           </span>
-                          <span ng-show="0" ng-if="product.discount!=null" class="discount {{price_percent_class}}">
-                              <span class="price">
-                                  {{product.discount}}
-                              </span>
+                      </span>
+                  </span>
+                  <span ng-if="product.discount == null" class="special-price">
+                      <span class="special-price">
+                          <span class="price">
+                              {{product.symbol}}{{product.regular_price_with_tax}}
                           </span>
-                        </div>
-                    </div>
-                    
-                    <div class="p_footer">
-                        <span class="img_left">
-                        <img src="img/share-25.png" height="25" width="25" />                
-                        </span>
-                        <span class="img_center">
-                            <div ng-init="myVar = '#app/productDetail/'">
-                                <a ng-href="{{myVar}}{{product.entity_id}}">
-                                    <img class="" src="img/cart-25.png" height="25" width="25" />
-                                 </a>
-                            </div>        
-                        </span>
-                        <span class="img_right">
-                            <img src="img/save-25.png" height="25" width="25"  ng-click="doWhishlistAdd(product.entity_id)" />
-                        </span>
-                    </div>                        
+                      </span>
+                  </span>
+                  <span ng-show="0" ng-if="product.discount!=null" class="discount {{price_percent_class}}">
+                      <span class="price">
+                          {{product.discount}}
+                      </span>
+                  </span>
                 </div>
-                </div>            
-            </div> 	       
+            </div>
+            
+            <div class="p_footer">
+            	<span class="img_left">
+            	<img src="img/share-25.png" height="25" width="25" />                
+                </span>
+                <span class="img_center">
+                <img class="" src="img/cart-25.png" height="25" width="25" />
+                </span>
+                <span class="img_right">
+                <img class="" src="img/save-25.png" height="25" width="25" />
+                </span>
+            </div>
+            
+        </div>
+        </div>            
+            </div> 
+            </slick>
         </div> 
         <br><br><br>               
 	</div>

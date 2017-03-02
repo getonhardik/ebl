@@ -695,6 +695,46 @@ angular.module('app.controllers', [])
         };
         //end éš?ç§?
         $scope.doRegister = function () {
+            if(!$scope.registerData.firstname){
+                    $ionicPopup.alert({
+                            title: 'error',
+                            subTitle: 'First name is required.',
+                            okType: 'buttonhk'
+                    });	
+                    return;		
+            }
+            if(!$scope.registerData.middlename){
+                    $ionicPopup.alert({
+                            title: 'error',
+                            subTitle: 'Middle name is required.',
+                            okType: 'buttonhk'
+                    });	
+                    return;		
+            }
+            if(!$scope.registerData.lastname){
+                    $ionicPopup.alert({
+                            title: 'error',
+                            subTitle: 'Last name is required.',
+                            okType: 'buttonhk'
+                    });	
+                    return;		
+            }
+            if(!$scope.registerData.email){
+                    $ionicPopup.alert({
+                            title: 'error',
+                            subTitle: 'Email is required.',
+                            okType: 'buttonhk'
+                    });	
+                    return;		
+            }
+            if(!$scope.registerData.password){
+                    $ionicPopup.alert({
+                            title: 'error',
+                            subTitle: 'Password is required.',
+                            okType: 'buttonhk'
+                    });	
+                    return;		
+            }
 /*            if ($scope.registerData.password !== $scope.registerData.confirmation) {
                 alert($scope.translations.need_confirm_pwd );
                 return;

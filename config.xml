@@ -71,10 +71,7 @@
     <allow-navigation href="http://*/*" />
     <preference name="xwalkVersion" value="14+" />
     <preference name="xwalkCommandLine" value="--disable-pull-to-refresh-effect" />
-    <preference name="xwalkMode" value="embedded" />
-	<feature name="File">
-        <param name="android-package" value="org.apache.cordova.file.FileUtils" />
-    </feature>
+   
     <plugin name="cordova-plugin-device"   />
     <plugin name="cordova-plugin-geolocation"   />
     <plugin name="cordova-plugin-inappbrowser"  />

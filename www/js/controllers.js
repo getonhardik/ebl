@@ -1195,6 +1195,11 @@ angular.module('app.controllers', [])
         $scope.hasInit = false;
         $scope.loadOver = false;
 
+       $scope.dataLoaded1 = false;
+		$scope.dataLoaded2 = false;
+		$scope.dataLoaded3 = false;
+		$scope.dataLoaded4 = false;
+		
         var getList = function (func, callback) {
             if (func === 'load') {
                 $scope.listPge++;
@@ -1210,15 +1215,15 @@ angular.module('app.controllers', [])
             $rootScope.service.get('products', params, function (lists_new) {
 		$scope.hasInit = true;
                 $scope.lists_new = lists_new;
+				$timeout(function(){
+				$scope.dataLoaded2 = true;
+			  });
+				
             });
             $scope.hideLoading();
         };
         getList('refresh');
-        //$timeout(callAtTimeout1, 3000);
-        function callAtTimeout1(){
-            $("#lists_new").slick({infinite:true,slidesToShow:2,slidesToScroll:1});
-        }
-		
+       
 		var getList2 = function (func, callback) {
             if (func === 'load') {
                 $scope.listPge++;
@@ -1234,15 +1239,14 @@ angular.module('app.controllers', [])
             $rootScope.service.get('products', params, function (lists_best) {
 				$scope.hasInit = true;
                 $scope.lists_best = lists_best;
+				$timeout(function(){
+				$scope.dataLoaded3 = true;
+			  });
             });
             $scope.hideLoading();
         };
         getList2('refresh');
-        $timeout(callAtTimeout2, 7000);
-        function callAtTimeout2(){
-            $(".slick-container").slick({infinite:true,slidesToShow:2,slidesToScroll:1});
-        }
-		
+      
 		var getList3 = function (func, callback) {
             if (func === 'load') {
                 $scope.listPge++;
@@ -1259,14 +1263,13 @@ angular.module('app.controllers', [])
                 $scope.hasInit = true;
                 $scope.lists_daily = lists_daily;
                 $scope.loading1 = false;
+				$timeout(function(){
+				$scope.dataLoaded1 = true;
+			  });
             });
             $scope.hideLoading();
         };
         getList3('refresh');
-        //$timeout(callAtTimeout3, 3000);
-        function callAtTimeout3(){
-            $("#lists_daily").slick({infinite:true,slidesToShow:2,slidesToScroll:1});
-        }
 		
 		var getList4 = function (func, callback) {
             if (func === 'load') {
@@ -1283,14 +1286,13 @@ angular.module('app.controllers', [])
             $rootScope.service.get('products', params, function (lists_catalog) {
 				$scope.hasInit = true;
                 $scope.lists_catalog = lists_catalog;
+				$timeout(function(){
+				$scope.dataLoaded4 = true;
+			  });
             });
             $scope.hideLoading();
         };
         getList4('refresh');
-       // $timeout(callAtTimeout4, 3000);
-        function callAtTimeout4(){
-            $("#lists_catalog").slick({infinite:true,slidesToShow:2,slidesToScroll:1});
-        }
 		
 		//daily_sale
 		/*end khunt*/

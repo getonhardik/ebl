@@ -228,38 +228,15 @@ angular.module('app.controllers', [])
                     $state.go('app.home');
                     return;
                 }
-                
-				$ionicPopup.alert( 
-				{
-						title: 'error',
-						subTitle: res.errors,
-						okType: 'buttonhk'
-					}
-				);
-				//alert( res.errors);
+                alert( res.errors);
             });
                     },
                     function (error) {
-                        
-						$ionicPopup.alert( 
-						{
-								title: 'Facebook error',
-								subTitle: error.error_description,
-								okType: 'buttonhk'
-							}
-						);
-						//alert('Facebook error: ' + error.error_description);
+                        alert('Facebook error: ' + error.error_description);
                     });
                 //$scope.closeLogin();
             } else {
-				$ionicPopup.alert( 
-				{
-						title: 'Facebook error',
-						subTitle: 'Facebook login failed',
-						okType: 'buttonhk'
-					}
-				);	
-                //alert('Facebook login failed');
+                alert('Facebook login failed');
             }
         });
 };
@@ -275,15 +252,7 @@ angular.module('app.controllers', [])
       };
         $scope.doLogin = function () {
              if (!$scope.loginData.username || !$scope.loginData.password) {
-                           
-						   	$ionicPopup.alert( 
-							{
-									title: 'error',
-									subTitle: 'Please enter username and password',
-									okType: 'buttonhk'
-								}
-							);
-						    //alert('Please enter username and password');
+                            alert('Please enter username and password');
                                 return;
                             }
             $scope.showLoading();
@@ -291,15 +260,7 @@ angular.module('app.controllers', [])
                 $scope.hideLoading();
 
                 if (res.code || res.message) {
-					
-					$ionicPopup.alert( 
-					{
-							title: 'error',
-							subTitle: es.message || res.code,
-							okType: 'buttonhk'
-						}
-					);
-                    //alert(res.message || res.code);
+                    alert(res.message || res.code);
                     return;
                 }
                 setStorage('user_name',res.name);
@@ -322,7 +283,7 @@ angular.module('app.controllers', [])
             });
         };
     })
-    .controller('wishlistCtrl', function ($scope, $rootScope,$state,$stateParams,$cordovaSocialSharing, $ionicPopup) {
+    .controller('wishlistCtrl', function ($scope, $rootScope,$state,$stateParams,$cordovaSocialSharing) {
         
         var u_id = getStorage('user_id');
         var params = {
@@ -340,14 +301,7 @@ angular.module('app.controllers', [])
             };
             
             $rootScope.service.get('removeWishlist', params, function (res) {
-				$ionicPopup.alert( 
-				{
-						title: 'error',
-						subTitle: res.message,
-						okType: 'buttonhk'
-					}
-				);
-                //alert(res.message);
+                alert(res.message);
                 $scope.wishlist_detail = res.data.items;
                 angular.extend($scope.wishlist_detail, res.data.items);
                 return;                
@@ -360,7 +314,7 @@ angular.module('app.controllers', [])
         });
                 
     })
-    .controller('address_bookCtrl', function ($scope, $rootScope,$state,$stateParams, $ionicPopup) {
+    .controller('address_bookCtrl', function ($scope, $rootScope,$state,$stateParams) {
         var u_id = getStorage('user_id');
         $scope.address_detail = {};
         var params = {
@@ -374,15 +328,8 @@ angular.module('app.controllers', [])
             
             $rootScope.service.get('deleteAddress', params , function (results) {
                 $scope.hideLoading();
-                $ionicPopup.alert( 
-				{
-						title: 'success',
-						subTitle: 'Successfuly deleted',
-						okType: 'buttonhk'
-					}
-				);
-				//alert("Successfuly deleted");
-                $scope.address_detail = {};
+                alert("Successfuly deleted");
+                 $scope.address_detail = {};
                 angular.extend($scope.address_detail, $scope.address_detail);
             });            
         }
@@ -442,7 +389,7 @@ angular.module('app.controllers', [])
         //alert($stateParams.name);
         
     })
-    .controller('my_accountCtrl', function ($scope, $rootScope,$state,$ionicPopup, $cordovaSocialSharing,$ionicPlatform) {
+    .controller('my_accountCtrl', function ($scope, $rootScope,$state,$cordovaSocialSharing,$ionicPlatform) {
             console.log($rootScope.user_data);
             $scope.name = getStorage('user_name');
             $scope.email = getStorage('user_email');
@@ -468,7 +415,7 @@ angular.module('app.controllers', [])
 //                        });            
         }
     })
-.controller('CategoryListCtrl', function ($scope, $rootScope, $ionicPopup,$stateParams, $translate) {
+.controller('CategoryListCtrl', function ($scope, $rootScope, $stateParams, $translate) {
         $scope.listTitle = {
             daily_sale: 'latest_promotions',
             'new': 'common_products',
@@ -531,14 +478,7 @@ angular.module('app.controllers', [])
             $scope.showLoading();
             $rootScope.service.get('addwishlist', params, function (res) {
                 if (res.result == 'error') {
-                    $ionicPopup.alert( 
-					{
-							title: 'erro',
-							subTitle: res.message,
-							okType: 'buttonhk'
-						}
-					);
-					//alert( res.message);
+                    alert( res.message);
                     return;
                 }
                 if (res.result == 'success') {
@@ -561,7 +501,7 @@ angular.module('app.controllers', [])
 
     })
 
-	.controller('CategoryProductListCtrl', function ($scope, $rootScope, $ionicPopup, $stateParams, $translate,$cordovaSocialSharing) {
+	.controller('CategoryProductListCtrl', function ($scope, $rootScope, $stateParams, $translate,$cordovaSocialSharing) {
            
         $scope.listTitle = {
             daily_sale: 'latest_promotions',
@@ -637,14 +577,7 @@ angular.module('app.controllers', [])
                 if (res.status == 'SUCCESS') {
                     $scope.hideLoading();
                     //alert($scope.translations.success+'\n\r'+ res.items_qty + ' '+ $scope.translations['items_in_cart']);
-					$ionicPopup.alert( 
-					{
-							title: 'success',
-							subTitle: 'Successfully Add to wishlist',
-							okType: 'buttonhk'
-						}
-					);
-                    //alert("Successfully Add to wishlist");
+                    alert("Successfully Add to wishlist");
                     $scope.items_qty = res.items_qty;
                     return;
                 }
@@ -729,25 +662,11 @@ angular.module('app.controllers', [])
                     $state.go('app.home');
                     return;
                 }
-				$ionicPopup.alert( 
-				{
-						title: 'error',
-						subTitle: res.errors,
-						okType: 'buttonhk'
-					}
-				);
-                //alert( res.errors);
+                alert( res.errors);
             });
                     },
                     function (error) {
-						$ionicPopup.alert( 
-						{
-								title: 'error',
-								subTitle: error.error_description,
-								okType: 'buttonhk'
-							}
-						);
-                        //alert('Facebook error: ' + error.error_description);
+                        alert('Facebook error: ' + error.error_description);
                     });
                 //$scope.closeLogin();
             } else {
@@ -760,27 +679,12 @@ angular.module('app.controllers', [])
                 $scope.hideLoading();
 
                 if (res.status==true) {
-                    $ionicPopup.alert( 
-					{
-							title: 'success',
-							subTitle: 'Register Successfully Done',
-							okType: 'buttonhk'
-						}
-					);
-					//alert('Register Successfully Done');
+                    alert('Register Successfully Done');
                     $scope.getUser();
                     $state.go('app.home');
                     return;
-                }												
-                
-				$ionicPopup.alert( 
-				{
-						title: 'error',
-						subTitle: res.errors,
-						okType: 'buttonhk'
-					}
-				);
-				
+                }
+                alert( res.errors);
             });
         };
     })
@@ -799,7 +703,6 @@ angular.module('app.controllers', [])
 
         $scope.getPwd = function () {
             if (!$scope.pwdData.email) {
-				
                 alert($scope.translations.enter_email);
                 return;
             }

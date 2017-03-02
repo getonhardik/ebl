@@ -915,16 +915,6 @@ li.agent p {
 }
 
 /*khunt*/
-.popup-title {
-    font-weight: bold;
-    text-transform: uppercase;
-}
-.popup-buttons{padding:0px !important;min-height: 50px !important}
-.popup-head {border-bottom: 1px solid #999; }
-.popup {border-radius: 5px !important;}
-.popup-sub-title {font-size: 15px;}
-.buttonhk.ng-binding {padding: 0;margin: 0;background: transparent;border: none;height: 20px;
-color: #0088CC;font-weight: bold;}
 .pp_title{white-space:pre-line;word-wrap:break-word;    min-height: 29px;    line-height: 1.1;}
 .product-inner{width:140px !important}
 .slider-gallery .prod_slider-hk{

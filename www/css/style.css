@@ -1196,7 +1196,7 @@ h3.menu-title{ color:#333; font-family: myFirstFont!important; font-size:18px;pa
 
 .ion-person1{background:url(../img/default-profile.png) no-repeat scroll 0% 0%;float:left; width:70px; height:70px; margin-top:5px;}
 
-.header-set1 { background:#0188cc!important; height:150px!important;}
+.header-set1 { background:#0188cc!important; min-height:150px;}
 
 .menu-h-set{ top:150px!important;}
 

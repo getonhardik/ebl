@@ -974,6 +974,32 @@ angular.module('app.controllers', [])
         $rootScope.service.get('productDetail', {
             productid: $stateParams.productid
         }, function (results) {
+            console.log(results.attributeOptions.Size);
+			
+			$scope.dbs = results.attributeOptions.Size;
+			//$scope.db = '10';
+			//$scope.selected = null;
+			$scope.setSelected = function(id) {
+				$scope.db = id; 
+				$ionicPopup.alert({
+					title: 'Success',
+					subTitle: 'Size selected done.',
+					okType: 'buttonhk'
+				});
+			}
+			
+			
+			$scope.dbs2 = results.attributeOptions.Color;
+			//$scope.db = '10';
+			//$scope.selected = null;
+			$scope.setSelected2 = function(id) {
+				$scope.db2 = id; 
+				$ionicPopup.alert({
+					title: 'Success',
+					subTitle: 'Color selected done.',
+					okType: 'buttonhk'
+				});
+			}
             $scope.product = results;
             $scope.totalPrice = +$scope.product.final_price_with_tax;
             $scope.oldPrice = +$scope.product.regular_price_with_tax;

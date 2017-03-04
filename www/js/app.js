@@ -318,3 +318,9 @@ function explode(sep, string) {
 function urlencode(data) {
     return encodeURIComponent(data);
 }
+
+window.onload = function(){
+ if ( Config.getLocale()=='arabic') {
+	 document.getElementById('lang_css').href = 'css/lang_sa.css';
+ }
+}

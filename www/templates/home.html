@@ -10,12 +10,8 @@
 .slick-item img {
   margin: auto;
 }
-.product-inner {
-    border: solid 1px #666;
-    margin: 0 5px;
-    border-radius: 5px;
-    text-align: center !important;padding:2px 0;overflow: hidden;
-}
+.product-inner {  border: solid 1px #E6E6E6;margin: 0 5px;border-radius: 5px;text-align: center !important;padding: 2px 0;overflow: hidden;
+box-shadow: 1px 1px 3px #E6E6E6;}
 
 .prod_slider img {
     /*height: 150px;*/
@@ -52,7 +48,7 @@ border-radius: 3px !important;
     width: 66%;
     height: 50%;
 }
-.bar.bar-assertive.bar-footer{background:none !important}
+.bar.bar-assertive.bar-footer{background:#FFF !important}
 .bar.bar-assertive{background-color:#FFF !important;border:none !important}
 .bar-assertive .button {
     border-color: #CCC;    margin-right: 3px;
@@ -93,17 +89,17 @@ border-radius: 3px !important;
         <div class="p_title">{{'special_offers' | translate}}</div>
         <div style="width:50px;margin:0 auto">
             <img id="mySpinner" src="img/loading1.gif" width="100%" height="50px" ng-show="loading1" />
-        </div>
-        
+        </div>        
         <div class="prodlist ">
-            <slick ng-if="dataLoaded1" init-onload="false" data="dataLoaded1" variable-width="true"  slides-to-scroll="2"  infinite="true"  slides-to-show="2" dots="true">
+            <slick ng-if="dataLoaded1" init-onload="false" data="dataLoaded1" variable-width="true"  slides-to-scroll="2"  infinite="true"  slides-to-show="2">
 
             <div class="prod_slider slick-item"  ng-repeat="product in lists_daily">			
                 <div class="product-inner">
                 <div class="p_lbl"><span class="new-lbl">New</span></div>
         <a href="#app/productDetail/{{product.entity_id}}">
             <div class="product-image">
-                <img src="{{product.image_url}}"
+                <img image-lazy-src="{{product.image_url}}"  lazy-scroll-resize="true"
+                             image-lazy-loader="lines"
                    >
             </div>
         </a>        
@@ -148,13 +144,19 @@ border-radius: 3px !important;
             
             <div class="p_footer">
             	<span class="img_left">
-            	<img src="img/share-25.png" height="25" width="25" />                
+            	<a href="#" ng-click="sharewithfriend()">
+                    <img src="img/share-25.png" height="25" width="25" />                
+                </a>                
                 </span>
                 <span class="img_center">
-                <img class="" src="img/cart-25.png" height="25" width="25" />
+                	<div ng-init="myVar = '#app/productDetail/'">
+                        <a ng-href="{{myVar}}{{product.entity_id}}">
+                            <img class="" src="img/cart-25.png" height="25" width="25" />
+                         </a>
+                    </div>        
                 </span>
                 <span class="img_right">
-                <img class="" src="img/save-25.png" height="25" width="25" />
+                	<img class="product_entity_id"  id='{{product.entity_id}}' src="img/save-25.png" height="25" width="25"  ng-click="doWhishlistAdd(product.entity_id)" />
                 </span>
             </div>
             
@@ -180,8 +182,9 @@ border-radius: 3px !important;
                 <div class="p_lbl"><span class="new-lbl">New</span></div>
             <a href="#app/productDetail/{{product.entity_id}}">
                 <div class="product-image">
-                    <img src="{{product.image_url}}"
-                         >
+                    <img image-lazy-src="{{product.image_url}}"
+                         lazy-scroll-resize="true"
+                         image-lazy-loader="lines">
                 </div>
             </a>
             
@@ -226,13 +229,19 @@ border-radius: 3px !important;
                 
                 <div class="p_footer">
             	<span class="img_left">
-            	<img src="img/share-25.png" height="25" width="25" />                
+            	<a href="#" ng-click="sharewithfriend()">
+                    <img src="img/share-25.png" height="25" width="25" />                
+                </a>                
                 </span>
                 <span class="img_center">
-                <img class="" src="img/cart-25.png" height="25" width="25" />
+                	<div ng-init="myVar = '#app/productDetail/'">
+                        <a ng-href="{{myVar}}{{product.entity_id}}">
+                            <img class="" src="img/cart-25.png" height="25" width="25" />
+                         </a>
+                    </div>        
                 </span>
                 <span class="img_right">
-                <img class="" src="img/save-25.png" height="25" width="25" />
+                	<img class="product_entity_id"  id='{{product.entity_id}}' src="img/save-25.png" height="25" width="25"  ng-click="doWhishlistAdd(product.entity_id)" />
                 </span>
             </div>
             </div>
@@ -249,7 +258,7 @@ border-radius: 3px !important;
             <img id="mySpinner" src="img/loading1.gif" width="100%" height="50px" ng-show="loading1" />
         </div>
          <div class="prodlist ">	    
-       <slick ng-if="dataLoaded3" init-onload="false" data="dataLoaded3" variable-width="true"  slides-to-scroll="2"   infinite="true" slides-to-show="3" dots="true">
+       <slick ng-if="dataLoaded3" init-onload="false" data="dataLoaded3" variable-width="true"  slides-to-scroll="2"   infinite="true" slides-to-show="3">
     	 
 	           
             <div class="prod_slider slick-item" ng-repeat="product in lists_best">			
@@ -257,8 +266,9 @@ border-radius: 3px !important;
                 <div class="p_lbl"><span class="new-lbl">New</span></div>
             <a href="#app/productDetail/{{product.entity_id}}">
                 <div class="product-image">
-                    <img src="{{product.image_url}}"
-                         >
+                    <img image-lazy-src="{{product.image_url}}"
+                         lazy-scroll-resize="true"
+                         image-lazy-loader="lines">
                 </div>
             </a>
             
@@ -302,13 +312,19 @@ border-radius: 3px !important;
                 </div>
                 <div class="p_footer">
             	<span class="img_left">
-            	<img src="img/share-25.png" height="25" width="25" />                
+            	<a href="#" ng-click="sharewithfriend()">
+                    <img src="img/share-25.png" height="25" width="25" />                
+                </a>                
                 </span>
                 <span class="img_center">
-                <img class="" src="img/cart-25.png" height="25" width="25" />
+                	<div ng-init="myVar = '#app/productDetail/'">
+                        <a ng-href="{{myVar}}{{product.entity_id}}">
+                            <img class="" src="img/cart-25.png" height="25" width="25" />
+                         </a>
+                    </div>        
                 </span>
                 <span class="img_right">
-                <img class="" src="img/save-25.png" height="25" width="25" />
+                	<img class="product_entity_id"  id='{{product.entity_id}}' src="img/save-25.png" height="25" width="25"  ng-click="doWhishlistAdd(product.entity_id)" />
                 </span>
             </div>
             </div>
@@ -324,7 +340,7 @@ border-radius: 3px !important;
             <img id="mySpinner" src="img/loading1.gif" width="100%" height="50px" ng-show="loading1" />
         </div>
         <div class="prodlist ">	
-        <slick ng-if="dataLoaded4" init-onload="false" data="dataLoaded4" variable-width="true" slides-to-scroll="2"   infinite="true" slides-to-show="3" dots="true">
+        <slick ng-if="dataLoaded4" init-onload="false" data="dataLoaded4" variable-width="true" slides-to-scroll="2"   infinite="true" slides-to-show="3">
     	 
 	          
             <div class="prod_slider slick-item" ng-repeat="product in lists_catalog">			
@@ -332,8 +348,9 @@ border-radius: 3px !important;
                 <div class="p_lbl"><span class="new-lbl">New</span></div>
             <a href="#app/productDetail/{{product.entity_id}}">
                 <div class="product-image">
-                    <img src="{{product.image_url}}"
-                         >
+                    <img image-lazy-src="{{product.image_url}}"
+                         lazy-scroll-resize="true"
+                         image-lazy-loader="lines">
                 </div>
             </a>
             
@@ -379,13 +396,19 @@ border-radius: 3px !important;
                 
                 <div class="p_footer">
             	<span class="img_left">
-            	<img src="img/share-25.png" height="25" width="25" />                
+            	<a href="#" ng-click="sharewithfriend()">
+                    <img src="img/share-25.png" height="25" width="25" />                
+                </a>                
                 </span>
                 <span class="img_center">
-                <img class="" src="img/cart-25.png" height="25" width="25" />
+                	<div ng-init="myVar = '#app/productDetail/'">
+                        <a ng-href="{{myVar}}{{product.entity_id}}">
+                            <img class="" src="img/cart-25.png" height="25" width="25" />
+                         </a>
+                    </div>        
                 </span>
                 <span class="img_right">
-                <img class="" src="img/save-25.png" height="25" width="25" />
+                	<img src="img/save-25.png" height="25" width="25"  ng-click="doWhishlistAdd(product.entity_id)" />
                 </span>
             </div>
             </div>

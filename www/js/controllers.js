@@ -875,11 +875,13 @@ angular.module('app.controllers', [])
 
             $scope.changeLocale = function () {
                 $scope.locale = this.language.store_code;
-                if ($scope.locale == 'arabic') {
-                    $translate.use('ar_SA');
-                } else {
-                    $translate.use('en_US');
-                }
+                if($scope.locale=='arabic'){
+				   $translate.use('ar_SA');
+				   document.getElementById('lang_css').href = 'css/lang_sa.css';
+			}else {
+				   $translate.use('en_US');
+				   document.getElementById('lang_css').href = 'css/lang_en.css';
+			}
                 Config.setLocale($scope.locale);
                 $rootScope.service.get('menus', {}, function (results) {
                     angular.extend($scope.dynamic_menus, results);
@@ -1253,7 +1255,7 @@ angular.module('app.controllers', [])
         })
 
         // homeä¸­ï¼Œå?–bannerï¼Œå¿«é€Ÿæ?œç´¢
-        .controller('HomeCtrl', function ($scope, $rootScope, $state, $ionicSlideBoxDelegate, $timeout) {
+        .controller('HomeCtrl', function ($scope, $rootScope, $state, $ionicSlideBoxDelegate, $timeout,$ionicPopup,$cordovaSocialSharing) {
             $scope.searchData = {};
 
 
@@ -1381,6 +1383,61 @@ angular.module('app.controllers', [])
                 };
                 $state.go('app.searchResult');
             };
+            
+            
+            $scope.sharewithfriend = function () {
+                var message = "Ebranch App";
+                $cordovaSocialSharing.share(message, null, null);
+            }
+            
+            $scope.doWhishlistAdd = function (p_id) {
+            //var p_id = $('#product_w_id').val();            
+            var u_id = getStorage('user_id');	
+			if(u_id == null || u_id == ''){
+				$ionicPopup.alert( 
+				{
+						title: 'error',
+						subTitle: 'Login first',
+						okType: 'buttonhk'
+					}
+				);		
+			}else{
+				var params = {
+					product: p_id,
+					user: u_id,
+				};
+				$scope.showLoading();
+				$rootScope.service.get('addwishlist', params, function (res) {
+					console.log(res);
+					if (res.status == 'error') {
+						$ionicPopup.alert( 
+						{
+								title: 'error',
+								subTitle: res.message,
+								okType: 'buttonhk'
+							}
+						);
+						//alert( res.message);
+						return;
+					}
+					if (res.status == 'success' || res.status == 'SUCCESS') {
+						$scope.hideLoading();
+						//alert($scope.translations.success+'\n\r'+ res.items_qty + ' '+ $scope.translations['items_in_cart']);
+						$ionicPopup.alert( 
+						{
+								title: 'success',
+								subTitle: $scope.translations.success+'\n\r'+ res.items_qty + ' '+ $scope.translations['items_in_cart'],
+								okType: 'buttonhk'
+							}
+						);
+						$scope.items_qty = res.items_qty;
+						return;
+					}
+			
+            	});           
+			}
+        };
+            
         })
 
         // é«˜çº§æ?œç´¢
@@ -1415,7 +1472,7 @@ angular.module('app.controllers', [])
 
             $scope.onSearch = function () {
                 var params = $('#searAdv').formParams();
-                params['a_guige'] = params['a_guige'].substring(7);
+//                params['a_guige'] = params['a_guige'].substring(7);
                 $rootScope.search = {
                     type: 'searchAdv',
                     params: params

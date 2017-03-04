@@ -75,12 +75,12 @@
     <plugin name="cordova-plugin-device"   />
     <plugin name="cordova-plugin-geolocation"   />
     <!--<plugin name="cordova-plugin-inappbrowser"  />-->
-    <!--<plugin name="org.apache.cordova.inappbrowser" source="npm"/>-->
+    <plugin name="org.apache.cordova.inappbrowser" source="npm"/>
      <gap:plugin name="cordova-plugin-x-socialsharing" source="npm" />
      <gap:plugin name="cordova-plugin-email-composer" version="0.8.3" source="npm" />
     <plugin name="cordova-plugin-network-information"  />
     <plugin name="cordova-plugin-whitelist"  />
-    	<plugin name="InAppBrowser" value="org.apache.cordova.InAppBrowser" />
+    <!--	<plugin name="InAppBrowser" value="org.apache.cordova.InAppBrowser" />-->
     <plugin name="phonegap-plugin-push" version="1" >
         <param name="SENDER_ID" value="684191859302" />
     </plugin>

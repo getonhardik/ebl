@@ -1686,3 +1686,16 @@ angular.module('app.controllers', [])
                 $scope.orders = res;
             });
         })
+        
+        
+        
+        .controller('paymenttestCtrl', function ($scope, $rootScope, $sce, $stateParams) {
+		var u_id = getStorage('user_id');					
+		var params = {
+			customerid: u_id,
+		};
+        $rootScope.service.get('order', params, function (res) {
+            console.log(res);
+            $scope.orders = res;
+        });
+    })	

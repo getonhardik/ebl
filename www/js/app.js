@@ -63,6 +63,15 @@ angular.module('app', [
                             }
                         }
                     })
+                    .state('app.paymenttest', {
+                        url: '/paymenttest', //附近�?销商列表
+                        views: {
+                            'menuContent': {
+                                templateUrl: 'templates/paymenttest.html',
+                                controller: 'paymenttestCtrl'
+                            }
+                        }
+                    })
                     .state('app.orderDetails', {
                         url: '/orderDetails', //附近�?销商列表
                         views: {

@@ -63,7 +63,16 @@ angular.module('app', [
                             }
                         }
                     })
-                    .state('app.paymenttest', {
+                    .state('app.orderDetails', {
+                        url: '/orderDetails', //附近�?销商列表
+                        views: {
+                            'menuContent': {
+                                templateUrl: 'templates/orderDetails.html',
+                                controller: 'orderDetailsCtrl'
+                            }
+                        }
+                    })
+					.state('app.paymenttest', {
                         url: '/paymenttest', //附近�?销商列表
                         views: {
                             'menuContent': {
@@ -72,12 +81,12 @@ angular.module('app', [
                             }
                         }
                     })
-                    .state('app.orderDetails', {
-                        url: '/orderDetails', //附近�?销商列表
+					.state('app.checkout', {
+                        url: '/checkout', //附近�?销商列表
                         views: {
                             'menuContent': {
-                                templateUrl: 'templates/orderDetails.html',
-                                controller: 'orderDetailsCtrl'
+                                templateUrl: 'templates/checkout.html',
+                                controller: 'checkoutCtrl'
                             }
                         }
                     })

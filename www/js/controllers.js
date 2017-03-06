@@ -1164,8 +1164,7 @@ angular.module('app.controllers', [])
                     }
                 });
             };
-            $scope.doWhishlistAdd = function () {
-                var p_id = $('#product_entity_id').val();
+            $scope.doWhishlistAdd = function (p_id) {
                 var u_id = getStorage('user_id');
                 var params = {
                     product: p_id,
@@ -1222,6 +1221,8 @@ angular.module('app.controllers', [])
             $scope.hasInit = false;
             $scope.loadOver = false;
 
+			$scope.dataLoaded2 = false;
+            
             var getList = function (func, callback) {
                 if (func === 'load') {
                     $scope.listPge++;
@@ -1237,25 +1238,21 @@ angular.module('app.controllers', [])
                 $rootScope.service.get('products', params, function (lists_new) {
                     $scope.hasInit = true;
                     $scope.lists_new = lists_new;
+                    $timeout(function () {
+                        $scope.dataLoaded2 = true;
+                    });
+
                 });
                 $scope.hideLoading();
             };
             getList('refresh');
-            //$timeout(callAtTimeout1, 3000);
-            function callAtTimeout1() {
-                $("#lists_new").slick({infinite: true, slidesToShow: 2, slidesToScroll: 1});
-            }
 
-
-            $scope.change_size = function (val) {
-                $scope.myselect = 77;
-                alert(val);
-            }
+            
 
         })
 
         // homeä¸­ï¼Œå?–bannerï¼Œå¿«é€Ÿæ?œç´¢
-        .controller('HomeCtrl', function ($scope, $rootScope, $state, $ionicSlideBoxDelegate, $timeout,$ionicPopup,$cordovaSocialSharing) {
+        .controller('HomeCtrl', function ($scope, $rootScope, $state, $ionicSlideBoxDelegate, $timeout,$ionicPopup) {
             $scope.searchData = {};
 
 
@@ -1383,12 +1380,6 @@ angular.module('app.controllers', [])
                 };
                 $state.go('app.searchResult');
             };
-            
-            
-            $scope.sharewithfriend = function () {
-                var message = "Ebranch App";
-                $cordovaSocialSharing.share(message, null, null);
-            }
             
             $scope.doWhishlistAdd = function (p_id) {
             //var p_id = $('#product_w_id').val();            
@@ -1686,16 +1677,44 @@ angular.module('app.controllers', [])
                 $scope.orders = res;
             });
         })
-        
-        
-        
-        .controller('paymenttestCtrl', function ($scope, $rootScope, $sce, $stateParams) {
-		var u_id = getStorage('user_id');					
-		var params = {
-			customerid: u_id,
-		};
-        $rootScope.service.get('order', params, function (res) {
-            console.log(res);
-            $scope.orders = res;
-        });
-    })	
+		.controller('paymenttestCtrl', function ($scope, $rootScope, $sce, $stateParams) {
+			var u_id = getStorage('user_id');					
+			var params = {
+				customerid: u_id,
+			};
+			$rootScope.service.get('order', params, function (res) {
+				console.log(res);
+				$scope.orders = res;
+			});
+		})	
+
+		.controller('checkoutCtrl', function ($scope, $rootScope, $sce, $stateParams) {
+			var u_id = getStorage('user_id');					
+			var params = {
+				customerid: u_id,
+			};
+
+			$scope.Math = window.Math;
+             $scope.groups = [];
+            for (var i = 0; i < 1; i++) {
+                $scope.groups[i] = {
+                    name: i,
+                    items: []
+                };
+                for (var j = 0; j < 1; j++) {
+                    $scope.groups[i].items.push(i + '-' + j);
+                }
+            }
+		  $scope.toggleGroup = function(group) {
+			if ($scope.isGroupShown(group)) {
+			  $scope.shownGroup = null;
+			} else {
+			  $scope.shownGroup = group;
+			}
+		  };
+		  $scope.isGroupShown = function(group) {
+			return $scope.shownGroup === group;
+		  };
+			
+			
+		})			

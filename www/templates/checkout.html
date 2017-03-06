@@ -1,0 +1,169 @@
+<style>
+.c_box b {  color:#333333  	}
+.c_box{border: 1px solid #E2E2E2;padding: 8px 8px 7px;margin: 10px 0;
+font-size: 16px;color: #777777;box-shadow: 0.5px 1px 1px #999;overflow:hidden}
+.item {border:none;    font-size: 16px;    border-bottom: solid 2px #2796CE;padding:0px !important}
+input::-moz-placeholder, textarea::-moz-placeholder {    color: #333 !important;}
+.binp{color: #777;
+font-weight: inherit;}
+.rbtn{margin: 4px 5px 0 0 !important;float: left;}
+.btn_cnt{background: #008BD5;border: none;color: #FFF;padding: 5px 20px;font-size: 30px;}
+.item-stable.item.ng-binding {    border: none;    margin: 0;}
+.item-stable.item.ng-binding.active {    background: none;}
+.ng-pristine.ng-valid {    width: 100%;}
+.ion-chevron-right::before{float:right;margin-top: 3px;}
+.ion-chevron-down::before{float:right;margin-top: 3px;}
+.item-accordion.item.ng-binding {    border: none;}
+</style>
+<ion-view view-title="{{'checkout' | translate}}" >
+<ion-content overflow-scroll="false">
+    <div class="list padding">
+      
+           <ion-list class="disable-user-behavior">
+            <div class="list">
+                <div ng-repeat="group in groups" class="c_box c_box2 langchanger" style="">
+                    <ion-item class="item-stable item ng-binding" ng-click="toggleGroup(0)" ng-class="{active: isGroupShown(0)}" style="">
+                    <i class="pdetail_plus_icon_hr icon icon ion-chevron-down" ng-class="isGroupShown(0) ? 'ion-chevron-down' : 'ion-chevron-right'" style=""></i>
+                    &nbsp;
+                    {{'billing_info' | translate}}
+                    </ion-item>
+                    <ion-item class="item-accordion item ng-binding ng-hide" ng-repeat="item in group.items" ng-show="isGroupShown(0)">
+                    	<div class="row">
+	                    	<form ng-submit="" name="myForm">                
+                                <div class="inputset">   
+                                    <label class="item item-input">                
+                                        <input type="text" name="firstname" id="firstname" placeholder="{{'first_name' | translate}}" ng-model="registerData.firstname">
+                                    </label>
+                                </div>
+                                <div class="inputset">  
+                                    <label class="item item-input">                  
+                                        <input type="text" placeholder="{{'middle_name' | translate}}" ng-model="registerData.middlename">
+                                    </label>
+                                </div>
+                                <div class="inputset">  
+                                    <label class="item item-input">                  
+                                        <input type="text" placeholder="{{'company' | translate}}" ng-model="registerData.middlename">
+                                    </label>
+                                </div>
+                                <div class="inputset">  
+                                    <label class="item item-input">                  
+                                        <input type="text" placeholder="{{'email_reg' | translate}}" ng-model="registerData.middlename">
+                                    </label>
+                                </div>
+                                <div class="inputset">  
+                                    <label class="item item-input">                  
+                                        <input type="text" placeholder="{{'address_line1' | translate}}" ng-model="registerData.middlename">
+                                    </label>
+                                </div>
+                                <div class="inputset">  
+                                    <label class="item item-input">                  
+                                        <input type="text" placeholder="{{'address_line2' | translate}}" ng-model="registerData.middlename">
+                                    </label>
+                                </div>
+                                <div class="inputset">  
+                                    <label class="item item-input">                  
+                                        <input type="text" placeholder="{{'city' | translate}}" ng-model="registerData.middlename">
+                                    </label>
+                                </div>
+                                <div class="inputset">  
+                                    <label class="item item-input">                  
+                                        <input type="text" placeholder="{{'state' | translate}}" ng-model="registerData.middlename">
+                                    </label>
+                                </div>
+                                <div class="inputset">  
+                                    <label class="item item-input">                  
+                                        <input type="text" placeholder="{{'zip' | translate}}" ng-model="registerData.middlename">
+                                    </label>
+                                </div>
+                                <div class="inputset">  
+                                    <label class="item item-input">                  
+                                        <input type="text" placeholder="{{'country' | translate}}" ng-model="registerData.middlename">
+                                    </label>
+                                </div>
+                                <div class="inputset">  
+                                    <label class="item item-input">                  
+                                        <input type="text" placeholder="{{'telephone' | translate}}" ng-model="registerData.middlename">
+                                    </label>
+                                </div>
+                                <div class="inputset">  
+                                    <label class="item item-input">                  
+                                        <input type="text" placeholder="{{'fax' | translate}}" ng-model="registerData.middlename">
+                                    </label>
+                                </div>
+                                
+                                <div class="inputset">  
+                                    <input class="rbtn" type="radio" name="d_address" value="same_address" /> <b class="binp">{{'ship_to_this_address' | translate}}</b><br />
+                                    <input class="rbtn" type="radio" name="d_address" value="diff_address" /> <b class="binp">{{'ship_to_diff_address' | translate}}</b>
+                                </div>
+                                
+                                <div class="inputset" style="text-align:center">  <br />
+                                    <input class="btn_cnt" type="button" value="Continue" name="continue" /> <br />
+                                </div>
+                            </form>
+    	                </div>
+                    </ion-item>                      
+                </div>
+                
+                <div ng-repeat="group in groups" class="c_box c_box2 langchanger" style="">
+                    <ion-item class="item-stable item ng-binding" ng-click="toggleGroup(1)" ng-class="{active: isGroupShown(1)}" style="">
+                    <i class="pdetail_plus_icon_hr icon icon ion-chevron-down" ng-class="isGroupShown(1) ? 'ion-chevron-down' : 'ion-chevron-right'" style=""></i>
+                    &nbsp;
+                    {{'shipping_info' | translate}}
+                    </ion-item>
+                    <ion-item class="item-accordion item ng-binding ng-hide" ng-repeat="item in group.items" ng-show="isGroupShown(1)">
+                    	<div class="row">
+                        	<br />
+	                    	{{'shipping_info' | translate}}
+    	                </div>
+                    </ion-item>                      
+                </div>
+                
+                <div ng-repeat="group in groups" class="c_box c_box2 langchanger" style="">
+                    <ion-item class="item-stable item ng-binding" ng-click="toggleGroup(2)" ng-class="{active: isGroupShown(2)}" style="">
+                    <i class="pdetail_plus_icon_hr icon icon ion-chevron-down" ng-class="isGroupShown(2) ? 'ion-chevron-down' : 'ion-chevron-right'" style=""></i>
+                    &nbsp;
+                    {{'shipping_method' | translate}}
+                    </ion-item>
+                    <ion-item class="item-accordion item ng-binding ng-hide" ng-repeat="item in group.items" ng-show="isGroupShown(2)">
+                    	<div class="row">
+                        	<br />
+	                    	{{'shipping_method' | translate}}
+    	                </div>
+                    </ion-item>                      
+                </div>
+                
+                <div ng-repeat="group in groups" class="c_box c_box2 langchanger" style="">
+                    <ion-item class="item-stable item ng-binding" ng-click="toggleGroup(3)" ng-class="{active: isGroupShown(3)}" style="">
+                    <i class="pdetail_plus_icon_hr icon icon ion-chevron-down" ng-class="isGroupShown(3) ? 'ion-chevron-down' : 'ion-chevron-right'" style=""></i>
+                    &nbsp;
+                    {{'payment_info' | translate}}
+                    </ion-item>
+                    <ion-item class="item-accordion item ng-binding ng-hide" ng-repeat="item in group.items" ng-show="isGroupShown(3)">
+                    	<div class="row">
+                        	<br />
+	                    	{{'payment_info' | translate}}
+    	                </div>
+                    </ion-item>                      
+                </div>
+                
+                <div ng-repeat="group in groups" class="c_box c_box2 langchanger" style="">
+                    <ion-item class="item-stable item ng-binding" ng-click="toggleGroup(4)" ng-class="{active: isGroupShown(4)}" style="">
+                    <i class="pdetail_plus_icon_hr icon icon ion-chevron-down" ng-class="isGroupShown(4) ? 'ion-chevron-down' : 'ion-chevron-right'" style=""></i>
+                    &nbsp;
+                    {{'order_review' | translate}}
+                    </ion-item>
+                    <ion-item class="item-accordion item ng-binding ng-hide" ng-repeat="item in group.items" ng-show="isGroupShown(4)">
+                    	<div class="row">
+                        	<p style="margin:10px 0">&nbsp;</p>
+	                    	{{'order_review' | translate}}
+    	                </div>
+                    </ion-item>                      
+                </div>
+                                                                                
+            </div>                            
+        </ion-list>                        
+        
+        
+    </div>
+</ion-content>
+</ion-view>

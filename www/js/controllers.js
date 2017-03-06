@@ -1024,6 +1024,13 @@ angular.module('app.controllers', [])
                 $scope.hideLoading();
             });
 
+
+            
+             $rootScope.service.get('productoptions', {
+                productid: $stateParams.productid
+            }, function (lists) {
+                $scope.productoptions = lists;
+            });
             // 商�?图片
             $rootScope.service.get('productImg', {
                 product: $stateParams.productid

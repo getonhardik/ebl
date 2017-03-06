@@ -166,7 +166,7 @@ border-radius: 3px !important;
             <div class="color">
                 <span class="input-label input-label-pd">{{'Color' | translate}}:</span>					
                 <ul class="color-ul">
-                    <li style="background:{{color.label}}" ng-repeat="color in product.attributeOptions.Color" ng-if="item.value!='N/A' && item.value!='No'">
+                    <li style="background:{{color.label}}" ng-repeat="color in productoptions.attributeOptions.Color" ng-if="item.value!='N/A' && item.value!='No'">
                         <div ng-click="setSelected2('{{color.value_index}}')">&nbsp;</div>
                     </li>                	
                 </ul>
@@ -176,7 +176,7 @@ border-radius: 3px !important;
                 <!--{{product.productOption[1].values}}-->
                 <span class="input-label input-label-pd">{{'Size' | translate}}:</span>
 				<ul class="color-ul">
-                    <li  style="background:#E6E6E6" ng-repeat="size in product.attributeOptions.Size" ng-if="item.value!='N/A' && item.value!='No'">
+                    <li  style="background:#E6E6E6" ng-repeat="size in productoptions.attributeOptions.Size" ng-if="item.value!='N/A' && item.value!='No'">
                         <div  ng-click="setSelected('{{size.value_index}}')" >{{size.label}}</div>
 	                </li>                	
                 </ul>

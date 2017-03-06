@@ -25,6 +25,7 @@ function Service($rootScope, $http, $ionicPopup) {
         //order: '/restconnect/products/test2',
         order: '/restconnect/products/myOrderList',
         productDetail: '/restconnect/products/getproductdetail',
+         productoptions: '/restconnect/products/getproductoptions',
         addwishlist: '/restconnect/wishlist/addToWishlist',
         removeWishlist: '/restconnect/wishlist/removeWishlist',
         productImg: '/restconnect/products/getPicLists',

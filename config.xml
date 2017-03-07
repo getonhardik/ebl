@@ -93,11 +93,17 @@
     <preference name="permissions" value="none"/>
     <preference name="DisallowOverscroll" value="true" />
     <preference name="LoadUrlTimeoutValue" value="50000" />
-
-	<gap:config-file platform="ios" parent="UIStatusBarStyle" overwrite="true">
-    <array>
-        <string>UIStatusBarStyleBlackOpaque</string>
-    </array>
+	<!--
+	<gap:config-file platform="ios" parent="UIViewControllerBasedStatusBarAppearance" overwrite="true">
+        <false/>
+    </gap:config-file>
+	-->
+	<gap:config-file platform="ios" parent="UIStatusBarHidden">
+    <true/>
+	</gap:config-file>
+	
+	<gap:config-file platform="ios" parent="UIViewControllerBasedStatusBarAppearance">
+		<false/>
 	</gap:config-file>
 	
     <access origin="*" />

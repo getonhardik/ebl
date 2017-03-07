@@ -94,7 +94,9 @@
     <preference name="DisallowOverscroll" value="true" />
     <preference name="LoadUrlTimeoutValue" value="50000" />
 
-
+<gap:config-file platform="ios" parent="UIViewControllerBasedStatusBarAppearance" overwrite="true">
+        <false/>
+    </gap:config-file>
     <access origin="*" />
 
 </widget>

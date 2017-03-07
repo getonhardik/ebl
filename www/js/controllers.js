@@ -642,7 +642,14 @@ angular.module('app.controllers', [])
                 $rootScope.service.get('addwishlist', params, function (res) {
                     console.log(res);
                     if (res.status == 'error') {
-                        alert(res.message);
+                        $ionicPopup.alert(
+                                {
+                                    title: 'Error',
+                                    subTitle: res.message,
+//                                            okType: 'buttonhk'
+                                }
+                        );
+                        //alert(res.message);
                         return;
                     }
                     if (res.status == 'SUCCESS') {
@@ -1172,11 +1179,21 @@ angular.module('app.controllers', [])
                 }
                 $rootScope.service.get('cartAdd', queryString, function (res) {
                     if (res.result == 'error') {
-                        alert(res.message);
+                        $ionicPopup.alert({
+                        title: 'error',
+                        subTitle: res.message,
+                        okType: 'buttonhk'
+                        });
+                        //alert(res.message);
                         return;
                     }
                     if (res.result == 'success') {
-                        alert($scope.translations.success + '\n\r' + res.items_qty + ' ' + $scope.translations['items_in_cart']);
+                        $ionicPopup.alert({
+                        title: 'Success',
+                        subTitle: 'successfully added',
+                        okType: 'buttonhk'
+                        });
+                        //alert($scope.translations.success + '\n\r' + res.items_qty + ' ' + $scope.translations['items_in_cart']);
                         $scope.items_qty = res.items_qty;
                         return;
                     }
@@ -1192,12 +1209,18 @@ angular.module('app.controllers', [])
                 $scope.showLoading();
                 $rootScope.service.get('addwishlist', params, function (res) {
                     if (res.result == 'error') {
-                        alert(res.message);
+                        $ionicPopup.alert({
+                        title: 'Error',
+                        subTitle:res.message,
+                        okType: 'buttonhk'
+                    });
+//                        alert(res.message);
                         return;
                     }
                     if (res.result == 'success') {
                         $scope.hideLoading();
-                        alert($scope.translations.success + '\n\r' + res.items_qty + ' ' + $scope.translations['items_in_cart']);
+                        $('#wishlist_'+p_id).attr('src','img/icon-14.png');
+//                        alert($scope.translations.success + '\n\r' + res.items_qty + ' ' + $scope.translations['items_in_cart']);
                         $scope.items_qty = res.items_qty;
                         return;
                     }
@@ -1600,7 +1623,13 @@ angular.module('app.controllers', [])
                         };
                         $state.go('app.agents');
                     } else {
-                        alert($scope.translations.position_not_found);
+                        $ionicPopup.alert({
+                            title: 'Error',
+                            subTitle: $scope.translations.position_not_found,
+                            okType: 'buttonhk'
+                        });
+
+//                        alert($scope.translations.position_not_found);
                     }
                 });
             };

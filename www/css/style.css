@@ -919,6 +919,8 @@ li.agent p {
 
 
 /*khunt*/
+.save-img {display: none !important;}
+.save-img:first-child {    display: block !important;}
 .popup-title {    font-weight: bold;    text-transform: uppercase;}
 .popup-buttons{padding:0px !important;min-height: 50px !important}
 .popup-head {border-bottom: 1px solid #999; }

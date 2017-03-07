@@ -55,22 +55,54 @@ border-radius: 3px !important;
     background-color:#CCC;
     color: #0088CC;
 }
+.home-header{min-height:115px;}
+.home-content{margin-top:70px;}
+.h-bar-stable {    width: 100%;}
+.h-bar1 {    width: 20%;    float: left;margin-top: 9px;}
+.h-bar2 {    width: 60%;    float: left;}
+.h-bar3 {    width: 20%;    float: left;margin-top: 10px;}
+.h-search {    width: 94%;    float: left;margin: 0 3%;}
+.mycbtn {    top: 16px;     right: 19px; }
+.item.item-input {    border: none;    border-radius: 5px;}
+.bar.bar-light {    background: #E5E5E5;border-bottom: 3px solid #0487CF;}
 </style>
-<ion-view view-title="{{'home' | translate}}">
-    <ion-nav-title>
-        <img class="" src="img/logo.png">		                       
-        <div class="list list-inset">
-            <form id="search" ng-submit="onSearch()">
-            <label class="item item-input">
-                <i class="icon ion-search placeholder-icon"></i>
-                <input  type="text" placeholder="{{'enter_the_key' | translate}}" ng-model="searchData.text">
-            </label>
-            <input  type="hidden" class="button button-full button-assertive" value="{{'quick_search' | translate}}" />
-            </form>
-	    </div> 
-	</ion-nav-title>
+<ion-view hide-nav-bar="true">
+<ion-header-bar ng-show="1" class="menus bar-light home-header">
+		
+        <div class="h-bar-stable">
+
+            <div class="h-bar1">
+                <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+                </button>
+            </div>
+                
+            <div class="h-logo h-bar2">
+                <img class="" src="img/logo.png">		                                
+            </div>                
+            
+            <div class="h-bar3">
+                <a class="pc add-to-cart-left button-outline button-assertive ion-android-cart" href="#app/cart">
+                <span class="mycbtn">{{items_qty}}</span></a>            
+            </div>
+            
+            
+            <div class="h-search">
+                <form id="searAdv" ng-submit="onSearch()">
+                <label class="item item-input">
+                    <i class="icon ion-search placeholder-icon"></i>
+                    <input  type="text" placeholder="{{'enter_the_key' | translate}}" ng-model="searchData.text">
+                </label>
+                <input  type="hidden" class="button button-full button-assertive" value="{{'quick_search' | translate}}" />
+                </form>
+	   		 </div>
+    	</div>
+    		                        
+
+            	
+    </ion-header-bar>
+    
         
-    <ion-content>            
+    <ion-content class='home-content'>            
       
         <div class="hk-image-div">
         	<div class="row">

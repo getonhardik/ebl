@@ -22,7 +22,7 @@ angular.module('app.controllers', [])
             // Loading
             $scope.showLoading = function () {
                 $ionicLoading.show({
-                    template: ''
+                    template: '',
                 });
             };
             $scope.hideLoading = function () {
@@ -75,7 +75,14 @@ angular.module('app.controllers', [])
                                     $scope.hideLoading();
 
                                     if (res.code || res.message) {
-                                        alert(res.message || res.code);
+                                        $ionicPopup.alert(
+                                        {
+                                            title: 'Login',
+                                            subTitle: res.message || res.code,
+//                                            okType: 'buttonhk'
+                                        }
+                                        );
+//                                        alert(res.message || res.code);
                                         return;
                                     }
                                     $scope.user = res;
@@ -343,7 +350,7 @@ angular.module('app.controllers', [])
                 $rootScope.service.get('removeWishlist', params, function (res) {
                     $ionicPopup.alert(
                             {
-                                title: 'error',
+                                title: 'Success',
                                 subTitle: res.message,
                                 okType: 'buttonhk'
                             }
@@ -527,7 +534,7 @@ angular.module('app.controllers', [])
                 var u_id = getStorage('user_id');
                 var params = {
                     product: p_id,
-                    user: u_id,
+                    user_id: u_id,
                 };
                 $scope.showLoading();
                 $rootScope.service.get('addwishlist', params, function (res) {
@@ -544,7 +551,7 @@ angular.module('app.controllers', [])
                     }
                     if (res.result == 'success') {
                         $scope.hideLoading();
-                        alert($scope.translations.success + '\n\r' + res.items_qty + ' ' + $scope.translations['items_in_cart']);
+//                        alert($scope.translations.success + '\n\r' + res.items_qty + ' ' + $scope.translations['items_in_cart']);
                         $scope.items_qty = res.items_qty;
                         return;
                     }
@@ -591,16 +598,19 @@ angular.module('app.controllers', [])
                     cat_id: $stateParams.categoryid,
                     cmd: 'by_category'
                 };
-
                 $scope.showLoading();
                 $rootScope.service.get('products', params, function (lists) {
                     if (func === 'load') {
                         if (Array.isArray(lists) && lists.length) {
+                            
                             $scope.lists = $scope.lists.concat(lists);
+                            console.log($scope.lists);
                         } else {
+                            
                             $scope.loadOver = true;
                         }
                     } else {
+                        //alert(123);
                         $scope.hasInit = true;
                         $scope.lists = lists;
                         if (!localStorage['symbol']) {
@@ -638,13 +648,14 @@ angular.module('app.controllers', [])
                     if (res.status == 'SUCCESS') {
                         $scope.hideLoading();
                         //alert($scope.translations.success+'\n\r'+ res.items_qty + ' '+ $scope.translations['items_in_cart']);
-                        $ionicPopup.alert(
-                                {
-                                    title: 'success',
-                                    subTitle: 'Successfully Add to wishlist',
-                                    okType: 'buttonhk'
-                                }
-                        );
+                        $('#wishlist_'+p_id).attr('src','img/icon-14.png');
+//                        $ionicPopup.alert(
+//                                {
+//                                    title: 'success',
+//                                    subTitle: 'Successfully Add to wishlist',
+//                                    okType: 'buttonhk'
+//                                }
+//                        );
                         //alert("Successfully Add to wishlist");
                         $scope.items_qty = res.items_qty;
                         return;
@@ -1175,7 +1186,7 @@ angular.module('app.controllers', [])
                 var u_id = getStorage('user_id');
                 var params = {
                     product: p_id,
-                    user: u_id,
+                    user_id: u_id,
                 };
 //            alert(product_entity_id);
                 $scope.showLoading();
@@ -1259,11 +1270,15 @@ angular.module('app.controllers', [])
         })
 
         // homeä¸­ï¼Œå?–bannerï¼Œå¿«é€Ÿæ?œç´¢
-        .controller('HomeCtrl', function ($scope, $rootScope, $state, $ionicSlideBoxDelegate, $timeout,$ionicPopup) {
+        .controller('HomeCtrl', function ($scope, $rootScope, $state, $ionicSlideBoxDelegate, $timeout,$ionicPopup,$stateParams) {
             $scope.searchData = {};
 
 
-
+            $rootScope.service.get('cartGetQty', {
+                product: $stateParams.productid
+            }, function (res) {
+                $scope.items_qty = res.items_qty;
+            });
             /*khunt*/
             $scope.Math = window.Math;
             $scope.loading1 = true;
@@ -1402,7 +1417,7 @@ angular.module('app.controllers', [])
 			}else{
 				var params = {
 					product: p_id,
-					user: u_id,
+					user_id: u_id,
 				};
 				$scope.showLoading();
 				$rootScope.service.get('addwishlist', params, function (res) {

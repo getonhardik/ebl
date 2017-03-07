@@ -5,7 +5,7 @@
                     pulling-text="{{'pull_to_refresh' | translate}}"
                     on-refresh="doRefresh()">
             </ion-refresher>
-            <ion-list class="products-grid">
+            <ion-list class="products-grid search-page">
                 <div class="product" ng-repeat="product in results">
                     <div class="product-inner">
                         <a href="#app/productDetail/{{product.entity_id}}">
@@ -20,7 +20,7 @@
                             <div class="product-name">
                                 {{product.name}}
                             </div>
-
+							                            
                             <div  class="product-price">
                                 <div class="price-box">
                                   <span ng-if="product.discount != null" class="special-price">

@@ -1200,6 +1200,7 @@ angular.module('app.controllers', [])
                 });
             };
             $scope.doWhishlistAdd = function (p_id) {
+                //alert(p_id);
                 var u_id = getStorage('user_id');
                 var params = {
                     product: p_id,
@@ -1208,7 +1209,10 @@ angular.module('app.controllers', [])
 //            alert(product_entity_id);
                 $scope.showLoading();
                 $rootScope.service.get('addwishlist', params, function (res) {
-                    if (res.result == 'error') {
+                    //alert(123);
+                    console.log(res);
+                    if (res.status == 'error') {
+                        $scope.hideLoading();
                         $ionicPopup.alert({
                         title: 'Error',
                         subTitle:res.message,
@@ -1217,9 +1221,10 @@ angular.module('app.controllers', [])
 //                        alert(res.message);
                         return;
                     }
-                    if (res.result == 'success') {
+                    if (res.status == 'SUCCESS') {
+                        //alert(789);
                         $scope.hideLoading();
-                        $('#wishlist_'+p_id).attr('src','img/icon-14.png');
+                        $('#wishlist_hide_hp').attr('src','img/icon-14.png');
 //                        alert($scope.translations.success + '\n\r' + res.items_qty + ' ' + $scope.translations['items_in_cart']);
                         $scope.items_qty = res.items_qty;
                         return;
@@ -1349,7 +1354,8 @@ angular.module('app.controllers', [])
                 var params = {
                     limit: 5,
                     page: $scope.listPge,
-                    cmd: $stateParams.cmd || 'best_seller'
+                    cmd: $stateParams.cmd || 'best_seller',
+                    user_id:getStorage('user_id'),
                 };
                 $scope.showLoading();
                 $rootScope.service.get('products', params, function (lists_best) {
@@ -1459,13 +1465,7 @@ angular.module('app.controllers', [])
 					if (res.status == 'success' || res.status == 'SUCCESS') {
 						$scope.hideLoading();
 						//alert($scope.translations.success+'\n\r'+ res.items_qty + ' '+ $scope.translations['items_in_cart']);
-						$ionicPopup.alert( 
-						{
-								title: 'success',
-								subTitle: $scope.translations.success+'\n\r'+ res.items_qty + ' '+ $scope.translations['items_in_cart'],
-								okType: 'buttonhk'
-							}
-						);
+						$('#wishlist_'+p_id).attr('src','img/icon-14.png');
 						$scope.items_qty = res.items_qty;
 						return;
 					}

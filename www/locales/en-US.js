@@ -11,6 +11,12 @@ var en_US = {
 	default_address:'Default Address',
 	remove:'REMOVE',
 	edit:'EDIT',
+	item_ordered:'Item Ordered',
+	shippping_address:'Shipping Address',
+	billing_address:'Billing Address',
+	shipping_method:'Shipping Method',
+	payment_method:'Payment Method',
+	my_oerder_detail:'My Order Detail',
 	company:'Company',
 	address_line1:'Address Line 1',
 	address_line2:'Address Line 2',
@@ -145,5 +151,6 @@ var en_US = {
     share_with_friends :'Share with Friends',
     leave_feedback :'Leave Feedback',
     rate_us_on_play_store :'Rate us on play store',
-    SAR :'SAR'
+    SAR :'SAR',
+	about_us:'About Us',
 };

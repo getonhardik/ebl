@@ -8,6 +8,7 @@ box-shadow: 0.5px 1px 1px #999;overflow:hidden}
 .order.c_box1 {    margin: 10px 10px !important;    overflow: hidden;}
 .obot2{    border: solid 1px #0188CC;    padding: 3px 2%;    color: #0188CC;    border-radius: 10px;font-size:80%}
 .obot3{    background:#0188CC;    padding: 3px 2%;    color: #FFF;    border-radius: 10px;font-size:80%}
+.order a {text-decoration: none;}
 </style>
 <ion-view view-title="{{'order_details' | translate}}">
     <ion-content scroll="false" overflow-scroll="true">
@@ -34,7 +35,9 @@ box-shadow: 0.5px 1px 1px #999;overflow:hidden}
                                                                 
                                 <span class="obot" style="width:46%"><b>Ship To: </b><span class="c_title">Faraz Test</span></span>                                
                                 <span class="obot2" style="width:27%"> {{lists.status}}</span>                                
+                                <a href="#app/orderdata/{{lists.real_order_id}}">
                                 <span class="obot3" style="width:27%">VIEW ORDER</span>
+                                </a>
                             </div>                                          
                         </div> 
 					</div>                        

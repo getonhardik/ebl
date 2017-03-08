@@ -2,7 +2,7 @@ angular.module('app.controllers', [])
 
         // è?œå?•
         .controller('AppCtrl', function ($scope, $rootScope,
-                $ionicModal, $ionicSlideBoxDelegate,
+                $ionicModal, $ionicSlideBoxDelegate,$cordovaEmailComposer,
                 $ionicTabsDelegate, $ionicLoading,
                 $ionicPopup, $timeout, $state,
                 $ionicSideMenuDelegate, $translate,
@@ -369,8 +369,9 @@ angular.module('app.controllers', [])
 
         })
         .controller('address_bookCtrl', function ($scope, $rootScope, $state, $stateParams, $ionicPopup) {
+            //alert(123456789);
             var u_id = getStorage('user_id');
-            $scope.address_detail = {};
+            $rootScope.address_detail = {};
             var params = {
                 user_id: u_id,
             };
@@ -390,15 +391,15 @@ angular.module('app.controllers', [])
                             }
                     );
                     //alert("Successfuly deleted");
-                    $scope.address_detail = {};
-                    angular.extend($scope.address_detail, $scope.address_detail);
+                    $rootScope.address_detail = {};
+                    angular.extend($rootScope.address_detail, $rootScope.address_detail);
                 });
             }
             console.log("KP1");
             $rootScope.service.get('getAddress', params, function (results) {
                 // console.log(results.data[0]);
                 console.log("KP");
-                $scope.address_detail = results.data[0];
+                $rootScope.address_detail = results.data[0];
                 //console.log($scope.address_detail);
                 // angular.extend($scope.address_detail, results.data[0]);
             });
@@ -408,7 +409,64 @@ angular.module('app.controllers', [])
             console.log($stateParams);
 //alert(123);
         })
-        .controller('contactCtrl', function ($scope, $rootScope, $state, $stateParams, $cordovaEmailComposer) {
+		        .controller('about_usCtrl', function ($scope, $rootScope, $state, $stateParams, $cordovaEmailComposer) {
+
+        })
+
+        .controller('contactCtrl', function ($scope, $rootScope, $state, $stateParams, $cordovaEmailComposer,$ionicModal,$ionicPopup) {						
+			
+				$ionicModal.fromTemplateUrl('templates/myform.html', {
+				scope: $scope,
+				animation: 'slide-in-up'
+				}).then(function(modal) {
+				$scope.modal = modal;
+				});
+				$scope.openModal = function(){
+				$scope.modal.show();
+				}
+				$scope.closeModal = function(){
+				$scope.modal.hide();
+				}
+				
+				// $scope.scanBarcode = function() {
+				$scope.carica = function() {
+					var name = $('#name').val();
+					var email = $('#email').val();
+					var telephone = $('#telephone').val();
+					var comment = $('#comment').val();
+					
+					var params = {
+						name: name,
+						email: email,
+						telephone: telephone,
+						comment: comment
+					};
+					
+					$rootScope.service.get('contactUs', params, function (res) {
+						console.log(res);						
+						
+						if(res.status == 'true'){
+							$scope.modal.hide();
+							$ionicPopup.alert(
+								{
+									title: 'success',
+									subTitle: 'Your comment is sent',
+									okType: 'buttonhk'
+								}
+							);							
+						}else{
+							$ionicPopup.alert(
+								{
+									title: 'fail',
+									subTitle: 'Your comment are not send',
+									okType: 'buttonhk'
+								}
+							);							
+						}
+						
+					});
+	                
+				}
 
         })
         .controller('editaddressbookCtrl', function ($scope, $rootScope, $state, $stateParams, $cordovaEmailComposer) {
@@ -438,8 +496,8 @@ angular.module('app.controllers', [])
                 $scope.editaddrbookData.user_id = getStorage('user_id');
                 // console.log($scope.editaddrbookData);
                 $rootScope.service.get('editAddress', $scope.editaddrbookData, function (res) {
-                    angular.extend($scope.address_detail, $scope.editaddrbookData);
-                    $state.go('app.address_book');
+                    angular.extend($rootScope.address_detail, $scope.editaddrbookData);
+                    $state.go('app.address_book',{reload: true});
 
                     return;
                 });
@@ -1741,6 +1799,43 @@ angular.module('app.controllers', [])
                 $scope.orders = res;
             });
         })
+		
+		.controller('orderdataCtrl', function ($scope, $rootScope, $sce, $stateParams) {
+			
+			var params = {
+                orderid: $stateParams.orderid,
+            };
+			$rootScope.service.get('myOrderDetail', params, function (res) {
+                console.log(res);
+                $scope.order = res;
+            });
+			
+			$scope.Math = window.Math;
+             $scope.groups = [];
+            for (var i = 0; i < 1; i++) {
+                $scope.groups[i] = {
+                    name: i,
+                    items: []
+                };
+                for (var j = 0; j < 1; j++) {
+                    $scope.groups[i].items.push(i + '-' + j);
+                }
+            }
+		  $scope.toggleGroup = function(group) {
+			if ($scope.isGroupShown(group)) {
+			  $scope.shownGroup = null;
+			} else {
+			  $scope.shownGroup = group;
+			}
+		  };
+		  $scope.isGroupShown = function(group) {
+			return $scope.shownGroup === group;
+		  };
+			
+			
+					
+		})
+		
 		.controller('paymenttestCtrl', function ($scope, $rootScope, $sce, $stateParams) {
 			var u_id = getStorage('user_id');					
 			var params = {
@@ -1750,7 +1845,8 @@ angular.module('app.controllers', [])
 				console.log(res);
 				$scope.orders = res;
 			});
-		})	
+		})
+					
 
 		.controller('checkoutCtrl', function ($scope, $rootScope, $sce, $stateParams) {
 			var u_id = getStorage('user_id');					
@@ -1781,4 +1877,5 @@ angular.module('app.controllers', [])
 		  };
 			
 			
-		})			
+		})		
+		

@@ -90,6 +90,16 @@ angular.module('app', [
                             }
                         }
                     })
+					.state('app.orderdata', {
+                        url: '/orderdata/:orderid', //附近�?销商列表
+                        views: {
+                            'menuContent': {
+                                templateUrl: 'templates/orderdata.html',
+                                controller: 'orderdataCtrl'
+                            }
+                        }
+                    })
+					
                     .state('app.searchAgent', {
                         url: '/searchAgent', //附近�?销商
                         views: {
@@ -160,6 +170,15 @@ angular.module('app', [
                             'menuContent': {
                                 templateUrl: 'templates/wishlist.html',
                                 controller: 'wishlistCtrl'
+                            }
+                        }
+                    })
+					.state('app.about_us', {
+                        url: '/about_us',
+                        views: {
+                            'menuContent': {
+                                templateUrl: 'templates/about_us.html',
+                                controller: 'about_usCtrl'
                             }
                         }
                     })

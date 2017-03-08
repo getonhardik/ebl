@@ -1,7 +1,8 @@
 // Ionic Starter App
 // 'app' is the name of this angular module (also set in a <body> attribute in index.html)
+
 angular.module('app', [
-    'ionic', 'ngCordova','ngCordovaOauth','ngOpenFB', 'pascalprecht.translate',
+    'ionic', 'ngCordova','ngCordovaOauth','ngOpenFB', 'pascalprecht.translate','ionic-ratings',
     'app.controllers', 'app.filters', 'ionicLazyLoad','slickCarousel'	,'sw2.ionic.password-show-hide'
 ])
         .service('User_data', function () {

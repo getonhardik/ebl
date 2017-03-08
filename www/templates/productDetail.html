@@ -63,6 +63,12 @@ border-radius: 3px !important;
     top: 0px;
     right: 10px;
 }
+.col-size .list .item1 {
+    padding: 5px;    white-space: unset;border-bottom: solid 2px #008BD5;}
+.btn_cnt2{width:100%;background: #008BD5;border: none;color: #FFF;padding: 5px 20px;font-size: 20px;}
+.text-center {    text-align: left;    padding: 0 15px;    overflow: hidden;}	
+.r_title {    float: left;    margin: 0 15px;}
+.icon.ion-ios-star, .icon.ion-ios-star-outline {    font-size: 24px;}
 </style>
 <ion-view view-title="{{product.name | translate}}">
     <ion-nav-bar class="bar-stable">
@@ -391,13 +397,13 @@ border-radius: 3px !important;
 	                  <ion-list class="disable-user-behavior">
                       	<div class="list">
                     		<div ng-repeat="group in groups" class="" style="">
-                                <ion-item class="item-stable item ng-binding" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}" style="">
-                                <i class="pdetail_plus_icon_hr icon ion-plus" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'" style=""></i>
+                                <ion-item class="item-stable item ng-binding" ng-click="toggleGroup(0)" ng-class="{active: isGroupShown(0)}" style="">
+                                <i class="pdetail_plus_icon_hr icon ion-plus" ng-class="isGroupShown(0) ? 'ion-minus' : 'ion-plus'" style=""></i>
                                 &nbsp;
                                 {{'product_description' | translate}}
                                 </ion-item>
-                                <ion-item class="item-accordion item ng-binding ng-hide" ng-repeat="item in group.items" ng-show="isGroupShown(group)" style="">
-                                <div class="list padding-horizontal"  ng-bind-html="product.description | unsafe"></div>
+                                <ion-item class="item-accordion item ng-binding ng-hide" ng-show="isGroupShown(0)" style="">
+                                	<div class="list padding-horizontal"  ng-bind-html="product.description | unsafe"></div>
                                 </ion-item>                      
                     		</div>
                         	
@@ -407,13 +413,48 @@ border-radius: 3px !important;
                                     &nbsp;
                                     {{'product_additional' | translate}}
                                 </ion-item>
-                                <ion-item class="item-accordion item ng-binding ng-hide" ng-repeat="item in group.items" ng-show="isGroupShown(1)" style="">
-                                    <div class="row" ng-repeat="item in product.additional" ng-if="item.value!='N/A' && item.value!='No'">
+                                <ion-item class="item-accordion item ng-binding ng-hide" ng-show="isGroupShown(1)" style="">                                    
                                     	<div class="col">{{item.label}}:</div>
                                     	<div class="col col-50">{{item.value}}</div>
-                                	</div>
                                 </ion-item>                      
                     		</div>
+                            
+                            <div ng-repeat="group in groups" class="" style="">
+                                <ion-item class="item-stable item ng-binding" ng-click="toggleGroup(2)" ng-class="{active: isGroupShown(2)}" style="">
+                                    <i class="pdetail_plus_icon_hr icon ion-plus" ng-class="isGroupShown(2) ? 'ion-minus' : 'ion-plus'" style=""></i>
+                                    &nbsp;
+                                    {{'product_review' | translate}}
+                                </ion-item>
+                                <ion-item class="item-accordion item ng-binding ng-hide" ng-show="isGroupShown(2)" style="">                                    
+                                    <span class="r_title">{{'price' | translate}} :</span><ionic-ratings ratingsobj='ratingsObject'></ionic-ratings><br />
+                                    <span class="r_title">{{'value' | translate}} :</span><ionic-ratings ratingsobj='ratingsObject2'></ionic-ratings><br />
+                                    <span class="r_title">{{'quality' | translate}} :</span><ionic-ratings ratingsobj='ratingsObject3'></ionic-ratings><br />
+                                    
+                                    <div class="row">
+                                        <div class="col">
+                                          <label class="item1 item-input large">
+                                            <input type="text" placeholder="Summary of Your Review" id="title">
+                                          </label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col">
+                                          <label class="item1 item-input large">
+                                            <textarea placeholder="Review" id="review" rows="5" name="review" lose-focus-on-return></textarea>
+                                          </label>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" id="productid" value="{{product.entity_id}}" />
+                                    <div class="row description-row">
+                                        <div class="col">                 
+                                            <input class="btn_cnt2" type="submit" name="Submit" value="Submit" placeholder="Submit" ng-click="carica()">
+                                        </div>
+                                    </div>
+                                                                	
+                                </ion-item>                      
+                    		</div>
+                            
                             
 						</div>                            
                   	</ion-list>            

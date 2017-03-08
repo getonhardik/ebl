@@ -28,6 +28,7 @@ function Service($rootScope, $http, $ionicPopup) {
 		contactUs: 'restconnect/customer/contactUs',
         productDetail: '/restconnect/products/getproductdetail',
         productoptions: '/restconnect/products/getproductoptions',
+		rateAndReview: '/restconnect/products/rateAndReview',
         addwishlist: '/restconnect/wishlist/addToWishlist',
         removeWishlist: '/restconnect/wishlist/removeWishlist',
         productImg: '/restconnect/products/getPicLists',

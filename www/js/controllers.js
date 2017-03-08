@@ -1044,6 +1044,119 @@ angular.module('app.controllers', [])
             $scope.qty = 1;
             $scope.totalPrice = 0;
 
+							
+			
+			$scope.ratingsObject = {
+				iconOn : 'ion-ios-star',
+				iconOff : 'ion-ios-star-outline',
+				iconOnColor: 'rgb(255, 198, 0)',
+				iconOffColor:  'rgb(255, 0, 0)',
+				rating:  1,
+				minRating:1,
+				callback: function(rating) {
+				  $scope.ratingsCallback(rating);
+				}
+		  	};
+	
+			$scope.ratingsCallback = function(rating) {
+				$scope.rate_price = rating;
+				console.log('Selected rating is : ', rating);
+			};
+			
+			
+			$scope.ratingsObject2 = {
+				iconOn : 'ion-ios-star',
+				iconOff : 'ion-ios-star-outline',
+				iconOnColor: 'rgb(255, 198, 0)',
+				iconOffColor:  'rgb(255, 0, 0)',
+				rating:  1,
+				minRating:1,
+				callback: function(rating2) {
+				  $scope.ratingsCallback2(rating2);
+				}
+		  	};
+	
+			$scope.ratingsCallback2 = function(rating2) {
+				$scope.rate_quality = rating2;
+				console.log('Selected rating is2 : ', rating2);
+			};
+			
+			$scope.ratingsObject3 = {
+				iconOn : 'ion-ios-star',
+				iconOff : 'ion-ios-star-outline',
+				iconOnColor: 'rgb(255, 198, 0)',
+				iconOffColor:  'rgb(255, 0, 0)',
+				rating:  1,
+				minRating:1,
+				callback: function(rating3) {
+				  $scope.ratingsCallback3(rating3);
+				}
+		  	};
+	
+			$scope.ratingsCallback3 = function(rating3) {
+					$scope.rate_value = rating3;
+					console.log('Selected rating is3 : ', rating3);
+			};
+			
+			
+			
+			//rating
+			$scope.carica = function() {				
+				var u_id = getStorage('user_id');	
+				if(u_id == null || u_id == ''){
+					$ionicPopup.alert( 
+					{
+							title: 'error',
+							subTitle: 'Login first',
+							okType: 'buttonhk'
+						}
+					);		
+				}else{
+					var title = $('#title').val();
+					var review = $('#review').val();
+					var productid = $('#productid').val();
+					
+					var params = {
+						customerid: u_id,
+						productid: productid,
+						rate_price: $scope.rate_price,
+						rate_quality: $scope.rate_quality,
+						rate_value: $scope.rate_value,
+						title: title,
+						review: review,
+					};
+					
+					
+					$rootScope.service.get('rateAndReview', params, function (res) {
+						
+						if(res.code == '0'){						
+							$ionicPopup.alert(
+								{
+									title: 'success',
+									subTitle: res.message,
+									okType: 'buttonhk'
+								}
+							);							
+						}else{
+							$ionicPopup.alert(
+								{
+									title: 'fail',
+									subTitle: 'Your comment are not add',
+									okType: 'buttonhk'
+								}
+							);							
+						}
+						
+					});
+				}
+			
+			}
+		
+			
+			
+			
+			
+			
             $scope.updateSlider = function () {
                 $ionicSlideBoxDelegate.$getByHandle('image-viewer').update();
             };

@@ -1018,7 +1018,7 @@ font-size: 11px;color: #FFF;border-radius: 3px;right: 5px;font-weight: bold;}
 .tab-item {    border-right: 3px solid #FFF !important;}
 .tab-item, .product-container .tab-item, .login-container .tab-item{border-radius:0px !important}
 .bar-assertive .button{border-color:#FFF !important}
-
+.button.button-full.button-light.icon.icon-left.icon-info.before-remove { margin: 0;    padding: 0;}
 /*end khunt*/
 
 /*added by archana 15-feb-2017*/

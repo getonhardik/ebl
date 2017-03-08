@@ -59,6 +59,10 @@ border-radius: 3px !important;
     background-color:#CCC;
     color: #0088CC;
 }
+.mycbtn1 {
+    top: 0px;
+    right: 10px;
+}
 </style>
 <ion-view view-title="{{product.name | translate}}">
     <ion-nav-bar class="bar-stable">
@@ -72,7 +76,7 @@ border-radius: 3px !important;
         <ion-nav-buttons side="right">
             <a href="#app/searchAdv" class="pd icon ion-search"></a>
             <a class="pc add-to-cart-left button-outline button-assertive ion-android-cart" href="#app/cart">
-      		<span class="mycbtn">{{items_qty}}</span></a>
+      		<span class="mycbtn mycbtn1">{{items_qty}}</span></a>
             <!--
             <a class="button button-icon nav-clear menu-close ion-android-share-alt" ng-click="onShare()"></a>
             <a href="#app/lists" class="button button-icon nav-clear menu-close ion-ios-home-outline"></a>

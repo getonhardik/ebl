@@ -89,6 +89,24 @@ margin-top: 7%;}
 </ion-content>
 </ion-view>
 
+<style>
+.c_box b {  color:#333333  	}
+.c_box{border: 1px solid #E2E2E2;padding: 8px 8px 7px;margin: 10px 0;
+font-size: 16px;color: #777777;box-shadow: 0.5px 1px 1px #999;overflow:hidden}
+.item {border:none;    font-size: 16px;    border-bottom: solid 2px #2796CE;padding:0px !important}
+input::-moz-placeholder, textarea::-moz-placeholder {    color: #333 !important;}
+.binp{color: #777;
+font-weight: inherit;}
+.rbtn{margin: 4px 5px 0 0 !important;float: left;}
+.item-stable.item.ng-binding {    border: none;    margin: 0;}
+.item-stable.item.ng-binding.active {    background: none;}
+.ng-pristine.ng-valid {    width: 100%;}
+.ion-chevron-right::before{float:right;margin-top: 3px;}
+.ion-chevron-down::before{float:right;margin-top: 3px;}
+.item-accordion.item.ng-binding {    border: none;}
+.btn_cnt2{width:100%;background: #008BD5;border: none;color: #FFF;padding: 5px 20px;font-size: 30px;}
+.bar.bar-positive{background: #008BD5;}
+</style>
 <script id="templates/myform.html" type="text/ng-template">
         <ion-modal-view class="product edit create">
           <form name="itemEdit" novalidate>
@@ -114,7 +132,7 @@ margin-top: 7%;}
 			  <div class="row">
                 <div class="col">
                   <label class="item item-input large">
-                    <input type="number" placeholder="Telephone" id="telephone">
+                    <input type="text" placeholder="Telephone" id="telephone">
                   </label>
                 </div>
               </div>
@@ -128,7 +146,7 @@ margin-top: 7%;}
 			  
 			  <div class="row description-row">
                 <div class="col">                 
-                    <input type="submit" name="Submit" value="submit" placeholder="Submit" ng-click="carica()">
+                    <input class="btn_cnt2" type="submit" name="Submit" value="Submit" placeholder="Submit" ng-click="carica()">
                 </div>
               </div>
 

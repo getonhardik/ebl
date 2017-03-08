@@ -430,6 +430,7 @@ angular.module('app.controllers', [])
 				
 				// $scope.scanBarcode = function() {
 				$scope.carica = function() {
+					$scope.showLoading();	
 					var name = $('#name').val();
 					var email = $('#email').val();
 					var telephone = $('#telephone').val();
@@ -442,23 +443,24 @@ angular.module('app.controllers', [])
 						comment: comment
 					};
 					
-					$rootScope.service.get('contactUs', params, function (res) {
-						console.log(res);						
+					$rootScope.service.get('contactUs', params, function (res) {					
 						
 						if(res.status == 'true'){
 							$scope.modal.hide();
+							$scope.hideLoading();
 							$ionicPopup.alert(
 								{
 									title: 'success',
-									subTitle: 'Your comment is sent',
+									subTitle: res.message,
 									okType: 'buttonhk'
 								}
 							);							
 						}else{
+							$scope.hideLoading();
 							$ionicPopup.alert(
 								{
 									title: 'fail',
-									subTitle: 'Your comment are not send',
+									subTitle: 'Your message are not send',
 									okType: 'buttonhk'
 								}
 							);							

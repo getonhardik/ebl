@@ -170,7 +170,7 @@ border-radius: 3px !important;
                   	</span>
                 </div>                
                 <div class="p_review">
-                	<div class="r-box">{{total_reviews_count}} {{'Review' | translate}}</div>
+                	<div class="r-box" ng-click="showReview">{{total_reviews_count}} {{'Review' | translate}}</div>
                 </div>
             </div>
          </div>
@@ -427,7 +427,7 @@ border-radius: 3px !important;
                                     &nbsp;
                                     {{'product_review' | translate}}
                                 </ion-item>
-                                <ion-item class="item-accordion item ng-binding ng-hide" ng-show="isGroupShown(2)" style="">                                    
+                                <ion-item id="reviewcontainer" class="item-accordion item ng-binding ng-hide" ng-show="isGroupShown(2)" style="">                                    
                                     
                                     <!--product review list-->                                    
                                     <div class="prod_reviews" ng-repeat="preview in reviews">			

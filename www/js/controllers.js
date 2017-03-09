@@ -1182,7 +1182,14 @@ angular.module('app.controllers', [])
                 $scope.hideLoading();
             });
 
-
+			$scope.showReview = function() {
+					console.log('sdfsdf');
+				 $('html, body').animate({
+					scrollTop: $("#reviewcontainer").offset().top
+				}, 2000);
+				toggleGroup(2);
+						
+			}
 
 //rating
 			$scope.carica = function() {	
@@ -1211,13 +1218,22 @@ angular.module('app.controllers', [])
 						review: review,
 					};
 					
+										
 					
 					$rootScope.service.get('rateAndReview', params, function (res) {
 						$scope.hideLoading();			
 						if(res.code == '0'){	
 							$rootScope.total_reviews_count=res.data.total_reviews_count;
-						 angular.extend($rootScope.total_reviews_count, res.data.total_reviews_count);
-						 angular.extend($rootScope.reviews, res.data.reviews);		
+						 //angular.extend($rootScope.total_reviews_count, res.data.total_reviews_count);
+						 //angular.extend($rootScope.reviews, res.data.reviews);		
+						 $rootScope.reviews = res.data.reviews;
+						 $('#title').val('') ;
+						 $('#review').val('');
+						 /*
+						 $scope.ratingsObject = {rating:  1}
+						 $scope.ratingsCallback2(0);
+						 $scope.ratingsCallback2(0);
+						 $scope.ratingsCallback3(0);*/
 						 //console.log($scope.product.total_reviews_count);						 
 							$ionicPopup.alert(
 								{

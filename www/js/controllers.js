@@ -1113,64 +1113,6 @@ angular.module('app.controllers', [])
 			
 			
 			
-			//rating
-			$scope.carica = function() {	
-				$scope.showLoading();			
-				var u_id = getStorage('user_id');	
-				if(u_id == null || u_id == ''){
-					$ionicPopup.alert( 
-					{
-							title: 'error',
-							subTitle: 'Login first',
-							okType: 'buttonhk'
-						}
-					);		
-				}else{
-					var title = $('#title').val();
-					var review = $('#review').val();
-					var productid = $('#productid').val();
-					
-					var params = {
-						customerid: u_id,
-						productid: productid,
-						rate_price: $scope.rate_price,
-						rate_quality: $scope.rate_quality,
-						rate_value: $scope.rate_value,
-						title: title,
-						review: review,
-					};
-					
-					
-					$rootScope.service.get('rateAndReview', params, function (res) {
-						$scope.hideLoading();			
-						if(res.code == '0'){	
-							
-						 angular.extend($scope.product.total_reviews_count, res.data.total_reviews_count);
-						 angular.extend($scope.product.reviews, res.data.reviews);		
-						 //console.log($scope.product.total_reviews_count);						 
-							$ionicPopup.alert(
-								{
-									title: 'success',
-									subTitle: res.message,
-									okType: 'buttonhk'
-								}
-							);	
-							state.reload(true);						
-						}else{
-							$ionicPopup.alert(
-								{
-									title: 'fail',
-									subTitle: 'Your comment are not add',
-									okType: 'buttonhk'
-								}
-							);							
-						}
-						
-					});
-				}
-			
-			}
-		
 			
 			
 			
@@ -1192,7 +1134,8 @@ angular.module('app.controllers', [])
                 productid: $stateParams.productid
             }, function (results) {
                 console.log(results.attributeOptions.Size);
-
+				$rootScope.total_reviews_count=results.total_reviews_count;
+				$rootScope.reviews=results.reviews;
                 $scope.dbs = results.attributeOptions.Size;
                 //$scope.db = '10';
                 //$scope.selected = null;
@@ -1240,6 +1183,66 @@ angular.module('app.controllers', [])
             });
 
 
+
+//rating
+			$scope.carica = function() {	
+				$scope.showLoading();			
+				var u_id = getStorage('user_id');	
+				if(u_id == null || u_id == ''){
+					$ionicPopup.alert( 
+					{
+							title: 'error',
+							subTitle: 'Login first',
+							okType: 'buttonhk'
+						}
+					);		
+				}else{
+					var title = $('#title').val();
+					var review = $('#review').val();
+					var productid = $('#productid').val();
+					
+					var params = {
+						customerid: u_id,
+						productid: productid,
+						rate_price: $scope.rate_price,
+						rate_quality: $scope.rate_quality,
+						rate_value: $scope.rate_value,
+						title: title,
+						review: review,
+					};
+					
+					
+					$rootScope.service.get('rateAndReview', params, function (res) {
+						$scope.hideLoading();			
+						if(res.code == '0'){	
+							$rootScope.total_reviews_count=res.data.total_reviews_count;
+						 angular.extend($rootScope.total_reviews_count, res.data.total_reviews_count);
+						 angular.extend($rootScope.reviews, res.data.reviews);		
+						 //console.log($scope.product.total_reviews_count);						 
+							$ionicPopup.alert(
+								{
+									title: 'success',
+									subTitle: res.message,
+									okType: 'buttonhk'
+								}
+							);	
+												
+						}else{
+							$ionicPopup.alert(
+								{
+									title: 'fail',
+									subTitle: 'Your comment are not add',
+									okType: 'buttonhk'
+								}
+							);							
+						}
+						
+					});
+				}
+			
+			}
+		
+			
             
              $rootScope.service.get('productoptions', {
                 productid: $stateParams.productid

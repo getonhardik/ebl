@@ -1114,7 +1114,8 @@ angular.module('app.controllers', [])
 			
 			
 			//rating
-			$scope.carica = function() {				
+			$scope.carica = function() {	
+				$scope.showLoading();			
 				var u_id = getStorage('user_id');	
 				if(u_id == null || u_id == ''){
 					$ionicPopup.alert( 
@@ -1141,15 +1142,20 @@ angular.module('app.controllers', [])
 					
 					
 					$rootScope.service.get('rateAndReview', params, function (res) {
-						
-						if(res.code == '0'){						
+						$scope.hideLoading();			
+						if(res.code == '0'){	
+							
+						 angular.extend($scope.product.total_reviews_count, res.data.total_reviews_count);
+						 angular.extend($scope.product.reviews, res.data.reviews);		
+						 //console.log($scope.product.total_reviews_count);						 
 							$ionicPopup.alert(
 								{
 									title: 'success',
 									subTitle: res.message,
 									okType: 'buttonhk'
 								}
-							);							
+							);	
+							state.reload(true);						
 						}else{
 							$ionicPopup.alert(
 								{
@@ -2063,7 +2069,7 @@ angular.module('app.controllers', [])
 			});
 		})
 					
-
+		
 		.controller('checkoutCtrl', function ($scope, $rootScope, $sce, $stateParams) {
 			var u_id = getStorage('user_id');					
 			var params = {
@@ -2091,7 +2097,32 @@ angular.module('app.controllers', [])
 		  $scope.isGroupShown = function(group) {
 			return $scope.shownGroup === group;
 		  };
-			
-			
-		})		
+                  // console.log(params);
+                var params = {
+                        user_id: u_id,
+                };
+            $rootScope.service.get('getAddress', params, function (results) {
+                console.log(results.data[0]);
+                console.log("KP");
+                $scope.registerData = results.data[0];
+                $scope.registerData.email = getStorage('user_email');
+                //console.log($scope.address_detail);
+                // angular.extend($scope.address_detail, results.data[0]);
+            });
+//            alert($(".biiling_rbutton").val());
+            if((getStorage('user_id')) != null){
+                
+                $("#login_item1").addClass('hide');
+            }else{
+                $("#login_item1").removeClass('hide');
+            }
+            $scope.biiling_rbutton = function($event){
+                //alert($event.target.value);
+                if($event.target.value == 'same_address'){
+                    $scope.shipData = $scope.registerData;
+                }else{
+                    $scope.shipData = {};
+                }
+            }
+        })	
 		

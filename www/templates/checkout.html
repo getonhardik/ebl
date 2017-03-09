@@ -14,11 +14,14 @@ font-weight: inherit;}
 .ion-chevron-right::before{float:right;margin-top: 3px;}
 .ion-chevron-down::before{float:right;margin-top: 3px;}
 .item-accordion.item.ng-binding {    border: none;}
+.login_item222{font-size: 14px;text-align: center}
 </style>
 <ion-view view-title="{{'checkout' | translate}}" >
 <ion-content overflow-scroll="false">
     <div class="list padding">
-      
+        <div class="login_item222" id="login_item1">
+            Returning Customers?<a style="text-decoration: none !important;color:blue" href="#app/login"> Click here to Login ></a>
+        </div>
            <ion-list class="disable-user-behavior">
             <div class="list">
                 <div ng-repeat="group in groups" class="c_box c_box2 langchanger" style="">
@@ -37,67 +40,67 @@ font-weight: inherit;}
                                 </div>
                                 <div class="inputset">  
                                     <label class="item item-input">                  
-                                        <input type="text" placeholder="{{'middle_name' | translate}}" ng-model="registerData.middlename">
+                                        <input type="text" placeholder="{{'last_name' | translate}}" ng-model="registerData.lastname">
                                     </label>
                                 </div>
                                 <div class="inputset">  
                                     <label class="item item-input">                  
-                                        <input type="text" placeholder="{{'company' | translate}}" ng-model="registerData.middlename">
+                                        <input type="text" placeholder="{{'company' | translate}}" ng-model="registerData.company">
                                     </label>
                                 </div>
                                 <div class="inputset">  
                                     <label class="item item-input">                  
-                                        <input type="text" placeholder="{{'email_reg' | translate}}" ng-model="registerData.middlename">
+                                        <input type="text" placeholder="{{'email_reg' | translate}}" ng-model="registerData.email">
                                     </label>
                                 </div>
                                 <div class="inputset">  
                                     <label class="item item-input">                  
-                                        <input type="text" placeholder="{{'address_line1' | translate}}" ng-model="registerData.middlename">
+                                        <input type="text" placeholder="{{'address_line1' | translate}}" ng-model="registerData.street">
                                     </label>
                                 </div>
                                 <div class="inputset">  
                                     <label class="item item-input">                  
-                                        <input type="text" placeholder="{{'address_line2' | translate}}" ng-model="registerData.middlename">
+                                        <input type="text" placeholder="{{'address_line2' | translate}}" ng-model="registerData.street">
                                     </label>
                                 </div>
                                 <div class="inputset">  
                                     <label class="item item-input">                  
-                                        <input type="text" placeholder="{{'city' | translate}}" ng-model="registerData.middlename">
+                                        <input type="text" placeholder="{{'city' | translate}}" ng-model="registerData.city">
                                     </label>
                                 </div>
                                 <div class="inputset">  
                                     <label class="item item-input">                  
-                                        <input type="text" placeholder="{{'state' | translate}}" ng-model="registerData.middlename">
+                                        <input type="text" placeholder="{{'state' | translate}}" ng-model="registerData.region">
                                     </label>
                                 </div>
                                 <div class="inputset">  
                                     <label class="item item-input">                  
-                                        <input type="text" placeholder="{{'zip' | translate}}" ng-model="registerData.middlename">
+                                        <input type="text" placeholder="{{'zip' | translate}}" ng-model="registerData.postcode">
                                     </label>
                                 </div>
                                 <div class="inputset">  
                                     <label class="item item-input">                  
-                                        <input type="text" placeholder="{{'country' | translate}}" ng-model="registerData.middlename">
+                                        <input type="text" placeholder="{{'country' | translate}}" ng-model="registerData.country">
                                     </label>
                                 </div>
                                 <div class="inputset">  
                                     <label class="item item-input">                  
-                                        <input type="text" placeholder="{{'telephone' | translate}}" ng-model="registerData.middlename">
+                                        <input type="text" placeholder="{{'telephone' | translate}}" ng-model="registerData.telephone">
                                     </label>
                                 </div>
                                 <div class="inputset">  
                                     <label class="item item-input">                  
-                                        <input type="text" placeholder="{{'fax' | translate}}" ng-model="registerData.middlename">
+                                        <input type="text" placeholder="{{'fax' | translate}}" ng-model="registerData.fax">
                                     </label>
                                 </div>
                                 
                                 <div class="inputset">  
-                                    <input class="rbtn" type="radio" name="d_address" value="same_address" /> <b class="binp">{{'ship_to_this_address' | translate}}</b><br />
-                                    <input class="rbtn" type="radio" name="d_address" value="diff_address" /> <b class="binp">{{'ship_to_diff_address' | translate}}</b>
+                                    <input class="rbtn" type="radio" ng-click="biiling_rbutton($event);" name="d_address" value="same_address" /> <b class="binp">{{'ship_to_this_address' | translate}}</b><br />
+                                    <input class="rbtn" type="radio" ng-click="biiling_rbutton($event);" name="d_address" value="diff_address" /> <b class="binp">{{'ship_to_diff_address' | translate}}</b>
                                 </div>
                                 
                                 <div class="inputset" style="text-align:center">  <br />
-                                    <input class="btn_cnt" type="button" value="Continue" name="continue" /> <br />
+                                    <input class="btn_cnt" type="button" value="Continue" name="continue" ng-click="toggleGroup(1)"/> <br />
                                 </div>
                             </form>
     	                </div>
@@ -112,8 +115,73 @@ font-weight: inherit;}
                     </ion-item>
                     <ion-item class="item-accordion item ng-binding ng-hide" ng-repeat="item in group.items" ng-show="isGroupShown(1)">
                     	<div class="row">
-                        	<br />
-	                    	{{'shipping_info' | translate}}
+                        	<form ng-submit="" name="myForm_shipping">                
+                                <div class="inputset">   
+                                    <label class="item item-input">                
+                                        <input type="text" name="firstname" id="firstname" placeholder="{{'first_name' | translate}}" ng-model="shipData.firstname">
+                                    </label>
+                                </div>
+                                <div class="inputset">  
+                                    <label class="item item-input">                  
+                                        <input type="text" placeholder="{{'last_name' | translate}}" ng-model="shipData.lastname">
+                                    </label>
+                                </div>
+                                <div class="inputset">  
+                                    <label class="item item-input">                  
+                                        <input type="text" placeholder="{{'company' | translate}}" ng-model="shipData.company">
+                                    </label>
+                                </div>
+                                <div class="inputset">  
+                                    <label class="item item-input">                  
+                                        <input type="text" placeholder="{{'email_reg' | translate}}" ng-model="shipData.email">
+                                    </label>
+                                </div>
+                                <div class="inputset">  
+                                    <label class="item item-input">                  
+                                        <input type="text" placeholder="{{'address_line1' | translate}}" ng-model="shipData.street">
+                                    </label>
+                                </div>
+                                <div class="inputset">  
+                                    <label class="item item-input">                  
+                                        <input type="text" placeholder="{{'address_line2' | translate}}" ng-model="shipData.street">
+                                    </label>
+                                </div>
+                                <div class="inputset">  
+                                    <label class="item item-input">                  
+                                        <input type="text" placeholder="{{'city' | translate}}" ng-model="shipData.city">
+                                    </label>
+                                </div>
+                                <div class="inputset">  
+                                    <label class="item item-input">                  
+                                        <input type="text" placeholder="{{'state' | translate}}" ng-model="shipData.region">
+                                    </label>
+                                </div>
+                                <div class="inputset">  
+                                    <label class="item item-input">                  
+                                        <input type="text" placeholder="{{'zip' | translate}}" ng-model="shipData.postcode">
+                                    </label>
+                                </div>
+                                <div class="inputset">  
+                                    <label class="item item-input">                  
+                                        <input type="text" placeholder="{{'country' | translate}}" ng-model="shipData.country">
+                                    </label>
+                                </div>
+                                <div class="inputset">  
+                                    <label class="item item-input">                  
+                                        <input type="text" placeholder="{{'telephone' | translate}}" ng-model="shipData.telephone">
+                                    </label>
+                                </div>
+                                <div class="inputset">  
+                                    <label class="item item-input">                  
+                                        <input type="text" placeholder="{{'fax' | translate}}" ng-model="shipData.fax">
+                                    </label>
+                                </div>
+                                
+                                
+                                <div class="inputset" style="text-align:center">  <br />
+                                    <input class="btn_cnt" type="button" value="Continue" name="continue" ng-click="toggleGroup(2)"/> <br />
+                                </div>
+                            </form>
     	                </div>
                     </ion-item>                      
                 </div>
@@ -127,7 +195,9 @@ font-weight: inherit;}
                     <ion-item class="item-accordion item ng-binding ng-hide" ng-repeat="item in group.items" ng-show="isGroupShown(2)">
                     	<div class="row">
                         	<br />
-	                    	{{'shipping_method' | translate}}
+	                    	<div class="inputset" style="text-align:center">  <br />
+                                    <input class="btn_cnt" type="button" value="Continue" name="continue" ng-click="toggleGroup(3)"/> <br />
+                                </div>
     	                </div>
                     </ion-item>                      
                 </div>
@@ -141,7 +211,9 @@ font-weight: inherit;}
                     <ion-item class="item-accordion item ng-binding ng-hide" ng-repeat="item in group.items" ng-show="isGroupShown(3)">
                     	<div class="row">
                         	<br />
-	                    	{{'payment_info' | translate}}
+	                    	<div class="inputset" style="text-align:center">  <br />
+                                    <input class="btn_cnt" type="button" value="Continue" name="continue" ng-click="toggleGroup(4)"/> <br />
+                                </div>
     	                </div>
                     </ion-item>                      
                 </div>

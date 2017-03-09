@@ -1187,13 +1187,13 @@ angular.module('app.controllers', [])
 				 $('html, body').animate({
 					scrollTop: $("#reviewcontainer").offset().top
 				}, 2000);
-				toggleGroup(2);
+				$scope.toggleGroup(2);
 						
 			}
 
 //rating
 			$scope.carica = function() {	
-				$scope.showLoading();			
+						
 				var u_id = getStorage('user_id');	
 				if(u_id == null || u_id == ''){
 					$ionicPopup.alert( 
@@ -1204,6 +1204,7 @@ angular.module('app.controllers', [])
 						}
 					);		
 				}else{
+					$scope.showLoading();	
 					var title = $('#title').val();
 					var review = $('#review').val();
 					var productid = $('#productid').val();

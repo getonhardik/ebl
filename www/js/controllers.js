@@ -1186,10 +1186,11 @@ angular.module('app.controllers', [])
 
 			$scope.showReview = function() {
 					console.log('sdfsdf');
-				 $('html, body').animate({
-					scrollTop: $("#reviewcontainer").offset().top
-				}, 2000);
+				
+				
 				$scope.toggleGroup(2);
+				var myDiv = document.getElementById('reviewcontainer');
+myDiv.scrollTop = 0;
 						
 			}
 

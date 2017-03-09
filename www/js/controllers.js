@@ -1842,6 +1842,7 @@ angular.module('app.controllers', [])
 
                 $rootScope.service.get('removecart',params , function (results) {
                     console.log(results);
+					return;
                 });
             }
 			

@@ -12,9 +12,10 @@
                     {{symbol}}{{item.item_price | number:0}}&nbsp;&nbsp;x&nbsp;{{item.qty}}
                     </span>
                 </div>
-                <a href="#" ng-click="doRemoveFromCart({item.item_id)">Remove</a>
-                <a href="#" ng-click="doaddwishlistformcart({item.item_id, item.product_id)">Move To wishlist</a>
+                <a href="#" ng-click="doRemoveFromCart(item.item_id)">Remove</a>
+                <a href="#" ng-click="doaddwishlistformcart(item.item_id, item.product_id)">Move To wishlist</a>
             </div>
+            <a href="#app/checkout">Checkout</a>
         </div>
     </ion-content>
 </ion-view>

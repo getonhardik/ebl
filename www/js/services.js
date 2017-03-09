@@ -36,7 +36,8 @@ function Service($rootScope, $http, $ionicPopup) {
         cart: '/restconnect/cart/getCartInfo',	//获�?�购物车内容
         cartGetQty: '/restconnect/cart/getQty',	//
         cartGetTotal: '/restconnect/cart/getTotal',	//
-        cartAdd: '/restconnect/cart/add'	//直接post到这个接�?�就返回�?�数
+        cartAdd: '/restconnect/cart/add',	//直接post到这个接�?�就返回�?�数
+		 removecart: '/restconnect/cart/remove'
     }, showError = false;
 
     $rootScope.service = {

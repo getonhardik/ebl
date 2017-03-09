@@ -645,6 +645,17 @@ angular.module('app.controllers', [])
             if ($stateParams.cmd === 'daily_sale') {
                 $scope.lineClass = 'one-line';
             }
+			
+			
+			var u_id = getStorage('user_id');
+            var params = {
+                user_id: u_id,
+            };
+			$rootScope.service.get('getwishlist', params, function (results) {
+                console.log(results.items);
+                $scope.wishlist_detail = results.items;
+            });
+			
 
             var getList = function (func, callback) {
                 if (func === 'load') {
@@ -690,10 +701,6 @@ angular.module('app.controllers', [])
                 $cordovaSocialSharing.share(message, null, null);
             }
             $scope.doWhishlistAdd = function (p_id) {
-//            var p_id = $("#product_w_id_"+$scope.product_index).val();
-//            $scope.product_index = $scope.product_index + 1;
-//            alert($scope.product_index);
-//            alert(p_id);
                 var u_id = getStorage('user_id');
                 var params = {
                     product: p_id,
@@ -707,15 +714,13 @@ angular.module('app.controllers', [])
                                 {
                                     title: 'Error',
                                     subTitle: res.message,
-//                                            okType: 'buttonhk'
+	                                okType: 'buttonhk'
                                 }
                         );
-                        //alert(res.message);
                         return;
                     }
                     if (res.status == 'SUCCESS') {
-                        $scope.hideLoading();
-                        //alert($scope.translations.success+'\n\r'+ res.items_qty + ' '+ $scope.translations['items_in_cart']);
+                        $scope.hideLoading();                       
                         $('#wishlist_'+p_id).attr('src','img/icon-25.png');
 //                        $ionicPopup.alert(
 //                                {
@@ -724,7 +729,6 @@ angular.module('app.controllers', [])
 //                                    okType: 'buttonhk'
 //                                }
 //                        );
-                        //alert("Successfully Add to wishlist");
                         $scope.items_qty = res.items_qty;
                         return;
                     }
@@ -1046,7 +1050,14 @@ angular.module('app.controllers', [])
             $scope.qty = 1;
             $scope.totalPrice = 0;
 
-							
+			var u_id = getStorage('user_id');
+            var params = {
+                user_id: u_id,
+            };
+			$rootScope.service.get('getwishlist', params, function (results) {
+                console.log(results.items);
+                $scope.wishlist_detail = results.items;
+            });				
 			
 			$scope.ratingsObject = {
 				iconOn : 'ion-ios-star',
@@ -1181,11 +1192,14 @@ angular.module('app.controllers', [])
                 //$scope.selected = null;
                 $scope.setSelected = function (id) {
                     $scope.db = id;
+					$scope.selected = id;
+					/*
                     $ionicPopup.alert({
                         title: 'Success',
                         subTitle: 'Size selected done.',
                         okType: 'buttonhk'
                     });
+					*/
                 }
 
 
@@ -1194,11 +1208,14 @@ angular.module('app.controllers', [])
                 //$scope.selected = null;
                 $scope.setSelected2 = function (id) {
                     $scope.db2 = id;
-                    $ionicPopup.alert({
+					$scope.selected2 = id;
+                    /*
+					$ionicPopup.alert({
                         title: 'Success',
                         subTitle: 'Color selected done.',
                         okType: 'buttonhk'
                     });
+					*/
                 }
                 $scope.product = results;
                 $scope.totalPrice = +$scope.product.final_price_with_tax;
@@ -1358,7 +1375,6 @@ angular.module('app.controllers', [])
                         subTitle: res.message,
                         okType: 'buttonhk'
                         });
-                        //alert(res.message);
                         return;
                     }
                     if (res.result == 'success') {
@@ -1367,23 +1383,19 @@ angular.module('app.controllers', [])
                         subTitle: 'successfully added',
                         okType: 'buttonhk'
                         });
-                        //alert($scope.translations.success + '\n\r' + res.items_qty + ' ' + $scope.translations['items_in_cart']);
                         $scope.items_qty = res.items_qty;
                         return;
                     }
                 });
             };
             $scope.doWhishlistAdd = function (p_id) {
-                //alert(p_id);
                 var u_id = getStorage('user_id');
                 var params = {
                     product: p_id,
                     user_id: u_id,
                 };
-//            alert(product_entity_id);
                 $scope.showLoading();
                 $rootScope.service.get('addwishlist', params, function (res) {
-                    //alert(123);
                     console.log(res);
                     if (res.status == 'error') {
                         $scope.hideLoading();
@@ -1392,21 +1404,17 @@ angular.module('app.controllers', [])
                         subTitle:res.message,
                         okType: 'buttonhk'
                     });
-//                        alert(res.message);
                         return;
                     }
                     if (res.status == 'SUCCESS') {
-                        //alert(789);
                         $scope.hideLoading();
-                        $('#wishlist_hide_hp').attr('src','img/icon-14.png');
-//                        alert($scope.translations.success + '\n\r' + res.items_qty + ' ' + $scope.translations['items_in_cart']);
+                        $('#wishlist_hide_hp').attr('src','img/icon-28.png');
                         $scope.items_qty = res.items_qty;
                         return;
                     }
                 });
             };
 
-            /*add khunt*/
             $scope.Math = window.Math;
             $scope.groups = [];
             for (var i = 0; i < 1; i++) {
@@ -1705,6 +1713,17 @@ angular.module('app.controllers', [])
 
         // �?�索结果
         .controller('SearchResultCtrl', function ($scope, $rootScope) {
+			
+			var u_id = getStorage('user_id');
+            var params = {
+                user_id: u_id,
+            };
+			$rootScope.service.get('getwishlist', params, function (results) {
+                console.log(results.items);
+                $scope.wishlist_detail = results.items;
+            });
+			
+			
             if (!$rootScope.search) {
                 return;
             }
@@ -1743,6 +1762,36 @@ angular.module('app.controllers', [])
                     }
                 });
             };
+			
+						
+			$scope.doWhishlistAdd = function (p_id) {
+                var u_id = getStorage('user_id');
+                var params = {
+                    product: p_id,
+                    user_id: u_id,
+                };
+                $scope.showLoading();
+                $rootScope.service.get('addwishlist', params, function (res) {
+                    console.log(res);
+                    if (res.status == 'error') {
+                        $scope.hideLoading();
+                        $ionicPopup.alert({
+                        title: 'Error',
+                        subTitle:res.message,
+                        okType: 'buttonhk'
+                    });
+                        return;
+                    }
+                    if (res.status == 'SUCCESS') {
+                        $scope.hideLoading();
+                        $('#wishlist_'+p_id).attr('src','img/icon-24.png');
+                        $scope.items_qty = res.items_qty;
+                        return;
+                    }
+                });
+            };
+			
+			
 
             $scope.doRefresh = function () {
                 getList('refresh', function () {
@@ -1785,6 +1834,17 @@ angular.module('app.controllers', [])
                 $scope.cartList = cartList;
                 $scope.symbol = localStorage['symbol'];
             });
+			
+			    $scope.doRemoveFromCart = function(item_id){
+                var params = {
+                    cart_item_id: item_id,
+                };
+
+                $rootScope.service.get('removecart',params , function (results) {
+                    console.log(results);
+                });
+            }
+			
         })
         // 附近�?销商
         .controller('SearchAgentCtrl', function ($scope, $rootScope, $state) {

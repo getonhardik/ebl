@@ -919,6 +919,15 @@ li.agent p {
 
 
 /*khunt*/
+.r1_title{width: 100%;text-transform: capitalize;margin: 0;}
+.prod_reviews {    padding: 15px;    overflow: hidden;    border-bottom: solid 1px #CCC;}
+.r_head.ng-binding {    width: 100%;    float: left;    padding: 15px;    font-weight: bold;}
+.r1_desc {    font-size: 13px;    color: #777;}
+.r1_rate{float: left;margin: 3px 8px 0 0px;font-size: 14px;}
+.r1_full {    width: 100%;    float: left;}
+.sel {    box-shadow: 1px 1px 1px #F00;    border: solid 1px #F00 !important;}
+.price-box {    text-align: center;}
+.con-item {border:none;    font-size: 16px;    border-bottom: solid 2px #2796CE !important;padding:0px !important}
 .save-img {display: none !important;}
 .save-img:first-child {    display: block !important;}
 .popup-title {    font-weight: bold;    text-transform: uppercase;}

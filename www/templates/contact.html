@@ -93,7 +93,8 @@ margin-top: 7%;}
 .c_box b {  color:#333333  	}
 .c_box{border: 1px solid #E2E2E2;padding: 8px 8px 7px;margin: 10px 0;
 font-size: 16px;color: #777777;box-shadow: 0.5px 1px 1px #999;overflow:hidden}
-.item {border:none;    font-size: 16px;    border-bottom: solid 2px #2796CE;padding:0px !important}
+.con-item {border:none;    font-size: 16px;    border-bottom: solid 2px #2796CE !important;padding:0px !important;
+border-radius: 0 !important;}
 input::-moz-placeholder, textarea::-moz-placeholder {    color: #333 !important;}
 .binp{color: #777;
 font-weight: inherit;}
@@ -117,28 +118,28 @@ font-weight: inherit;}
             <ion-content has-bouncing="true">
               <div class="row" ng-class="{'no-padding-top': !data.editItem}">
                 <div class="col">
-                  <label class="item item-input large">
+                  <label class="item con-item item-input large">
                     <input type="text" placeholder="Name" id="name" name="codice_prodotto" ng-model="codice_prodotto">
                   </label>
                 </div>
               </div>              
               <div class="row">
                 <div class="col">
-                  <label class="item item-input large">
+                  <label class="item con-item item-input large">
                     <input type="text" placeholder="Email" id="email">
                   </label>
                 </div>
               </div>
 			  <div class="row">
                 <div class="col">
-                  <label class="item item-input large">
+                  <label class="item con-item item-input large">
                     <input type="text" placeholder="Telephone" id="telephone">
                   </label>
                 </div>
               </div>
               <div class="row description-row">
                 <div class="col">
-                  <label class="item item-input text">
+                  <label class="item con-item item-input text">
                     <textarea placeholder="Description" id="comment" rows="5" ng-model="item.description" ng-Required="true" name="description" lose-focus-on-return></textarea>
                   </label>
                 </div>

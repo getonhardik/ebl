@@ -7,6 +7,7 @@ var en_US = {
 	checkout:'Checkout',
 	price:'Price',
 	value:'Value',
+	r_head:'WRITE YOUR OWN REVIEW',
 	quality:'Quality',
 	billing_info:'Billing Information',
     Categories:'Categories',

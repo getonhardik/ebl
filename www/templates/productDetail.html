@@ -11,7 +11,6 @@
   margin: auto;
 }
 .product-inner {
-    border: solid 1px #666;
     margin: 0 5px;
     border-radius: 5px;
     text-align: center !important;padding:2px 0;overflow: hidden;
@@ -101,8 +100,11 @@ border-radius: 3px !important;
 	                            <img src="img/icon-22.png" height="25" width="25" />                
                             </a>    
                             </div>
-                            <div class="">
-                            <img class="" src="img/icon-23.png" id='wishlist_hide_hp' height="25" width="25" ng-click="doWhishlistAdd(product.entity_id)" />
+                            <div class="">                                 
+                                 <div ng-repeat="todo in wishlist_detail | filter: product.entity_id">
+                                    <img class="save-img product_entity_id"  src="img/icon-28.png" height="25" width="25" />
+                                 </div>   
+                                 <img class="save-img product_entity_id" src="img/icon-23.png" id='wishlist_hide_hp' height="25" width="25" ng-click="doWhishlistAdd(product.entity_id)" />                          
                             </div>
                             <div class="">
                             <img class="" src="img/icon-24.png" height="25" width="25" ng-click="doCartAdd()" />
@@ -176,7 +178,7 @@ border-radius: 3px !important;
             <div class="color">
                 <span class="input-label input-label-pd">{{'Color' | translate}}:</span>					
                 <ul class="color-ul">
-                    <li style="background:{{color.label}}" ng-repeat="color in productoptions.attributeOptions.Color" ng-if="item.value!='N/A' && item.value!='No'">
+                    <li style="background:{{color.label}}" ng-class="{sel: color.value_index == selected2}" ng-repeat="color in productoptions.attributeOptions.Color" ng-if="item.value!='N/A' && item.value!='No'">
                         <div ng-click="setSelected2('{{color.value_index}}')">&nbsp;</div>
                     </li>                	
                 </ul>
@@ -186,8 +188,8 @@ border-radius: 3px !important;
                 <!--{{product.productOption[1].values}}-->
                 <span class="input-label input-label-pd">{{'Size' | translate}}:</span>
 				<ul class="color-ul">
-                    <li  style="background:#E6E6E6" ng-repeat="size in productoptions.attributeOptions.Size" ng-if="item.value!='N/A' && item.value!='No'">
-                        <div  ng-click="setSelected('{{size.value_index}}')" >{{size.label}}</div>
+                    <li  style="background:#E6E6E6" ng-class="{sel: size.value_index == selected}" ng-repeat="size in productoptions.attributeOptions.Size" ng-if="item.value!='N/A' && item.value!='No'">
+                        <div ng-class="class"  ng-click="setSelected('{{size.value_index}}')" >{{size.label}}</div>
 	                </li>                	
                 </ul>
             </div>
@@ -426,6 +428,52 @@ border-radius: 3px !important;
                                     {{'product_review' | translate}}
                                 </ion-item>
                                 <ion-item class="item-accordion item ng-binding ng-hide" ng-show="isGroupShown(2)" style="">                                    
+                                    
+                                    <!--product review list-->                                    
+                                    <div class="prod_reviews" ng-repeat="preview in product.reviews">			
+                                    	<b class="r1_title">{{preview.title}}</b>                                        
+                                        
+                                        <div class="r1_full">
+                                        	<span class="r1_desc">review by </span><b class="r_by">{{preview.nickname}}</b>                                        
+                                        	<span class="r1_desc">on {{preview.created_at}}</span>
+                                        </div>
+
+                                        <div class="r1_full">                                        
+                                            <span class="r1_rate">{{'quality' | translate}}</span>
+                                            <div class="p_rating">                
+                                                <div class="ratings">
+                                                    <div class="rating-box">
+                                                      <div class="rating" style="width:{{preview.rating_votes_data[0].percent}}%;"></div>
+                                                    </div>                    
+                                                </div>
+                                            </div>
+                                        </div>    
+                                        <div class="r1_full">                                                
+                                            <span class="r1_rate">{{'value' | translate}}</span>
+                                            <div class="p_rating">                
+                                                <div class="ratings">
+                                                    <div class="rating-box">
+                                                      <div class="rating" style="width:{{preview.rating_votes_data[1].percent}}%;"></div>
+                                                    </div>                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="r1_full">                                                
+                                            <span class="r1_rate">{{'price' | translate}}</span>
+                                            <div class="p_rating">                
+                                                <div class="ratings">
+                                                    <div class="rating-box">
+                                                      <div class="rating" style="width:{{preview.rating_votes_data[2].percent}}%;"></div>
+                                                    </div>                    
+                                                </div>
+                                            </div>	                                                
+                                        </div>
+                                        <div class="r1_full"><span class="r1_deta">{{preview.detail}}</span></div>
+                                    </div>
+                                    <!--end-->                                    
+                                    
+                                    <span class="r_head">{{'r_head' | translate}}</span>
+                                    
                                     <span class="r_title">{{'price' | translate}} :</span><ionic-ratings ratingsobj='ratingsObject'></ionic-ratings><br />
                                     <span class="r_title">{{'value' | translate}} :</span><ionic-ratings ratingsobj='ratingsObject2'></ionic-ratings><br />
                                     <span class="r_title">{{'quality' | translate}} :</span><ionic-ratings ratingsobj='ratingsObject3'></ionic-ratings><br />
@@ -535,7 +583,10 @@ border-radius: 3px !important;
                     </div>        
                 </span>
                 <span class="img_right">
-                	<img class="product_entity_id"  id='{{product.entity_id}}' src="img/save-25.png" height="25" width="25"  ng-click="doWhishlistAdd(product.entity_id)" />
+                	<div ng-repeat="todo in wishlist_detail | filter:{entity_id:product.entity_id}">
+                        <img class="save-img product_entity_id"  src="img/icon-25.png" height="25" width="25" />
+                    </div>
+                    <img class="save-img product_entity_id"  id='wishlist_{{product.entity_id}}' src="img/save-25.png" height="25" width="25"  ng-click="doWhishlistAdd(product.entity_id)" />
                 </span>
             </div>
             </div>

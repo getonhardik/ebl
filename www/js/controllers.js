@@ -1823,29 +1823,69 @@ angular.module('app.controllers', [])
             });
         })
         // 购物车
-        .controller('cartCtrl', function ($scope, $rootScope) {
+		.controller('cartCtrl', function ($scope, $rootScope) {
             // �?��?书列表选项
             $rootScope.service.get('cart', {}, function (results) {
                 var cartList = [];
-
+                //alert(123);
+                console.log(results);
                 for (var key in results.cart_items) {
                     cartList.push(results.cart_items[key]);
                 }
                 $scope.cartList = cartList;
                 $scope.symbol = localStorage['symbol'];
             });
-			
-			    $scope.doRemoveFromCart = function(item_id){
+            
+            $scope.doRemoveFromCart = function(item_id){
                 var params = {
                     cart_item_id: item_id,
                 };
-
+                $scope.showLoading();
                 $rootScope.service.get('removecart',params , function (results) {
-                    console.log(results);
-					return;
+                    $scope.hideLoading();
+                    $ionicPopup.alert({
+                        title: 'Success',
+                        subTitle: "Successfully Removed",
+                        okType: 'buttonhk'
+                    });
+                    $state.reload();
+                    return;
                 });
             }
-			
+             $scope.doaddwishlistformcart = function (item_id,p_id) {
+                var u_id = getStorage('user_id');
+                var params = {
+                    product: p_id,
+                    user_id: u_id,
+                };
+                $scope.showLoading();
+                $rootScope.service.get('addwishlist', params, function (res) {
+                    console.log(res);
+                    if (res.status == 'error') {
+                        $ionicPopup.alert(
+                                {
+                                    title: 'Error',
+                                    subTitle: res.message,
+	                                okType: 'buttonhk'
+                                }
+                        );
+                        return;
+                    }
+                    if (res.status == 'SUCCESS') {
+                        $scope.hideLoading();                       
+                        $scope.items_qty = res.items_qty;
+                        var params = {
+                            cart_item_id: item_id,
+                        };
+                        $rootScope.service.get('removecart',params , function (results) {
+                            $state.reload();
+                            return;
+                        });                        
+                        return;
+                    }
+                        });
+            };
+            
         })
         // 附近�?销商
         .controller('SearchAgentCtrl', function ($scope, $rootScope, $state) {

@@ -612,19 +612,20 @@ border-radius: 3px !important;
             </div>
         </div> -->
         
-        <!-- end product descript-->
-	
-    
+        <!-- end product descript-->	
     
     </ion-content>
 
 
-    <div class="bar bar-footer bar-stable add-to-cart cart-my">
+<div style="position:relative">
+   <div class="khunt">
     <a class="add-to-cart-left button button-outline button-assertive ion-android-cart" href="#app/cart">
       &nbsp;{{items_qty}}</a>
     <button class="button add-to-cart-right button-assertive cart-my-btn" type="submit" ng-click="doCartAdd()">
       {{'add_to_cart' | translate}}
     </button>
+    </div>  
     </div>
+   
     
 </ion-view>

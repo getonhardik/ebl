@@ -1028,6 +1028,15 @@ font-size: 11px;color: #FFF;border-radius: 3px;right: 5px;font-weight: bold;}
 .tab-item, .product-container .tab-item, .login-container .tab-item{border-radius:0px !important}
 .bar-assertive .button{border-color:#FFF !important}
 .button.button-full.button-light.icon.icon-left.icon-info.before-remove { margin: 0;    padding: 0;}
+.khunt{background:#FFF;position: fixed;
+bottom: 46px;
+width: 100%;
+border-bottom: 5px solid #FFF;}
+.add-to-cart-left.button.button-outline.button-assertive.ion-android-cart.ng-binding {
+    width: 50%;    background: #FFF;border-color: #0188CC;color: #0188CC;}
+.button.add-to-cart-right.button-assertive.cart-my-btn.ng-binding {
+    width: 48% !important;background: #0188CC;border-color: #0188CC;
+}	
 /*end khunt*/
 
 /*added by archana 15-feb-2017*/

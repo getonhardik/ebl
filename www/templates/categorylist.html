@@ -1,13 +1,12 @@
-<ion-view view-title="{{listTitle | translate}}">
+<ion-view view-title="{{'Category List' | translate}}">
     <ion-content scroll="false" overflow-scroll="true">
         <ion-content lazy-scroll style="height:100%" overflow-scroll="true" direction="y" locking="true">
             <ion-refresher
                     pulling-text="{{'pull_to_refresh' | translate}}"
                     on-refresh="doRefresh()">
             </ion-refresher>
-            <ion-list class="products-grid {{lineClass}}">
-                <div class="product" ng-repeat="(key, product) in lists">
-                    
+            <ion-list class="prod-cat {{lineClass}}">
+                <div class="product" ng-repeat="(key, product) in lists">                    
                     <input type="hidden" ng-model="number" value="{{key <4 ? number=key : number = 4}}">
                     <div class="product-inner prduct_image_{{number}}">
                         <a href="#app/CategoryProductList/{{product.category_id}}">
@@ -16,15 +15,7 @@
                                      lazy-scroll-resize="true"
                                      image-lazy-loader="lines">
                             </div>
-                        </a>
-
-                        <div class="product-info">
-                            <div class="product-name">
-                                {{product.name}}
-                            </div>
-
-                            
-                        </div>
+                        </a>                        
                     </div>
                 </div>
             </ion-list>

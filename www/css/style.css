@@ -1037,6 +1037,14 @@ border-bottom: 5px solid #FFF;}
 .button.add-to-cart-right.button-assertive.cart-my-btn.ng-binding {
     width: 48% !important;background: #0188CC;border-color: #0188CC;
 }	
+.prod-cat .product-inner{height:135px !important;float:left;}
+.prod-cat .product-inner.prduct_image_0 {    width: 58% !important;}
+.prod-cat .product-inner.prduct_image_1 {    width: 38% !important;}
+.prod-cat .product-inner.prduct_image_2 {    width: 38% !important;}
+.prod-cat .product-inner.prduct_image_3 {    width: 58% !important;}
+.prod-cat .product-inner{width:31.33% !important;}
+.prod-cat .product-inner{margin: 1% !important;padding:0 !important;}
+.prod-cat img {    width: 100%;    height: 135px;    border: 0 !important;}
 /*end khunt*/
 
 /*added by archana 15-feb-2017*/

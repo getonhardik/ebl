@@ -1049,7 +1049,9 @@ angular.module('app.controllers', [])
             $scope.showLoading();
             $scope.qty = 1;
             $scope.totalPrice = 0;
-
+			$scope.rate_price=1;
+						 $scope.rate_quality=1;
+						 $scope.rate_value=1;
 			var u_id = getStorage('user_id');
             var params = {
                 user_id: u_id,
@@ -1064,8 +1066,8 @@ angular.module('app.controllers', [])
 				iconOff : 'ion-ios-star-outline',
 				iconOnColor: 'rgb(255, 198, 0)',
 				iconOffColor:  'rgb(255, 0, 0)',
-				rating:  1,
-				minRating:1,
+				rating:  0,
+				minRating:0,
 				callback: function(rating) {
 				  $scope.ratingsCallback(rating);
 				}
@@ -1082,8 +1084,8 @@ angular.module('app.controllers', [])
 				iconOff : 'ion-ios-star-outline',
 				iconOnColor: 'rgb(255, 198, 0)',
 				iconOffColor:  'rgb(255, 0, 0)',
-				rating:  1,
-				minRating:1,
+				rating:  0,
+				minRating:0,
 				callback: function(rating2) {
 				  $scope.ratingsCallback2(rating2);
 				}
@@ -1099,8 +1101,8 @@ angular.module('app.controllers', [])
 				iconOff : 'ion-ios-star-outline',
 				iconOnColor: 'rgb(255, 198, 0)',
 				iconOffColor:  'rgb(255, 0, 0)',
-				rating:  1,
-				minRating:1,
+				rating:  0,
+				minRating:0,
 				callback: function(rating3) {
 				  $scope.ratingsCallback3(rating3);
 				}
@@ -1248,7 +1250,7 @@ angular.module('app.controllers', [])
 							$ionicPopup.alert(
 								{
 									title: 'fail',
-									subTitle: 'Your comment are not add',
+									subTitle: res.message,
 									okType: 'buttonhk'
 								}
 							);							

@@ -22,7 +22,7 @@ angular.module('app.controllers', [])
         // Loading
         $scope.showLoading = function () {
             $ionicLoading.show({
-                template: ''
+                template: 'Loading...'
             });
         };
         $scope.hideLoading = function () {

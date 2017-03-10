@@ -22,7 +22,7 @@ angular.module('app.controllers', [])
             // Loading
             $scope.showLoading = function () {
                 $ionicLoading.show({
-                    template: '',
+                    template: '<ion-spinner icon="spiral"></ion-spinner>'
                 });
             };
             $scope.hideLoading = function () {
@@ -330,8 +330,7 @@ angular.module('app.controllers', [])
                 });
             };
         })
-        .controller('wishlistCtrl', function ($scope, $rootScope, $state, $stateParams, $cordovaSocialSharing, $ionicPopup) {
-
+        .controller('wishlistCtrl', function ($scope, $rootScope, $state, $stateParams, $cordovaSocialSharing, $ionicPopup) {			
             var u_id = getStorage('user_id');
             var params = {
                 user_id: u_id,
@@ -341,6 +340,7 @@ angular.module('app.controllers', [])
                 $cordovaSocialSharing.share(message, null, null);
             }
             $scope.doDeletewishlist = function (p_id) {
+				$scope.showLoading();
                 //alert(p_id);
                 var params = {
                     user_id: u_id,
@@ -348,7 +348,8 @@ angular.module('app.controllers', [])
                 };
 
                 $rootScope.service.get('removeWishlist', params, function (res) {
-                    $ionicPopup.alert(
+                    $scope.hideLoading();
+					$ionicPopup.alert(
                             {
                                 title: 'Success',
                                 subTitle: res.message,
@@ -1393,12 +1394,14 @@ myDiv.scrollTop = 0;
 
             // 增加到购物车
             $scope.doCartAdd = function () {
+				$scope.showLoading();
                 var queryString = $('#product_addtocart_form').formParams();
                 if (!($scope.qty > 1)) {
                     $scope.qty = 1;
                 }
                 $rootScope.service.get('cartAdd', queryString, function (res) {
-                    if (res.result == 'error') {
+                    $scope.hideLoading();
+					if (res.result == 'error') {
                         $ionicPopup.alert({
                         title: 'error',
                         subTitle: res.message,
@@ -1407,7 +1410,8 @@ myDiv.scrollTop = 0;
                         return;
                     }
                     if (res.result == 'success') {
-                        $ionicPopup.alert({
+                        $scope.hideLoading();
+						$ionicPopup.alert({
                         title: 'Success',
                         subTitle: 'successfully added',
                         okType: 'buttonhk'

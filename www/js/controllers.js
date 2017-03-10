@@ -537,8 +537,8 @@ angular.module('app.controllers', [])
 //                        });            
             }
         })
-        .controller('CategoryListCtrl', function ($scope, $rootScope, $ionicPopup, $stateParams, $translate) {
-            $scope.listTitle = {
+        .controller('CategoryListCtrl', function ($scope, $rootScope, $ionicPopup, $stateParams, $translate) {            
+			$scope.listTitle = {
                 daily_sale: 'latest_promotions',
                 'new': 'common_products',
                 cert_download: 'cert_download'
@@ -589,36 +589,6 @@ angular.module('app.controllers', [])
                 $scope.hideLoading();
             };
 
-            $scope.doWhishlistAdd = function () {
-                //var p_id = $('#product_w_id').val();
-                //alert(p_id);
-                var u_id = getStorage('user_id');
-                var params = {
-                    product: p_id,
-                    user_id: u_id,
-                };
-                $scope.showLoading();
-                $rootScope.service.get('addwishlist', params, function (res) {
-                    if (res.result == 'error') {
-                        $ionicPopup.alert(
-                                {
-                                    title: 'erro',
-                                    subTitle: res.message,
-                                    okType: 'buttonhk'
-                                }
-                        );
-                        //alert( res.message);
-                        return;
-                    }
-                    if (res.result == 'success') {
-                        $scope.hideLoading();
-						$('#wishlist_'+p_id).attr('src','img/icon-25.png');
-//                        alert($scope.translations.success + '\n\r' + res.items_qty + ' ' + $scope.translations['items_in_cart']);
-                        $scope.items_qty = res.items_qty;
-                        return;
-                    }
-                });
-            };
 
             $scope.doRefresh = function () {
                 getList('refresh', function () {
@@ -976,6 +946,9 @@ angular.module('app.controllers', [])
 
         // 列表
         .controller('ListsCtrl', function ($scope, $rootScope, $stateParams, $translate) {
+			
+			$scope.showLoading();
+			
             $scope.listTitle = {
                 daily_sale: 'latest_promotions',
                 'new': 'common_products',
@@ -1001,7 +974,6 @@ angular.module('app.controllers', [])
                     cmd: $stateParams.cmd || 'catalog'
                 };
 
-                $scope.showLoading();
                 $rootScope.service.get('products', params, function (lists) {
                     if (func === 'load') {
                         if (Array.isArray(lists) && lists.length) {
@@ -1047,12 +1019,14 @@ angular.module('app.controllers', [])
                 $stateParams, $ionicPopup, $translate,
                 $ionicSlideBoxDelegate, $ionicScrollDelegate,
                 $cordovaSocialSharing, $ionicSideMenuDelegate) {
-            $scope.showLoading();
-            $scope.qty = 1;
+            
+			$scope.showLoading();
+            
+			$scope.qty = 1;
             $scope.totalPrice = 0;
 			$scope.rate_price=1;
-						 $scope.rate_quality=1;
-						 $scope.rate_value=1;
+			$scope.rate_quality=1;
+			$scope.rate_value=1;
 			var u_id = getStorage('user_id');
             var params = {
                 user_id: u_id,
@@ -1113,14 +1087,7 @@ angular.module('app.controllers', [])
 					$scope.rate_value = rating3;
 					console.log('Selected rating is3 : ', rating3);
 			};
-			
-			
-			
-			
-			
-			
-			
-			
+										
             $scope.updateSlider = function () {
                 $ionicSlideBoxDelegate.$getByHandle('image-viewer').update();
             };
@@ -1133,42 +1100,25 @@ angular.module('app.controllers', [])
             });
 
             // 商�?详情
-            $rootScope.service.get('productDetail', {
+			$scope.showLoading();
+            $rootScope.service.get('productDetail', {				
                 productid: $stateParams.productid
             }, function (results) {
                 console.log(results.attributeOptions.Size);
 				$rootScope.total_reviews_count=results.total_reviews_count;
 				$rootScope.reviews=results.reviews;
                 $scope.dbs = results.attributeOptions.Size;
-                //$scope.db = '10';
-                //$scope.selected = null;
                 $scope.setSelected = function (id) {
                     $scope.db = id;
-					$scope.selected = id;
-					/*
-                    $ionicPopup.alert({
-                        title: 'Success',
-                        subTitle: 'Size selected done.',
-                        okType: 'buttonhk'
-                    });
-					*/
+					$scope.selected = id;					
                 }
 
 
                 $scope.dbs2 = results.attributeOptions.Color;
-                //$scope.db = '10';
-                //$scope.selected = null;
                 $scope.setSelected2 = function (id) {
                     $scope.db2 = id;
 					$scope.selected2 = id;
-                    /*
-					$ionicPopup.alert({
-                        title: 'Success',
-                        subTitle: 'Color selected done.',
-                        okType: 'buttonhk'
-                    });
-					*/
-                }
+              	}
                 $scope.product = results;
                 $scope.totalPrice = +$scope.product.final_price_with_tax;
                 $scope.oldPrice = +$scope.product.regular_price_with_tax;
@@ -1185,17 +1135,13 @@ angular.module('app.controllers', [])
                 $scope.hideLoading();
             });
 
-			$scope.showReview = function() {
-					console.log('sdfsdf');
-				
-				
+			$scope.showReview = function() {				
 				$scope.toggleGroup(2);
-				var myDiv = document.getElementById('reviewcontainer');
-myDiv.scrollTop = 0;
+				var myDiv = document.getElementById('r_head');				
 						
 			}
 
-//rating
+			//rating
 			$scope.carica = function() {	
 						
 				var u_id = getStorage('user_id');	
@@ -1856,7 +1802,7 @@ myDiv.scrollTop = 0;
             });
         })
         // 购物车
-		.controller('cartCtrl', function ($scope, $rootScope) {
+		.controller('cartCtrl', function ($scope, $rootScope, $stateParams, $timeout) {
             // �?��?书列表选项
             $rootScope.service.get('cart', {}, function (results) {
                 var cartList = [];
@@ -1869,6 +1815,25 @@ myDiv.scrollTop = 0;
                 $scope.symbol = localStorage['symbol'];
             });
             
+			$scope.qty = 1;
+			$rootScope.service.get('cartGetQty', {
+                product: $stateParams.productid
+            }, function (res) {
+                $scope.items_qty = res.items_qty;
+            });
+			$scope.qtyAdd = function () {
+                $scope.qty++;
+            };
+            $scope.qtyMinus = function () {
+                if ($scope.qty > 1) {
+                    $scope.qty--;
+                }
+            };
+            $scope.$watch('qty', function () {
+                $timeout($scope.updatePrice, 0);
+            });
+			
+			
             $scope.doRemoveFromCart = function(item_id){
                 var params = {
                     cart_item_id: item_id,
@@ -1918,6 +1883,29 @@ myDiv.scrollTop = 0;
                     }
                         });
             };
+			
+			
+			$scope.Math = window.Math;
+            $scope.groups = [];
+            for (var i = 0; i < 1; i++) {
+                $scope.groups[i] = {
+                    name: i,
+                    items: []
+                };
+                for (var j = 0; j < 1; j++) {
+                    $scope.groups[i].items.push(i + '-' + j);
+                }
+            }
+		  $scope.toggleGroup = function(group) {
+			if ($scope.isGroupShown(group)) {
+			  $scope.shownGroup = null;
+			} else {
+			  $scope.shownGroup = group;
+			}
+		  };
+		  $scope.isGroupShown = function(group) {
+			return $scope.shownGroup === group;
+		  };
             
         })
         // 附近�?销商
@@ -2039,6 +2027,7 @@ myDiv.scrollTop = 0;
             $scope.src = Config.baseUrl + Config.getLocale() + frame.src;
         })
         .controller('orderDetailsCtrl', function ($scope, $rootScope, $sce, $stateParams) {
+			$scope.showLoading();
             var u_id = getStorage('user_id');
             var params = {
                 customerid: u_id,
@@ -2046,17 +2035,19 @@ myDiv.scrollTop = 0;
             $rootScope.service.get('order', params, function (res) {
                 console.log(res);
                 $scope.orders = res;
+				$scope.hideLoading();
             });
         })
 		
 		.controller('orderdataCtrl', function ($scope, $rootScope, $sce, $stateParams) {
-			
+			$scope.showLoading();
 			var params = {
                 orderid: $stateParams.orderid,
             };
 			$rootScope.service.get('myOrderDetail', params, function (res) {
                 console.log(res);
                 $scope.order = res;
+				$scope.hideLoading();
             });
 			
 			$scope.Math = window.Math;
@@ -2104,7 +2095,7 @@ myDiv.scrollTop = 0;
 			};
 
 			$scope.Math = window.Math;
-             $scope.groups = [];
+            $scope.groups = [];
             for (var i = 0; i < 1; i++) {
                 $scope.groups[i] = {
                     name: i,

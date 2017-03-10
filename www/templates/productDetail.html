@@ -1,69 +1,21 @@
 <style>
-.slick-container {
-  width: 95%;
-  margin: auto;
-  padding: 5px;
-}
-
+.slick-container {  width: 95%;  margin: auto;  padding: 5px;}
 .slick-item {}
-
-.slick-item img {
-  margin: auto;
-}
-.product-inner {
-    margin: 0 5px;
-    border-radius: 5px;
-    text-align: center !important;padding:2px 0;overflow: hidden;
-}
-
-.prod_slider img {
-    /*height: 150px;*/
-	margin-top: 2px !important;
-}
-.product-name.ng-binding {
-    font-size: 11px;
-    color: #777;
-}
-.price-box .price, .category-products .product .price-box .price {
-    color: #06C;font-size:90%}
-	.new-lbl {
-   background: #009900;
-color: #FFF;
-padding: 0 4px;
-margin:3px;
-border-radius: 3px !important;
-}.p_lbl {
-    text-align: right;
-}
-.p_footer img {
-    width: auto !important;
-}
-.img_left{}
-.img_center{text-align:center}
-.img_right{text-align:right}
-.p_footer,.p_footer img{text-align:center !important}
-.p_footer span {
-    width: 33% !important;
-    float: left;
-    text-align: center !important;
-}
-.p_rating img {
-    width: 66%;
-    height: 50%;
-}
+.slick-item im {  margin: auto;}
+.product-inner {    margin: 0 5px;    border-radius: 5px;text-align: center !important;padding:2px 0;overflow: hidden;}
+.prod_slider img {    /*height: 150px;*/	margin-top: 2px !important;}
+.product-name.ng-binding {    font-size: 11px;    color: #777;}
+.price-box .price, .category-products .product .price-box .price { color: #06C;font-size:90%}
+.new-lbl {   background: #009900;color: #FFF;padding: 0 4px;margin:3px;border-radius: 3px !important;}
+.p_lbl {    text-align: right;}.p_footer img {    width: auto !important;}
+.img_left{}.img_center{text-align:center}.img_right{text-align:right}.p_footer,.p_footer img{text-align:center !important}
+.p_footer span {    width: 33% !important;    float: left;    text-align: center !important;}
+.p_rating img {    width: 66%;    height: 50%;}
 .bar.bar-assertive.bar-footer{background:#FFF !important}
 .bar.bar-assertive{background-color:#FFF !important;border:none !important}
-.bar-assertive .button {
-    border-color: #CCC;    margin-right: 3px;
-    background-color:#CCC;
-    color: #0088CC;
-}
-.mycbtn1 {
-    top: 0px;
-    right: 10px;
-}
-.col-size .list .item1 {
-    padding: 5px;    white-space: unset;border-bottom: solid 2px #008BD5;}
+.bar-assertive .button {    border-color: #CCC;    margin-right: 3px;    background-color:#CCC;    color: #0088CC;}
+.mycbtn1 {    top: 0px;    right: 10px;}
+.col-size .list .item1 {    padding: 5px;    white-space: unset;border-bottom: solid 2px #008BD5;}
 .btn_cnt2{width:100%;background: #008BD5;border: none;color: #FFF;padding: 5px 20px;font-size: 20px;}
 .text-center {    text-align: left;    padding: 0 15px;    overflow: hidden;}	
 .r_title {    float: left;    margin: 0 15px;}
@@ -100,7 +52,7 @@ border-radius: 3px !important;
 	                            <img src="img/icon-22.png" height="25" width="25" />                
                             </a>    
                             </div>
-                            <div class="">                                 
+                            <div style="height:70px;overflow:hidden">                                 
                                  <div ng-repeat="todo in wishlist_detail | filter: product.entity_id">
                                     <img class="save-img product_entity_id"  src="img/icon-28.png" height="25" width="25" />
                                  </div>   
@@ -174,8 +126,10 @@ border-radius: 3px !important;
                 </div>
             </div>
          </div>
+         
+
         <div class="col-size">
-            <div class="color">
+            <div  ng-if="productoptions.attributeOptions.Color" class="color">
                 <span class="input-label input-label-pd">{{'Color' | translate}}:</span>					
                 <ul class="color-ul">
                     <li style="background:{{color.label}}" ng-class="{sel: color.value_index == selected2}" ng-repeat="color in productoptions.attributeOptions.Color" ng-if="item.value!='N/A' && item.value!='No'">
@@ -184,7 +138,7 @@ border-radius: 3px !important;
                 </ul>
             </div>
             <div style="clear:both"></div>
-            <div class="size">
+            <div  ng-if="productoptions.attributeOptions.Size"  class="size">
                 <!--{{product.productOption[1].values}}-->
                 <span class="input-label input-label-pd">{{'Size' | translate}}:</span>
 				<ul class="color-ul">
@@ -472,7 +426,7 @@ border-radius: 3px !important;
                                     </div>
                                     <!--end-->                                    
                                     
-                                    <span class="r_head">{{'r_head' | translate}}</span>
+                                    <span id="r_head" class="r_head">{{'r_head' | translate}}</span>
                                     
                                     <span class="r_title">{{'price' | translate}} :</span><ionic-ratings ratingsobj='ratingsObject'></ionic-ratings><br />
                                     <span class="r_title">{{'value' | translate}} :</span><ionic-ratings ratingsobj='ratingsObject2'></ionic-ratings><br />

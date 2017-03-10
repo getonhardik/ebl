@@ -1,6 +1,9 @@
 var en_US = {
     colon: ': ',
     login: 'Login',
+	options: 'Options',
+	apply_coupon:'Apply Coupon',
+	price_details:'Price Details',	
     register: 'Register',
     home: 'Home',
     back: 'Back',
@@ -15,6 +18,7 @@ var en_US = {
 	default_address:'Default Address',
 	remove:'REMOVE',
 	edit:'EDIT',
+	qty:'QTY',
 	product_review:'Reviews',
 	item_ordered:'Item Ordered',
 	shippping_address:'Shipping Address',

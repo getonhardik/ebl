@@ -73,12 +73,12 @@ angular.module('app', [
                             }
                         }
                     })
-					.state('app.paymenttest', {
-                        url: '/paymenttest', //附近�?销商列表
+					.state('app.paypal', {
+                        url: '/paypal', //附近�?销商列表
                         views: {
                             'menuContent': {
-                                templateUrl: 'templates/paymenttest.html',
-                                controller: 'paymenttestCtrl'
+                                templateUrl: 'templates/paypal.html',
+                                controller: 'paypalCtrl'
                             }
                         }
                     })
@@ -209,7 +209,7 @@ angular.module('app', [
                                 controller: 'leave_feedbackCtrl'
                             }
                         }
-                    })
+                    })					
                     .state('app.CategoryList', {
                         url: '/categoryList/:categoryid/:name',
                         views: {

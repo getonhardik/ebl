@@ -1137,7 +1137,8 @@ angular.module('app.controllers', [])
 
 			$scope.showReview = function() {				
 				$scope.toggleGroup(2);
-				var myDiv = document.getElementById('r_head');				
+				var myDiv = document.getElementById('reviewcontainer');
+				myDiv.scrollTop = 0;
 						
 			}
 
@@ -1821,6 +1822,7 @@ angular.module('app.controllers', [])
             }, function (res) {
                 $scope.items_qty = res.items_qty;
             });
+			
 			$scope.qtyAdd = function () {
                 $scope.qty++;
             };
@@ -2076,7 +2078,7 @@ angular.module('app.controllers', [])
 					
 		})
 		
-		.controller('paymenttestCtrl', function ($scope, $rootScope, $sce, $stateParams) {
+		.controller('paypalCtrl', function ($scope, $rootScope, $sce, $stateParams) {
 			var u_id = getStorage('user_id');					
 			var params = {
 				customerid: u_id,
@@ -2088,14 +2090,16 @@ angular.module('app.controllers', [])
 		})
 					
 		
-		.controller('checkoutCtrl', function ($scope, $rootScope, $sce, $stateParams) {
+		.controller('checkoutCtrl', function ($scope, $rootScope, $sce, $state,$stateParams) {
+                    $scope.subtotal = 0;
+                    $scope.shipping_price = 0;
 			var u_id = getStorage('user_id');					
 			var params = {
 				customerid: u_id,
 			};
 
 			$scope.Math = window.Math;
-            $scope.groups = [];
+             $scope.groups = [];
             for (var i = 0; i < 1; i++) {
                 $scope.groups[i] = {
                     name: i,
@@ -2119,6 +2123,7 @@ angular.module('app.controllers', [])
                 var params = {
                         user_id: u_id,
                 };
+            
             $rootScope.service.get('getAddress', params, function (results) {
                 console.log(results.data[0]);
                 console.log("KP");
@@ -2127,6 +2132,16 @@ angular.module('app.controllers', [])
                 //console.log($scope.address_detail);
                 // angular.extend($scope.address_detail, results.data[0]);
             });
+            $rootScope.service.get('cart', params, function (results) {
+                console.log(results);
+                subtotal1 = 0;
+                $scope.order_review_data = results.cart_items;
+                $.each(results.cart_items, function( index, value ) {
+                    subtotal1 = subtotal1 + (value.item_price * value.qty);
+                });
+                $scope.subtotal = subtotal1;
+            });
+            
 //            alert($(".biiling_rbutton").val());
             if((getStorage('user_id')) != null){
                 
@@ -2142,5 +2157,24 @@ angular.module('app.controllers', [])
                     $scope.shipData = {};
                 }
             }
-        })	
+            $scope.payment_info_rbutton = function($event){
+                if($event.target.value == 'credit_card'){
+                    $("#payment_info_id").removeClass('hide');
+                }else{
+                    $("#payment_info_id").addClass('hide');
+                }
+            }
+            
+            $scope.checkoutForm1 = function(){
+                $state.go("app.paypal");return;
+            
+            }
+            var params = {
+                customerid: u_id,
+            };
+            $rootScope.service.get('paymentmethods', params, function (results) {
+                //console.log(results.model);
+                $scope.payment_method = results.model;
+            });
+        })
 		

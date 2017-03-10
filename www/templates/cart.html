@@ -63,7 +63,7 @@ color: #444;    text-align: center;    font-weight: bold;    cursor: pointer;}
                             <span style="font-size:13px"> {{'qty' | translate}} :</span> <br />
                              <span class="input-number-decrement" ng-click="qtyMinus()">-</span>
                               <input class="input-number" type="text" name="qty" id="qty"
-                                     ng-model="qty" min="1" max="99" value="{{item.qty}}"
+                                     ng-model="qty" min="1" max="99"
                                      title="Qty">
                               <span class="input-number-increment" ng-click="qtyAdd()">+</span>                             
                           </div>
@@ -133,10 +133,10 @@ color: #444;    text-align: center;    font-weight: bold;    cursor: pointer;}
 		</div>                
         
         <div style="text-align: center;margin-top: 20px;overflow: hidden;padding: 10px;">
-            <a class="btn_cnt" href="#app/checkout">Checkout</a>
+            <a class="btn_cnt" target="_self" href="#app/checkout">Checkout</a>
         </div>
         <div style="text-align: center;overflow: hidden;padding: 10px;margin-bottom:65px;">
-            <a class="btn_cnt2" href="#app/home">Continue Shopping</a>
+            <a class="btn_cnt2" target="_self" href="#app/home">Continue Shopping</a>
         </div>
     </ion-content>
 </ion-view>

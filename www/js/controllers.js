@@ -2124,16 +2124,17 @@ angular.module('app.controllers', [])
 				PaypalService.makePayment($scope.price, $scope.produit)
 				.then(function (response) {
                                     console.log(response);
-                                    res = JSON.stringify(response);
+                                    //res = JSON.stringify(response);
                                             $ionicPopup.alert(
                                                     {
                                                         title: 'Paypal Success',
-                                                        subTitle: res.response.id,
+                                                        subTitle: "Payment success with Id:"+response.response.id,
                                                         okType: 'buttonhk'
                                                     }
                                             );
 //					alert(res);
 //					alert("success"+JSON.stringify(response));
+$location.path('/app/home');
                                     $state.go("app.home");return;
 				},function (error) {
                                             $ionicPopup.alert(

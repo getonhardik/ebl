@@ -658,15 +658,7 @@ angular.module('app.controllers', [])
 			
 			
 			var u_id = getStorage('user_id');
-            var params = {
-                user_id: u_id,
-            };
-			$rootScope.service.get('getwishlist', params, function (results) {
-                console.log(results.items);
-                $scope.wishlist_detail = results.items;
-            });
-			
-
+			        
             var getList = function (func, callback) {
                 if (func === 'load') {
                     $scope.listPge++;
@@ -678,6 +670,7 @@ angular.module('app.controllers', [])
                     limit: 20,
                     page: $scope.listPge,
                     cat_id: $stateParams.categoryid,
+					customerid: u_id,
                     cmd: 'by_category'
                 };
                 $scope.showLoading();
@@ -1065,15 +1058,7 @@ angular.module('app.controllers', [])
             $scope.totalPrice = 0;
 			$scope.rate_price=1;
 			$scope.rate_quality=1;
-			$scope.rate_value=1;
-			var u_id = getStorage('user_id');
-            var params = {
-                user_id: u_id,
-            };
-			$rootScope.service.get('getwishlist', params, function (results) {
-                console.log(results.items);
-                $scope.wishlist_detail = results.items;
-            });				
+			$scope.rate_value=1;						
 			
 			$scope.ratingsObject = {
 				iconOn : 'ion-ios-star',
@@ -1140,9 +1125,13 @@ angular.module('app.controllers', [])
 
             // 商�?详情
 			$scope.showLoading();
-            $rootScope.service.get('productDetail', {				
-                productid: $stateParams.productid
-            }, function (results) {
+			var u_id = getStorage('user_id');
+            var params = {
+                customerid: u_id,
+				productid: $stateParams.productid
+            };
+			
+            $rootScope.service.get('productDetail', params, function (results) {
                 console.log(results.attributeOptions.Size);
 				$rootScope.total_reviews_count=results.total_reviews_count;
 				$rootScope.reviews=results.reviews;
@@ -1461,6 +1450,7 @@ angular.module('app.controllers', [])
                 return $scope.shownGroup === group;
             };
 
+			var u_id = getStorage('user_id');
 
             $stateParams = '';
             $scope.listTitle = {}[$stateParams.cmd];
@@ -1479,6 +1469,7 @@ angular.module('app.controllers', [])
                 var params = {
                     limit: 5,
                     page: $scope.listPge,
+					customerid: u_id,
                     cmd: $stateParams.cmd || 'new'
                 };
                 $scope.showLoading();
@@ -1508,19 +1499,7 @@ angular.module('app.controllers', [])
             }, function (res) {
                 $scope.items_qty = res.items_qty;
             });
-			
-			
-			var u_id = getStorage('user_id');
-            var params = {
-                user_id: u_id,
-            };
-			
-			
-			$rootScope.service.get('getwishlist', params, function (results) {
-                $scope.wishlist_detail = results.items;
-            });
-			
-			
+									            
             /*khunt*/
             $scope.Math = window.Math;
             $scope.loading1 = true;
@@ -1534,7 +1513,10 @@ angular.module('app.controllers', [])
             $scope.dataLoaded2 = false;
             $scope.dataLoaded3 = false;
             $scope.dataLoaded4 = false;
-
+			
+			var u_id = 0;
+			var u_id = getStorage('user_id');
+			
             var getList = function (func, callback) {
                 if (func === 'load') {
                     $scope.listPge++;
@@ -1544,6 +1526,7 @@ angular.module('app.controllers', [])
                 var params = {
                     limit: 5,
                     page: $scope.listPge,
+					customerid: u_id,
                     cmd: $stateParams.cmd || 'new'
                 };
                 $scope.showLoading();
@@ -1568,6 +1551,7 @@ angular.module('app.controllers', [])
                 var params = {
                     limit: 5,
                     page: $scope.listPge,
+					customerid: u_id,
                     cmd: $stateParams.cmd || 'best_seller',
                     user_id:getStorage('user_id'),
                 };
@@ -1592,6 +1576,7 @@ angular.module('app.controllers', [])
                 var params = {
                     limit: 5,
                     page: $scope.listPge,
+					customerid: u_id,
                     cmd: $stateParams.cmd || 'daily_sale'
                 };
                 $scope.showLoading();
@@ -1616,6 +1601,7 @@ angular.module('app.controllers', [])
                 var params = {
                     limit: 5,
                     page: $scope.listPge,
+					customerid: u_id,
                     cmd: $stateParams.cmd || 'catalog'
                 };
                 $scope.showLoading();
@@ -1720,8 +1706,10 @@ angular.module('app.controllers', [])
                 $scope._xingzhuang = '';
             };
 
+     		 var u_id = getStorage('user_id');	
             $scope.onSearch = function () {
                 var params = $('#searAdv').formParams();
+				params['customerid'] = u_id;
 //                params['a_guige'] = params['a_guige'].substring(7);
                 $rootScope.search = {
                     type: 'searchAdv',
@@ -1733,16 +1721,6 @@ angular.module('app.controllers', [])
 
         // �?�索结果
         .controller('SearchResultCtrl', function ($scope, $rootScope) {
-			
-			var u_id = getStorage('user_id');
-            var params = {
-                user_id: u_id,
-            };
-			$rootScope.service.get('getwishlist', params, function (results) {
-                console.log(results.items);
-                $scope.wishlist_detail = results.items;
-            });
-			
 			
             if (!$rootScope.search) {
                 return;

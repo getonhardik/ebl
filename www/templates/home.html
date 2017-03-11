@@ -159,10 +159,13 @@ box-shadow: 1px 1px 3px #E6E6E6;}
                     </div>        
                 </span>
                 <span class="img_right">                	                                        
-                    <div ng-repeat="todo in wishlist_detail | filter:{entity_id:product.entity_id}">
+					 <div ng-if="true == product.is_in_wishlist">
                         <img class="save-img product_entity_id"  src="img/icon-25.png" height="25" width="25" />
-                    </div>
-                    <img class="save-img product_entity_id"  id='wishlist_{{product.entity_id}}' src="img/save-25.png" height="25" width="25"  ng-click="doWhishlistAdd(product.entity_id)" />
+                     </div>
+                     
+                     <div ng-if="true != product.is_in_wishlist">
+                        <img class="save-img product_entity_id" src="img/save-25.png" id='wishlist_hide_hp' height="25" width="25" ng-click="doWhishlistAdd(product.entity_id)" />
+                     </div>                    
                 </span>
             </div>
             </div>
@@ -240,10 +243,13 @@ box-shadow: 1px 1px 3px #E6E6E6;}
                     </div>        
                 </span>
                 <span class="img_right">
-                	<div ng-repeat="todo in wishlist_detail | filter:{entity_id:product.entity_id}">
+					<div ng-if="true == product.is_in_wishlist">
                         <img class="save-img product_entity_id"  src="img/icon-25.png" height="25" width="25" />
-                    </div>
-                    <img class="save-img product_entity_id"  id='wishlist_{{product.entity_id}}' src="img/save-25.png" height="25" width="25"  ng-click="doWhishlistAdd(product.entity_id)" />
+                     </div>
+                     
+                     <div ng-if="true != product.is_in_wishlist">
+                        <img class="save-img product_entity_id" src="img/save-25.png" id='wishlist_hide_hp' height="25" width="25" ng-click="doWhishlistAdd(product.entity_id)" />
+                     </div>                	
                 </span>
             </div>
             
@@ -325,10 +331,13 @@ box-shadow: 1px 1px 3px #E6E6E6;}
                     </div>        
                 </span>
                 <span class="img_right">
-                	<div ng-repeat="todo in wishlist_detail | filter:{entity_id:product.entity_id}">
+					<div ng-if="true == product.is_in_wishlist">
                         <img class="save-img product_entity_id"  src="img/icon-25.png" height="25" width="25" />
-                    </div>
-                    <img class="save-img product_entity_id"  id='wishlist_{{product.entity_id}}' src="img/save-25.png" height="25" width="25"  ng-click="doWhishlistAdd(product.entity_id)" />
+                     </div>
+                     
+                     <div ng-if="true != product.is_in_wishlist">
+                        <img class="save-img product_entity_id" src="img/save-25.png" id='wishlist_hide_hp' height="25" width="25" ng-click="doWhishlistAdd(product.entity_id)" />
+                     </div>                	
                 </span>
             </div>
             </div>
@@ -409,10 +418,13 @@ box-shadow: 1px 1px 3px #E6E6E6;}
                     </div>        
                 </span>
                 <span class="img_right">
-                	<div ng-repeat="todo in wishlist_detail | filter:{entity_id:product.entity_id}">
+                	<div ng-if="true == product.is_in_wishlist">
                         <img class="save-img product_entity_id"  src="img/icon-25.png" height="25" width="25" />
-                    </div>
-                    <img class="save-img product_entity_id"  id='wishlist_{{product.entity_id}}' src="img/save-25.png" height="25" width="25"  ng-click="doWhishlistAdd(product.entity_id)" />
+                     </div>
+                     
+                     <div ng-if="true != product.is_in_wishlist">
+                        <img class="save-img product_entity_id" src="img/save-25.png" id='wishlist_hide_hp' height="25" width="25" ng-click="doWhishlistAdd(product.entity_id)" />
+                     </div>
                 </span>
             </div>
             </div>

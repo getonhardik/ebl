@@ -1111,6 +1111,13 @@ angular.module('app.controllers', [])
 					$scope.rate_value = rating3;
 					console.log('Selected rating is3 : ', rating3);
 			};
+                    $scope.sharewithfriend = function () {
+                        $scope.showLoading();
+                        var message = "Ebranch App";
+                        $cordovaSocialSharing.share(message, null, null);
+                        $scope.hideLoading();
+                    }
+
 										
             $scope.updateSlider = function () {
                 $ionicSlideBoxDelegate.$getByHandle('image-viewer').update();
@@ -1490,10 +1497,16 @@ angular.module('app.controllers', [])
         })
 
         // homeä¸­ï¼Œå?–bannerï¼Œå¿«é€Ÿæ?œç´¢
-        .controller('HomeCtrl', function ($scope, $rootScope, $state, $ionicSlideBoxDelegate, $timeout,$ionicPopup,$stateParams) {
+        .controller('HomeCtrl', function ($scope, $rootScope, $state, $ionicSlideBoxDelegate, $timeout,$ionicPopup,$stateParams,$cordovaSocialSharing) {
             $scope.searchData = {};
+            $scope.sharewithfriend = function () {
+                $scope.showLoading();
+                var message = "Ebranch App";
+                $cordovaSocialSharing.share(message, null, null);
+                $scope.hideLoading();
+            }
 
-			
+            
             $rootScope.service.get('cartGetQty', {
                 product: $stateParams.productid
             }, function (res) {

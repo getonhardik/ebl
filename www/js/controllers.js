@@ -2132,6 +2132,7 @@ angular.module('app.controllers', [])
                                                         okType: 'buttonhk'
                                                     }
                                             );
+					alert(res);
 //					alert("success"+JSON.stringify(response));
                                     $state.go("app.home");return;
 				},function (error) {

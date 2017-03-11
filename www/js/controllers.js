@@ -2131,8 +2131,8 @@ angular.module('app.controllers', [])
                                                         okType: 'buttonhk'
                                                     }
                                             );
+					alert("success"+JSON.stringify(response));
                                     $state.go("app.home");return;
-//					alert("success"+JSON.stringify(response));
 				},function (error) {
                                             $ionicPopup.alert(
                                                     {

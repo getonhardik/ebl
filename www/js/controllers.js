@@ -2109,23 +2109,40 @@ angular.module('app.controllers', [])
 					
 		})
 		
-.controller('paypalCtrl', function ($scope, $rootScope, $sce, $stateParams,PaypalService) {
+.controller('paypalCtrl', function ($scope, $rootScope,$ionicPopup, $sce, $stateParams,PaypalService) {
     //alert(123);
 			var u_id = getStorage('user_id');					
 			var params = {
 				customerid: u_id,
 			};
 			
-			$scope.price = $rootScope.grand_total_paypal;
+//			$scope.price = $rootScope.grand_total_paypal;
+			$scope.price = 1;
                         $scope.produit = 'Ebranch Shop';
                         console.log("init paapal before");
 			PaypalService.initPaymentUI().then(function () {
 				PaypalService.makePayment($scope.price, $scope.produit)
 				.then(function (response) {
                                     console.log(response);
-					alert("success"+JSON.stringify(response));
+                                            $ionicPopup.alert(
+                                                    {
+                                                        title: 'Paypal Success',
+                                                        subTitle: response.id,
+                                                        okType: 'buttonhk'
+                                                    }
+                                            );
+                                    $state.go("app.home");return;
+//					alert("success"+JSON.stringify(response));
 				},function (error) {
-					alert("error"+JSON.stringify(error));
+                                            $ionicPopup.alert(
+                                                    {
+                                                        title: 'Paypal Error',
+                                                        subTitle: 'Paypal error',
+                                                        okType: 'buttonhk'
+                                                    }
+                                            );
+
+//                                alert("error"+JSON.stringify(error));
 			});
 		});
 			

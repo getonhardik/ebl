@@ -2124,7 +2124,7 @@ angular.module('app.controllers', [])
 				PaypalService.makePayment($scope.price, $scope.produit)
 				.then(function (response) {
                                     console.log(response);
-                                    res = JSON.parse(response);
+                                    res = JSON.stringify(response);
                                             $ionicPopup.alert(
                                                     {
                                                         title: 'Paypal Success',

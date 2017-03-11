@@ -31,7 +31,7 @@ color:#FFF}
                 <div class="list">
                 <form ng-submit="checkoutForm1()" name="checkoutForm">                
                     <div ng-repeat="group in groups" class="c_box c_box2 langchanger" style="">
-                        <ion-item class="item-stable ng-binding" ng-click="toggleGroup(0)" ng-class="{active: isGroupShown(0)}" style="">
+                        <ion-item class="item-stable ng-binding" ng-click="toggleGroup(0)" ng-class="{active: isGroupShown(0)}" style="border-bottom: none !important">
                             <i class="pdetail_plus_icon_hr icon icon ion-chevron-down" ng-class="isGroupShown(0) ? 'ion-chevron-down' : 'ion - chevron - right'" style=""></i>
                             &nbsp;
                             {{'billing_info'| translate}}
@@ -113,8 +113,8 @@ color:#FFF}
                     </div>
 
                     <div ng-repeat="group in groups" class="c_box c_box2 langchanger" style="">
-                        <ion-item class="item-stable ng-binding" ng-click="toggleGroup(1)" ng-class="{active: isGroupShown(1)}" style="">
-                            <i class="pdetail_plus_icon_hr icon icon ion-chevron-down" ng-class="isGroupShown(1) ? 'ion-chevron-down' : 'ion - chevron - right'" style=""></i>
+                        <ion-item class="item-stable ng-binding" ng-click="toggleGroup(1)" ng-class="{active: isGroupShown(1)}"  style="border-bottom: none !important">
+                            <i class="pdetail_plus_icon_hr icon icon ion-chevron-down" ng-class="isGroupShown(1) ? 'ion-chevron-down' : 'ion - chevron - right'"></i>
                             &nbsp;
                             {{'shipping_info'| translate}}
                         </ion-item>
@@ -192,7 +192,7 @@ color:#FFF}
                     </div>
 
                     <div ng-repeat="group in groups" class="c_box c_box2 langchanger" style="">
-                        <ion-item class="item-stable ng-binding" ng-click="toggleGroup(2)" ng-class="{active: isGroupShown(2)}" style="">
+                        <ion-item class="item-stable ng-binding" ng-click="toggleGroup(2)" ng-class="{active: isGroupShown(2)}"  style="border-bottom: none !important">
                             <i class="pdetail_plus_icon_hr icon icon ion-chevron-down" ng-class="isGroupShown(2) ? 'ion-chevron-down' : 'ion - chevron - right'" style=""></i>
                             &nbsp;
                             {{'shipping_method'| translate}}
@@ -207,7 +207,7 @@ color:#FFF}
                     </div>
 
                     <div ng-repeat="group in groups" class="c_box c_box2 langchanger" style="">
-                        <ion-item class="item-stable ng-binding" ng-click="toggleGroup(3)" ng-class="{active: isGroupShown(3)}" style="">
+                        <ion-item class="item-stable ng-binding" ng-click="toggleGroup(3)" ng-class="{active: isGroupShown(3)}"  style="border-bottom: none !important">
                             <i class="pdetail_plus_icon_hr icon icon ion-chevron-down" ng-class="isGroupShown(3) ? 'ion-chevron-down' : 'ion - chevron - right'" style=""></i>
                             &nbsp;
                             {{'payment_info'| translate}}
@@ -234,7 +234,7 @@ color:#FFF}
                     </div>
 
                     <div ng-repeat="group in groups" class="c_box c_box2 langchanger" style="">
-                        <ion-item class="item-stable ng-binding" ng-click="toggleGroup(4)" ng-class="{active: isGroupShown(4)}" style="">
+                        <ion-item class="item-stable ng-binding" ng-click="toggleGroup(4)" ng-class="{active: isGroupShown(4)}" style="border-bottom: none !important">
                             <i class="pdetail_plus_icon_hr icon icon ion-chevron-down" ng-class="isGroupShown(4) ? 'ion-chevron-down' : 'ion - chevron - right'" style=""></i>
                             &nbsp;
                             {{'order_review'| translate}}

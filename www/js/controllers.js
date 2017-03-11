@@ -1514,8 +1514,9 @@ angular.module('app.controllers', [])
             var params = {
                 user_id: u_id,
             };
+			
+			
 			$rootScope.service.get('getwishlist', params, function (results) {
-                console.log(results.items);
                 $scope.wishlist_detail = results.items;
             });
 			

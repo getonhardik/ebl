@@ -2,7 +2,7 @@
     .c_box b {  color:#333333  	}
     .c_box{border: 1px solid #E2E2E2;padding: 8px 8px 7px;margin: 10px 0;
            font-size: 16px;color: #777777;box-shadow: 0.5px 1px 1px #999;overflow:hidden}
-    .item {border:none;    font-size: 16px;    border-bottom: solid 2px #2796CE;padding:0px !important}
+    .item {border:none;    font-size: 16px;    border-bottom: solid 2px #2796CE !important;padding:0px !important}
     input::-moz-placeholder, textarea::-moz-placeholder {    color: #333 !important;}
     .binp{color: #777;
           font-weight: inherit;}
@@ -31,7 +31,7 @@ color:#FFF}
                 <div class="list">
                 <form ng-submit="checkoutForm1()" name="checkoutForm">                
                     <div ng-repeat="group in groups" class="c_box c_box2 langchanger" style="">
-                        <ion-item class="item-stable item ng-binding" ng-click="toggleGroup(0)" ng-class="{active: isGroupShown(0)}" style="">
+                        <ion-item class="item-stable ng-binding" ng-click="toggleGroup(0)" ng-class="{active: isGroupShown(0)}" style="">
                             <i class="pdetail_plus_icon_hr icon icon ion-chevron-down" ng-class="isGroupShown(0) ? 'ion-chevron-down' : 'ion - chevron - right'" style=""></i>
                             &nbsp;
                             {{'billing_info'| translate}}
@@ -113,7 +113,7 @@ color:#FFF}
                     </div>
 
                     <div ng-repeat="group in groups" class="c_box c_box2 langchanger" style="">
-                        <ion-item class="item-stable item ng-binding" ng-click="toggleGroup(1)" ng-class="{active: isGroupShown(1)}" style="">
+                        <ion-item class="item-stable ng-binding" ng-click="toggleGroup(1)" ng-class="{active: isGroupShown(1)}" style="">
                             <i class="pdetail_plus_icon_hr icon icon ion-chevron-down" ng-class="isGroupShown(1) ? 'ion-chevron-down' : 'ion - chevron - right'" style=""></i>
                             &nbsp;
                             {{'shipping_info'| translate}}
@@ -192,7 +192,7 @@ color:#FFF}
                     </div>
 
                     <div ng-repeat="group in groups" class="c_box c_box2 langchanger" style="">
-                        <ion-item class="item-stable item ng-binding" ng-click="toggleGroup(2)" ng-class="{active: isGroupShown(2)}" style="">
+                        <ion-item class="item-stable ng-binding" ng-click="toggleGroup(2)" ng-class="{active: isGroupShown(2)}" style="">
                             <i class="pdetail_plus_icon_hr icon icon ion-chevron-down" ng-class="isGroupShown(2) ? 'ion-chevron-down' : 'ion - chevron - right'" style=""></i>
                             &nbsp;
                             {{'shipping_method'| translate}}
@@ -207,7 +207,7 @@ color:#FFF}
                     </div>
 
                     <div ng-repeat="group in groups" class="c_box c_box2 langchanger" style="">
-                        <ion-item class="item-stable item ng-binding" ng-click="toggleGroup(3)" ng-class="{active: isGroupShown(3)}" style="">
+                        <ion-item class="item-stable ng-binding" ng-click="toggleGroup(3)" ng-class="{active: isGroupShown(3)}" style="">
                             <i class="pdetail_plus_icon_hr icon icon ion-chevron-down" ng-class="isGroupShown(3) ? 'ion-chevron-down' : 'ion - chevron - right'" style=""></i>
                             &nbsp;
                             {{'payment_info'| translate}}
@@ -234,7 +234,7 @@ color:#FFF}
                     </div>
 
                     <div ng-repeat="group in groups" class="c_box c_box2 langchanger" style="">
-                        <ion-item class="item-stable item ng-binding" ng-click="toggleGroup(4)" ng-class="{active: isGroupShown(4)}" style="">
+                        <ion-item class="item-stable ng-binding" ng-click="toggleGroup(4)" ng-class="{active: isGroupShown(4)}" style="">
                             <i class="pdetail_plus_icon_hr icon icon ion-chevron-down" ng-class="isGroupShown(4) ? 'ion-chevron-down' : 'ion - chevron - right'" style=""></i>
                             &nbsp;
                             {{'order_review'| translate}}

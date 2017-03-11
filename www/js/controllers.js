@@ -2128,11 +2128,11 @@ angular.module('app.controllers', [])
                                             $ionicPopup.alert(
                                                     {
                                                         title: 'Paypal Success',
-                                                        subTitle: res.id,
+                                                        subTitle: res.response.id,
                                                         okType: 'buttonhk'
                                                     }
                                             );
-					alert(res);
+//					alert(res);
 //					alert("success"+JSON.stringify(response));
                                     $state.go("app.home");return;
 				},function (error) {

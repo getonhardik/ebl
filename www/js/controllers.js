@@ -1,5 +1,4 @@
 angular.module('app.controllers', [])
-
         // è?œå?•
         .controller('AppCtrl', function ($scope, $rootScope,
                 $ionicModal, $ionicSlideBoxDelegate,$cordovaEmailComposer,
@@ -436,6 +435,46 @@ angular.module('app.controllers', [])
 					var email = $('#email').val();
 					var telephone = $('#telephone').val();
 					var comment = $('#comment').val();
+					
+					if(name == ''){
+						$scope.hideLoading();	
+						$ionicPopup.alert(
+							{	title: 'Error',subTitle: 'Please enter name',okType: 'buttonhk'}
+						);							
+						return;
+					}
+					
+					var atpos = email.indexOf("@");
+					var dotpos = email.lastIndexOf(".");
+					
+					if(email == ''){
+						$scope.hideLoading();	
+						$ionicPopup.alert(
+							{	title: 'Error',subTitle: 'Please enter email id',okType: 'buttonhk'}
+						);	
+						return;
+					}else if (atpos<1 || dotpos<atpos+2 || dotpos+2>=email.length) {
+						$scope.hideLoading();	
+						$ionicPopup.alert(
+							{	title: 'Error',subTitle: 'Not a valid e-mail address',okType: 'buttonhk'}
+						);
+						return false;
+					}
+					if(telephone == ''){
+						$scope.hideLoading();	
+						$ionicPopup.alert(
+							{	title: 'Error',subTitle: 'Please enter telephone',okType: 'buttonhk'}
+						);	
+						return;
+					}
+					if(comment == ''){
+						$scope.hideLoading();	
+						$ionicPopup.alert(
+							{	title: 'Error',subTitle: 'Please enter comment',okType: 'buttonhk'}
+						);	
+						return;
+					}
+					
 					
 					var params = {
 						name: name,
@@ -1807,7 +1846,7 @@ angular.module('app.controllers', [])
             // å?–è¯?ä¹¦åˆ—è¡¨é€‰é¡¹
             $rootScope.service.get('cart', {}, function (results) {
                 var cartList = [];
-                //alert(123);
+
                 console.log(results);
                 for (var key in results.cart_items) {
                     cartList.push(results.cart_items[key]);

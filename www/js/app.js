@@ -5,6 +5,154 @@ angular.module('app', [
     'ionic', 'ngCordova','ngCordovaOauth','ngOpenFB', 'pascalprecht.translate','ionic-ratings',
     'app.controllers', 'app.filters', 'ionicLazyLoad','slickCarousel'	,'sw2.ionic.password-show-hide'
 ])
+.constant('shopSettings',{
+   
+   
+   payPalSandboxId : 'AdjksaEs2_YzWFOl0hpAD4chm_v_nbOQNmoeD1fMftDf5o3Md-FMcZW7P4DNDf9hsU70Zq3QV-T65Crv',
+   payPalProductionId : 'patel.kalpeshbeit2010-facilitator@gmail.com',
+   payPalEnv: 'PayPalEnvironmentSandbox',   // for testing  production for production
+   payPalShopName : 'MyShopName',
+   payPalMerchantPrivacyPolicyURL : 'http://pr.veba.co/~shubantech/ebranch',
+   payPalMerchantUserAgreementURL : 'http://pr.veba.co/~shubantech/ebranch'
+   
+   
+   
+    
+})
+.factory('PaypalService', ['$q', '$ionicPlatform', 'shopSettings', '$filter', '$timeout', function ($q, $ionicPlatform, shopSettings, $filter, $timeout) {
+
+
+
+        var init_defer;
+        /**
+         * Service object
+         * @type object
+         */
+        var service = {
+            initPaymentUI: initPaymentUI,
+            createPayment: createPayment,
+            configuration: configuration,
+            onPayPalMobileInit: onPayPalMobileInit,
+            makePayment: makePayment
+        };
+
+
+        /**
+         * @ngdoc method
+         * @name initPaymentUI
+         * @methodOf app.PaypalService
+         * @description
+         * Inits the payapl ui with certain envs. 
+         *
+         * 
+         * @returns {object} Promise paypal ui init done
+         */
+        function initPaymentUI() {
+
+            init_defer = $q.defer();
+            $ionicPlatform.ready().then(function () {
+
+                var clientIDs = {
+                    "PayPalEnvironmentProduction": shopSettings.payPalProductionId,
+                    "PayPalEnvironmentSandbox": shopSettings.payPalSandboxId
+                };
+				console.log(clientIDs);
+                PayPalMobile.init(clientIDs, onPayPalMobileInit);
+            });
+
+            return init_defer.promise;
+
+        }
+
+
+        /**
+         * @ngdoc method
+         * @name createPayment
+         * @methodOf app.PaypalService
+         * @param {string|number} total total sum. Pattern 12.23
+         * @param {string} name name of the item in paypal
+         * @description
+         * Creates a paypal payment object 
+         *
+         * 
+         * @returns {object} PayPalPaymentObject
+         */
+        function createPayment(total, name) {
+                console.log("Total:"+total+"Name:"+name);
+            // "Sale  == >  immediate payment
+            // "Auth" for payment authorization only, to be captured separately at a later time.
+            // "Order" for taking an order, with authorization and capture to be done separately at a later time.
+            var payment = new PayPalPayment("" + total, "USD", "" + name, "Sale");
+            return payment;
+        }
+        /**
+         * @ngdoc method
+         * @name configuration
+         * @methodOf app.PaypalService
+         * @description
+         * Helper to create a paypal configuration object
+         *
+         * 
+         * @returns {object} PayPal configuration
+         */
+        function configuration() {
+            // for more options see `paypal-mobile-js-helper.js`
+			 console.log(shopSettings);
+            var config = new PayPalConfiguration({merchantName: shopSettings.payPalShopName, merchantPrivacyPolicyURL: shopSettings.payPalMerchantPrivacyPolicyURL, merchantUserAgreementURL: shopSettings.payPalMerchantUserAgreementURL});
+            return config;
+        }
+
+        function onPayPalMobileInit() {
+            $ionicPlatform.ready().then(function () {
+                // must be called
+				 console.log(shopSettings.payPalEnv);
+                // use PayPalEnvironmentNoNetwork mode to get look and feel of the flow
+                PayPalMobile.prepareToRender(shopSettings.payPalEnv, configuration(), function () {
+
+                    $timeout(function () {
+                        init_defer.resolve();
+                    });
+
+                });
+            });
+        }
+
+        /**
+         * @ngdoc method
+         * @name makePayment
+         * @methodOf app.PaypalService
+         * @param {string|number} total total sum. Pattern 12.23
+         * @param {string} name name of the item in paypal
+         * @description
+         * Performs a paypal single payment 
+         *
+         * 
+         * @returns {object} Promise gets resolved on successful payment, rejected on error 
+         */
+        function makePayment(total, name) {
+
+
+
+            var defer = $q.defer();
+            total = $filter('number')(total, 2);
+			 console.log(total);
+            $ionicPlatform.ready().then(function () {
+                PayPalMobile.renderSinglePaymentUI(createPayment(total, name), function (result) {
+                    $timeout(function () {
+                        defer.resolve(result);
+                    });
+                }, function (error) {
+                    $timeout(function () {
+                        defer.reject(error);
+                    });
+                });
+            });
+
+            return defer.promise;
+        }
+
+        return service;
+    }])
         .service('User_data', function () {
             return {};
         })

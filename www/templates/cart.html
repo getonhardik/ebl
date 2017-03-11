@@ -61,10 +61,10 @@ color: #444;    text-align: center;    font-weight: bold;    cursor: pointer;}
                         <div class="iop2">
                         	<div class="qty-holder">
                             <span style="font-size:13px"> {{'qty' | translate}} :</span> <br />
-                             <span class="input-number-decrement" ng-click="qtyMinus()">-</span>
-                              <input class="input-number" type="text" name="qty" id="qty"
+                             <span class="input-number-decrement" ng-click="qtyMinus('qty_{{item.cart_item_id}}')">-</span>
+                              <input class="input-number" type="text" name="qty" id="qty_{{item.cart_item_id}}"
                                      ng-model="qty" min="1" max="99" title="Qty">
-                              <span class="input-number-increment" ng-click="qtyAdd()">+</span>                             
+                              <span class="input-number-increment" ng-click="qtyAdd('qty_{{item.cart_item_id}}')">+</span>                             
                           </div>
                         </div>
                         

@@ -1787,11 +1787,12 @@ angular.module('app.controllers', [])
                     product: p_id,
                     user_id: u_id,
                 };
-                $scope.showLoading();
+//                $scope.showLoading();
                 $rootScope.service.get('addwishlist', params, function (res) {
                     console.log(res);
+                    alert(res.message);
                     if (res.status == 'error') {
-                        $scope.hideLoading(); 
+//                        $scope.hideLoading(); 
                         $ionicPopup.alert(
                                 {
                                     title: 'Error',
@@ -1802,7 +1803,7 @@ angular.module('app.controllers', [])
                         return;
                     }
                     if (res.status == 'SUCCESS') {
-                        $scope.hideLoading();                       
+//                        $scope.hideLoading();                       
                         $scope.items_qty = res.items_qty;
                         var params = {
                             cart_item_id: item_id,

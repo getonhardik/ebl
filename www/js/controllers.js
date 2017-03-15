@@ -1768,7 +1768,7 @@ angular.module('app.controllers', [])
                 };
                 $scope.showLoading();
                 $rootScope.service.get('removecart',params , function (results) {
-                    console.log("in responce");
+                    console.log("results are" +results);
                     $scope.hideLoading();
                     $ionicPopup.alert({
                         title: 'Success',

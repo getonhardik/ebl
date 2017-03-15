@@ -334,10 +334,6 @@ angular.module('app.controllers', [])
             var params = {
                 user_id: u_id,
             };
-            $scope.sharewithfriend = function () {
-                var message = "Ebranch App";
-                $cordovaSocialSharing.share(message, null, null);
-            }
             $scope.doDeletewishlist = function (p_id) {
 				$scope.showLoading();
                 //alert(p_id);
@@ -562,19 +558,7 @@ angular.module('app.controllers', [])
                 }
             }
 
-            $scope.sharewithfriend = function () {
-                var message = "Ebranch App";
-                $cordovaSocialSharing.share(message, null, null);
-                //alert('swf');
-//                $cordovaSocialSharing
-//                        .share(message,null,null)
-//                        .then(function (result) {
-//                            alert("success");
-//                        }, function (err) {
-//                            alert("error");
-//                            // An error occurred. Show a message to the user
-//                        });            
-            }
+
         })
         .controller('CategoryListCtrl', function ($scope, $rootScope, $ionicPopup, $stateParams, $translate) {            
 			$scope.listTitle = {
@@ -699,44 +683,7 @@ angular.module('app.controllers', [])
 
                 $scope.hideLoading();
             };
-            $scope.sharewithfriend = function () {
-                var message = "Ebranch App";
-                $cordovaSocialSharing.share(message, null, null);
-            }
-            $scope.doWhishlistAdd = function (p_id) {
-                var u_id = getStorage('user_id');
-                var params = {
-                    product: p_id,
-                    user_id: u_id,
-                };
-                $scope.showLoading();
-                $rootScope.service.get('addwishlist', params, function (res) {
-                    console.log(res);
-                    if (res.status == 'error') {
-                        $ionicPopup.alert(
-                                {
-                                    title: 'Error',
-                                    subTitle: res.message,
-	                                okType: 'buttonhk'
-                                }
-                        );
-                        return;
-                    }
-                    if (res.status == 'SUCCESS') {
-                        $scope.hideLoading();                       
-                        $('#wishlist_'+p_id).attr('src','img/icon-25.png');
-//                        $ionicPopup.alert(
-//                                {
-//                                    title: 'success',
-//                                    subTitle: 'Successfully Add to wishlist',
-//                                    okType: 'buttonhk'
-//                                }
-//                        );
-                        $scope.items_qty = res.items_qty;
-                        return;
-                    }
-                });
-            };
+            
             $scope.doRefresh = function () {
                 getList('refresh', function () {
                     $scope.$broadcast('scroll.refreshComplete');
@@ -1111,12 +1058,6 @@ angular.module('app.controllers', [])
 					$scope.rate_value = rating3;
 					console.log('Selected rating is3 : ', rating3);
 			};
-                    $scope.sharewithfriend = function () {
-                        $scope.showLoading();
-                        var message = "Ebranch App";
-                        $cordovaSocialSharing.share(message, null, null);
-                        $scope.hideLoading();
-                    }
 
 										
             $scope.updateSlider = function () {
@@ -1497,16 +1438,9 @@ angular.module('app.controllers', [])
         })
 
         // homeä¸­ï¼Œå?–bannerï¼Œå¿«é€Ÿæ?œç´¢
-        .controller('HomeCtrl', function ($scope, $rootScope, $state, $ionicSlideBoxDelegate, $timeout,$ionicPopup,$stateParams,$cordovaSocialSharing) {
+        .controller('HomeCtrl', function ($scope, $rootScope, $state, $ionicSlideBoxDelegate, $timeout,$ionicPopup,$stateParams,$cordovaSocialSharing,commonFunction) {
             $scope.searchData = {};
-            $scope.sharewithfriend = function () {
-                $scope.showLoading();
-                var message = "Ebranch App";
-                $cordovaSocialSharing.share(message, null, null);
-                $scope.hideLoading();
-            }
-
-            
+           
             $rootScope.service.get('cartGetQty', {
                 product: $stateParams.productid
             }, function (res) {
@@ -1645,47 +1579,7 @@ angular.module('app.controllers', [])
                 $state.go('app.searchResult');
             };
             
-            $scope.doWhishlistAdd = function (p_id) {
-            //var p_id = $('#product_w_id').val();            
-            var u_id = getStorage('user_id');	
-			if(u_id == null || u_id == ''){
-				$ionicPopup.alert( 
-				{
-						title: 'error',
-						subTitle: 'Login first',
-						okType: 'buttonhk'
-					}
-				);		
-			}else{
-				var params = {
-					product: p_id,
-					user_id: u_id,
-				};
-				$scope.showLoading();
-				$rootScope.service.get('addwishlist', params, function (res) {
-					console.log(res);
-					if (res.status == 'error') {
-						$ionicPopup.alert( 
-						{
-								title: 'error',
-								subTitle: res.message,
-								okType: 'buttonhk'
-							}
-						);
-						//alert( res.message);
-						return;
-					}
-					if (res.status == 'success' || res.status == 'SUCCESS') {
-						$scope.hideLoading();
-						//alert($scope.translations.success+'\n\r'+ res.items_qty + ' '+ $scope.translations['items_in_cart']);
-						$('#wishlist_'+p_id).attr('src','img/icon-25.png');
-						$scope.items_qty = res.items_qty;
-						return;
-					}
-			
-            	});           
-			}
-        };
+           
             
         })
 

@@ -510,6 +510,7 @@ angular.module('app', [
                     })
                     .state('app.productDetail', {
                         url: '/productDetail/:productid',
+                cache: false,
                         views: {
                             'menuContent': {
                                 templateUrl: 'templates/productDetail.html',

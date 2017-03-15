@@ -14,7 +14,7 @@ angular.module('app.controllers', [])
             $scope.dynamic_menus = {};
             $rootScope.service.get('menus', {}, function (results) {
                 $scope.dynamic_menus = results;
-                console.log($scope.dynamic_menus);
+               // console.log($scope.dynamic_menus);
             });
             $scope.isIOS = ionic.Platform.isIPad() || ionic.Platform.isIOS();
 
@@ -999,6 +999,7 @@ angular.module('app.controllers', [])
                 $ionicSlideBoxDelegate, $ionicScrollDelegate,
                 $cordovaSocialSharing, $ionicSideMenuDelegate) {
             
+            console.log("State parames:"+$stateParams.productid);
 			$scope.showLoading();
             
 			$scope.qty = 1;
@@ -1080,7 +1081,7 @@ angular.module('app.controllers', [])
             };
 			
             $rootScope.service.get('productDetail', params, function (results) {
-                console.log(results.attributeOptions.Size);
+               // console.log(results.attributeOptions.Size);
 				$rootScope.total_reviews_count=results.total_reviews_count;
 				$rootScope.reviews=results.reviews;
                 $scope.dbs = results.attributeOptions.Size;
@@ -1096,6 +1097,7 @@ angular.module('app.controllers', [])
 					$scope.selected2 = id;
               	}
                 $scope.product = results;
+                    console.log($scope.product);
                 $scope.totalPrice = +$scope.product.final_price_with_tax;
                 $scope.oldPrice = +$scope.product.regular_price_with_tax;
 
@@ -1200,10 +1202,7 @@ angular.module('app.controllers', [])
                 $scope.productImg = lists;
             });
 
-            // 分享
-            $scope.onShare = function () {
-                $cordovaSocialSharing.share($scope.product.name, $scope.product.name, '', $scope.product.url_key);
-            };
+           
 
             // 全�?幕图片
             $scope.imageFullscreen = function () {
@@ -1317,6 +1316,7 @@ angular.module('app.controllers', [])
 
             // 增加到购物车
             $scope.doCartAdd = function () {
+//                alert($stateParams.productid);
 				$scope.showLoading();
                 var queryString = $('#product_addtocart_form').formParams();
                 console.log(queryString);
@@ -1345,33 +1345,7 @@ angular.module('app.controllers', [])
                     }
                 });
             };
-            $scope.doWhishlistAdd = function (p_id) {
-                var u_id = getStorage('user_id');
-                var params = {
-                    product: p_id,
-                    user_id: u_id,
-                };
-                $scope.showLoading();
-                $rootScope.service.get('addwishlist', params, function (res) {
-                    console.log(res);
-                    if (res.status == 'error') {
-                        $scope.hideLoading();
-                        $ionicPopup.alert({
-                        title: 'Error',
-                        subTitle:res.message,
-                        okType: 'buttonhk'
-                    });
-                        return;
-                    }
-                    if (res.status == 'SUCCESS') {
-                        $scope.hideLoading();
-                        $('#wishlist_hide_hp').attr('src','img/icon-28.png');
-                        $scope.items_qty = res.items_qty;
-                        return;
-                    }
-                });
-            };
-
+           
             $scope.Math = window.Math;
             $scope.groups = [];
             for (var i = 0; i < 1; i++) {

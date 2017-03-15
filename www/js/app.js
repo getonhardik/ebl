@@ -334,6 +334,7 @@ angular.module('app', [
                         }
                     })
 					.state('app.checkout', {
+                                            cache: false,
                         url: '/checkout', //附近�?销商列表
                         views: {
                             'menuContent': {
@@ -535,6 +536,7 @@ angular.module('app', [
                         }
                     })
                     .state('app.cart', {
+                        cache: false,
                         url: '/cart',
                         views: {
                             'menuContent': {

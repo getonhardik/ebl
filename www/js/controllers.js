@@ -1775,7 +1775,7 @@ angular.module('app.controllers', [])
                         subTitle: "Successfully Removed",
                         okType: 'buttonhk'
                     });
-                    $state.go($state.current, {}, {reload: true});
+                    $state.reload();
                     console.log('reload completed');
                     return;
                 });

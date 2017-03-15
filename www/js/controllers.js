@@ -1787,10 +1787,11 @@ angular.module('app.controllers', [])
                     product: p_id,
                     user_id: u_id,
                 };
+                alert(p_id);
 //                $scope.showLoading();
                 $rootScope.service.get('addwishlist', params, function (res) {
                     console.log(res);
-                    alert(res.message);
+                    alert(res.status+' is '+res.message);
                     if (res.status == 'error') {
 //                        $scope.hideLoading(); 
                         $ionicPopup.alert(

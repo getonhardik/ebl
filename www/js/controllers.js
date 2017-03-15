@@ -1728,7 +1728,7 @@ angular.module('app.controllers', [])
             });
         })
         // 购物车
-		.controller('cartCtrl', function ($scope, $rootScope, $stateParams, $timeout,$ionicPopup) {
+		.controller('cartCtrl', function ($scope, $rootScope,$state, $stateParams, $timeout,$ionicPopup) {
             // �?��?书列表选项
             $rootScope.service.get('cart', {}, function (results) {
                 var cartList = [];

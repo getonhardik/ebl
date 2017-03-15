@@ -1319,6 +1319,7 @@ angular.module('app.controllers', [])
             $scope.doCartAdd = function () {
 				$scope.showLoading();
                 var queryString = $('#product_addtocart_form').formParams();
+                console.log(queryString);
                 if (!($scope.qty > 1)) {
                     $scope.qty = 1;
                 }
@@ -1790,6 +1791,7 @@ angular.module('app.controllers', [])
                 $rootScope.service.get('addwishlist', params, function (res) {
                     console.log(res);
                     if (res.status == 'error') {
+                        $scope.hideLoading(); 
                         $ionicPopup.alert(
                                 {
                                     title: 'Error',

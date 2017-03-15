@@ -1787,7 +1787,7 @@ angular.module('app.controllers', [])
                     product: p_id,
                     user_id: u_id,
                 };
-                alert(p_id);
+                alert(item_id);
 //                $scope.showLoading();
                 $rootScope.service.get('addwishlist', params, function (res) {
                     console.log(res);

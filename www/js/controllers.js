@@ -1762,11 +1762,13 @@ angular.module('app.controllers', [])
 			
 			
             $scope.doRemoveFromCart = function(item_id){
+                console.log("item id is "+item_id);
                 var params = {
                     cart_item_id: item_id,
                 };
                 $scope.showLoading();
                 $rootScope.service.get('removecart',params , function (results) {
+                    console.log("in responce");
                     $scope.hideLoading();
                     $ionicPopup.alert({
                         title: 'Success',

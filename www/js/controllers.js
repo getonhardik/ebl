@@ -1776,6 +1776,7 @@ angular.module('app.controllers', [])
                         okType: 'buttonhk'
                     });
                     $state.reload();
+                    console.log('reload completed');
                     return;
                 });
             }

@@ -84,7 +84,7 @@ color: #444;    text-align: center;    font-weight: bold;    cursor: pointer;}
         </div>
         
         <div class="item_containt">
-	        <div class="item_title">{{'options' | translate}}</div>
+	        <div class="item_title langchanger">{{'options' | translate}}</div>
         	<div ng-repeat="group in groups" class="c_box c_box2 langchanger" style="">
                 <ion-item class="item-stable item ng-binding" ng-click="toggleGroup(2)" ng-class="{active: isGroupShown(2)}" style="">
                 <i class="pdetail_plus_icon_hr icon icon ion-chevron-down" ng-class="isGroupShown(2) ? 'ion-chevron-down' : 'ion-chevron-right'" style=""></i>
@@ -109,7 +109,7 @@ color: #444;    text-align: center;    font-weight: bold;    cursor: pointer;}
                     	Subtotal
                     </div>
                     <div class="item_right2">
-                    	SAR360.00
+                    	{{"SAR"+subtotal_value}}
                     </div>
                 </div>
                 <div class="item_full2">
@@ -117,7 +117,7 @@ color: #444;    text-align: center;    font-weight: bold;    cursor: pointer;}
                     	Tax
                     </div>
                     <div class="item_right2">
-                    	SAR59.70
+                    	{{"SAR"+tax_value}}
                     </div>
                 </div>
                 <div class="item_full2 col2">
@@ -125,7 +125,7 @@ color: #444;    text-align: center;    font-weight: bold;    cursor: pointer;}
                     	Grand Total
                     </div>
                     <div class="item_right2">
-                    	SAR389.70
+                    	{{"SAR"+grandTotal_value}}
                     </div>
                 </div>
             </div>

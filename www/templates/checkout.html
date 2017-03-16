@@ -30,7 +30,7 @@ color:#FFF}
             </div>
             <ion-list class="disable-user-behavior">
                 <div class="list">
-                <form ng-submit="checkoutForm1()" name="checkoutForm">                
+                <form ng-submit="checkoutFormQuote()" name="checkoutForm">                
                     <div ng-repeat="group in groups" class="c_box c_box2 langchanger" style="">
                         <ion-item class="item-stable ng-binding" ng-click="toggleGroup(0)" ng-class="{active: isGroupShown(0)}" style="border-bottom: none !important">
                             <i class="pdetail_plus_icon_hr icon icon ion-chevron-down" ng-class="isGroupShown(0) ? 'ion-chevron-down' : 'ion - chevron - right'" style=""></i>
@@ -66,7 +66,7 @@ color:#FFF}
                                     </div>
                                     <div class="inputset">  
                                         <label class="item item-input">                  
-                                            <input type="text" name="baddress2" id="baddress2" placeholder="{{'address_line2'| translate}}" ng-model="registerData.street">
+                                            <input type="text" name="baddress2" id="baddress2" placeholder="{{'address_line2'| translate}}" ng-model="registerData.street2">
                                         </label>
                                     </div>
                                     <div class="inputset">  
@@ -149,7 +149,7 @@ color:#FFF}
                                     </div>
                                     <div class="inputset">  
                                         <label class="item item-input">                  
-                                            <input type="text" name="saddress2" id="saddress2" placeholder="{{'address_line2'| translate}}" ng-model="shipData.street">
+                                            <input type="text" name="saddress2" id="saddress2" placeholder="{{'address_line2'| translate}}" ng-model="shipData.street2">
                                         </label>
                                     </div>
                                     <div class="inputset">  

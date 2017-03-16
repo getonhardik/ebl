@@ -161,5 +161,5 @@ var en_US = {
     leave_feedback :'Leave Feedback',
     rate_us_on_play_store :'Rate us on play store',
     SAR :'SAR',
-	about_us:'About Us',
+    about_us:'About Us',
 };

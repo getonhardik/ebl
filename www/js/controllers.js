@@ -296,13 +296,14 @@ angular.module('app.controllers', [])
                 $scope.showLoading();
                 $rootScope.service.get('login', $scope.loginData, function (res) {
                     $scope.hideLoading();
+                    console.log(res);
 
                     if (res.code || res.message) {
 
                         $ionicPopup.alert(
                                 {
                                     title: 'error',
-                                    subTitle: es.message || res.code,
+                                    subTitle: res.message,
                                     okType: 'buttonhk'
                                 }
                         );
@@ -1713,7 +1714,14 @@ angular.module('app.controllers', [])
                     cartList.push(results.cart_items[key]);
                 }
                 $scope.cartList = cartList;
+                var subtotal = 0;
                 $scope.symbol = localStorage['symbol'];
+                $.each(results.cart_items, function( index, value ) {
+                    subtotal = subtotal + (value.item_price * value.qty);
+                });
+                $scope.subtotal_value = subtotal;
+                $scope.tax_value = 0.00;
+                $scope.grandTotal_value = $scope.subtotal_value + $scope.tax_value;
             });
             
 			$scope.qty = 1;
@@ -2012,10 +2020,11 @@ angular.module('app.controllers', [])
                                             paymethod:'paypal_express',
                                             paymentData:response
                                         };
-                                        $rootScope.service.get('placeorder', params, function (res) {
+										 alert(JSON.stringify(response));
+                                        $rootScope.service.post('placeorder', params, function (res) {
                                             console.log('placeOrder:');
                                             console.log(res);
-
+ alert(JSON.stringify(res));
                                         });
                                         removeStorage(quoteid);
                                         $location.path('/app/home');
@@ -2121,19 +2130,20 @@ angular.module('app.controllers', [])
                 }
             }
             
-            $scope.checkoutForm1 = function(){
+            $scope.checkoutFormQuote = function(){
                 
                 var shipping_address = {
-                    'street':$scope.registerData.street,
-                    'company':$scope.registerData.company,
-                    'telephone':$scope.registerData.postcode,
-                    'region':$scope.registerData.street,
-                    'fax':$scope.registerData.fax,
-                    'postcode':$scope.registerData.postcode,
-                    'city':$scope.registerData.city,
-                    'firstname':$scope.registerData.firstname,
-                    'lastname':$scope.registerData.lastname,
-                    'email':$scope.registerData.email};
+                    street:$scope.registerData.street,
+                    company:$scope.registerData.company,
+                    telephone:$scope.registerData.postcode,
+                    region:$scope.registerData.street,
+                    fax:$scope.registerData.fax,
+                    postcode:$scope.registerData.postcode,
+                    city:$scope.registerData.city,
+                    firstname:$scope.registerData.firstname,
+                    lastname:$scope.registerData.lastname,
+                    email:$scope.registerData.email};
+					
                 var billing_address = shipping_address;
 //                var billing_address = ['street'=>shipData.street , 'company'=>shipData.company,'telephone'=>shipData.postcode,'region'=>shipData.street,'fax'=>shipData.fax,'postcode'=>shipData.postcode,'city'=>shipData.city,'firstname'=>shipData.firstname,'lastname'=>shipData.lastname,'email'=>shipData.email];
                   
@@ -2142,15 +2152,15 @@ angular.module('app.controllers', [])
                     shipping_address: shipping_address,
                     billing_address:billing_address
                 };
-                
-                $rootScope.service.get('addquote', params, function (results) {
-//                    console.log("add Quote:");
-//                    console.log(results);
+                $rootScope.service.post('addquote', params, function (results) {
+					 alert(JSON.stringify(results));
                       setStorage('quoteid', results.quoteid);
+					 
+					  $state.go("app.paypal");return;
                     
                 });                
 
-                $state.go("app.paypal");return;
+                
             }
             var params = {
                 customerid: u_id,

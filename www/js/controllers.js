@@ -2020,12 +2020,12 @@ angular.module('app.controllers', [])
                                             paymethod:'paypal_express',
                                             paymentData:response
                                         };
-										 alert(JSON.stringify(response));
+					alert(JSON.stringify(response));
                                         $rootScope.service.post('placeorder', params, function (res) {
                                             res=JSON.parse(res);
                                             console.log('placeOrder:');
                                             console.log(res);
- alert(JSON.stringify(res));
+                                            alert(JSON.stringify(res));
                                         });
                                         removeStorage(quoteid);
                                         $location.path('/app/home');

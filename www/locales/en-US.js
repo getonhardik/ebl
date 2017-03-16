@@ -32,7 +32,6 @@ var en_US = {
 	state:'State/Province',
 	zip:'Zip/Postal Code',
 	shipping_info:'Shipping Information',
-	shipping_method:'Shipping Method',
 	payment_info:'Payment Information',
 	order_review:'Order Review',
 	order_details:'My Order',	

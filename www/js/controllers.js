@@ -2022,6 +2022,7 @@ angular.module('app.controllers', [])
                                         };
 										 alert(JSON.stringify(response));
                                         $rootScope.service.post('placeorder', params, function (res) {
+                                            res=JSON.parse(res);
                                             console.log('placeOrder:');
                                             console.log(res);
  alert(JSON.stringify(res));
@@ -2153,11 +2154,13 @@ angular.module('app.controllers', [])
                     billing_address:billing_address
                 };
                 $rootScope.service.post('addquote', params, function (results) {
-					 alert(JSON.stringify(results));
-                      setStorage('quoteid', results.quoteid);
-					 
-					  $state.go("app.paypal");return;
-                    
+                    results= JSON.parse(results);
+                    alert(JSON.stringify(results));
+                    setStorage('quoteid', results.quoteid);
+
+                    $state.go("app.paypal");
+                    return;
+
                 });                
 
                 

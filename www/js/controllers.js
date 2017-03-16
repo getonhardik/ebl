@@ -1985,6 +1985,7 @@ angular.module('app.controllers', [])
 .controller('paypalCtrl', function ($scope, $rootScope,$ionicPopup, $sce, $stateParams,PaypalService) {
     //alert(123);
 			var u_id = getStorage('user_id');					
+			var quoteid = getStorage('quoteid');					
 			var params = {
 				customerid: u_id,
 			};
@@ -2005,10 +2006,20 @@ angular.module('app.controllers', [])
                                                         okType: 'buttonhk'
                                                     }
                                             );
-//					alert(res);
-//					alert("success"+JSON.stringify(response));
-$location.path('/app/home');
-                                    $state.go("app.home");return;
+                                        var params = {
+                                            customerid: u_id,
+                                            quoteid:quoteid,
+                                            paymethod:'paypal_express',
+                                            paymentData:response
+                                        };
+                                        $rootScope.service.get('placeorder', params, function (res) {
+                                            console.log('placeOrder:');
+                                            console.log(res);
+
+                                        });
+                                        removeStorage(quoteid);
+                                        $location.path('/app/home');
+                                                $state.go("app.home");return;
 				},function (error) {
                                             $ionicPopup.alert(
                                                     {
@@ -2021,7 +2032,9 @@ $location.path('/app/home');
 //                                alert("error"+JSON.stringify(error));
 			});
 		});
-			
+			var params = {
+				customerid: u_id,
+			};
 			
 			$rootScope.service.get('order', params, function (res) {
 				console.log(res);
@@ -2109,8 +2122,35 @@ $location.path('/app/home');
             }
             
             $scope.checkoutForm1 = function(){
+                
+                var shipping_address = {
+                    'street':$scope.registerData.street,
+                    'company':$scope.registerData.company,
+                    'telephone':$scope.registerData.postcode,
+                    'region':$scope.registerData.street,
+                    'fax':$scope.registerData.fax,
+                    'postcode':$scope.registerData.postcode,
+                    'city':$scope.registerData.city,
+                    'firstname':$scope.registerData.firstname,
+                    'lastname':$scope.registerData.lastname,
+                    'email':$scope.registerData.email};
+                var billing_address = shipping_address;
+//                var billing_address = ['street'=>shipData.street , 'company'=>shipData.company,'telephone'=>shipData.postcode,'region'=>shipData.street,'fax'=>shipData.fax,'postcode'=>shipData.postcode,'city'=>shipData.city,'firstname'=>shipData.firstname,'lastname'=>shipData.lastname,'email'=>shipData.email];
+                  
+                var params = {
+                    customerid: u_id,
+                    shipping_address: shipping_address,
+                    billing_address:billing_address
+                };
+                
+                $rootScope.service.get('addquote', params, function (results) {
+//                    console.log("add Quote:");
+//                    console.log(results);
+                      setStorage('quoteid', results.quoteid);
+                    
+                });                
+
                 $state.go("app.paypal");return;
-            
             }
             var params = {
                 customerid: u_id,

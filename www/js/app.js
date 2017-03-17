@@ -316,6 +316,7 @@ angular.module('app', [
                         }
                     })
                     .state('app.orderDetails', {
+                        cache: false,
                         url: '/orderDetails', //附近�?销商列表
                         views: {
                             'menuContent': {

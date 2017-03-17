@@ -2028,8 +2028,8 @@ angular.module('app.controllers', [])
                                             alert(JSON.stringify(res));
                                         });
                                         removeStorage(quoteid);
-                                        $location.path('/app/home');
-                                                $state.go("app.home");return;
+//                                        $location.path('/app/home');
+                                                $state.go("app.orderDetails");return;
 				},function (error) {
                                             $ionicPopup.alert(
                                                     {
@@ -2155,7 +2155,7 @@ angular.module('app.controllers', [])
                 };
                 $rootScope.service.post('addquote', params, function (results) {
                     results= JSON.parse(results);
-                    alert(JSON.stringify(results));
+//                    alert(JSON.stringify(results));
                     setStorage('quoteid', results.quoteid);
 
                     $state.go("app.paypal");

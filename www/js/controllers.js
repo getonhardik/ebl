@@ -2028,8 +2028,8 @@ angular.module('app.controllers', [])
                                             alert(JSON.stringify(res));
                                         });
                                         removeStorage(quoteid);
-//                                        $location.path('/app/home');
-                                                $state.go("app.orderDetails");return;
+//                                          $location.path('/app/home');
+                                            $state.go("app.orderDetails");return;
 				},function (error) {
                                             $ionicPopup.alert(
                                                     {

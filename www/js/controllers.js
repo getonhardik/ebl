@@ -1990,7 +1990,7 @@ angular.module('app.controllers', [])
 					
 		})
 		
-.controller('paypalCtrl', function ($scope, $rootScope,$ionicPopup, $sce, $stateParams,PaypalService) {
+.controller('paypalCtrl', function ($scope, $rootScope,$ionicPopup, $sce, $stateParams,PaypalService,$location) {
     //alert(123);
 			var u_id = getStorage('user_id');					
 			var quoteid = getStorage('quoteid');					
@@ -2020,16 +2020,17 @@ angular.module('app.controllers', [])
                                             paymethod:'paypal_express',
                                             paymentData:response
                                         };
-					alert(JSON.stringify(response));
+					//alert(JSON.stringify(response));
                                         $rootScope.service.post('placeorder', params, function (res) {
                                             res=JSON.parse(res);
                                             console.log('placeOrder:');
                                             console.log(res);
-                                            alert(JSON.stringify(res));
+                                            //alert(JSON.stringify(res));
+                                            $location.path('/app/orderDetails');
                                         });
                                         removeStorage(quoteid);
 //                                          $location.path('/app/home');
-                                            $state.go("app.orderDetails");return;
+                                            return;
 				},function (error) {
                                             $ionicPopup.alert(
                                                     {

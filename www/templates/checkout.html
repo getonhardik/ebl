@@ -197,9 +197,29 @@ color:#FFF}
                             <i class="pdetail_plus_icon_hr icon icon ion-chevron-down" ng-class="isGroupShown(2) ? 'ion-chevron-down' : 'ion - chevron - right'" style=""></i>
                             &nbsp;
                             {{'shipping_method'| translate}}
+                            
                         </ion-item>
                         <ion-item class="item-accordion item ng-binding ng-hide" ng-repeat="item in group.items" ng-show="isGroupShown(2)">
                             <div class="">
+                                
+                                <input type="checkbox" name="gift_add" ng-click="gift_add_button()" value="gift_add" id='gift_add'/> <b class="binp">{{'add_gift_option'| translate}}</b><br />
+                                <div id='gift_detail' class='hide'>
+                                    <div class="inputset">  
+                                        <label class="item item-input">                  
+                                            <input type="text" name="gift_from" id="stelephone" placeholder="{{'from'| translate}}" ng-model="gift.from">
+                                        </label>
+                                    </div>
+                                    <div class="inputset">  
+                                        <label class="item item-input">                  
+                                            <input type="text" name="gift_to" id="stelephone" placeholder="{{'to'| translate}}" ng-model="gift.to">
+                                        </label>
+                                    </div>
+                                    <div class="inputset">  
+                                        <label class="item item-input">                  
+                                            <input type="text" name="gift_message" id="stelephone" placeholder="{{'message'| translate}}" ng-model="gift.message">
+                                        </label>
+                                    </div>
+                                </div>
                                 <div class="inputset" style="text-align:center">  <br />
                                     <input class="btn_cnt" type="button" value="{{'continue'| translate}}" name="continue" ng-click="toggleGroup(3)"/> <br />
                                 </div>

@@ -24,7 +24,7 @@ box-shadow: 0.5px 1px 1px #999;overflow:hidden}
                                 	<b>Order No : {{lists.real_order_id}}</b>
                                 </div>
                                 <div class="w20" style="text-align:right">
-                                	<span class="c_title">02/08/2017</b>
+                                	<span class="c_title">{{lists.date}}</b>
                                 </div>
                                 <div style="clear:both"></div>
                                 
@@ -33,7 +33,7 @@ box-shadow: 0.5px 1px 1px #999;overflow:hidden}
                                 <span class="c_title">{{lists.grand_total}} / {{lists.items_data.length}} items</span> 
                                 </div>
                                                                 
-                                <span class="obot" style="width:46%"><b>Ship To: </b><span class="c_title">Faraz Test</span></span>                                
+                                <span class="obot" style="width:46%"><b>Ship To: </b><span class="c_title">{{lists.name}}</span></span>                                
                                 <span class="obot2" style="width:27%"> {{lists.status}}</span>                                
                                 <a href="#app/orderdata/{{lists.real_order_id}}">
                                 <span class="obot3" style="width:27%">VIEW ORDER</span>

@@ -26,7 +26,7 @@ color:#FFF}
     <ion-content overflow-scroll="false">
         <div class="list padding">
             <div class="login_item222" id="login_item1">
-                Returning Customers?<a style="text-decoration: none !important;color:blue" href="#app/login"> Click here to Login ></a>
+                Returning Customers?<a style="text-decoration: none !important;color:blue" href="#" ng-click="gotologin()"> Click here to Login ></a>
             </div>
             <ion-list class="disable-user-behavior">
                 <div class="list">
@@ -106,7 +106,7 @@ color:#FFF}
                                     </div>
 
                                     <div class="inputset" style="text-align:center">  <br />
-                                        <input class="btn_cnt" type="button" value="Continue" name="continue" ng-click="toggleGroup(1)"/> <br />
+                                        <input class="btn_cnt" type="button" value="{{'continue'| translate}}" name="Continue" ng-click="toggleGroup(1)"/> <br />
                                     </div>
                                 
                             </div>
@@ -185,7 +185,7 @@ color:#FFF}
 
 
                                     <div class="inputset" style="text-align:center">  <br />
-                                        <input class="btn_cnt" type="button" value="Continue" name="continue" ng-click="toggleGroup(2)"/> <br />
+                                        <input class="btn_cnt" type="button" value="{{'continue'| translate}}" name="continue" ng-click="toggleGroup(2)"/> <br />
                                     </div>
                                 
                             </div>
@@ -201,7 +201,7 @@ color:#FFF}
                         <ion-item class="item-accordion item ng-binding ng-hide" ng-repeat="item in group.items" ng-show="isGroupShown(2)">
                             <div class="">
                                 <div class="inputset" style="text-align:center">  <br />
-                                    <input class="btn_cnt" type="button" value="Continue" name="continue" ng-click="toggleGroup(3)"/> <br />
+                                    <input class="btn_cnt" type="button" value="{{'continue'| translate}}" name="continue" ng-click="toggleGroup(3)"/> <br />
                                 </div>
                             </div>
                         </ion-item>                      
@@ -217,18 +217,18 @@ color:#FFF}
                             <div class="">
                                 <div class="inputset">  
                                     
-                                <span  ng-repeat="value in payment_method">    
+<!--                                <span  ng-repeat="value in payment_method">    
                                     <input class="rbtn" type="radio" name="payment_info_rbutton" id="{{value.code}}" value="{{value.code}}" /> <b class="binp">{{value.title}}</b><br />
-                                </span>    
+                                </span>    -->
                                     
                                     
 <!--                                    <input class="rbtn" type="radio" name="payment_info_rbutton" checked="checked" id="payment_info_rbutton_paypal" value="credit_card" /> <b class="binp">{{'credit_card'| translate}}</b><br />
                                     <input class="rbtn" type="radio" name="payment_info_rbutton" id="payment_info_rbutton_cash" value="cash_on_delivery" /> <b class="binp">{{'cash_on_delivery'| translate}}</b>-->
-<!--                                    <input class="rbtn" type="radio" ng-click="payment_info_rbutton($event);" name="payment_info_rbutton" value="credit_card" /> <b class="binp">{{'credit_card'| translate}}</b><br />
-                                    <input class="rbtn" type="radio" ng-click="payment_info_rbutton($event);" name="payment_info_rbutton" value="cash_on_delivery" /> <b class="binp">{{'cash_on_delivery'| translate}}</b>-->
+                                    <input class="rbtn" type="radio" ng-click="payment_info_rbutton($event);" name="payment_info_rbutton" value="credit_card" /> <b class="binp">{{'Paypal_expess'| translate}}</b><br />
+                                    <input class="rbtn" type="radio" ng-click="payment_info_rbutton($event);" name="payment_info_rbutton" value="cash_on_delivery" /> <b class="binp">{{'cash_on_delivery'| translate}}</b>
                                 </div><br />
                                 <div class="inputset" style="text-align:center">  <br />
-                                    <input class="btn_cnt" type="button" value="Continue" name="continue" ng-click="toggleGroup(4)"/> <br />
+                                    <input class="btn_cnt" type="button" value="{{'continue'| translate}}" name="continue" ng-click="toggleGroup(4)"/> <br />
                                 </div>
                             </div>
                         </ion-item>                      
@@ -245,16 +245,16 @@ color:#FFF}
                                 <table>
                                     <tr>
                                         <td>
-                                            Product Name
+                                            {{'Product_Name'| translate}}
                                         </td>
                                         <td>
-                                            Price
+                                            {{'Price'| translate}}
                                         </td>
                                         <td>
-                                            Qty
+                                            {{'Qty'| translate}}
                                         </td>
                                         <td>
-                                            Subtotal
+                                            {{'Subtotal'| translate}}
                                         </td>
                                     </tr>
                                     <tr ng-repeat="(key , order_data) in order_review_data">
@@ -275,21 +275,21 @@ color:#FFF}
                                         <td colspan="4" style="height:3px !important;padding:0px !important"></td>
                                     </tr>
                                     <tr>
-                                        <td colspan="3">Subtotal</td>
+                                        <td colspan="3">{{'Subtotal'| translate}}</td>
                                         <td>{{subtotal}}</td>
                                     </tr>
                                     <tr>
-                                        <td colspan="3">Shipping & Handling </td>
+                                        <td colspan="3">{{'shipping_handling'| translate}}</td>
                                         <td>SAR0.00</td>
                                     </tr>
                                     <tr>
-                                        <td colspan="3">Grand Total</td>
+                                        <td colspan="3">{{'Grand_Total'| translate}}</td>
                                         <td>{{subtotal + shipping_price}}</td>
                                     </tr>
                                 </table>
                             </div>
                             <div class="inputset" style="text-align:center">  <br />
-                                    <input class="btn_cnt" type="submit" value="Submit" name="submit" />
+                                    <input class="btn_cnt" type="submit" value="{{'submit'| translate}}" name="submit" />
                             </div>
                         </ion-item>                      
                     </div>

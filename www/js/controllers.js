@@ -194,12 +194,15 @@ angular.module('app.controllers', [])
 
         // æ³¨å†Œ
 
-        .controller('loginCtrl', function ($scope, $rootScope, $ionicPopup, $timeout, $state, ngFB) {
+        .controller('loginCtrl', function ($scope, $rootScope, $ionicPopup, $timeout, $state, ngFB,$location) {
             $scope.loginData = {};
             if (Config.getRememberme()) {
                 $scope.loginData.rememberme = true;
                 $scope.loginData.username = Config.getUsername();
                 $scope.loginData.password = Config.getPassword();
+            }
+            $scope.backtohome =function(){
+                $location.path('/app/home');return;
             }
             //end éš?ç§?
             $scope.show_hide_pw = function () {
@@ -1416,7 +1419,7 @@ angular.module('app.controllers', [])
         // homeä¸­ï¼Œå?–bannerï¼Œå¿«é€Ÿæ?œç´¢
         .controller('HomeCtrl', function ($scope, $rootScope, $state, $ionicSlideBoxDelegate, $timeout,$ionicPopup,$stateParams,$cordovaSocialSharing,commonFunction) {
             $scope.searchData = {};
-           
+            
             $rootScope.service.get('cartGetQty', {
                 product: $stateParams.productid
             }, function (res) {
@@ -1527,8 +1530,13 @@ angular.module('app.controllers', [])
 					customerid: u_id,
                     cmd: $stateParams.cmd || 'catalog'
                 };
+                $timeout(function () {
+                    $('#menu_bar').removeClass('hide');
+                },1000);
+
                 $scope.showLoading();
                 $rootScope.service.get('products', params, function (lists_catalog) {
+                    
                     $scope.hasInit = true;
                     $scope.lists_catalog = lists_catalog;
                     $timeout(function () {
@@ -2018,7 +2026,8 @@ angular.module('app.controllers', [])
                                             customerid: u_id,
                                             quoteid:quoteid,
                                             paymethod:'paypal_express',
-                                            paymentData:response
+                                            paymentData:response,
+                                            txid:response.response.id
                                         };
 					//alert(JSON.stringify(response));
                                         $rootScope.service.post('placeorder', params, function (res) {
@@ -2026,9 +2035,10 @@ angular.module('app.controllers', [])
                                             console.log('placeOrder:');
                                             console.log(res);
                                             //alert(JSON.stringify(res));
+                                            removeStorage(quoteid);
                                             $location.path('/app/orderDetails');
                                         });
-                                        removeStorage(quoteid);
+                                        
 //                                          $location.path('/app/home');
                                             return;
 				},function (error) {
@@ -2056,13 +2066,18 @@ angular.module('app.controllers', [])
 		
 					
 		
-		.controller('checkoutCtrl', function ($scope, $rootScope, $sce, $state,$stateParams) {
+		.controller('checkoutCtrl', function ($scope, $rootScope, $sce, $state,$stateParams,$location) {
                     $scope.subtotal = 0;
                     $scope.shipping_price = 0;
 			var u_id = getStorage('user_id');					
 			var params = {
 				customerid: u_id,
 			};
+
+                    $scope.gotologin = function(){
+                        $state.go('app.login');
+                        return;
+                    }
 
 			$scope.Math = window.Math;
              $scope.groups = [];
@@ -2127,8 +2142,10 @@ angular.module('app.controllers', [])
             $scope.payment_info_rbutton = function($event){
                 if($event.target.value == 'credit_card'){
                     $("#payment_info_id").removeClass('hide');
+                    $scope.payment_method_type = 'paypal';
                 }else{
                     $("#payment_info_id").addClass('hide');
+                    $scope.payment_method_type = 'cod';
                 }
             }
             
@@ -2158,9 +2175,40 @@ angular.module('app.controllers', [])
                     results= JSON.parse(results);
 //                    alert(JSON.stringify(results));
                     setStorage('quoteid', results.quoteid);
+                    
+                        //alert(paypal);
+                        if($scope.payment_method_type == 'paypal'){
+                            $state.go("app.paypal");
+                            return;
+                        }else{
+                            //alert(cod);
+                            var u_id = getStorage('user_id');					
+                            var quoteid = getStorage('quoteid');					
 
-                    $state.go("app.paypal");
-                    return;
+                            var params = {
+                                customerid: u_id,
+                                quoteid:quoteid,
+                                paymethod:'cashondelivery',
+                                paymentData:''
+                            };
+                            //alert(JSON.stringify(response));
+                            $rootScope.service.post('placeorder', params, function (res) {
+                                res=JSON.parse(res);
+                                console.log('placeOrder:');
+                                console.log(res);
+                                //alert(JSON.stringify(res));
+                                removeStorage(quoteid);
+                                $state.go("app.orderDetails");
+                               // $location.path('/app/orderDetails');
+                                return;
+                            });
+                            
+            //                                          $location.path('/app/home');
+                                return;
+
+                        }
+                    
+
 
                 });                
 

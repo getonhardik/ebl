@@ -2085,6 +2085,7 @@ angular.module('app.controllers', [])
                             $('#gift_detail').addClass('hide');
                         }
                     }
+                    
                     $scope.shipping_price = 0;
 			var u_id = getStorage('user_id');					
 			var params = {

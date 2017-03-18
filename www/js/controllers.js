@@ -1953,7 +1953,19 @@ angular.module('app.controllers', [])
             $scope.title = $scope.translations[$stateParams.page];
             $scope.src = Config.baseUrl + Config.getLocale() + frame.src;
         })
-        .controller('orderDetailsCtrl', function ($scope, $rootScope, $sce, $stateParams) {
+        .controller('orderDetailsCtrl', function ($scope,$ionicPopup,$state,$rootScope, $sce, $stateParams) {
+            if(getStorage('user_id') == null){
+                $ionicPopup.alert(
+                        {
+                            title: 'Order',
+                            subTitle: "Order Create Success",
+                            okType: 'buttonhk'
+                        }
+                );
+                
+                $state.go('app.home');
+                return;
+            }
 			$scope.showLoading();
             var u_id = getStorage('user_id');
             var params = {

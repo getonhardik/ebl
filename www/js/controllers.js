@@ -551,6 +551,11 @@ angular.module('app.controllers', [])
 
         })
         .controller('my_accountCtrl', function ($scope, $rootScope, $state, $ionicPopup, $cordovaSocialSharing, $ionicPlatform) {
+            console.log(getStorage('user_id'));
+            if(getStorage('user_id') == null){
+                $state.go('app.login');
+                return;
+            }
             console.log($rootScope.user_data);
             $scope.name = getStorage('user_name');
             $scope.email = getStorage('user_email');
@@ -2010,8 +2015,10 @@ angular.module('app.controllers', [])
 			$scope.price = 1;
                         $scope.produit = 'Ebranch Shop';
                         console.log("init paapal before");
+                        $scope.currency = "USD";
+                        $scope.sale = "SALE";
 			PaypalService.initPaymentUI().then(function () {
-				PaypalService.makePayment($scope.price, $scope.produit)
+				PaypalService.makePayment($scope.price, $scope.produit,$scope.currency,$scope.sale)
 				.then(function (response) {
                                     console.log(response);
                                     //res = JSON.stringify(response);
@@ -2068,6 +2075,8 @@ angular.module('app.controllers', [])
 		
 		.controller('checkoutCtrl', function ($scope, $rootScope, $sce, $state,$stateParams,$location) {
                     $scope.subtotal = 0;
+            $scope.registerData = {};
+            $scope.shipData = {};
                     $scope.shipping_price = 0;
 			var u_id = getStorage('user_id');					
 			var params = {
@@ -2101,18 +2110,21 @@ angular.module('app.controllers', [])
 			return $scope.shownGroup === group;
 		  };
                   // console.log(params);
-                var params = {
-                        user_id: u_id,
-                };
-            
-            $rootScope.service.get('getAddress', params, function (results) {
-                console.log(results.data[0]);
-                console.log("KP");
-                $scope.registerData = results.data[0];
-                $scope.registerData.email = getStorage('user_email');
-                //console.log($scope.address_detail);
-                // angular.extend($scope.address_detail, results.data[0]);
-            });
+                  
+                  if(u_id>0){
+                        var params = {
+                                user_id: u_id,
+                        };
+
+                    $rootScope.service.get('getAddress', params, function (results) {
+                        console.log(results.data[0]);
+                        console.log("KP");
+                        $scope.registerData = results.data[0];
+                        $scope.registerData.email = getStorage('user_email');
+                        //console.log($scope.address_detail);
+                        // angular.extend($scope.address_detail, results.data[0]);
+                    });
+                  }
             $rootScope.service.get('cart', params, function (results) {
                 console.log(results);
                 subtotal1 = 0;
@@ -2149,9 +2161,12 @@ angular.module('app.controllers', [])
                 }
             }
             
-            $scope.checkoutFormQuote = function(){
-                
-                var shipping_address = {
+            $scope.checkoutFormQuote = function(registerData){
+               
+                //registerData=$('#checkoutForm').serialize();
+                //console.log(1111);
+                // console.log(registerData);
+                var billing_address = {
                     street:$scope.registerData.street,
                     company:$scope.registerData.company,
                     telephone:$scope.registerData.postcode,
@@ -2162,8 +2177,21 @@ angular.module('app.controllers', [])
                     firstname:$scope.registerData.firstname,
                     lastname:$scope.registerData.lastname,
                     email:$scope.registerData.email};
+                
+                
+                var shipping_address = {
+                    street:$scope.shipData.street,
+                    company:$scope.shipData.company,
+                    telephone:$scope.shipData.postcode,
+                    region:$scope.shipData.street,
+                    fax:$scope.shipData.fax,
+                    postcode:$scope.shipData.postcode,
+                    city:$scope.shipData.city,
+                    firstname:$scope.shipData.firstname,
+                    lastname:$scope.shipData.lastname,
+                    email:$scope.shipData.email};
 					
-                var billing_address = shipping_address;
+                //var billing_address = shipping_address;
 //                var billing_address = ['street'=>shipData.street , 'company'=>shipData.company,'telephone'=>shipData.postcode,'region'=>shipData.street,'fax'=>shipData.fax,'postcode'=>shipData.postcode,'city'=>shipData.city,'firstname'=>shipData.firstname,'lastname'=>shipData.lastname,'email'=>shipData.email];
                   
                 var params = {

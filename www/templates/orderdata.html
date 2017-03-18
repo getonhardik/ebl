@@ -117,10 +117,10 @@ font-weight: inherit;}
                     &nbsp;
                     {{'payment_method' | translate}}
                     </ion-item>
-                    <ion-item class="item-accordion item ng-binding ng-hide" ng-repeat="item in group.items" ng-show="isGroupShown(4)">
+                    <ion-item class="item-accordion item ng-binding ng-hide" ng-show="isGroupShown(4)">
                     	<div class="row">
                         	<br />
-	                    	Paypal
+	                    	{{order.payment_method}}
     	                </div>
                     </ion-item>                      
                 </div>

@@ -2075,16 +2075,8 @@ angular.module('app.controllers', [])
 		
 		.controller('checkoutCtrl', function ($scope, $rootScope, $sce, $state,$stateParams,$location) {
                     $scope.subtotal = 0;
-                    $scope.registerData = {};
-                    $scope.gift = {};
-                    $scope.shipData = {};
-                    $scope.gift_add_button = function(){
-                        if ($('#gift_add').prop('checked')) {
-                            $('#gift_detail').removeClass('hide');
-                        }else{
-                            $('#gift_detail').addClass('hide');
-                        }
-                    }
+            $scope.registerData = {};
+            $scope.shipData = {};
                     $scope.shipping_price = 0;
 			var u_id = getStorage('user_id');					
 			var params = {
@@ -2201,7 +2193,7 @@ angular.module('app.controllers', [])
 					
                 //var billing_address = shipping_address;
 //                var billing_address = ['street'=>shipData.street , 'company'=>shipData.company,'telephone'=>shipData.postcode,'region'=>shipData.street,'fax'=>shipData.fax,'postcode'=>shipData.postcode,'city'=>shipData.city,'firstname'=>shipData.firstname,'lastname'=>shipData.lastname,'email'=>shipData.email];
-                  //console.log($scope.gift);
+                  
                 var params = {
                     customerid: u_id,
                     shipping_address: shipping_address,

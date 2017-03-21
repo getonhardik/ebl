@@ -368,15 +368,15 @@
                                 </ion-item>                      
                     		</div>
                         	
-                            <div ng-repeat="group in groups" class="" style="">
+                            <div class="" style="">
                                 <ion-item class="item-stable item ng-binding" ng-click="toggleGroup(1)" ng-class="{active: isGroupShown(1)}" style="">
                                     <i class="pdetail_plus_icon_hr icon ion-plus" ng-class="isGroupShown(1) ? 'ion-minus' : 'ion-plus'" style=""></i>
                                     &nbsp;
                                     {{'product_additional' | translate}}
                                 </ion-item>
-                                <ion-item class="item-accordion item ng-binding ng-hide" ng-show="isGroupShown(1)" style="">                                    
-                                    	<div class="col">{{item.label}}:</div>
-                                    	<div class="col col-50">{{item.value}}</div>
+                                <ion-item ng-repeat="add_attr in additionalattr" class="item-accordion item ng-binding ng-hide" ng-show="isGroupShown(1)" style="">                                    
+                                    	<span>{{add_attr.label}}:</span>
+                                    	<span>{{add_attr.value}}</span>
                                 </ion-item>                      
                     		</div>
                             

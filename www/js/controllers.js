@@ -1092,6 +1092,8 @@ angular.module('app.controllers', [])
             $rootScope.service.get('productDetail', params, function (results) {
                // console.log(results.attributeOptions.Size);
 				$rootScope.total_reviews_count=results.total_reviews_count;
+                                $scope.additionalattr = results.addtionatt;
+                                console.log(results.addtionatt);
 				$rootScope.reviews=results.reviews;
                 $scope.dbs = results.attributeOptions.Size;
                 $scope.setSelected = function (id) {

@@ -465,6 +465,7 @@ angular.module('app', [
                         }
                     })					
                     .state('app.CategoryList', {
+                        cache: false,
                         url: '/categoryList/:categoryid/:name',
                         views: {
                             'menuContent': {
@@ -474,7 +475,7 @@ angular.module('app', [
                         }
                     })
                     .state('app.CategoryProductList', {
-                        url: '/CategoryProductList/:categoryid', //????
+                        url: '/CategoryProductList/:categoryid/:name', //????
                         views: {
                             'menuContent': {
                                 templateUrl: 'templates/categoryproductlist.html',

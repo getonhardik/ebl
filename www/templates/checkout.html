@@ -38,7 +38,8 @@ color:#FFF}
                             {{'billing_info'| translate}}
                         </ion-item>
                         <ion-item class="item-accordion item ng-binding ng-hide" ng-repeat="item in group.items" ng-show="isGroupShown(0)">
-                            <div class="">
+                            <div>
+                            <div class=""  style="margin-left: 10px;">
                                     <div class="inputset">   
                                         <label class="item item-input">                
                                             <input type="text" name="bfirstname" id="bfirstname" placeholder="{{'first_name'| translate}}" ng-model="registerData.firstname">
@@ -86,7 +87,13 @@ color:#FFF}
                                     </div>
                                     <div class="inputset">  
                                         <label class="item item-input">                  
-                                            <input type="text" name="bcountry" id="bcountry" placeholder="{{'country'| translate}}" ng-model="registerData.country">
+                                            <!--<input type="text" name="bcountry" id="bcountry" placeholder="{{'country'| translate}}" ng-model="registerData.country">-->
+                                            <select name="bcountry" id="bcountry" ng-model="registerData.country">
+                                                <option value="">-- Please Select --</option>
+                                                <option ng-repeat="countrys in country" value="{{countrys.value}}">
+                                                    {{countrys.label}}
+                                                </option>
+                                            </select>
                                         </label>
                                     </div>
                                     <div class="inputset">  
@@ -94,17 +101,17 @@ color:#FFF}
                                             <input type="text" name="btelephone" id="btelephone" placeholder="{{'telephone'| translate}}" ng-model="registerData.telephone">
                                         </label>
                                     </div>
-                                    <div class="inputset">  
+<!--                                    <div class="inputset">  
                                         <label class="item item-input">                  
                                             <input type="text" name="bfax" id="bfax" placeholder="{{'fax'| translate}}" ng-model="registerData.fax">
                                         </label>
-                                    </div>
+                                    </div>-->
 
                                     <div class="inputset">  
                                         <input class="rbtn" type="radio" ng-click="biiling_rbutton($event);" name="braddress" value="same_address" /> <b class="binp">{{'ship_to_this_address'| translate}}</b><br />
                                         <input class="rbtn" type="radio" ng-click="biiling_rbutton($event);" name="braddress" value="diff_address" /> <b class="binp">{{'ship_to_diff_address'| translate}}</b>
                                     </div>
-
+                                </div>
                                     <div class="inputset" style="text-align:center">  <br />
                                         <input class="btn_cnt" type="button" value="{{'continue'| translate}}" name="Continue" ng-click="toggleGroup(1)"/> <br />
                                     </div>
@@ -120,7 +127,8 @@ color:#FFF}
                             {{'shipping_info'| translate}}
                         </ion-item>
                         <ion-item class="item-accordion item ng-binding ng-hide" ng-repeat="item in group.items" ng-show="isGroupShown(1)">
-                            <div class="">
+                            <div>
+                            <div class=""  style="margin-left: 10px;">
                                                
                                     <div class="inputset">   
                                         <label class="item item-input">                
@@ -169,7 +177,13 @@ color:#FFF}
                                     </div>
                                     <div class="inputset">  
                                         <label class="item item-input">                  
-                                            <input type="text" name="scountry" id="scountry" placeholder="{{'country'| translate}}" ng-model="shipData.country">
+                                            <!--<input type="text" name="scountry" id="scountry" placeholder="{{'country'| translate}}" ng-model="shipData.country">-->
+                                            <select name="scountry" id="scountry" ng-model="shipData.country">
+                                                <option value="">-- Please Select --</option>
+                                                <option ng-repeat="countrys in country" value="{{countrys.value}}">
+                                                    {{countrys.label}}
+                                                </option>
+                                            </select>                                        
                                         </label>
                                     </div>
                                     <div class="inputset">  
@@ -177,13 +191,13 @@ color:#FFF}
                                             <input type="text" name="stelephone" id="stelephone" placeholder="{{'telephone'| translate}}" ng-model="shipData.telephone">
                                         </label>
                                     </div>
-                                    <div class="inputset">  
+<!--                                    <div class="inputset">  
                                         <label class="item item-input">                  
                                             <input type="text" name="sfax" id="sfax" placeholder="{{'fax'| translate}}" ng-model="shipData.fax">
                                         </label>
-                                    </div>
+                                    </div>-->
 
-
+</div>
                                     <div class="inputset" style="text-align:center">  <br />
                                         <input class="btn_cnt" type="button" value="{{'continue'| translate}}" name="continue" ng-click="toggleGroup(2)"/> <br />
                                     </div>

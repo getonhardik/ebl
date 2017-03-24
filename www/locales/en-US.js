@@ -1,4 +1,7 @@
 var en_US = {
+    cash_on_delivery: 'Cash on Delivery',
+    Paypal_expess: 'Paypal Expess',
+    add_gift_option: 'Add Gift Option',
     colon: ': ',
     login: 'Login',
     Tax: 'Tax',

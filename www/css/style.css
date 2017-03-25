@@ -1143,6 +1143,8 @@ input::-moz-placeholder, textarea::-moz-placeholder{ color:#65646A!important;}
 
 .menus-content .button{ min-height:40px!important;}
 
+.menus-content .icon_default{ background:url(../img/icon-1.png) no-repeat scroll 3% 50%;padding-left: 35px;}
+
 .menus-content .icon_4{ background:url(../img/icon-3.png) no-repeat scroll 3% 50%;padding-left: 35px;}
 
 .menus-content .icon_5{ background:url(../img/icon-2.png) no-repeat scroll 3% 50%;padding-left: 35px;}

@@ -229,7 +229,7 @@ angular.module('app.controllers', [])
 
                                             $rootScope.service.get('socialLogin', $rootScope, $scope.socialData, function (res) {
                                                 $scope.hideLoading();
-
+                                                console.log(res);
                                                 if (res.status == true) {
                                                     $rootScope.user_data = res;
                                                     $scope.user = res;

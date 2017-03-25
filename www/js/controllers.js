@@ -228,7 +228,7 @@ angular.module('app.controllers', [])
                                             console.log(user);
                                             $scope.socialData = user;
 
-                                            $rootScope.service.get('socialLogin', $rootScope, $scope.socialData, function (res) {
+                                            $rootScope.service.get('socialLogin', $scope.socialData, function (res) {
                                                 $scope.hideLoading();
 console.log('res is ');
 console.log(res);

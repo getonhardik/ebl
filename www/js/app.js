@@ -1,9 +1,9 @@
 // Ionic Starter App
 // 'app' is the name of this angular module (also set in a <body> attribute in index.html)
 
-angular.module('app', [
+angular.module('app',[
     'ionic', 'ngCordova','ngCordovaOauth','ngOpenFB', 'pascalprecht.translate','ionic-ratings',
-    'app.controllers', 'app.filters', 'ionicLazyLoad','slickCarousel'	,'sw2.ionic.password-show-hide'
+    'app.controllers', 'app.filters', 'ionicLazyLoad','slickCarousel'	,'sw2.ionic.password-show-hide','ionic.service.core','ionic.service.push'
 ])
 .constant('shopSettings',{
    
@@ -273,12 +273,19 @@ angular.module('app', [
             Service($rootScope, $http, $ionicPopup);
         })
 
-        .config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, $translateProvider) {
+        .config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, $translateProvider,$ionicAppProvider) {
+            
             $ionicConfigProvider.backButton.text('Back').icon('ion-chevron-left');
             $ionicConfigProvider.scrolling.jsScrolling(false);
             $ionicConfigProvider.tabs.position('bottom');
             $ionicConfigProvider.form.checkbox('square');
             $ionicConfigProvider.views.transition('none');  //('fade-in')
+
+            $ionicAppProvider.identify({
+                app_id: '91de857a',
+                api_key: '0e978dd843d20c1573e81aea041db25a1e3b6ada6a34620e',
+                dev_push: true
+            });
 
             $stateProvider
                     .state('app', {
@@ -294,6 +301,16 @@ angular.module('app', [
                             'menuContent': {
                                 templateUrl: 'templates/home.html',
                                 controller: 'HomeCtrl'
+                            }
+                        }
+                    })
+                    .state('app.test_push', {
+                        cache: false,
+                        url: '/test_push', //首页
+                        views: {
+                            'menuContent': {
+                                templateUrl: 'templates/test_push.html',
+                                controller: 'test_pushCtrl'
                             }
                         }
                     })

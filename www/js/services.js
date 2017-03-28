@@ -1,6 +1,7 @@
 function Service($rootScope, $http, $ionicPopup) {
 
     var api = {
+        dailyDeals: '/restconnect/index?cmd=daily_sale',
         website: '/restconnect/store/websiteinfo',
         store: '/restconnect/store/storeinfo',
         getStaticBlock: '/restconnect/index/getstaticblock',

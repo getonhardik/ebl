@@ -407,9 +407,13 @@ console.log(res);
             });
 
         })
-        .controller('womenCtrl', function ($scope, $rootScope, $state, $stateParams) {
-            console.log($stateParams);
-//alert(123);
+
+        .controller('daily_dealsCtrl', function ($scope, $rootScope, $state, $stateParams) {
+            $rootScope.service.get('dailyDeals', function (results) {
+                //console.log('deals is');
+                console.log(results);
+                $scope.lists = results;
+            });
         })
         .controller('test_pushCtrl', function ($scope, $rootScope, $state, $stateParams,$ionicUser,$ionicPush) {
             
@@ -615,7 +619,7 @@ console.log(res);
 
 
         })
-        .controller('CategoryListCtrl', function ($scope, $rootScope, $ionicPopup, $stateParams, $translate) {        
+        .controller('CategoryListCtrl', function ($scope, $rootScope, $ionicPopup,$state, $stateParams, $translate,$window,$location) {        
             //alert($stateParams.name);
     $scope.catListname = $stateParams.name;
 			$scope.listTitle = {
@@ -648,6 +652,7 @@ console.log(res);
                 $scope.showLoading();
                 $rootScope.service.get('products', params, function (lists) {
                     console.log(lists);
+
                     if (func === 'load') {
                         if (Array.isArray(lists) && lists.length) {
                             $scope.lists = $scope.lists.concat(lists);
@@ -1127,7 +1132,7 @@ console.log(res);
             $rootScope.service.get('cartGetQty', {
                 product: $stateParams.productid
             }, function (res) {
-                $scope.items_qty = res.items_qty;
+                $rootScope.items_qty = res.items_qty;
             });
 
             // 商�?详情
@@ -1400,7 +1405,7 @@ console.log(res);
                         subTitle: 'successfully added',
                         okType: 'buttonhk'
                         });
-                        $scope.items_qty = res.items_qty;
+                        $rootScope.items_qty = res.items_qty;
                         return;
                     }
                 });
@@ -1479,7 +1484,8 @@ console.log(res);
             $rootScope.service.get('cartGetQty', {
                 product: $stateParams.productid
             }, function (res) {
-                $scope.items_qty = res.items_qty;
+ //               $rootScope.items_qty = res.items_qty;
+//                $scope.items_qty = res.items_qty;
             });
 									            
             /*khunt*/
@@ -1730,7 +1736,7 @@ console.log(res);
                     if (res.status == 'SUCCESS') {
                         $scope.hideLoading();
                         $('#wishlist_'+p_id).attr('src','img/icon-24.png');
-                        $scope.items_qty = res.items_qty;
+                        $rootScope.items_qty = res.items_qty;
                         return;
                     }
                 });
@@ -1792,7 +1798,7 @@ console.log(res);
 			$rootScope.service.get('cartGetQty', {
                 product: $stateParams.productid
             }, function (res) {
-                $scope.items_qty = res.items_qty;
+                $rootScope.items_qty = res.items_qty;
             });
 			
 			$scope.qtyAdd = function () {
@@ -1849,7 +1855,7 @@ console.log(res);
                     }
                     if (res.status == 'SUCCESS') {
                         $scope.hideLoading();                       
-                        $scope.items_qty = res.items_qty;
+                        $rootScope.items_qty = res.items_qty;
                         var params = {
                             cart_item_id: item_id,
                         };

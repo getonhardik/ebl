@@ -444,6 +444,15 @@ angular.module('app',[
                             }
                         }
                     })
+                    .state('app.daily_deals', {
+                        url: '/daily_deals',
+                        views: {
+                            'menuContent': {
+                                templateUrl: 'templates/daily_deals.html',
+                                controller: 'daily_dealsCtrl'
+                            }
+                        }
+                    })
 					.state('app.about_us', {
                         url: '/about_us',
                         views: {

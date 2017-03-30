@@ -1479,8 +1479,10 @@ console.log(res);
 
         // homeä¸­ï¼Œå?–bannerï¼Œå¿«é€Ÿæ?œç´¢
         .controller('HomeCtrl', function ($scope, $rootScope, $state, $ionicSlideBoxDelegate, $timeout,$ionicPopup,$stateParams,$cordovaSocialSharing,commonFunction) {
-            $scope.searchData = {};
-            
+            $rootScope.items_qty=parseInt($rootScope.items_qty) || 0;;
+   
+                    console.log($rootScope.items_qty);
+                    $scope.searchData = {};
             $rootScope.service.get('cartGetQty', {
                 product: $stateParams.productid
             }, function (res) {

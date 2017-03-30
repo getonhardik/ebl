@@ -38,7 +38,4 @@ pdetail_colsize{
     padding-left:0px!important;
 }
 
-.profile-menu a.button{background-position:95% 50%!important;padding-left:0px!important;padding-right:50px;}
-.menus-content .button{ text-align:right!important;padding-right:35px;}
-
-.menus-content a.button.icon:before{float:right;}
+.menus-content .button{ text-align:left!important;}

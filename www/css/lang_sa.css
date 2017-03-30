@@ -42,3 +42,26 @@ pdetail_colsize{
 .menus-content .button{ text-align:right!important;padding-right:35px;}
 
 .menus-content a.button.icon:before{float:right;}
+.rate_lable_hr{
+    float:right !important;
+}
+.rate_icon_hr{
+    float:left;
+}
+
+.cart_price_hr{
+    float:left !important;
+    width: inherit !important;
+}
+
+.cart_lable_hr{
+    text-align: right;
+    float: right !important;
+}
+
+.rbtn{
+    float:right !important;
+}
+.binp{
+    margin-right: 10px !important;
+}

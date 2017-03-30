@@ -3,3 +3,10 @@
 .langchanger {
   direction: ltr; 
 }
+
+.rate_lable_hr{
+    float:left !important;
+}
+.rate_icon_hr{
+    float:right;
+}

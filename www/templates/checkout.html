@@ -71,8 +71,13 @@ color:#FFF}
                                         </label>
                                     </div>
                                     <div class="inputset">  
-                                        <label class="item item-input">                  
-                                            <input type="text" name="bcity" id="bcity" placeholder="{{'city'| translate}}" ng-model="registerData.city">
+                                        <label class="item item-input">
+                                            <select name="bcity" id="bcity" ng-model="registerData.city">
+                                                <option ng-repeat="citys in city" value="{{citys.value}}">
+                                                    {{citys.label}}
+                                                </option>
+                                            </select>
+                                            <!--<input type="text" name="bcity" id="bcity" placeholder="{{'city'| translate}}" ng-model="registerData.city">-->
                                         </label>
                                     </div>
                                     <div class="inputset">  
@@ -88,8 +93,7 @@ color:#FFF}
                                     <div class="inputset">  
                                         <label class="item item-input">                  
                                             <!--<input type="text" name="bcountry" id="bcountry" placeholder="{{'country'| translate}}" ng-model="registerData.country">-->
-                                            <select name="bcountry" id="bcountry" ng-model="registerData.country">
-                                                <option value="">Country</option>
+                                            <select name="bcountry" ng-change="select_city()" id="bcountry" ng-model="registerData.country">
                                                 <option ng-repeat="countrys in country" value="{{countrys.value}}">
                                                     {{countrys.label}}
                                                 </option>
@@ -161,8 +165,14 @@ color:#FFF}
                                         </label>
                                     </div>
                                     <div class="inputset">  
-                                        <label class="item item-input">                  
-                                            <input type="text" name="scity" id="scity" placeholder="{{'city'| translate}}" ng-model="shipData.city">
+                                        <label class="item item-input">
+                                            <select name="scity" id="scity" ng-model="shipData.city">
+                                                <option ng-repeat="citys in city1" value="{{citys.value}}">
+                                                    {{citys.label}}
+                                                </option>
+                                            </select>
+                                            
+                                            <!--<input type="text" name="scity" id="scity" placeholder="{{'city'| translate}}" ng-model="shipData.city">-->
                                         </label>
                                     </div>
                                     <div class="inputset">  
@@ -178,8 +188,7 @@ color:#FFF}
                                     <div class="inputset">  
                                         <label class="item item-input">                  
                                             <!--<input type="text" name="scountry" id="scountry" placeholder="{{'country'| translate}}" ng-model="shipData.country">-->
-                                            <select name="scountry" id="scountry" ng-model="shipData.country">
-                                                <option value="">-- Please Select --</option>
+                                            <select name="scountry" id="scountry" ng-model="shipData.country" ng-change="select_ship_city()">
                                                 <option ng-repeat="countrys in country" value="{{countrys.value}}">
                                                     {{countrys.label}}
                                                 </option>

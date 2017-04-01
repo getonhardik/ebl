@@ -1479,7 +1479,7 @@ console.log(res);
 
         // homeä¸­ï¼Œå?–bannerï¼Œå¿«é€Ÿæ?œç´¢
         .controller('HomeCtrl', function ($scope, $rootScope, $state, $ionicSlideBoxDelegate, $timeout,$ionicPopup,$stateParams,$cordovaSocialSharing,commonFunction) {
-            $rootScope.items_qty=parseInt($rootScope.items_qty) || 0;;
+            $rootScope.items_qty=parseInt($rootScope.items_qty) || 0;
    
                     console.log($rootScope.items_qty);
                     $scope.searchData = {};
@@ -2146,6 +2146,7 @@ console.log(res);
 					
 		
 		.controller('checkoutCtrl', function ($scope, $rootScope, $sce, $state,$stateParams,$location) {
+                    var city_list = {};
                     $scope.subtotal = 0;
                     $scope.registerData = {};
                     $scope.gift = {};
@@ -2196,16 +2197,30 @@ console.log(res);
                         var params = {
                                 user_id: u_id,
                         };
-
+                        
                     $rootScope.service.get('getAddress', params, function (results) {
                         console.log(results.data[0]);
                         console.log("KP");
                         $scope.registerData = results.data[0];
                         $scope.registerData.email = getStorage('user_email');
                         $scope.country = results.data.country;
+                        
+                        city_list = results.data.city;
                         console.log($scope.country);
                         // angular.extend($scope.address_detail, results.data[0]);
                     });
+                  }
+                  $scope.select_city = function(){
+                      //alert($("#bcountry").val());
+                          var city_point = $("#bcountry").val();
+                          $scope.city = city_list[city_point];
+                          //console.log(city_list);
+                  }
+                  $scope.select_ship_city = function(){
+//                      alert($("#scountry").val());
+                          var city_point = $("#scountry").val();
+                          $scope.city1 = city_list[city_point];
+                          console.log(city_list[city_point]);
                   }
             $rootScope.service.get('cart', params, function (results) {
                 console.log(results);

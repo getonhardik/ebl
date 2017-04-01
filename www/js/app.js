@@ -590,7 +590,7 @@ angular.module('app',[
 
 $translateProvider.translations('ar_SA', ar_SA);
         $translateProvider.translations('en_US', en_US);
-  if(Config.getLocale()=='arabic'){
+            if(Config.getLocale()=='arabic'){
          $translateProvider.preferredLanguage('ar_SA');
   }else {
     $translateProvider.preferredLanguage('en_US');

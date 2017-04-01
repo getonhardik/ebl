@@ -24,7 +24,7 @@ window.Config = {
         localStorage['password'] = password;
     },
     getLocale: function () {
-        return localStorage['locale'] || 'default';
+        return localStorage['locale'] || 'arabic';
     },
     setLocale: function (locale) {
         localStorage['locale'] = locale;

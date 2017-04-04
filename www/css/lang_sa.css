@@ -65,3 +65,8 @@ pdetail_colsize{
 .binp{
     margin-right: 10px !important;
 }
+
+/*.h-bar1 {    width: 20% !important;    float: right !important;margin-top: 9px !important;}.h-bar2 {    width: 80% !important;    float: left !important;}*/
+.input-number-decrement{
+    margin-right: 1px;
+}

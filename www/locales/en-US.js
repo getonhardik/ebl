@@ -1,4 +1,5 @@
 var en_US = {
+    review :'Review',
     cash_on_delivery: 'Cash on Delivery',
     Paypal_expess: 'Paypal Expess',
     add_gift_option: 'Add Gift Option',
@@ -175,4 +176,5 @@ var en_US = {
     rate_us_on_play_store :'Rate us on play store',
     SAR :'SAR',
     about_us:'About Us',
+side_position:'left'
 };

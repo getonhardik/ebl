@@ -714,7 +714,7 @@ em {
 
 #qty {
     height: 40px;
-    border-radius: 0px;
+    border-radius: 4px;
     border: 1px solid #ccc;
 }
 
@@ -745,13 +745,14 @@ em {
 }
 
 .input-number-decrement {
-    border-right: none;
-    border-radius: 4px 0 0 4px;
+    /*border-right: none;*/
+    border-radius: 4px 4px 4px 4px;
+    
 }
 
 .input-number-increment {
-    border-left: none;
-    border-radius: 0 4px 4px 0;
+    /*border-left: none;*/
+    border-radius: 4px 4px 4px 4px;
 }
 
 /*

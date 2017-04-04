@@ -127,7 +127,7 @@
                   	</span>
                 </div>                
                 <div class="p_review">
-                	<div class="r-box" ng-click="showReview()">{{total_reviews_count}} {{'Review' | translate}}</div>
+                	<div class="r-box langchanger" ng-click="showReview()">{{total_reviews_count}} {{'review' | translate}}</div>
                 </div>
             </div>
          </div>
@@ -375,7 +375,7 @@
                                     {{'product_additional' | translate}}
                                 </ion-item>
                                 <ion-item ng-repeat="add_attr in additionalattr" class="item-accordion item ng-binding ng-hide" ng-show="isGroupShown(1)" style="">                                    
-                                    	<span style="padding-left:10px">{{add_attr.label}}:</span>
+                                    	<span style="padding-left:10px;padding-right: 10px;">{{add_attr.label}}:</span>
                                     	<span style="padding-left:10px">{{add_attr.value}}</span>
                                 </ion-item>                      
                     		</div>

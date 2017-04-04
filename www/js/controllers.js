@@ -7,7 +7,7 @@ angular.module('app.controllers', [])
                 $ionicPopup, $timeout, $state,
                 $ionicSideMenuDelegate, $translate,
                 $ionicPlatform, $ionicHistory) {
-
+                    
             $translate(Object.keys(ar_SA)).then(function (translations) {
                 $scope.translations = translations;
                 $rootScope.translations = $scope.translations;
@@ -981,6 +981,7 @@ console.log(res);
                 Config.setLocale($scope.locale);
                 $rootScope.service.get('menus', {}, function (results) {
                     angular.extend($scope.dynamic_menus, results);
+                    
                 });
                 $ionicHistory.clearCache();
             };
@@ -1478,9 +1479,21 @@ console.log(res);
         })
 
         // homeä¸­ï¼Œå?–bannerï¼Œå¿«é€Ÿæ?œç´¢
-        .controller('HomeCtrl', function ($scope, $rootScope, $state, $ionicSlideBoxDelegate, $timeout,$ionicPopup,$stateParams,$cordovaSocialSharing,commonFunction) {
+        .controller('HomeCtrl', function ($scope, $rootScope, $state, $ionicSlideBoxDelegate,$ionicSideMenuDelegate, $timeout,$ionicPopup,$stateParams,$cordovaSocialSharing,commonFunction) {
             $rootScope.items_qty=parseInt($rootScope.items_qty) || 0;
-   
+           
+      $scope.toggleSlideMenu = function () {
+       
+          if(Config.getLocale()=='default'){
+                console.log('move lft');
+               $ionicSideMenuDelegate.toggleLeft();
+           }else{
+                console.log('move right');
+               $ionicSideMenuDelegate.toggleRight();
+              
+           }  
+          };
+            
                     console.log($rootScope.items_qty);
                     $scope.searchData = {};
             $rootScope.service.get('cartGetQty', {
@@ -2145,7 +2158,7 @@ console.log(res);
 		
 					
 		
-		.controller('checkoutCtrl', function ($scope, $rootScope, $sce, $state,$stateParams,$location) {
+		.controller('checkoutCtrl', function ($scope, $rootScope, $sce,$ionicPopup, $state,$stateParams,$location) {
                     var city_list = {};
                     $scope.subtotal = 0;
                     $scope.registerData = {};
@@ -2193,7 +2206,7 @@ console.log(res);
 		  };
                   // console.log(params);
                   
-                  if(u_id>0){
+//                  if(u_id>0){
                         var params = {
                                 user_id: u_id,
                         };
@@ -2201,15 +2214,17 @@ console.log(res);
                     $rootScope.service.get('getAddress', params, function (results) {
                         console.log(results.data[0]);
                         console.log("KP");
+                        console.log(results.data.country);
                         $scope.registerData = results.data[0];
-                        $scope.registerData.email = getStorage('user_email');
+                        if(u_id>0){
+                        $scope.registerData.email = getStorage('user_email');}
                         $scope.country = results.data.country;
                         
                         city_list = results.data.city;
                         console.log($scope.country);
                         // angular.extend($scope.address_detail, results.data[0]);
                     });
-                  }
+//                  }
                   $scope.select_city = function(){
                       //alert($("#bcountry").val());
                           var city_point = $("#bcountry").val();
@@ -2223,9 +2238,19 @@ console.log(res);
                           console.log(city_list[city_point]);
                   }
             $rootScope.service.get('cart', params, function (results) {
+                console.log("test");
                 console.log(results);
                 subtotal1 = 0;
                 $scope.order_review_data = results.cart_items;
+                if(results.cart_items_count == null){
+                    $ionicPopup.alert(
+                            {
+                                title: 'Cart Message',
+                                subTitle: 'cart is empty',
+                                okType: 'buttonhk'
+                            }
+                    );
+                }
                 $.each(results.cart_items, function( index, value ) {
                     subtotal1 = subtotal1 + (value.item_price * value.qty);
                 });
@@ -2243,7 +2268,20 @@ console.log(res);
             $scope.biiling_rbutton = function($event){
                 //alert($event.target.value);
                 if($event.target.value == 'same_address'){
-                    $scope.shipData = $scope.registerData;
+                    //alert(123);
+//                    $scope.shipData = $scope.registerData;
+                    $scope.shipData.firstname = $('#bfirstname').val(); 
+                    $scope.shipData.lastname = $('#blastname').val(); 
+                    $scope.shipData.company = $('#bcompany').val(); 
+                    $scope.shipData.email = $('#bemail').val(); 
+                    $scope.shipData.street = $('#baddress1').val(); 
+                    $scope.shipData.street2 = $('#baddress2').val(); 
+                    $scope.shipData.city = $('#bcity').val(); 
+                    $scope.shipData.region = $('#bstate').val(); 
+                    $scope.shipData.postcode = $('#bzip').val(); 
+                    $scope.shipData.country = $('#bcountry').val(); 
+                    $scope.shipData.telephone = $('#btelephone').val(); 
+//                    alert($('#bfirstname').val());
                 }else{
                     $scope.shipData = {};
                 }

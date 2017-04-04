@@ -289,6 +289,7 @@ angular.module('app',[
 
             $stateProvider
                     .state('app', {
+                        cache: false,
                         url: '/app',
                         abstract: true,
                         templateUrl: 'templates/menu.html',
@@ -592,6 +593,7 @@ $translateProvider.translations('ar_SA', ar_SA);
         $translateProvider.translations('en_US', en_US);
             if(Config.getLocale()=='arabic'){
          $translateProvider.preferredLanguage('ar_SA');
+         
   }else {
     $translateProvider.preferredLanguage('en_US');
   }

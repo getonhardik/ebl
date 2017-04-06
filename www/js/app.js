@@ -260,7 +260,7 @@ angular.module('app',[
                     $rootScope.showLoading();
                     var message = "Ebranch";
                     var link = share_url;
-                    $cordovaSocialSharing.share(message, null, link);
+                    $cordovaSocialSharing.share(message, null,null,link);
                     $rootScope.hideLoading();
                 };
                  

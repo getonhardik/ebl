@@ -465,12 +465,14 @@ console.log(res);
 
         .controller('contactCtrl', function ($scope, $rootScope, $state, $stateParams, $cordovaEmailComposer,$ionicModal,$ionicPopup,$sce) {	
                                 $scope.contactDetail = {};
-                                $scope.url = $sce.trustAsResourceUrl('https://www.google.com/maps/embed/v1/place?q=-34.398,150.884&amp;key=AIzaSyBGoLQWOqGYdeojb1kaDyEsedZ8u9G9vzQ');
                                 console.log($scope.url);
                                 $rootScope.service.get('contactDetail',function (res) {
                                     console.log("lat long");
                                     console.log(res);
                                     $scope.contactDetail = res.contactDetails;
+                                    $scope.url = $sce.trustAsResourceUrl('https://www.google.com/maps/embed/v1/place?q='+res.contactDetails.coordinates.lat+','+res.contactDetails.coordinates.lng+'&key=AIzaSyBGoLQWOqGYdeojb1kaDyEsedZ8u9G9vzQ');
+                                    
+                                    
                                     //$scope.mapDetail =  $sce.trustAs(res.contactDetails);
                                 });
 				$ionicModal.fromTemplateUrl('templates/myform.html', {
@@ -1153,7 +1155,16 @@ console.log(res);
             };
 			
             $rootScope.service.get('productDetail', params, function (results) {
-               // console.log(results.attributeOptions.Size);
+//                console.log("test");
+//                console.log(results);
+                                $scope.share_url = results.url_key;
+                                if(results.is_in_stock){
+                                    $scope.stock_detail = '';
+                                    
+                                }else{
+                                    $scope.stock_detail_css = 'display:block !important';
+                                    $scope.stock_detail = 'Out Of Stock';
+                                }
 				$rootScope.total_reviews_count=results.total_reviews_count;
                                 $scope.additionalattr = results.addtionatt;
                                 console.log(results.attributeOptions);
@@ -1566,6 +1577,8 @@ console.log(res);
                 };
                 $scope.showLoading();
                 $rootScope.service.get('products', params, function (lists_new) {
+//                    console.log('test');
+//                    console.log(lists_new);
                     $scope.hasInit = true;
                     $scope.lists_new = lists_new;
                     $timeout(function () {

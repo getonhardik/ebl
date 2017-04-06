@@ -116,6 +116,10 @@
                 </div>
             </div>
             <br />
+               <div style='margin-right: 6px;display:none;{{stock_detail_css}};'>
+                	<div style='background-color: red !important' class="r-box langchanger">{{stock_detail}}</div>
+                </div>
+             
             <div class="row">
             	<div class="p_price">
                 	<span ng-if="product.discount != null" class="special-price">
@@ -125,7 +129,7 @@
                   	<span ng-if="product.discount == null" class="special-price">
                       <span class="price">{{'SAR' | translate}}{{product.symbol}}{{oldPrice}}</span>
                   	</span>
-                </div>                
+                </div>
                 <div class="p_review">
                 	<div class="r-box langchanger" ng-click="showReview()">{{total_reviews_count}} {{'review' | translate}}</div>
                 </div>
@@ -531,7 +535,7 @@
                 
                 <div class="p_footer">
             	<span class="img_left">
-                	<a href="#" ng-click="sharewithfriend()">
+                	<a href="#" ng-click="sharewithfriend({{share_url}})">
             		<img src="img/share-25.png" height="25" width="25" />                
                     </a>
                 </span>

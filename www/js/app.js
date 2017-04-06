@@ -256,10 +256,11 @@ angular.module('app',[
                        commonFunction.doWhishlistAdd(p_id,idflag,$rootScope,$ionicPopup);
                   }
                  };
-                $rootScope.sharewithfriend = function () {
+                $rootScope.sharewithfriend = function (share_url) {
                     $rootScope.showLoading();
-                    var message = "Ebranch App";
-                    $cordovaSocialSharing.share(message, null, null);
+                    var message = "Ebranch";
+                    var link = share_url;
+                    $cordovaSocialSharing.share(message, null, link);
                     $rootScope.hideLoading();
                 };
                  

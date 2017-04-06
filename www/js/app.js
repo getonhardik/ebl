@@ -324,15 +324,15 @@ angular.module('app',[
                             }
                         }
                     })
-                    .state('app.certDownload', {
-                        url: '/certDownload', //�?书下载，其实就是内容管�?�
-                        views: {
-                            'menuContent': {
-                                templateUrl: 'templates/certDownload.html',
-                                controller: 'certCtrl'
-                            }
-                        }
-                    })
+//                    .state('app.certDownload', {
+//                        url: '/certDownload', //�?书下载，其实就是内容管�?�
+//                        views: {
+//                            'menuContent': {
+//                                templateUrl: 'templates/certDownload.html',
+//                                controller: 'certCtrl'
+//                            }
+//                        }
+//                    })
                     .state('app.orderDetails', {
                         cache: false,
                         url: '/orderDetails', //附近�?销商列表
@@ -372,32 +372,32 @@ angular.module('app',[
                         }
                     })
 					
-                    .state('app.searchAgent', {
-                        url: '/searchAgent', //附近�?销商
-                        views: {
-                            'menuContent': {
-                                templateUrl: 'templates/searchAgent.html',
-                                controller: 'SearchAgentCtrl'
-                            }
-                        }
-                    })
-                    .state('app.agents', {
-                        url: '/agents', //附近�?销商列表
-                        views: {
-                            'menuContent': {
-                                templateUrl: 'templates/agents.html',
-                                controller: 'AgentsCtrl'
-                            }
-                        }
-                    })
-                    .state('app.survey', {
-                        url: '/survey', //问�?�调查
-                        views: {
-                            'menuContent': {
-                                templateUrl: 'templates/survey.html'
-                            }
-                        }
-                    })
+//                    .state('app.searchAgent', {
+//                        url: '/searchAgent', //附近�?销商
+//                        views: {
+//                            'menuContent': {
+//                                templateUrl: 'templates/searchAgent.html',
+//                                controller: 'SearchAgentCtrl'
+//                            }
+//                        }
+//                    })
+//                    .state('app.agents', {
+//                        url: '/agents', //附近�?销商列表
+//                        views: {
+//                            'menuContent': {
+//                                templateUrl: 'templates/agents.html',
+//                                controller: 'AgentsCtrl'
+//                            }
+//                        }
+//                    })
+//                    .state('app.survey', {
+//                        url: '/survey', //问�?�调查
+//                        views: {
+//                            'menuContent': {
+//                                templateUrl: 'templates/survey.html'
+//                            }
+//                        }
+//                    })
                     .state('app.register', {
                         url: '/register',
                         views: {
@@ -417,15 +417,15 @@ angular.module('app',[
                         }
                     })
 
-                    .state('app.women', {
-                        url: '/women',
-                        views: {
-                            'menuContent': {
-                                templateUrl: 'templates/women.html',
-                                controller: 'womenCtrl'
-                            }
-                        }
-                    })
+//                    .state('app.women', {
+//                        url: '/women',
+//                        views: {
+//                            'menuContent': {
+//                                templateUrl: 'templates/women.html',
+//                                controller: 'womenCtrl'
+//                            }
+//                        }
+//                    })
                     .state('app.address_book', {
                         url: '/address_book',
                         views: {

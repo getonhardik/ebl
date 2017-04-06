@@ -463,8 +463,16 @@ console.log(res);
 
         })
 
-        .controller('contactCtrl', function ($scope, $rootScope, $state, $stateParams, $cordovaEmailComposer,$ionicModal,$ionicPopup) {						
-			
+        .controller('contactCtrl', function ($scope, $rootScope, $state, $stateParams, $cordovaEmailComposer,$ionicModal,$ionicPopup,$sce) {	
+                                $scope.contactDetail = {};
+                                $scope.url = $sce.trustAsResourceUrl('https://www.google.com/maps/embed/v1/place?q=-34.398,150.884&amp;key=AIzaSyBGoLQWOqGYdeojb1kaDyEsedZ8u9G9vzQ');
+                                console.log($scope.url);
+                                $rootScope.service.get('contactDetail',function (res) {
+                                    console.log("lat long");
+                                    console.log(res);
+                                    $scope.contactDetail = res.contactDetails;
+                                    //$scope.mapDetail =  $sce.trustAs(res.contactDetails);
+                                });
 				$ionicModal.fromTemplateUrl('templates/myform.html', {
 				scope: $scope,
 				animation: 'slide-in-up'
@@ -557,7 +565,7 @@ console.log(res);
 						}
 						
 					});
-	                
+                                        
 				}
 
         })
@@ -1148,22 +1156,46 @@ console.log(res);
                // console.log(results.attributeOptions.Size);
 				$rootScope.total_reviews_count=results.total_reviews_count;
                                 $scope.additionalattr = results.addtionatt;
-                                console.log(results.addtionatt);
+                                console.log(results.attributeOptions);
 				$rootScope.reviews=results.reviews;
-                $scope.dbs = results.attributeOptions.Size;
+                  
+               angular.forEach(results.productOption, function(value, key) {
+  console.log(value);
+
+  
+  if(value.attribute_code=="shoe_size"){
+      $scope.shoe_select = 1;
+      $scope.dbs = results.attributeOptions.shoe_size;
                 $scope.setSelected = function (id) {
                     $scope.db = id;
-					$scope.selected = id;					
+		    $scope.selected = id;					
                 }
 
+  }
 
-                $scope.dbs2 = results.attributeOptions.Color;
+  if(value.attribute_code=="size"){
+     $scope.shoe_select = 2;
+      $scope.dbs = results.attributeOptions.size;
+                $scope.setSelected = function (id) {
+                    $scope.db = id;
+		    $scope.selected = id;					
+                }
+
+  }
+  if(value.attribute_code=="color"){
+       $scope.dbs2 = results.attributeOptions.color;
                 $scope.setSelected2 = function (id) {
                     $scope.db2 = id;
-					$scope.selected2 = id;
+		    $scope.selected2 = id;
               	}
+  }    
+});
+               
+                
+
+               
                 $scope.product = results;
-                    console.log($scope.product);
+                    //console.log($scope.product);
                 $scope.totalPrice = +$scope.product.final_price_with_tax;
                 $scope.oldPrice = +$scope.product.regular_price_with_tax;
 

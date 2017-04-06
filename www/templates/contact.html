@@ -49,8 +49,13 @@ margin-top: 7%;}
                 </div>
             </a>
             
-                        
-            <div style="width: 100%"><iframe width="100%" height="190" src="http://www.mapi.ie/create-google-map/map.php?width=100%&amp;height=190&amp;hl=en&amp;q=1%20Grafton%20Street%2C%20Dublin%2C%20Ireland+(My%20Business%20Name)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=A&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"><a href="http://www.mapsdirections.info/fr/mesurer-distance-surface-google-maps.html">distance entre deux points carte</a> en <a href="http://www.mapsdirections.info/fr/">www.mapsdirections.info/fr/</a></iframe></div><br />
+            <div style="width: 100%">
+                <!--<iframe width="100%" height="190" src="http://www.mapi.ie/create-google-map/map.php?width=100%&amp;height=190&amp;hl=en&amp;q=1%20Grafton%20Street%2C%20Dublin%2C%20Ireland+(My%20Business%20Name)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=A&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"><a href="http://www.mapsdirections.info/fr/mesurer-distance-surface-google-maps.html">distance entre deux points carte</a> en <a href="http://www.mapsdirections.info/fr/">www.mapsdirections.info/fr/</a></iframe>-->
+
+                <iframe id='map_id_hp' width="100%" height="150" frameborder="0" style="border:0" src="{{url}}"></iframe>
+
+                <!--<iframe width="100%" height="150" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q={{contactDetail.coordinates.lat}},150.884&amp;key=AIzaSyBLj5nEdShcJg1lifGV9V2EF8g6kKnVEpU"></iframe>-->
+            </div><br />
             <div class="c_title langchanger" style="margin-top: 30px;margin-bottom:20px;">{{'contact_details' | translate}}</div>
             <a href="tel:2012032032" style="text-decoration: none !important;color:#000000 !important">
                 <div class='c_box'>
@@ -67,7 +72,7 @@ margin-top: 7%;}
             <a href="mailto:hardik4hardik@gmail.com" style="text-decoration: none !important;color:#000000 !important">
                 <div class="c_box">
                 	<span class="c_span1"><img src="img/msg-c.png" width="54" height="55" /></span>
-                    <span class="c_span2">&nbsp;&nbsp;mail@example.com</span>
+                    <span class="c_span2">&nbsp;&nbsp;{{contactDetail.email}}</span>
                 </div>
             </a>
             <div class="c_title langchanger" style="margin-top:25px;margin-bottom:20px">{{'follow_us' | translate}}</div>

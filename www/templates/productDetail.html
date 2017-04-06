@@ -134,20 +134,21 @@
          
 
         <div class="col-size">
-            <div  ng-if="productoptions.attributeOptions.Color" class="color">
+            <div  ng-if="dbs2" class="color">
                 <span class="input-label input-label-pd">{{'Color' | translate}}:</span>					
                 <ul class="color-ul">
-                    <li style="background:{{color.label}}" ng-class="{sel: color.value_index == selected2}" ng-repeat="color in productoptions.attributeOptions.Color" ng-if="item.value!='N/A' && item.value!='No'">
-                        <div ng-click="setSelected2('{{color.value_index}}')">&nbsp;</div>
+                    <li  ng-class="{sel: color.value_index == selected2}" ng-repeat="color in dbs2" ng-if="item.value!='N/A' && item.value!='No'">
+                        <div style="background:{{color.label}}" ng-if="shoe_select == 2" ng-click="setSelected2('{{color.value_index}}')">&nbsp;</div>
+                        <div ng-if="shoe_select == 1" ng-click="setSelected2('{{color.value_index}}')"><img src="http://pr.veba.co/~shubantech/ebranch/media/catalog/swatches/1/21x21/media/{{color.label | lowercase}}.png" alt="Taupe" width="21" height="20"></div>
                     </li>                	
                 </ul>
             </div>
             <div style="clear:both"></div>
-            <div  ng-if="productoptions.attributeOptions.Size"  class="size">
+            <div  ng-if="dbs"  class="size">
                 <!--{{product.productOption[1].values}}-->
                 <span class="input-label input-label-pd">{{'Size' | translate}}:</span>
 				<ul class="color-ul">
-                    <li  style="background:#E6E6E6" ng-class="{sel: size.value_index == selected}" ng-repeat="size in productoptions.attributeOptions.Size" ng-if="item.value!='N/A' && item.value!='No'">
+                    <li  style="background:#E6E6E6" ng-class="{sel: size.value_index == selected}" ng-repeat="size in dbs" ng-if="item.value!='N/A' && item.value!='No'">
                         <div ng-class="class"  ng-click="setSelected('{{size.value_index}}')" >{{size.label}}</div>
 	                </li>                	
                 </ul>

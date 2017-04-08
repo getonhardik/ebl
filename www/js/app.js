@@ -438,6 +438,7 @@ angular.module('app',[
                         }
                     })
                     .state('app.wishlist', {
+                        cache: false,
                         url: '/wishlist',
                         views: {
                             'menuContent': {
@@ -550,6 +551,7 @@ angular.module('app',[
                         }
                     })
                     .state('app.searchResult', {
+                        cache: false,
                         url: '/searchResult',
                         views: {
                             'menuContent': {
@@ -559,6 +561,7 @@ angular.module('app',[
                         }
                     })
                     .state('app.searchAdv', {
+                        cache: false,
                         url: '/searchAdv', //高级查询
                         views: {
                             'menuContent': {

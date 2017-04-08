@@ -1507,6 +1507,8 @@ console.log(res);
                 $scope.showLoading();
                 $rootScope.service.get('products', params, function (lists_new) {
                     $scope.hasInit = true;
+//                    console.log('lists_new');
+                    console.log(lists_new);
                     $scope.lists_new = lists_new;
                     $timeout(function () {
                         $scope.dataLoaded2 = true;
@@ -1692,6 +1694,7 @@ console.log(res);
         // é«˜çº§æ?œç´¢
         .controller('SearchAdvCtrl', function ($scope, $rootScope, $state) {
             $scope.searAdvData = {};
+            $scope._xingzhuang = '';
             // å?–ç›®å½•é€‰é¡¹
             $rootScope.service.get('menus', {}, function (results) {
                 var cat_field = [];

@@ -48,7 +48,7 @@
             <div class="product-swiper-container">
             	<div class="p_rightbar">
                             <div class="">
-                            <a href="#" ng-click="sharewithfriend({{share_url}})">
+                            <a href="#" ng-click="sharewithfriend(share_url)">
 	                            <img src="img/icon-22.png" height="25" width="25" />                
                             </a>    
                             </div>
@@ -67,6 +67,7 @@
                             <img class="" src="img/icon-24.png" height="25" width="25" ng-click="doCartAdd()" />
                             </div>
                         </div>
+                <!--{{share_url}}-->
                 <ion-slide-box delegate-handle="image-viewer" show-pager="true">                	
                     <ion-slide ng-repeat="img in productImg" ng-init="updateSlider()">
                         <img ng-src="{{img.url}}" ng-click="imageFullscreen()"><span></span>                                                
@@ -535,7 +536,7 @@
                 
                 <div class="p_footer">
             	<span class="img_left">
-                	<a href="#" ng-click="sharewithfriend({{product.url_key}})">
+                	<a href="#" ng-click="sharewithfriend(product.url_key)">
             		<img src="img/share-25.png" height="25" width="25" />                
                     </a>
                 </span>

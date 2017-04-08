@@ -257,8 +257,8 @@ angular.module('app',[
                   }
                  };
                 $rootScope.sharewithfriend = function (share_url) {
-                    alert(123);
-                    alert(share_url);
+//                    alert(123);
+//                    alert(share_url);
                     $rootScope.showLoading();
                     var message = "Ebranch";
                     var link = share_url;

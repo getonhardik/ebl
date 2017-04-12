@@ -195,7 +195,7 @@ angular.module('app.controllers', [])
 
         // 注册
 
-        .controller('loginCtrl', function ($scope, $rootScope, $ionicPopup, $timeout, $state, ngFB,$location) {
+        .controller('loginCtrl', function ($scope, $rootScope, $ionicPopup, $timeout, $state, ngFB,$location,$translate) {
             $scope.loginData = {};
             if (Config.getRememberme()) {
                 $scope.loginData.rememberme = true;
@@ -291,7 +291,7 @@ console.log(res);
                     $ionicPopup.alert(
                             {
                                 title: 'error',
-                                subTitle: 'Please enter username and password',
+                                subTitle: $translate.instant('Please_enter_username_password'),
                                 okType: 'buttonhk'
                             }
                     );
@@ -335,7 +335,7 @@ console.log(res);
                 });
             };
         })
-        .controller('wishlistCtrl', function ($scope, $rootScope, $state, $stateParams, $cordovaSocialSharing, $ionicPopup) {			
+        .controller('wishlistCtrl', function ($scope, $rootScope, $state, $stateParams, $cordovaSocialSharing, $ionicPopup,$translate) {			
             var u_id = getStorage('user_id');
             var params = {
                 user_id: u_id,
@@ -370,7 +370,7 @@ console.log(res);
             });
 
         })
-        .controller('address_bookCtrl', function ($scope, $rootScope, $state, $stateParams, $ionicPopup) {
+        .controller('address_bookCtrl', function ($scope, $rootScope, $state, $stateParams, $ionicPopup,$translate) {
             //alert(123456789);
             var u_id = getStorage('user_id');
             $rootScope.address_detail = {};
@@ -388,7 +388,7 @@ console.log(res);
                     $ionicPopup.alert(
                             {
                                 title: 'success',
-                                subTitle: 'Successfuly deleted',
+                                subTitle: $translate.instant('Successfuly_deleted'),
                                 okType: 'buttonhk'
                             }
                     );
@@ -415,7 +415,7 @@ console.log(res);
                 $scope.lists = results;
             });
         })
-        .controller('test_pushCtrl', function ($scope, $rootScope, $state, $stateParams,$ionicUser,$ionicPush) {
+        .controller('test_pushCtrl', function ($scope, $rootScope, $state, $stateParams,$ionicUser,$ionicPush,$translate) {
             
             $scope.identifyUser = function () {
                 var user = $ionicUser.get();
@@ -463,7 +463,7 @@ console.log(res);
 
         })
 
-        .controller('contactCtrl', function ($scope, $rootScope, $state, $stateParams, $cordovaEmailComposer,$ionicModal,$ionicPopup,$sce) {	
+        .controller('contactCtrl', function ($scope, $rootScope, $state, $stateParams, $cordovaEmailComposer,$ionicModal,$ionicPopup,$sce,$translate) {	
                                 $scope.contactDetail = {};
                                 console.log($scope.url);
                                 $rootScope.service.get('contactDetail',function (res) {
@@ -499,7 +499,7 @@ console.log(res);
 					if(name == ''){
 						$scope.hideLoading();	
 						$ionicPopup.alert(
-							{	title: 'Error',subTitle: 'Please enter name',okType: 'buttonhk'}
+							{	title: 'Error',subTitle: $translate.instant('please_enter_name'),okType: 'buttonhk'}
 						);							
 						return;
 					}
@@ -510,27 +510,27 @@ console.log(res);
 					if(email == ''){
 						$scope.hideLoading();	
 						$ionicPopup.alert(
-							{	title: 'Error',subTitle: 'Please enter email id',okType: 'buttonhk'}
+							{	title: 'Error',subTitle: $translate.instant('please_enter_email_id'),okType: 'buttonhk'}
 						);	
 						return;
 					}else if (atpos<1 || dotpos<atpos+2 || dotpos+2>=email.length) {
 						$scope.hideLoading();	
 						$ionicPopup.alert(
-							{	title: 'Error',subTitle: 'Not a valid e-mail address',okType: 'buttonhk'}
+							{	title: 'Error',subTitle: $translate.instant('not_valid_email_address'),okType: 'buttonhk'}
 						);
 						return false;
 					}
 					if(telephone == ''){
 						$scope.hideLoading();	
 						$ionicPopup.alert(
-							{	title: 'Error',subTitle: 'Please enter telephone',okType: 'buttonhk'}
+							{	title: 'Error',subTitle: $translate.instant('please_enter_telephone'),okType: 'buttonhk'}
 						);	
 						return;
 					}
 					if(comment == ''){
 						$scope.hideLoading();	
 						$ionicPopup.alert(
-							{	title: 'Error',subTitle: 'Please enter comment',okType: 'buttonhk'}
+							{	title: 'Error',subTitle: $translate.instant('please_enter_comment'),okType: 'buttonhk'}
 						);	
 						return;
 					}
@@ -560,7 +560,7 @@ console.log(res);
 							$ionicPopup.alert(
 								{
 									title: 'fail',
-									subTitle: 'Your message are not send',
+									subTitle: $translate.instant('message_not_send'),
 									okType: 'buttonhk'
 								}
 							);							
@@ -571,7 +571,7 @@ console.log(res);
 				}
 
         })
-        .controller('editaddressbookCtrl', function ($scope, $rootScope, $state, $stateParams, $cordovaEmailComposer) {
+        .controller('editaddressbookCtrl', function ($scope, $rootScope, $state, $stateParams, $cordovaEmailComposer,$translate) {
             $scope.editaddrbookData = {};
             var u_id = getStorage('user_id');
             var params = {
@@ -610,7 +610,7 @@ console.log(res);
             //alert($stateParams.name);
 
         })
-        .controller('my_accountCtrl', function ($scope, $rootScope, $state, $ionicPopup, $cordovaSocialSharing, $ionicPlatform) {
+        .controller('my_accountCtrl', function ($scope, $rootScope, $state, $ionicPopup, $cordovaSocialSharing, $ionicPlatform,$translate) {
             console.log(getStorage('user_id'));
             if(getStorage('user_id') == null){
                 $state.go('app.login');
@@ -775,7 +775,7 @@ console.log(res);
             getList('refresh');
         })
 
-        .controller('registerCtrl', function ($scope, $rootScope, $ionicPopup, $timeout, $state) {
+        .controller('registerCtrl', function ($scope, $rootScope, $ionicPopup, $timeout, $state,$translate) {
             $scope.registerData = {};
 
             $scope.show_hide_pw = function () {
@@ -805,7 +805,8 @@ console.log(res);
                 if (!$scope.registerData.firstname) {
                     $ionicPopup.alert({
                         title: 'error',
-                        subTitle: 'First name is required.',
+                        subTitle: $translate.instant("first_name_is_required"),
+//                        subTitle: 'First name is required.',
                         okType: 'buttonhk'
                     });
                     return;
@@ -813,7 +814,8 @@ console.log(res);
                 if (!$scope.registerData.middlename) {
                     $ionicPopup.alert({
                         title: 'error',
-                        subTitle: 'Middle name is required.',
+                        subTitle: $translate.instant("middle_name_is_required"),                        
+//                        subTitle: 'Middle name is required.',
                         okType: 'buttonhk'
                     });
                     return;
@@ -821,7 +823,8 @@ console.log(res);
                 if (!$scope.registerData.lastname) {
                     $ionicPopup.alert({
                         title: 'error',
-                        subTitle: 'Last name is required.',
+                        subTitle: $translate.instant("last_name_is_required"),                        
+//                        subTitle: 'Last name is required.',
                         okType: 'buttonhk'
                     });
                     return;
@@ -829,7 +832,8 @@ console.log(res);
                 if (!$scope.registerData.email) {
                     $ionicPopup.alert({
                         title: 'error',
-                        subTitle: 'Email is required.',
+                        subTitle: $translate.instant("email_is_required"),                        
+//                        subTitle: 'Email is required.',
                         okType: 'buttonhk'
                     });
                     return;
@@ -837,7 +841,8 @@ console.log(res);
                 if (!$scope.registerData.password) {
                     $ionicPopup.alert({
                         title: 'error',
-                        subTitle: 'Password is required.',
+                        subTitle: $translate.instant("password_is_required"),                        
+//                        subTitle: 'Password is required.',
                         okType: 'buttonhk'
                     });
                     return;
@@ -910,7 +915,7 @@ console.log(res);
                         $ionicPopup.alert(
                                 {
                                     title: 'success',
-                                    subTitle: 'Register Successfully Done',
+                                    subTitle: $translate.instant('register_successfully_done'),
                                     okType: 'buttonhk'
                                 }
                         );
@@ -935,7 +940,7 @@ console.log(res);
 
 
         // 忘记密�?
-        .controller('forgotPwdCtrl', function ($scope, $rootScope, $timeout, $state) {
+        .controller('forgotPwdCtrl', function ($scope, $rootScope, $timeout, $state,$translate) {
             $scope.pwdData = {};
             ;
             $scope.hideLogin;
@@ -965,7 +970,7 @@ console.log(res);
         })
 
         // 设置
-        .controller('settingCtrl', function ($scope, $rootScope, $translate, $ionicHistory) {
+        .controller('settingCtrl', function ($scope, $rootScope, $translate, $ionicHistory,$translate) {
             // 网站列表信�?�
             $scope.getWebsite = function () {
                 $rootScope.service.get('website', function (website) {
@@ -1237,7 +1242,7 @@ console.log(res);
 					$ionicPopup.alert( 
 					{
 							title: 'error',
-							subTitle: 'Login first',
+							subTitle: $translate.instant('login_first'),
 							okType: 'buttonhk'
 						}
 					);		
@@ -1446,7 +1451,7 @@ console.log(res);
                         $scope.hideLoading();
 						$ionicPopup.alert({
                         title: 'Success',
-                        subTitle: 'successfully added',
+                        subTitle: $translate.instant('successfully_added'),
                         okType: 'buttonhk'
                         });
                         $rootScope.items_qty = res.items_qty;
@@ -1524,7 +1529,7 @@ console.log(res);
         })
 
         // home中，�?�banner，快速�?�索
-        .controller('HomeCtrl', function ($scope, $rootScope, $state, $ionicSlideBoxDelegate,$ionicSideMenuDelegate, $timeout,$ionicPopup,$stateParams,$cordovaSocialSharing,commonFunction) {
+        .controller('HomeCtrl', function ($scope, $rootScope, $state, $ionicSlideBoxDelegate,$ionicSideMenuDelegate, $timeout,$ionicPopup,$stateParams,$cordovaSocialSharing,commonFunction,$translate) {
             $rootScope.items_qty=parseInt($rootScope.items_qty) || 0;
            
       $scope.toggleSlideMenu = function () {
@@ -1692,7 +1697,7 @@ console.log(res);
         })
 
         // 高级�?�索
-        .controller('SearchAdvCtrl', function ($scope, $rootScope, $state) {
+        .controller('SearchAdvCtrl', function ($scope, $rootScope, $state,$translate) {
             $scope.searAdvData = {};
             $scope._xingzhuang = '';
             // �?�目录选项
@@ -1736,7 +1741,7 @@ console.log(res);
         })
 
         // �?�索结果
-        .controller('SearchResultCtrl', function ($scope, $rootScope) {
+        .controller('SearchResultCtrl', function ($scope, $rootScope,$translate) {
 			
             if (!$rootScope.search) {
                 return;
@@ -1825,7 +1830,7 @@ console.log(res);
         })
 
         // �?书下载
-        .controller('certCtrl', function ($scope, $rootScope) {
+        .controller('certCtrl', function ($scope, $rootScope,$translate) {
             // �?��?书列表选项
             $rootScope.service.get('certGet', {}, function (results) {
                 var certList = [];
@@ -1837,7 +1842,7 @@ console.log(res);
             });
         })
         // 购物车
-		.controller('cartCtrl', function ($scope, $rootScope,$state, $stateParams, $timeout,$ionicPopup) {
+		.controller('cartCtrl', function ($scope, $rootScope,$state, $stateParams, $timeout,$ionicPopup,$translate) {
             // �?��?书列表选项
             $rootScope.service.get('cart', {}, function (results) {
                 var cartList = [];
@@ -1888,7 +1893,7 @@ console.log(res);
                     $scope.hideLoading();
                     $ionicPopup.alert({
                         title: 'Success',
-                        subTitle: "Successfully Removed",
+                        subTitle: $translate.instant("successfully_removed"),
                         okType: 'buttonhk'
                     });
                     $state.reload();
@@ -1956,7 +1961,7 @@ console.log(res);
             
         })
         // 附近�?销商
-        .controller('SearchAgentCtrl', function ($scope, $rootScope, $state) {
+        .controller('SearchAgentCtrl', function ($scope, $rootScope, $state,$translate) {
             $scope.searchData = {
                 //address: $scope.translations.current_position,
                 address: '广州',
@@ -1990,7 +1995,7 @@ console.log(res);
             };
         })
 
-        .controller('AgentsCtrl', function ($scope, $rootScope, $ionicPopup, $timeout) {
+        .controller('AgentsCtrl', function ($scope, $rootScope, $ionicPopup, $timeout,$translate) {
             if (!$rootScope.agent) {
                 return;
             }
@@ -2073,12 +2078,12 @@ console.log(res);
             $scope.title = $scope.translations[$stateParams.page];
             $scope.src = Config.baseUrl + Config.getLocale() + frame.src;
         })
-        .controller('orderDetailsCtrl', function ($scope,$ionicPopup,$state,$rootScope, $sce, $stateParams) {
+        .controller('orderDetailsCtrl', function ($scope,$ionicPopup,$state,$rootScope, $sce, $stateParams,$translate) {
             if(getStorage('user_id') == null){
                 $ionicPopup.alert(
                         {
                             title: 'Order',
-                            subTitle: "Order Create Success",
+                            subTitle: $translate.instant("order_create_success"),
                             okType: 'buttonhk'
                         }
                 );
@@ -2098,7 +2103,7 @@ console.log(res);
             });
         })
 		
-		.controller('orderdataCtrl', function ($scope, $rootScope, $sce, $stateParams) {
+		.controller('orderdataCtrl', function ($scope, $rootScope, $sce, $stateParams,$translate) {
 			$scope.showLoading();
 			var params = {
                 orderid: $stateParams.orderid,
@@ -2136,7 +2141,7 @@ console.log(res);
 					
 		})
 		
-.controller('paypalCtrl', function ($scope, $rootScope,$ionicPopup, $sce, $stateParams,PaypalService,$location) {
+.controller('paypalCtrl', function ($scope, $rootScope,$ionicPopup, $sce, $stateParams,PaypalService,$location,$translate) {
     //alert(123);
 			var u_id = getStorage('user_id');					
 			var quoteid = getStorage('quoteid');					
@@ -2185,7 +2190,7 @@ console.log(res);
                                             $ionicPopup.alert(
                                                     {
                                                         title: 'Paypal Error',
-                                                        subTitle: 'Paypal error',
+                                                        subTitle: $translate.instant('Paypal_error'),
                                                         okType: 'buttonhk'
                                                     }
                                             );
@@ -2206,7 +2211,7 @@ console.log(res);
 		
 					
 		
-		.controller('checkoutCtrl', function ($scope, $rootScope, $sce,$ionicPopup, $state,$stateParams,$location) {
+		.controller('checkoutCtrl', function ($scope, $rootScope, $sce,$ionicPopup, $state,$stateParams,$location,$translate) {
                     var city_list = {};
                     $scope.subtotal = 0;
                     $scope.registerData = {};
@@ -2294,7 +2299,7 @@ console.log(res);
                     $ionicPopup.alert(
                             {
                                 title: 'Cart Message',
-                                subTitle: 'cart is empty',
+                                subTitle: $translate.instant('cart_is_empty'),
                                 okType: 'buttonhk'
                             }
                     );

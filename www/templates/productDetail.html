@@ -124,11 +124,11 @@
             <div class="row">
             	<div class="p_price">
                 	<span ng-if="product.discount != null" class="special-price">
-                      <span class="price">{{'SAR' | translate}}{{product.symbol}}{{totalPrice}}</span>
+                      <span class="price"><span class='sar_dispaly_hp'>{{'SAR' | translate}}</span>{{product.symbol}}{{totalPrice}}</span>
                       <span class="old-price padding-horizontal">{{oldPrice}}</span>
                   	</span>
                   	<span ng-if="product.discount == null" class="special-price">
-                      <span class="price">{{'SAR' | translate}}{{product.symbol}}{{oldPrice}}</span>
+                      <span class="price"><span class='sar_dispaly_hp'>{{'SAR' | translate}}</span>{{product.symbol}}{{oldPrice}}</span>
                   	</span>
                 </div>
                 <div class="p_review">

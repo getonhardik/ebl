@@ -74,10 +74,10 @@ color: #444;    text-align: center;    font-weight: bold;    cursor: pointer;}
                 <div style="clear:both"></div>
                 <div class="item_full">  
                 	<div class="item_50w">                  
-		                <a class="first" href="#" ng-click="doRemoveFromCart(item.cart_item_id)">Remove</a>
+		                <a class="first" href="#" ng-click="doRemoveFromCart(item.cart_item_id)">{{'remove' | translate}}</a>
 					</div>
                     <div class="item_50w">                                          
-	    	            <a class="last" href="#" ng-click="doaddwishlistformcart(item.cart_item_id, item.item_id)">Move To wishlist</a>
+	    	            <a class="last" href="#" ng-click="doaddwishlistformcart(item.cart_item_id, item.item_id)">{{'move_to_wishlist' | translate}}</a>
 					</div>                        
                 </div>    
             </div>                        
@@ -94,8 +94,8 @@ color: #444;    text-align: center;    font-weight: bold;    cursor: pointer;}
                 <ion-item class="item-accordion item ng-binding ng-hide" ng-repeat="item in group.items" ng-show="isGroupShown(2)">
                     <div class="row">                        	
                         <div class="inputset" style="text-align:center">  <br />
-                            <input name="coupon" id="coupon" class="coupon_inp" type="text" placeholder="Enter coupon code" /><br />
-                            <input class="btn_cnt3" type="button" value="Submit" name="continue" ng-click="coupon"/> 
+                            <input name="coupon" id="coupon" class="coupon_inp" type="text" placeholder="{{'enter_coupon_code' | translate}}" /><br />
+                            <input class="btn_cnt3" type="button" value="{{'submit' | translate}}" name="continue" ng-click="coupon"/> 
                             <br />
                         </div>
                     </div>

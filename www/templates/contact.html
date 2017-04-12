@@ -119,42 +119,42 @@ font-weight: inherit;}
         <ion-modal-view class="product edit create">
           <form name="itemEdit" novalidate>
             <ion-header-bar class="bar-positive fix-buttons">
-              <a class="button" ng-click="closeModal()">Cancel</a>
-              <h1 class="title">Message</h1>
+              <a class="button" ng-click="closeModal()">{{'cancel' | translate}}</a>
+              <h1 class="title">{{'message' | translate}}</h1>
             </ion-header-bar>
             <ion-content has-bouncing="true">
               <div class="row" ng-class="{'no-padding-top': !data.editItem}">
                 <div class="col">
                   <label class="item con-item item-input large">
-                    <input type="text" placeholder="Name" id="name" name="codice_prodotto" ng-model="codice_prodotto">
+                    <input type="text" placeholder="{{'name' | translate}}" id="name" name="codice_prodotto" ng-model="codice_prodotto">
                   </label>
                 </div>
               </div>              
               <div class="row">
                 <div class="col">
                   <label class="item con-item item-input large">
-                    <input type="email" placeholder="Email" id="email">
+                    <input type="email" placeholder="{{'email' | translate}}" id="email">
                   </label>
                 </div>
               </div>
 			  <div class="row">
                 <div class="col">
                   <label class="item con-item item-input large">
-                    <input type="text" placeholder="Telephone" id="telephone">
+                    <input type="text" placeholder="{{'telephone' | translate}}" id="telephone">
                   </label>
                 </div>
               </div>
               <div class="row description-row">
                 <div class="col">
                   <label class="item con-item item-input text">
-                    <textarea placeholder="Description" id="comment" rows="5" ng-model="item.description" ng-Required="true" name="description" lose-focus-on-return></textarea>
+                    <textarea placeholder="{{'description' | translate}}" id="comment" rows="5" ng-model="item.description" ng-Required="true" name="description" lose-focus-on-return></textarea>
                   </label>
                 </div>
               </div>
 			  
 			  <div class="row description-row">
                 <div class="col">                 
-                    <input class="btn_cnt2" type="submit" name="Submit" value="Submit" placeholder="Submit" ng-click="carica()">
+                    <input class="btn_cnt2" type="submit" name="Submit" value="{{'submit' | translate}}" placeholder="{{'submit' | translate}}" ng-click="carica()">
                 </div>
               </div>
 

@@ -402,6 +402,7 @@ angular.module('app',[
 //                        }
 //                    })
                     .state('app.register', {
+                        cache: false,
                         url: '/register',
                         views: {
                             'menuContent': {

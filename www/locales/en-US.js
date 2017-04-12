@@ -204,5 +204,6 @@ var en_US = {
     rate_us_on_play_store :'Rate us on play store',
     SAR :'SAR',
     about_us:'About Us',
+    FBIMG:'fb-login.png',
 side_position:'left'
 };

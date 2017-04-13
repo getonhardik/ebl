@@ -1,4 +1,4 @@
-<style>
+padding-horizontal<style>
 .slick-container {  width: 95%;  margin: auto;  padding: 5px;}
 .slick-item {}
 .slick-item im {  margin: auto;}
@@ -125,7 +125,7 @@
             	<div class="p_price">
                 	<span ng-if="product.discount != null" class="special-price">
                       <span class="price"><span class='sar_dispaly_hp'>{{'SAR' | translate}}</span>{{product.symbol}}{{totalPrice}}</span>
-                      <span class="old-price padding-horizontal">{{oldPrice}}</span>
+                      <span class="old-price padding-horizontal" style="text-decoration: line-through;">{{oldPrice}}</span>
                   	</span>
                   	<span ng-if="product.discount == null" class="special-price">
                       <span class="price"><span class='sar_dispaly_hp'>{{'SAR' | translate}}</span>{{product.symbol}}{{oldPrice}}</span>

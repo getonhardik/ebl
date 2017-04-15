@@ -1313,6 +1313,8 @@ console.log(res);
             $rootScope.service.get('productImg', {
                 product: $stateParams.productid
             }, function (lists) {
+                console.log('images');
+                console.log(lists);
                 $scope.productImg = lists;
             });
 

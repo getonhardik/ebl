@@ -999,6 +999,7 @@ console.log(res);
                     
                 });
                 $ionicHistory.clearCache();
+                window.location='';
             };
         })
 

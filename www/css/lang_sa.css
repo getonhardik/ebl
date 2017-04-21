@@ -1,10 +1,10 @@
 .menus-content .button{ text-align:right !important;}
 h3.menu-title{ padding-right:12px !important;}
 .langchanger {
-  direction: rtl; 
+    direction: rtl; 
 }
 .p_title{
-	 direction: rtl; 
+    direction: rtl; 
 }
 pdetail_colsize{
     overflow: hidden;
@@ -12,7 +12,7 @@ pdetail_colsize{
     padding: 0 15px;
 }
 .col-size{
-	 direction: rtl; 
+    direction: rtl; 
 }
 .pdetail_plus_icon_hr{
     float: left;
@@ -73,3 +73,9 @@ pdetail_colsize{
 .sar_dispaly_hp{
     display:none;
 }
+
+.h-bar1{
+    width: 11% !important;
+    float: right !important;
+}
+.menu{ right:0 !important;}

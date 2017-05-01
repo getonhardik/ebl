@@ -12,6 +12,7 @@ angular.module('app.controllers', [])
                 $scope.translations = translations;
                 $rootScope.translations = $scope.translations;
             });
+//            $scope.lang_type='';
             $scope.dynamic_menus = {};
             $rootScope.service.get('menus', {}, function (results) {
                 $scope.dynamic_menus = results;
@@ -38,8 +39,13 @@ angular.module('app.controllers', [])
                 });
             };
 
-            $scope.menuClose = function () {
-                $ionicSideMenuDelegate.toggleLeft(false);
+            $scope.menuClose = function (lang_type) {
+                //alert(lang_type);
+                if(lang_type == 'eng'){
+                    $ionicSideMenuDelegate.toggleLeft(false);
+                }else{
+                    $ionicSideMenuDelegate.toggleRight(false);
+                }    
             };
 
             //首次欢迎页

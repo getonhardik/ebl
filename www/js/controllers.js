@@ -970,7 +970,7 @@ console.log(res);
         })
 
         // 设置
-        .controller('settingCtrl', function ($scope, $rootScope, $translate, $ionicHistory,$translate) {
+        .controller('settingCtrl', function ($scope, $rootScope, $translate, $ionicHistory,$ionicPopup) {
             // 网站列表信�?�
             $scope.getWebsite = function () {
                 $rootScope.service.get('website', function (website) {
@@ -998,8 +998,16 @@ console.log(res);
                     angular.extend($scope.dynamic_menus, results);
                     
                 });
+                $ionicPopup.alert(
+                        {
+                            title: 'Success',
+                            subTitle: $translate.instant('lang_change_alert'),
+                            okType: 'buttonhk'
+                        }
+                );
+
                 $ionicHistory.clearCache();
-                window.location='';
+//                window.location='';
             };
         })
 

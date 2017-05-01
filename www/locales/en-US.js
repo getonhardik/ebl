@@ -1,4 +1,5 @@
-var en_US = {    
+var en_US = {
+    lang_change_alert:'Language Change Successfully. Plaese Restart Application',
     message_not_send:'Your message are not send',
     please_enter_comment:'Please enter comment',
     please_enter_telephone:'Please enter telephone',

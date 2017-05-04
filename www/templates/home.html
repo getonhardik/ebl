@@ -74,14 +74,21 @@ box-shadow: 1px 1px 3px #E6E6E6;}
     <ion-content class='home-content'>            
       
         <div class="hk-image-div hr_image_div">
-        	<div class="row">
+            <div class="row">
+                <div  ng-repeat="banner in banners1" class="col-sm-3 col-xs-6"><a class="image-link" href="#"> <img alt="" src="{{banner}}"> </a></div>
+            </div>  
+             <div class="row">
+                <div  ng-repeat="banner in banners2" class="col-sm-3 col-xs-6"><a class="image-link" href="#"> <img alt="" src="{{banner}}"> </a></div>
+            </div>   
+<!--       	<div class="row">
+                    
             <div class="col-sm-3 col-xs-6"><a class="image-link" href="#"> <img alt="" src="http://pr.veba.co/~shubantech/ebranch/media/wysiwyg/porto/homepage/slider/05/image_1.png"> </a></div>
             <div class="col-sm-3 col-xs-6"><a class="image-link" href="#"> <img alt="" src="http://pr.veba.co/~shubantech/ebranch/media/wysiwyg/porto/homepage/slider/05/image_2.png"> </a></div>
             </div>
             <div class="row">
             <div class="col-sm-3 col-xs-6"><a class="image-link" href="#"> <img alt="" src="http://pr.veba.co/~shubantech/ebranch/media/wysiwyg/porto/homepage/slider/05/image_3.png"> </a></div>
             <div class="col-sm-3 col-xs-6"><a class="image-link" href="#"> <img alt="" src="http://pr.veba.co/~shubantech/ebranch/media/wysiwyg/porto/homepage/slider/05/image_4.png"> </a></div>
-            </div>
+            </div>-->
         </div>
         
         

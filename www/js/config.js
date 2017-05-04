@@ -3,7 +3,8 @@
 window.Config = {
     isRelease: true,
     debug: true,
-    baseUrl: 'http://pr.veba.co/~shubantech/ebranch/',
+    baseUrl: 'http://demo.ebranchsolutions.com/',
+//    baseUrl: 'http://pr.veba.co/~shubantech/ebranch/',
 
     getRememberme: function () {
         return localStorage['rememberme'] || true;

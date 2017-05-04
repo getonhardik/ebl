@@ -12,8 +12,10 @@ angular.module('app',[
    payPalProductionId : 'patel.kalpeshbeit2010-facilitator@gmail.com',
    payPalEnv: 'PayPalEnvironmentSandbox',   // for testing  production for production
    payPalShopName : 'MyShopName',
-   payPalMerchantPrivacyPolicyURL : 'http://pr.veba.co/~shubantech/ebranch',
-   payPalMerchantUserAgreementURL : 'http://pr.veba.co/~shubantech/ebranch'
+//   payPalMerchantPrivacyPolicyURL : 'http://pr.veba.co/~shubantech/ebranch',
+//   payPalMerchantUserAgreementURL : 'http://pr.veba.co/~shubantech/ebranch'
+   payPalMerchantPrivacyPolicyURL : 'http://demo.ebranchsolutions.com/',
+   payPalMerchantUserAgreementURL : 'http://demo.ebranchsolutions.com/'
    
    
    

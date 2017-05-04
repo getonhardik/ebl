@@ -667,6 +667,7 @@ console.log(res);
 
                 $scope.showLoading();
                 $rootScope.service.get('products', params, function (lists) {
+                    console.log("list");
                     console.log(lists);
 
                     if (func === 'load') {
@@ -1586,7 +1587,18 @@ console.log(res);
 			
 			var u_id = 0;
 			var u_id = getStorage('user_id');
-			
+		 var params = {
+                    block: 'mobile-app-home-banner1',
+                };
+                $rootScope.service.get('getBannerBlock', params, function (lists_catalog) {
+                    $scope.banners1 = lists_catalog;
+                }); 
+                 var params = {
+                    block: 'mobile-app-home-banner2',
+                };
+                $rootScope.service.get('getBannerBlock', params, function (lists_catalog) {
+                    $scope.banners2 = lists_catalog;
+                }); 
             var getList = function (func, callback) {
                 if (func === 'load') {
                     $scope.listPge++;
@@ -1709,6 +1721,7 @@ console.log(res);
                 $state.go('app.searchResult');
             };
             
+                        
            
             
         })
@@ -2369,8 +2382,8 @@ console.log(res);
             $scope.checkoutFormQuote = function(registerData){
                
                 //registerData=$('#checkoutForm').serialize();
-                //console.log(1111);
-                // console.log(registerData);
+                console.log('rData');
+                console.log($scope.registerData);
                 var billing_address = {
                     street:$scope.registerData.street,
                     company:$scope.registerData.company,

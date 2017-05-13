@@ -224,7 +224,9 @@ color:#FFF}
                         </ion-item>
                         <ion-item class="item-accordion item ng-binding ng-hide" ng-repeat="item in group.items" ng-show="isGroupShown(2)">
                             <div class="">
-                                
+                                <div ng-repeat="shipping_method in shipping_methods">
+                                    {{shipping_method.carrier_title}} [{{shipping_method.price}}] 
+                                </div>
                                 <input type="checkbox" name="gift_add" ng-click="gift_add_button()" value="gift_add" id='gift_add'/> <b class="binp">{{'add_gift_option'| translate}}</b><br />
                                 <div id='gift_detail' class='hide'>
                                     <div class="inputset">  

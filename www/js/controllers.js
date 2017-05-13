@@ -2293,7 +2293,6 @@ console.log(res);
                         var params = {
                                 user_id: u_id,
                         };
-                        
                     $rootScope.service.get('getAddress', params, function (results) {
                         console.log(results.data[0]);
                         console.log("KP");
@@ -2466,6 +2465,22 @@ console.log(res);
             $rootScope.service.get('paymentmethods', params, function (results) {
                 //console.log(results.model);
                 $scope.payment_method = results.model;
+            });
+            $rootScope.service.get('getShippingMethodsList', params, function (results) {
+                console.log(123);
+                console.log(results);
+                if(results.code == 0){
+                    $scope.shipping_methods = results.model;
+                }else{
+                    $ionicPopup.alert(
+                            {
+                                title: 'Error',
+                                subTitle: results.msg,
+                                okType: 'buttonhk'
+                            }
+                    );
+                }
+//                $scope.shipping_method = results.model;
             });
         })
 		

@@ -43,6 +43,7 @@ function Service($rootScope, $http, $ionicPopup) {
 		 addquote: 'restconnect/cart/addQuote',
 		 removecart: '/restconnect/cart/remove',
 		 paymentmethods: '/restconnect/checkout/getPayMethodsList',
+		 getShippingMethodsList: '/restconnect/checkout/getShippingMethodsList',
     }, showError = false;
 
     $rootScope.service = {

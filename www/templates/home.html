@@ -1,4 +1,14 @@
 <style>
+.box_hp{
+        margin-top: 5px;
+    margin-bottom: 7px;
+    line-height: 100%;
+    font-size: 1em;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}    
 .slick-container {  width: 95%;  margin: auto;  padding: 5px;}
 .slick-item {}.slick-item img {  margin: auto;}
 .hr_image_div{margin-top:25px}
@@ -34,6 +44,7 @@ box-shadow: 1px 1px 3px #E6E6E6;}
 @media only screen and (min-device-width: 481px) and 
 (max-device-width: 1024px) and (orientation:landscape) {
 }
+
 </style>
 <ion-view hide-nav-bar="true">
 <ion-header-bar ng-show="1" class="menus bar-light home-header">
@@ -116,7 +127,7 @@ box-shadow: 1px 1px 3px #E6E6E6;}
             </a>
             
             <div class="product-info">
-                <div class="product-name">
+                <div class="product-name box_hp">
                     {{product.name}}
                 </div>
             			<div class="p_rating">                
@@ -200,7 +211,7 @@ box-shadow: 1px 1px 3px #E6E6E6;}
             </div>
         </a>        
         <div class="product-info">
-            <div class="product-name">
+            <div class="product-name box_hp">
                 {{product.name}}
             </div>
         	<div class="p_rating">                
@@ -290,7 +301,7 @@ box-shadow: 1px 1px 3px #E6E6E6;}
             </a>
             
             <div class="product-info">
-                <div class="product-name">
+                <div class="product-name box_hp">
                     {{product.name}}
                 </div>
             	<div class="p_rating">                
@@ -375,7 +386,7 @@ box-shadow: 1px 1px 3px #E6E6E6;}
             </a>
             
             <div class="product-info">
-                <div class="product-name">
+                <div class="product-name box_hp">
                     {{product.name}}
                 </div>
             	<div class="p_rating">                

@@ -2179,7 +2179,8 @@ console.log(res);
 				customerid: u_id,
 			};
 			
-//			$scope.price = $rootScope.grand_total_paypal;
+			$scope.price = $rootScope.grand_total_paypal;
+                        console.log("gtotal:"+$scope.price );
 			$scope.price = 1;
                         $scope.produit = 'Ebranch Shop';
                         console.log("init paapal before");
@@ -2246,6 +2247,7 @@ console.log(res);
                     $scope.subtotal = 0;
                     $scope.registerData = {};
                     $scope.gift = {};
+                    $scope.shipping_price=0;
                     $scope.shipData = {};
                     $scope.gift_add_button = function(){
                         if ($('#gift_add').prop('checked')) {
@@ -2319,6 +2321,14 @@ console.log(res);
                           $scope.city1 = city_list[city_point];
                           console.log(city_list[city_point]);
                   }
+                  
+                   $scope.select_shipping_price = function(sp){
+//                     
+                           $scope.shipping_price=sp;
+                           $rootScope.grand_total_paypal= $scope.subtotal+  $scope.shipping_price;
+                  }
+                  
+                  
             $rootScope.service.get('cart', params, function (results) {
                 console.log("test");
                 console.log(results);
@@ -2339,6 +2349,8 @@ console.log(res);
                 $scope.subtotal = subtotal1;
                 $rootScope.grand_total_paypal = subtotal1; 
             });
+            
+            
             
 //            alert($(".biiling_rbutton").val());
             if((getStorage('user_id')) != null){
@@ -2414,7 +2426,8 @@ console.log(res);
                 var params = {
                     customerid: u_id,
                     shipping_address: shipping_address,
-                    billing_address:billing_address
+                    billing_address:billing_address,
+                    shipping_method:$scope.shipping_method
                 };
                 $rootScope.service.post('addquote', params, function (results) {
                     results= JSON.parse(results);

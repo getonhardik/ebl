@@ -225,7 +225,7 @@ color:#FFF}
                         <ion-item class="item-accordion item ng-binding ng-hide" ng-repeat="item in group.items" ng-show="isGroupShown(2)">
                             <div class="">
                                 <div ng-if="shipping_methods.length" ng-repeat="shipping_method in shipping_methods">
-                                    {{shipping_method.carrier_title}} [{{shipping_method.symbol}}{{shipping_method.price}}] 
+                                    <input type="radio" name="shipping_method" ng-click="select_shipping_price('{{shipping_method.price}}')" value="{{shipping_method.code}}" /> <b class="binp"> {{shipping_method.carrier_title}} <span ng-if="shipping_method.price>0">[{{shipping_method.symbol}} {{shipping_method.price}}]</span> 
                                 </div>
                                 <input type="checkbox" name="gift_add" ng-click="gift_add_button()" value="gift_add" id='gift_add'/> <b class="binp">{{'add_gift_option'| translate}}</b><br />
                                 <div id='gift_detail' class='hide'>
@@ -325,7 +325,7 @@ color:#FFF}
                                     </tr>
                                     <tr>
                                         <td colspan="3">{{'shipping_handling'| translate}}</td>
-                                        <td>SAR0.00</td>
+                                        <td>SAR{{shipping_price}}</td>
                                     </tr>
                                     <tr>
                                         <td colspan="3">{{'Grand_Total'| translate}}</td>

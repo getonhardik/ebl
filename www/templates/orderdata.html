@@ -49,7 +49,7 @@ font-weight: inherit;}
 	                    	<div class="" ng-repeat="items in order.items_data">                            	
                                 <span style="color:#949494;font-size:22px;">{{items.name}}</span><br />           	
                                 {{items.price}} / {{items.qty_ordered}} items<br />
-                                <b>Subtotal : </b>{{items.price}}<br />
+                                <b>Subtotal : </b>{{items.price*items.qty_ordered}}<br />
                             </div> 	
     	                </div>
                     </ion-item>                      

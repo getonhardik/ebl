@@ -2245,6 +2245,7 @@ console.log(res);
 		.controller('checkoutCtrl', function ($scope, $rootScope, $sce,$ionicPopup, $state,$stateParams,$location,$translate) {
                     var city_list = {};
                     $scope.subtotal = 0;
+                    $scope.currency = 'SAR';
                     $scope.registerData = {};
                     $scope.gift = {};
                     $scope.shipping_price=0;
@@ -2325,7 +2326,9 @@ console.log(res);
                    $scope.select_shipping_price = function(sp){
 //                     
                            $scope.shipping_price=sp;
-                           $rootScope.grand_total_paypal= $scope.subtotal+  $scope.shipping_price;
+                           var gtotal=parseFloat($scope.subtotal)+  parseFloat($scope.shipping_price);
+                          
+                            $rootScope.grand_total_paypal=gtotal.toFixed(2);
                   }
                   
                   
@@ -2345,9 +2348,11 @@ console.log(res);
                 }
                 $.each(results.cart_items, function( index, value ) {
                     subtotal1 = subtotal1 + (value.item_price * value.qty);
+                     $scope.currency = value.currency;
                 });
                 $scope.subtotal = subtotal1;
-                $rootScope.grand_total_paypal = subtotal1; 
+                $rootScope.grand_total_paypal = subtotal1.toFixed(2);
+                
             });
             
             

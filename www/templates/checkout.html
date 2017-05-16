@@ -325,11 +325,11 @@ color:#FFF}
                                     </tr>
                                     <tr>
                                         <td colspan="3">{{'shipping_handling'| translate}}</td>
-                                        <td>SAR{{shipping_price}}</td>
+                                        <td>{{currency}}{{shipping_price}}</td>
                                     </tr>
                                     <tr>
                                         <td colspan="3">{{'Grand_Total'| translate}}</td>
-                                        <td>{{subtotal + shipping_price}}</td>
+                                        <td>{{currency}}{{grand_total_paypal}}</td>
                                     </tr>
                                 </table>
                             </div>

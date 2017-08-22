@@ -5,7 +5,7 @@ window.Config = {
     debug: true,
     baseUrl: 'http://demo.ebranchsolutions.com/',
 //    baseUrl: 'http://pr.veba.co/~shubantech/ebranch/',
-
+    //rajesh
     getRememberme: function () {
         return localStorage['rememberme'] || true;
     },

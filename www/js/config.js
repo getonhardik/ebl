@@ -3,7 +3,7 @@
 window.Config = {
     isRelease: true,
     debug: true,
-   baseUrl: 'http://demo.ebranchsolutions.com/',
+    baseUrl: 'http://demo.ebranchsolutions.com/',
 //    baseUrl: 'http://pr.veba.co/~shubantech/ebranch/',
 
     getRememberme: function () {
@@ -12,16 +12,16 @@ window.Config = {
     setRememberme: function (rememberme) {
         localStorage['rememberme'] = rememberme;
     },
-    getUsername: function ()    {
-        return localStorage['username']|| '';
+    getUsername: function () {
+        return localStorage['username'] || '';
     },
-    setUsername: function (username)    {
+    setUsername: function (username) {
         localStorage['username'] = username;
     },
-    getPassword: function ()    {
-        return localStorage['password']|| '';
+    getPassword: function () {
+        return localStorage['password'] || '';
     },
-    setPassword: function (password)    {
+    setPassword: function (password) {
         localStorage['password'] = password;
     },
     getLocale: function () {
@@ -55,6 +55,6 @@ window.Config = {
     }
 };
 
-if (!Config.isRelease)	{
+if (!Config.isRelease) {
     Config.baseUrl = '/';
 }

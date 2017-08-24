@@ -7,8 +7,12 @@ angular.module('app.controllers', [])
                 $ionicPopup, $timeout, $state,
                 $ionicSideMenuDelegate, $translate,
                 $ionicPlatform, $ionicHistory) {
-                    
+                 
             $translate(Object.keys(ar_SA)).then(function (translations) {
+                $scope.translations = translations;
+                $rootScope.translations = $scope.translations;
+            });
+             $translate(Object.keys(uz_PK)).then(function (translations) {
                 $scope.translations = translations;
                 $rootScope.translations = $scope.translations;
             });
@@ -40,7 +44,7 @@ angular.module('app.controllers', [])
             };
 
             $scope.menuClose = function (lang_type) {
-                //alert(lang_type);
+               
                 if(lang_type == 'eng'){
                     $ionicSideMenuDelegate.toggleLeft(false);
                 }else{
@@ -981,7 +985,7 @@ console.log(res);
             // 网站列表信�?�
             $scope.getWebsite = function () {
                 $rootScope.service.get('website', function (website) {
-                    $scope.languages = [];
+                    $scope.languages = [{store_code:"UZ",name:"Urdu"}];
                     for (var l in website['1'].webside['1'].view) {
                         $scope.languages.push(website['1'].webside['1'].view[l]);
                     }
@@ -993,14 +997,19 @@ console.log(res);
 
             $scope.changeLocale = function () {
                 $scope.locale = this.language.store_code;
-                if($scope.locale=='arabic'){
+                     if($scope.locale=='arabic'){
 				   $translate.use('ar_SA');
+				   document.getElementById('lang_css').href = 'css/lang_sa.css';
+			}else if($scope.locale=='UZ'){
+                           
+				   $translate.use('uz_PK');
 				   document.getElementById('lang_css').href = 'css/lang_sa.css';
 			}else {
 				   $translate.use('en_US');
 				   document.getElementById('lang_css').href = 'css/lang_en.css';
 			}
                 Config.setLocale($scope.locale);
+                console.log(Config.getLocale());
                 $rootScope.service.get('menus', {}, function (results) {
                     angular.extend($scope.dynamic_menus, results);
                     

@@ -598,14 +598,18 @@ angular.module('app',[
             // if none of the above states are matched, use this as the fallback
             $urlRouterProvider.otherwise('/app/home');
 
-$translateProvider.translations('ar_SA', ar_SA);
-        $translateProvider.translations('en_US', en_US);
-            if(Config.getLocale()=='arabic'){
-         $translateProvider.preferredLanguage('ar_SA');
-         
-  }else {
-    $translateProvider.preferredLanguage('en_US');
-  }
+            $translateProvider.translations('ar_SA', ar_SA);
+            $translateProvider.translations('uz_PK', uz_PK);
+            $translateProvider.translations('en_US', en_US);
+            if (Config.getLocale() == 'arabic') {
+                $translateProvider.preferredLanguage('ar_SA');
+
+            } else if (Config.getLocale() == 'UZ') {
+                $translateProvider.preferredLanguage('uz_PK');
+
+            } else {
+                $translateProvider.preferredLanguage('en_US');
+            }
         })
 
         .directive('onFinishRender', function ($timeout) {
@@ -652,7 +656,7 @@ function urlencode(data) {
 }
 
 window.onload = function(){
- if ( Config.getLocale()=='arabic') {
+ if ( Config.getLocale()=='arabic' || Config.getLocale()=='UZ') {
 	 document.getElementById('lang_css').href = 'css/lang_sa.css';
  }
 }

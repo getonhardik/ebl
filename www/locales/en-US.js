@@ -207,5 +207,5 @@ var en_US = {
     SAR :'SAR',
     about_us:'About Us',
     FBIMG:'fb-login.png',
-side_position:'left'
+    side_position:'left'
 };
